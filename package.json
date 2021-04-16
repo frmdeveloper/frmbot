@@ -1,0 +1,67 @@
+{
+  "name": "FRMBOT",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp by FRM Developer\nPasti Penyimpanan hampir penuh. Kan module yang dipasang banyak",
+  "main": "rifki.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"APE LU, MAU NGETAS NGETES"",
+    "start": "node rifki.js"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "latest",
+    "@kagchi/kag-api": "latest",
+    "@vitalets/google-translate-api": "latest",
+    "async": "latest",
+    "axios": "latest",
+    "brainly-scraper": "latest",
+    "canvacord": "latest",
+    "cfonts": "latest",
+    "cheerio": "latest",
+    "cors": "latest",
+    "dropbox-v2-api": "latest",
+    "express": "latest",
+    "fluent-ffmpeg": "latest",
+    "g-i-s": "latest",
+    "google-it": "latest",
+    "image-downloader": "latest",
+    "lolis.life": "latest",
+    "moment-timezone": "latest",
+    "node-tesseract-ocr": "latest",
+    "os": "latest",
+    "performance-now": "latest",
+    "puppeteer": "latest",
+    "qrcode": "latest",
+    "qrcode-terminal": "latest",
+    "random-useragent": "latest",
+    "remove.bg": "latest",
+    "spinnies": "latest",
+    "ssl-express-www": "latest",
+    "tiktok-scraper": "latest",
+    "webp-converter": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FRM-Developer/FRM.Bot1.git"
+  },
+  "keywords": [
+    "k",
+    "youtube",
+    "youtube-fetch",
+    "youtube-scrapper",
+    "youtube-grabber",
+    "youtube trending",
+    "youtube-trending",
+    "youtube without api",
+    "youtube-fetcher",
+    "trending"
+  ],
+  "author": "Fauzan Rifki Maulana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FRM-Developer/FRM.Bot1/issues"
+  },
+  "homepage": "https://github.com/FRM-Developer/FRM.Bot1/readme"
+}
