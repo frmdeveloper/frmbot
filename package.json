@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FRM-Developer/FRM.Bot1.git"
+    "url": "git+https://github.com/frmdeveloper/frmbot.git"
   },
   "keywords": [
     "k",
@@ -62,7 +62,7 @@
   "author": "Fauzan Rifki Maulana",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FRM-Developer/FRM.Bot1/issues"
+    "url": "https://github.com/frmdeveloper/frmbot/issues"
   },
-  "homepage": "https://github.com/FRM-Developer/FRM.Bot1/readme"
+  "homepage": "https://github.com/frmdeveloper/frmbot/readme"
 }
