@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"APE LU, MAU NGETAS NGETES"",
+    "test": "echo "APE LU, MAU NGETAS NGETES"",
     "start": "node rifki.js"
   },
   "dependencies": {
