@@ -2,7 +2,7 @@
   "name": "FRMBOT",
   "version": "1.0.0",
   "description": "Bot WhatsApp by FRM Developer\nPasti Penyimpanan hampir penuh. Kan module yang dipasang banyak",
-  "main": "rifki.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
