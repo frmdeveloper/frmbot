@@ -10,7 +10,6 @@
     "@adiwajshing/baileys": "latest",
     "@kagchi/kag-api": "latest",
     "@vitalets/google-translate-api": "latest",
-    "@mapbox/node-pre-gyp": "latest",
     "async": "latest",
     "axios": "latest",
     "brainly-scraper": "latest",
