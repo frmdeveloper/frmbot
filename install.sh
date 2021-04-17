@@ -17,9 +17,6 @@ npm install n -g
 n 14
 npm install -g npm
 npm install
-npm i tesseract
-npm install @vitalets/google-translate-api
-npm install @arugaz/arugaz-api
 npm audit fix
 
 echo "[*] All dependencies have been installed, please run the command \"npm start\" to immediately start the script"
