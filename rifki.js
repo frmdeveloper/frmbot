@@ -966,6 +966,13 @@ client.on('group-participants-update', async (anu) => {
 	    }
 	})
 	
+	client.on('CB:action,,call', async json => {
+    const callerId = json[2][0][1].from;
+    console.log("call dari "+ callerId)
+        client.sendMessage(callerId, `Jangan menelepon bot, telepon saja wa.me/${nomowner}`, MessageType.text)
+        await sleep(3000)
+})
+	
 	client.on(["action", null, "battery"], json => {
 		const batteryLevelStr = json[2][0][1].value
 		const batterylevel = parseInt (batteryLevelStr)
