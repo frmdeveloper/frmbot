@@ -26,7 +26,7 @@
     "image-downloader": "latest",
     "lolis.life": "latest",
     "moment-timezone": "latest",
-    "tesseract": "latest",
+    "node-tesseract-ocr": "latest",
     "os": "latest",
     "performance-now": "latest",
     "puppeteer": "latest",
