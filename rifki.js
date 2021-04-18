@@ -1149,7 +1149,7 @@ client.on('group-participants-update', async (anu) => {
 				fs.writeFileSync('./database/bot/onoff.json', JSON.stringify(onoffnya))
 				reply('BERHASIL MEMATIKAN')
 			}
-			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
+			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
 				intro1 = `${intro0.split(`🍃🍃🍃🍃🍃`)[0]}`
 				kosong = ''
