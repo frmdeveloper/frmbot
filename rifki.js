@@ -7297,9 +7297,6 @@ njokdisave = 'BEGIN:VCARD\n'
 				  if (cilik.startsWith(`p`) || cilik.startsWith(`${prefix}p`) || cilik.includes(`🅿️`))  {
 				  client.updatePresence(from, Presence.composing)
 				  iki = reply(`${tanda}\nالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`)
-				  	setTimeout( () => {
- 	                 hapus(iki)
- 					 }, 5000)
 				  }
                   if (budy.includes(`@${me.jid.split('@')[0]}`)) {
                   	client.updatePresence(from, Presence.composing)
