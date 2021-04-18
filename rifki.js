@@ -538,6 +538,7 @@ ${gaya2} ${prefix}ban
 ${gaya2} ${prefix}bc
 ${gaya2} ${prefix}bcgc
 ${gaya2} ${prefix}block
+${gaya2} ${prefix}bunuhbot
 ${gaya2} ${prefix}clearall
 ${gaya2} ${prefix}clearbc
 ${gaya2} ${prefix}clone
