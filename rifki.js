@@ -7089,9 +7089,7 @@ vcard = 'BEGIN:VCARD\n'
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					console.log(encmedia)
-					buatinfopesan = fs.writeFileSync(`./sampah/Info Pesan by FRM BOT.json`, JSON.stringify(encmedia))
-					infopesan = fs.readFileSync(`./sampah/Info Pesan by FRM BOT.json`)
-					client.sendMessage(from, infopesan, document, {quoted: mek, mimetype: 'text/plain', title: 'Info Pesan by FRM BOT.json', pageCount: 0, fileName: 'Info Pesan by FRM BOT.json'})
+					client.sendMessage(from, encmedia, text, {quoted: mek})
 					await limitAdd(sender)
 					break
 			case prefix+'afk': // by Slavyan
