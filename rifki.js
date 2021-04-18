@@ -779,34 +779,6 @@ const getLevelingXp = (sender) => {
             }
         }
         
-        const save = (sender, jeneng) => {
-            const obj = { id: sender, nama: jeneng }
-            _save.push(obj)
-            fs.writeFileSync('./database/user/njokdisave.json', JSON.stringify(_save))
-        }
-        
-        const ceksave = (sender) => {
-            let status = false
-            Object.keys(_save).forEach((i) => {
-                if (_save[i].id === sender) {
-                    status = true
-                }
-            })
-            return status
-        }
-        
-        const namasave = (sender) => {
-        	let position = false
-            Object.keys(_save).forEach((i) => {
-                if (_save[i].id === sender) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                return _save[position].nama
-            }
-        }
-        
         const umureuser = (sender) => {
         	let position = false
             Object.keys(_registered).forEach((i) => {
