@@ -1007,7 +1007,6 @@ client.on('group-participants-update', async (anu) => {
 */
             const isEventon = isGroup ? event.includes(from) : false
             const isRegistered = checkRegisteredUser(sender)
-            const isSave = ceksave(sender)
             const isUser = cekWesDaftar(nomerwesdaftar)
             const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
             const isLevelingOn = isGroup ? _leveling.includes(from) : false
