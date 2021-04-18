@@ -1820,8 +1820,18 @@ return;
 					if (isBanned) return reply(ind.diban())
                    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					dadu = body.slice(1)
-					const daduu =['1','2','3','4','5','6']
-					const daduuu = daduu[Math.floor(Math.random() * daduu.length)]
+					daduu =['https://i.ibb.co/Bw42zpY/jogodedados-128px-2.gif','https://i.ibb.co/njdfrHT/jogodedados-128px-1.gif','https://i.ibb.co/BBcyPp2/jogodedados-128px-3.gif','https://i.ibb.co/YhhDbX5/jogodedados-128px-4.gif','https://i.ibb.co/qFTd1K1/jogodedados-128px-6.gif','https://i.ibb.co/9g8ns1b/jogodedados-128px-5.gif']
+					daduuu = daduu[Math.floor(Math.random() * daduu.length)]
+					stikergifurl(daduuu)
+            		await limitAdd(sender)
+					break
+			case `${prefix}dadu3`:
+                    if (!isRegistered) return reply(ind.noregis())
+					if (isBanned) return reply(ind.diban())
+                   if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+					dadu = body.slice(1)
+					daduu =['1','2','3','4','5','6']
+					daduuu = daduu[Math.floor(Math.random() * daduu.length)]
 					dadukirim = fs.readFileSync(`./fauzan.rifki.m/dadu${daduuu}.webp`)
             		client.sendMessage(from, dadukirim, sticker, {quoted: mek})
             		await limitAdd(sender)
