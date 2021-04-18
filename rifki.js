@@ -943,7 +943,6 @@ client.on('group-participants-update', async (anu) => {
     const callerId = json[2][0][1].from;
     console.log("call dari "+ callerId)
         client.sendMessage(callerId, `Jangan menelepon bot, telepon saja wa.me/${nomowner}`, MessageType.text)
-        await sleep(3000)
         await client.blockUser(callerId, "add")
         await client.blockUser(callerId, "remove")
 })
