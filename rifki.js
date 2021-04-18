@@ -1087,6 +1087,13 @@ client.on('group-participants-update', async (anu) => {
 			client.updatePresence(from, Presence.composing)
 		    client.sendMessage(from, audio, mp3, {quoted:mek})
 		    }
+			const stiker = async(dadistiker) => {
+				stickermk = new WSF.Sticker(`${dadistiker}`, { crop: true, animated: false, pack: 'FRM BOT', author: 'Rifki' })
+				await stickermk.build()
+				stcBuffr = await stickermk.get()
+				client.updatePresence(from, Presence.composing)
+				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
+			}
 		
 			/***************** akhir ngganti prefix ********/
 				  if (body.startsWith(`.`)) {
@@ -1859,12 +1866,11 @@ return;
             		await limitAdd(sender)
 					break
 			case prefix+'dadu2':
-           const anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
-           const stickermk = new WSF.Sticker(`${anu9.result}`, { crop: true, animated: false, pack: 'frmbot', author: '' })
-           await stickermk.build()
-           const stcBuffr = await stickermk.get()
-           client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
-           break
+				if (!isRegistered) return reply(ind.noregis())
+           	if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+           	anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
+           	stiker(anu9.result)
+           	break
            case prefix+'seberapagay':
            
            if (!isRegistered) return reply(ind.noregis())
