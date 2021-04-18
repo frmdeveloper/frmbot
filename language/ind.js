@@ -58,11 +58,11 @@ exports.rediregis = () => {
 }
 
 exports.stikga = () => {
-	return`${tanda}\nMạ.af ${namaneuser(sender)}\n gagal coba ulangi beberapa saat lagi`
+	return`${tanda}\nMạ.af, coba ulangi beberapa saat lagi`
 }
 
 exports.linkga = () => {
-	return`${tanda}\nMạ.af ${namaneuser(sender)}, link tidak benar`
+	return`${tanda}\nMạ.af, link tidak benar`
 }
 
 exports.groupo = () => {
