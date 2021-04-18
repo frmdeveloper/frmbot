@@ -1094,6 +1094,13 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
+			const stikergif = async(bahanstiker) => {
+				stickermk = new WSF.Sticker(`${bahanstiker}`, { crop: true, animated: true, pack: 'FRM BOT', author: 'Rifki' })
+				await stickermk.build()
+				stcBuffr = await stickermk.get()
+				client.updatePresence(from, Presence.composing)
+				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
+			}
 		
 			/***************** akhir ngganti prefix ********/
 				  if (body.startsWith(`.`)) {
@@ -1500,18 +1507,11 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
-						exec(`ffmpeg -i ${media} ./sampah/stiker_${sender}.webp`, (error, stdout, stderr) => {
-						client.sendMessage(from, fs.readFileSync(`./sampah/stiker_${sender}.webp`), sticker, { quoted: mek })
-						fs.unlinkSync(`./sampah/stiker_${sender}.webp`)
-						})
+						stiker(media)
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						exec(`ffmpeg -i ${media} ./sampah/stikergif_${sender}.webp`, (error, stdout, stderr) => {
-						stikegif = fs.readFileSync(`./sampah/stikergif_${sender}.webp`)
-						client.sendMessage(from, stikegif, sticker, {quoted: mek})
-						fs.unlinkSync(`./sampah/stikergif_${sender}.webp`)
-						})
+						stikergif(media)
 						}
 					await limitAdd(sender)
 						break
