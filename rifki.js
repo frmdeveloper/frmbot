@@ -1087,14 +1087,14 @@ client.on('group-participants-update', async (anu) => {
 			client.updatePresence(from, Presence.composing)
 		    client.sendMessage(from, audio, mp3, {quoted:mek})
 		    }
-			const stiker = async(dadistiker) => {
+			const stikerurl = async(dadistiker) => {
 				stickermk = new WSF.Sticker(`${dadistiker}`, { crop: true, animated: false, pack: 'FRM BOT', author: 'Rifki' })
 				await stickermk.build()
 				stcBuffr = await stickermk.get()
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
-			const stikergif = async(bahanstiker) => {
+			const stikergifurl = async(bahanstiker) => {
 				stickermk = new WSF.Sticker(`${bahanstiker}`, { crop: true, animated: true, pack: 'FRM BOT', author: 'Rifki' })
 				await stickermk.build()
 				stcBuffr = await stickermk.get()
@@ -1507,7 +1507,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
-						stiker(media)
+						stikerurl(media)
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -1830,7 +1830,7 @@ return;
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
-    			stiker(anu9.result)
+    			stikerurl(anu9.result)
     			await limitAdd(sender)       	
 				break
            case prefix+'seberapagay':
