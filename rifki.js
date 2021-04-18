@@ -1138,16 +1138,14 @@ client.on('group-participants-update', async (anu) => {
             /***************** akhir ngganti prefix ********/
             
             // TAMBAHAN SAAT BOT OFF / ON
-            if (cilik.includes(`${prefix}bot on`)) {
+            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`) {
 				if (isOnOff) return reply('SUDAH ON')
-				onoffnya.push(from)
-				fs.writeFileSync('./database/bot/onoff.json', JSON.stringify(onoffnya))
+				statusbot = true
 				reply('BERHASIL MENYALAKAN')
 			}
-			if (cilik.includes(`${prefix}bot off`)) {
+			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`) {
 				if (!isOnOff) return reply('SUDAH OFF')
-				onoffnya.splice(from, 1)
-				fs.writeFileSync('./database/bot/onoff.json', JSON.stringify(onoffnya))
+				statusbot = false
 				reply('BERHASIL MEMATIKAN')
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`) {
