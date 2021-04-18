@@ -3995,13 +3995,8 @@ o==[]::::::>
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
-				getattp = {
-  				url: `https://api.xteam.xyz/attp?file&text=${q}`,
-  				dest: `./sampah/${q}_${sender.split('@')[0]}.gif`      // will be saved to /path/to/dest/photo.jpg
-				}
-				unduhgmb.image(getattp)
-            	.then(() => {attp = fs.readFileSync(`./sampah/${q}_${sender.split('@')[0]}.gif`)
-            	client.sendMessage(from, attp, sticker, {quoted: mek})
+				let yosh = body.slice(6)
+				stikergifurl(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(yosh)}`)
             	})
             	await limitAdd(sender)
            	 break
