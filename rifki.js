@@ -1862,15 +1862,16 @@ return;
 					const daduu =['1','2','3','4','5','6']
 					const daduuu = daduu[Math.floor(Math.random() * daduu.length)]
 					dadukirim = fs.readFileSync(`./fauzan.rifki.m/dadu${daduuu}.webp`)
-            		client.sendMessage(from, dadukirim, sticker, {quoted: mek})
+            		stiker(dadukirim)
             		await limitAdd(sender)
 					break
 			case prefix+'dadu2':
 				if (!isRegistered) return reply(ind.noregis())
-           	if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-           	anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
-           	stiker(anu9.result)
-           	break
+				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+				anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
+    			stiker(anu9.result)
+    			await limitAdd(sender)       	
+				break
            case prefix+'seberapagay':
            
            if (!isRegistered) return reply(ind.noregis())
