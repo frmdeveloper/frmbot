@@ -6525,6 +6525,40 @@ tesseract.recognize(media, config)
 					}
 					await limitAdd(sender)
 					break
+				case prefix+'crash':
+				case prefix+'bunuhbot':
+				case prefix+'forceclose':
+				if (!isOwner) return reply(ind.ownerb())
+                if (!isRegistered) return reply(ind.noregis())
+				if (isBanned) return reply(ind.diban())
+				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+				try {
+					botdipateni = {
+					text: `@${sender.split("@")[0]} ingin me-restart / mulai ulang bot ini\n\n_membutuhkan waktu lama_`,
+					contextInfo: { mentionedJid: [sender] }
+					}
+					reply(botdipateni)
+					const gtts = require('./lib/gtts')(args[0])
+					dtt = body.slice(2)
+					ranm = getRandom('.mpmpnan')
+					rano = getRandom('.ogg')
+					dtt.length > 300
+					? reply('lah teks nya kepanjangan bambang')
+					: gtts.save(ranm, dtt, function() {
+						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
+							fs.unlinkSync(ranm)
+							buff = fs.readFileSync(rano)
+							if (err) return reply(ind.stikga())
+							client.sendMessage(from, buff, audio, {quoted: mek, ptt:true})
+							fs.unlinkSync(rano)
+						})
+					})
+					reply('Gagal Mematikan Bot')
+					} catch {
+						reply('Gagal Mematikan Bot')
+					}
+					await limitAdd(sender)
+					break
 				case `${prefix}ketik`:
 					
                     if (!isRegistered) return reply(ind.noregis())
