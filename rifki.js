@@ -1104,7 +1104,7 @@ client.on('group-participants-update', async (anu) => {
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
 		
-			/***************** akhir ngganti prefix ********/
+			/***************** ngganti prefix ********/
 				  if (body.startsWith(`.`)) {
                   	prefix = '.'
                   }
@@ -1135,7 +1135,7 @@ client.on('group-participants-update', async (anu) => {
                   if (body.startsWith(`_`)) {
                   	prefix = '_'
                   }
-            /***************** akhir ngganti prefix ********/
+            /***************** ngganti prefix ********/
             
             // TAMBAHAN SAAT BOT OFF / ON
             if (command.includes(`${prefix}bot`) && qcilik.includes(`on`) {
