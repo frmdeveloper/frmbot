@@ -3997,7 +3997,6 @@ o==[]::::::>
 				if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
 				let yosh = body.slice(6)
 				stikergifurl(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(yosh)}`)
-            	})
             	await limitAdd(sender)
            	 break
            case prefix+'ninjalogo':
