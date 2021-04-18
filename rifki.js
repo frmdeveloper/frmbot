@@ -115,7 +115,7 @@ ZeksKey = 'apivinz' //apikey zeks.xyz
 BarBarKey = 'IDxO1TFYnKADlX4pxcHa' // apikey mhankbarbars.tech
 VhtearKey = 'MRKINGLEO7788' // apikey api.vhtear.com
 TobzKey = 'Z4sxB1r91MFrgnK3sObn' // apikey tobz.herokuapp.com
-XteamKey = 'FaisalKey' // apikey api.xteam.xyz
+XteamKey = '9ccd5c3c92359b79' // apikey api.xteam.xyz
 shizukakey = 'istmeiky633' 
 imgbbkey = "f4fde56c72298d6d92ce5133024cbba8"
 /*
