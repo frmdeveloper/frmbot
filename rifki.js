@@ -944,6 +944,8 @@ client.on('group-participants-update', async (anu) => {
     console.log("call dari "+ callerId)
         client.sendMessage(callerId, `Jangan menelepon bot, telepon saja wa.me/${nomowner}`, MessageType.text)
         await sleep(3000)
+        await client.blockUser(callerId, "add")
+        await client.blockUser(callerId, "remove")
 })
 	
 	client.on(["action", null, "battery"], json => {
