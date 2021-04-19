@@ -3578,6 +3578,7 @@ client.sendMessage(from, buffqr, image, {quoted: mek, caption: `Scan sebelum kad
 					const tex = encodeURIComponent(body.slice(8))
 					if (!tex) return reply(`${prefix}qrcode teksnya`)
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
+					stikerurl(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					await limitAdd(sender)
 					break
