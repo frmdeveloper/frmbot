@@ -573,6 +573,10 @@ ${gaya3}`
 /*
 ]=====> FUNGSI <=====[
 */
+const sleep = async (ms) => {
+	return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 const addAfkUser = (userId, time, reason, _dir) => {
     const obj = { id: userId, time: time, reason: reason }
     _dir.push(obj)
@@ -944,6 +948,7 @@ client.on('group-participants-update', async (anu) => {
     const callerId = json[2][0][1].from;
     console.log("call dari "+ callerId)
         await client.sendMessage(callerId, `Jangan menelepon bot, telepon saja wa.me/${nomowner}`, MessageType.text)
+        await sleep(4000)
         await client.blockUser(callerId, "add")
         await client.blockUser(callerId, "remove")
 })
