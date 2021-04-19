@@ -1138,24 +1138,24 @@ client.on('group-participants-update', async (anu) => {
             /***************** ngganti prefix ********/
             
             // TAMBAHAN SAAT BOT OFF / ON
-            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`) {
+            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`)) {
 				if (isOnOff) return reply('SUDAH ON')
 				statusbot = true
 				reply('BERHASIL MENYALAKAN')
 			}
-			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`) {
+			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`)) {
 				if (!isOnOff) return reply('SUDAH OFF')
 				statusbot = false
 				reply('BERHASIL MEMATIKAN')
 			}
-			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`) {
+			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
 				intro1 = `${intro0.split(`🍃🍃🍃🍃🍃`)[0]}`
 				kosong = ''
 				introne = `*🤝 PERKENALAN DITERIMA 🤝*\n${intro1}\n*🤝 TERIMAKASIH ??*\n\n_🌱 bot ini ramah lingkungan 🌱_\n_🌱 tidak mengandung zat nuklir 🌱_`
 				reply(`${introne}`)
 			}
-			if (budy.includes(`🌿🌿🌿🌿🌿`) {
+			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
 				reply(`WIDIH`)
 			}
 if (!isOnOff) return
