@@ -5111,7 +5111,9 @@ _${batre.value}%_
 *❀ Penghemat Baterai: ❀*
 _${batre.powersave}%_
 *❀ Dicas: ❀*
-_${batre.live}%_`
+_${batre.live}%_
+*NB:* jika _true_ berarti ya
+jika _false_ berarti tidak`
 					
 //INFO TERMINAL
 client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Kecepatan Internet:*
