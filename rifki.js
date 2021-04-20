@@ -5104,7 +5104,7 @@ _${me.phone.mnc}_
 *❀ Versi WhatsApp: ❀*
 _${me.phone.wa_version}_
 *❀ Baterai: ❀*
-_${baterai}_`
+_${baterai}%_`
 					
 //INFO TERMINAL
 client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Kecepatan Internet:*
