@@ -1096,14 +1096,14 @@ client.on('group-participants-update', async (anu) => {
 			client.updatePresence(from, Presence.composing)
 		    client.sendMessage(from, audio, mp3, {quoted:mek})
 		    }
-			const stikerurl = async(dadistiker) => {
+			const stiker = async(dadistiker) => {
 				stickermk = new WSF.Sticker(`${dadistiker}`, { crop: true, animated: false, pack: 'FRM BOT', author: 'Rifki' })
 				await stickermk.build()
 				stcBuffr = await stickermk.get()
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
-			const stikergifurl = async(bahanstiker) => {
+			const stikergif = async(bahanstiker) => {
 				stickermk = new WSF.Sticker(`${bahanstiker}`, { crop: true, animated: true, pack: 'FRM BOT', author: 'Rifki' })
 				await stickermk.build()
 				stcBuffr = await stickermk.get()
@@ -1517,11 +1517,11 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
-						stikerurl(media)
+						stiker('undefined.jpeg')
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						stikergif(media)
+						stikergif('undefined.jpeg')
 						}
 					await limitAdd(sender)
 						break
@@ -1832,7 +1832,7 @@ return;
 					dadu = body.slice(1)
 					daduu =['https://i.ibb.co/Bw42zpY/jogodedados-128px-2.gif','https://i.ibb.co/njdfrHT/jogodedados-128px-1.gif','https://i.ibb.co/BBcyPp2/jogodedados-128px-3.gif','https://i.ibb.co/YhhDbX5/jogodedados-128px-4.gif','https://i.ibb.co/qFTd1K1/jogodedados-128px-6.gif','https://i.ibb.co/9g8ns1b/jogodedados-128px-5.gif']
 					daduuu = daduu[Math.floor(Math.random() * daduu.length)]
-					stikergifurl(daduuu)
+					stikergif(daduuu)
             		await limitAdd(sender)
 					break
 			case `${prefix}dadu3`:
@@ -1850,7 +1850,7 @@ return;
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
-    			stikerurl(anu9.result)
+    			stiker(anu9.result)
     			await limitAdd(sender)       	
 				break
            case prefix+'seberapagay':
@@ -3585,7 +3585,7 @@ client.sendMessage(from, buffqr, image, {quoted: mek, caption: `Scan sebelum kad
 					const tex = encodeURIComponent(body.slice(8))
 					if (!tex) return reply(`${prefix}qrcode teksnya`)
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
-					stikerurl(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
+					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					await limitAdd(sender)
 					break
@@ -4007,7 +4007,7 @@ o==[]::::::>
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
 				let yosh = body.slice(6)
-				stikergifurl(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(yosh)}`)
+				stikergif(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(yosh)}`)
             	await limitAdd(sender)
            	 break
            case prefix+'ninjalogo':
