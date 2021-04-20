@@ -951,10 +951,14 @@ client.on('group-participants-update', async (anu) => {
         await client.blockUser(callerId, "add")
 })
 	
-	client.on(["action", null, "battery"], json => {
-		const batteryLevelStr = json[2][0][1].value
-		const batterylevel = parseInt (batteryLevelStr)
-		console.log ("battery level: " + batterylevel + "%")
+	client.on('CB:action,,battery', json => {
+		global.batteryLevelStr = json[2][0][1].value
+		global.batterylevel = parseInt(batteryLevelStr)
+		baterai = batterylevel
+        if (json[2][0][1].live == 'true') charging = true
+        if (json[2][0][1].live == 'false') charging = false
+        console.log(json[2][0][1])
+		console.log('Baterai : ' + batterylevel+'%')
 	})
 
 	client.on('chat-update', async (mek) => {
@@ -5095,7 +5099,9 @@ _${me.phone.mcc}_
 *❀ MNC: ❀*
 _${me.phone.mnc}_
 *❀ Versi WhatsApp: ❀*
-_${me.phone.wa_version}_`
+_${me.phone.wa_version}_
+*❀ Baterai: ❀*
+_${baterai}_`
 					
 //INFO TERMINAL
 client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Kecepatan Internet:*
