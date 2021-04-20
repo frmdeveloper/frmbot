@@ -1097,14 +1097,14 @@ client.on('group-participants-update', async (anu) => {
 		    client.sendMessage(from, audio, mp3, {quoted:mek})
 		    }
 			const stiker = async(dadistiker) => {
-				stickermk = new WSF.Sticker(`${dadistiker}`, { crop: true, animated: false, pack: 'FRM BOT', author: 'Rifki' })
+				stickermk = new WSF.Sticker(`${dadistiker}`, { crop: true, animated: false, pack: `${pushname}`, author: 'By FRM BOT' })
 				await stickermk.build()
 				stcBuffr = await stickermk.get()
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
 			const stikergif = async(bahanstiker) => {
-				stickermk = new WSF.Sticker(`${bahanstiker}`, { crop: true, animated: true, pack: 'FRM BOT', author: 'Rifki' })
+				stickermk = new WSF.Sticker(`${bahanstiker}`, { crop: true, animated: true, pack: `${pushname}`, author: 'By FRM BOT' })
 				await stickermk.build()
 				stcBuffr = await stickermk.get()
 				client.updatePresence(from, Presence.composing)
