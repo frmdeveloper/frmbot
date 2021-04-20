@@ -962,7 +962,7 @@ client.on('group-participants-update', async (anu) => {
         console.log(json[2][0][1])
 		console.log('Baterai : ' + json[2][0][1].value +'%')
 		console.log('Penghemat daya : ' + json[2][0][1].powersave)
-		console.log('Dicas : 'json[2][0][1].live)
+		console.log('Dicas : ' + json[2][0][1].live)
 	})
 
 	client.on('chat-update', async (mek) => {
