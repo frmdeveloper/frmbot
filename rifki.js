@@ -7114,7 +7114,7 @@ vcard = 'BEGIN:VCARD\n'
                 if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-				if (!isQuotedSticker) return reply('/  !')
+				if (!isQuotedSticker) return reply('tidak ada sticker')
 					reply(ind.wait())
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
