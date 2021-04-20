@@ -84,7 +84,8 @@ jam1hari = '24'
 monosp = '```'
 prefix = '.'
 gantiprefix = ''
-blocked = []   
+blocked = []  
+batre = [] 
 limitawal = '70'
 memberlimit = '3'
 nggoroboguru = ''
@@ -954,6 +955,8 @@ client.on('group-participants-update', async (anu) => {
 		global.batteryLevelStr = json[2][0][1].value
 		global.batterylevel = parseInt(batteryLevelStr)
 		baterai = batterylevel
+		batre.push()
+		batre.push(batterylevel)
         if (json[2][0][1].live == 'true') charging = true
         if (json[2][0][1].live == 'false') charging = false
         console.log(json[2][0][1])
