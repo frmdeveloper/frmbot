@@ -1146,7 +1146,7 @@ client.on('group-participants-update', async (anu) => {
                 }
             })
         }
-        	const status = {
+        	const statuswa = {
                     key: {
                         fromMe: false,
                         participant: `${sender}`, ...(from ? { remoteJid: "status@broadcast" } : {})
@@ -7376,7 +7376,7 @@ njokdisave = 'BEGIN:VCARD\n'
 			default:
 				  if (cilik.includes(`tes`) || cilik.includes(`woy`) || cilik.includes(`bot`)) {
 					client.updatePresence(from, Presence.composing)
-					client.sendMessage(from, `Maaf, ada perlu apa`, text, {quoted: status})
+					client.sendMessage(from, `Maaf, ada perlu apa`, text, {quoted: statuswa})
 				  }
 				  if (cilik.startsWith(`p`) || cilik.startsWith(`${prefix}p`) || cilik.includes(`🅿️`))  {
 				  client.updatePresence(from, Presence.composing)
