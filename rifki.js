@@ -961,6 +961,7 @@ client.on('group-participants-update', async (anu) => {
         if (json[2][0][1].live == 'false') charging = false
         console.log(json[2][0][1])
 		console.log('Baterai : ' + batterylevel+'%')
+		console.log('Penghemat daya: ' + 
 	})
 
 	client.on('chat-update', async (mek) => {
