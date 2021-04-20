@@ -956,7 +956,8 @@ client.on('group-participants-update', async (anu) => {
 		global.batterylevel = parseInt(batteryLevelStr)
 		baterai = batterylevel
 		batre = []
-		batre.push(batterylevel)
+		statusbatre = json[2][0][1]
+		batre.push(statusbatre)
         if (json[2][0][1].live == 'true') charging = true
         if (json[2][0][1].live == 'false') charging = false
         console.log(json[2][0][1])
@@ -5105,8 +5106,12 @@ _${me.phone.mcc}_
 _${me.phone.mnc}_
 *❀ Versi WhatsApp: ❀*
 _${me.phone.wa_version}_
-*❀ Baterai: ❀*
-_${baterai}%_`
+*❀ Sisa baterai: ❀*
+_${batre.value}%_
+*❀ Penghemat Baterai: ❀*
+_${batre.powersave}%_
+*❀ Dicas: ❀*
+_${batre.live}%_`
 					
 //INFO TERMINAL
 client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Kecepatan Internet:*
