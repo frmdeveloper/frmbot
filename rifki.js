@@ -1116,6 +1116,9 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
+			const fakethumb = (gmbrnya, captionnya, teksnya) => {
+            	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
+        	}
 			const fakestatus = (teks) => {
             client.sendMessage(from, teks, text, {
                 quoted: {
