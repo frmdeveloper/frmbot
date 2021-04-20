@@ -7376,7 +7376,7 @@ njokdisave = 'BEGIN:VCARD\n'
 			default:
 				  if (cilik.includes(`tes`) || cilik.includes(`woy`) || cilik.includes(`bot`)) {
 					client.updatePresence(from, Presence.composing)
-					fitnah3(from, `${nomerewa}`, `_bot wa_`, `Maaf, ada perlu apa`)
+					client.sendMessage(from, `Maaf, ada perlu apa`, text, {quoted: status})
 				  }
 				  if (cilik.startsWith(`p`) || cilik.startsWith(`${prefix}p`) || cilik.includes(`🅿️`))  {
 				  client.updatePresence(from, Presence.composing)
