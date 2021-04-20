@@ -100,6 +100,7 @@ pesansibuk = 'SEDANG SIBUK'
 nomersibuk = ''
 nomerwesdaftar = '626262@s.whatsapp.net'
 statusbot = false
+dibanned = '3'
 
 /*
 ]=====> INFO-INFO <=====[
@@ -5087,7 +5088,7 @@ fb.com/fauzan.rifki.m
 *Telegram*
 t.me/frm_developer
 ▬▭▬▭▬▭▬▭▬▭▬▭▬
-*Dibanned 3 kali, sebab*
+*Dibanned ${dibanned} kali, sebab*
 ${prefix}kickall
 ${prefix}bc`
 
