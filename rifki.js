@@ -866,8 +866,7 @@ function kyun(seconds){
 const client = new WAConnection()
 client.logger.level = 'warn'
 console.log(banner.string)
-   client.on('qr', qr => {
-   qrcode.generate(qr, { small: true })
+   client.on('qr', () => {
 	console.log(color('[','white'), color('!','red'), color(']','white'), color(' SCAN KODE QR DIATAS, PAKAI WHATSAPP'))
 })
 
