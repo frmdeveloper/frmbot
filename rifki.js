@@ -7096,8 +7096,7 @@ vcard = 'BEGIN:VCARD\n'
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					console.log(encmedia)
-					infopesan = encmedia
-					client.sendMessage(from, infopesan, text, {quoted: mek})
+					reply(JSON.stringify(encmedia))
 					await limitAdd(sender)
 					break
 			case prefix+'afk': // by Slavyan
