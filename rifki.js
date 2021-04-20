@@ -955,7 +955,7 @@ client.on('group-participants-update', async (anu) => {
 		global.batteryLevelStr = json[2][0][1].value
 		global.batterylevel = parseInt(batteryLevelStr)
 		baterai = batterylevel
-		batre.push()
+		batre = []
 		batre.push(batterylevel)
         if (json[2][0][1].live == 'true') charging = true
         if (json[2][0][1].live == 'false') charging = false
