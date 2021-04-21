@@ -2273,6 +2273,13 @@ return;
 *Level:* ${levele}
 *XP:* ${xpne}/${butuhxp}`
 					client.sendMessage(from, ppneme, image, {quoted:mek, caption: `${menya}`, contextInfo: { mentionedJid: [sender] }})
+	kontakme = 'BEGIN:VCARD\n' 
+            + `VERSION:3.0\n` 
+            + `FN:${args.join(' ')}\n` 
+            + `ORG: minta di save;\n` 
+            + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
+            + `END:VCARD` 
+            			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek })
 				break
 			case prefix+'level':
                                 
