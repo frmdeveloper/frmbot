@@ -7327,7 +7327,7 @@ vcard = 'BEGIN:VCARD\n'
 					if (args.length < 1) return reply(`Maaf, anda belum memasukan nama, silahkan ketik ${prefix}save namamu\n*CONTOH* ${prefix}save Rifki`)
 njokdisave = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
-            + `FN:${body.slice(5)}\n` 
+            + `FN:${args.join(' ')}\n` 
             + `ORG: minta di save;\n` 
             + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
             + `END:VCARD` 
