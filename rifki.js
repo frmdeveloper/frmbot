@@ -1548,19 +1548,6 @@ switch(command) {
 reply (`Membuat grup`)
 client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the group
 			break
-			case prefix+'bot':
-				if (args[0].startsWith(`on`)) {
-				if (isOnOff) return reply('SUDAH ON')
-				onoffnya.push(from)
-				fs.writeFileSync('./database/bot/onoff.json', JSON.stringify(onoffnya))
-				reply('BERHASIL MENYALAKAN')
-			}
-			if (args[0].startsWith(`off`)) {
-				if (!isOnOff) return reply('SUDAH OFF')
-				onoffnya.splice(from, 1)
-				fs.writeFileSync('./database/bot/onoff.json', JSON.stringify(onoffnya))
-			}
-				break
 				case prefix+'join':
 					if (args.length < 1) return reply(`Mohon berikan tautan tndangan grup`)
 					let linkgrup = `${body.split('whatsapp.com/')[1]}`
