@@ -1483,7 +1483,7 @@ switch(command) {
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                     if (args.length == 0) return reply('Teksnya mana um')
                     txt = args.join(" ")
-                    lolimg = await getBuffer(`http://api.lolhuman.xyz/api/photooxy1/${body.slice(1).split(' ')[0]}?apikey=${LolKey}&text=${txt}`)
+                    lolimg = await getBuffer(`https://api.lolhuman.xyz/api/photooxy1/${body.slice(1).split(' ')[0]}?apikey=${LolKey}&text=${args.join(" ")}`)
                     client.updatePresence(from, Presence.composing)
                     client.sendMessage(from, lolimg, image, {quoted:mek, caption: `By ${botName}`})
                     break
