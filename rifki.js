@@ -21,7 +21,7 @@ const dropbox = dropboxV2Api.authenticate({
 
 router.get('/', async (req, res, next) => {
 	res.send('HALO')
-	}
+	})
 
 const {
    WAConnection,
