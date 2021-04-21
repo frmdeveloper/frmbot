@@ -5163,11 +5163,11 @@ _${me.phone.mnc}_
 *❀ Versi WhatsApp: ❀*
 _${me.phone.wa_version}_
 *❀ Sisa baterai: ❀*
-_${sisabaterai}%_
+_${sisabaterai}_
 *❀ Penghemat Baterai: ❀*
-_${hematdaya}%_
+_${hematdaya}_
 *❀ Dicas: ❀*
-_${dicas}%_
+_${dicas}_
 *NB:* jika _true_ berarti ya
 jika _false_ berarti tidak`
 					
