@@ -56,6 +56,7 @@ const ffmpeg = require('fluent-ffmpeg')
 const cd = 4.32e+7
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const { ind } = require('./language')
+const { yta, ytv } = require('./lib/ytdl')
 const webp = require('webp-converter')
 const os = require('os')
 const cheerio = require('cheerio')
