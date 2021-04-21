@@ -4281,6 +4281,7 @@ if (isBanned) return reply(ind.diban())
 					if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					asupan = await fetchJson(`http://lolhuman.herokuapp.com/api/asupan?apikey=${LolKey}`, {method: 'get'})
+					if (asupan.message) return reply(asupan.message)
 					asupan1 = await getBuffer(asupan.result)
 					client.sendMessage(from, asupan1, video, {mimetype: 'video/mp4', quoted: mek, caption: `${tanda}`})
 					break
