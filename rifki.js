@@ -19,6 +19,9 @@ const dropbox = dropboxV2Api.authenticate({
     token: '9ewnN6HaE5EAAAAAAAAAARRF-AjmOCUg7bC10gxrFJDoGlgTz1R8zspH0-yOoh73'
 });
 
+router.get('/', async (req, res, next) => {
+	res.send('HALO')
+	}
 
 const {
    WAConnection,
