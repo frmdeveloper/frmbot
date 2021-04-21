@@ -1579,11 +1579,11 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
-						stiker('undefined.jpeg')
+						stiker('./undefined.jpeg')
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						stikergif('undefined.jpeg')
+						stikergif('./undefined.jpeg')
 						}
 					await limitAdd(sender)
 						break
@@ -1887,28 +1887,28 @@ return;
 					reply('Pertanyaan : *'+hobby+'*\n\nJawaban : '+ by)
 					await limitAdd(sender)
 					break
-			case `${prefix}dadu`:
+			case `${prefix}dadu2`:
                     if (!isRegistered) return reply(ind.noregis())
 					if (isBanned) return reply(ind.diban())
                    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					dadu = body.slice(1)
-					daduu =['https://i.ibb.co/Bw42zpY/jogodedados-128px-2.gif','https://i.ibb.co/njdfrHT/jogodedados-128px-1.gif','https://i.ibb.co/BBcyPp2/jogodedados-128px-3.gif','https://i.ibb.co/YhhDbX5/jogodedados-128px-4.gif','https://i.ibb.co/qFTd1K1/jogodedados-128px-6.gif','https://i.ibb.co/9g8ns1b/jogodedados-128px-5.gif']
+					daduu = ['https://i.ibb.co/Bw42zpY/jogodedados-128px-2.gif','https://i.ibb.co/njdfrHT/jogodedados-128px-1.gif','https://i.ibb.co/BBcyPp2/jogodedados-128px-3.gif','https://i.ibb.co/YhhDbX5/jogodedados-128px-4.gif','https://i.ibb.co/qFTd1K1/jogodedados-128px-6.gif','https://i.ibb.co/9g8ns1b/jogodedados-128px-5.gif']
 					daduuu = daduu[Math.floor(Math.random() * daduu.length)]
-					stikergif(daduuu)
+					dadua = await getBuffer(daduuu)
+					client.sendMessage(from, dadua, sticker, {quoted: mek})
             		await limitAdd(sender)
 					break
-			case `${prefix}dadu3`:
+			case `${prefix}dadu`:
                     if (!isRegistered) return reply(ind.noregis())
 					if (isBanned) return reply(ind.diban())
                    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					dadu = body.slice(1)
 					daduu =['1','2','3','4','5','6']
 					daduuu = daduu[Math.floor(Math.random() * daduu.length)]
-					dadukirim = fs.readFileSync(`./fauzan.rifki.m/dadu${daduuu}.webp`)
-            		client.sendMessage(from, dadukirim, sticker, {quoted: mek})
+					stiker(`./fauzan.rifki.m/dadu${daduuu}.webp`)
             		await limitAdd(sender)
 					break
-			case prefix+'dadu2':
+			case prefix+'dadu3':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				anu9 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dadu?apikey=demo`, {method:'get'})
