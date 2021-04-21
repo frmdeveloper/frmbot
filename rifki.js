@@ -289,6 +289,9 @@ ${gaya2} ${prefix}bucin
 ${gaya2} ${prefix}cantikcek (geser gambar)
 ${gaya2} ${prefix}caklontong
 ${gaya2} ${prefix}chord ~judul~
+${gaya2} ${prefix}dadu
+${gaya2} ${prefix}dadu2
+${gaya2} ${prefix}dadu3
 ${gaya2} ${prefix}dare
 ${gaya2} ${prefix}dare2
 ${gaya2} ${prefix}faktaunik
