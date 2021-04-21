@@ -1120,7 +1120,8 @@ client.on('group-participants-update', async (anu) => {
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
 			const fakestatus = (teks) => {
-            client.sendMessage(from, teks, text, {
+				client.updatePresence(from, Presence.composing)
+            	client.sendMessage(from, teks, text, {
                 quoted: {
                     key: {
                         fromMe: false,
