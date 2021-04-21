@@ -962,9 +962,9 @@ client.on('group-participants-update', async (anu) => {
         if (json[2][0][1].live == 'true') charging = true
         if (json[2][0][1].live == 'false') charging = false
         console.log(json[2][0][1])
-		console.log('Baterai : ' + json[2][0][1].value +'%')
-		console.log('Penghemat daya : ' + json[2][0][1].powersave)
-		console.log('Dicas : ' + json[2][0][1].live)
+		sisabaterai = `${json[2][0][1].value}%`
+		hematdaya = json[2][0][1].powersave
+		dicas = json[2][0][1].live
 	})
 
 	client.on('chat-update', async (mek) => {
@@ -5161,11 +5161,11 @@ _${me.phone.mnc}_
 *❀ Versi WhatsApp: ❀*
 _${me.phone.wa_version}_
 *❀ Sisa baterai: ❀*
-_${batre.value}%_
+_${sisabaterai}%_
 *❀ Penghemat Baterai: ❀*
-_${batre.powersave}%_
+_${hematdaya}%_
 *❀ Dicas: ❀*
-_${batre.live}%_
+_${dicas}%_
 *NB:* jika _true_ berarti ya
 jika _false_ berarti tidak`
 					
