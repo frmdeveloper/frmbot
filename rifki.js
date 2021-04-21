@@ -7338,7 +7338,6 @@ njokdisave = 'BEGIN:VCARD\n'
 						fitnah2(`${me.jid}`, `${nomerewa}`, `berhasil`, `${tekssave}`)
 						break
 				case 'save':
-					if (isSave) return reply(`Maaf, Nomor Anda Sudah Kami Save dengan nama\n${namasave(sender)}`)
                     if (!isRegistered) return reply(ind.noregis())
 					if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
