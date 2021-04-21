@@ -29,6 +29,7 @@
     "moment-timezone": "latest",
     "multistream": "latest",
     "node-tesseract-ocr": "latest",
+    "node-fetch": "latest",
     "os": "latest",
     "performance-now": "latest",
     "puppeteer": "latest",
