@@ -14,6 +14,8 @@ app.use(express.static("public"))
 app.listen(PORT, () => {
     console.log(color("Server running on port " + PORT,'green'))
 })
+var router  = express.Router();
+
 const dropboxV2Api = require('dropbox-v2-api')
 const dropbox = dropboxV2Api.authenticate({
     token: '9ewnN6HaE5EAAAAAAAAAARRF-AjmOCUg7bC10gxrFJDoGlgTz1R8zspH0-yOoh73'
