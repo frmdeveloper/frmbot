@@ -7319,25 +7319,8 @@ vcard = 'BEGIN:VCARD\n'
                 }
                 await limitAdd(sender)
 					break
-				case prefix+'save':
-					
-                    if (!isRegistered) return reply(ind.noregis())
-					if (isBanned) return reply(ind.diban())
-					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-					if (args.length < 1) return reply(`Maaf, anda belum memasukan nama, silahkan ketik ${prefix}save namamu\n*CONTOH* ${prefix}save Rifki`)
-njokdisave = 'BEGIN:VCARD\n' 
-            + `VERSION:3.0\n` 
-            + `FN:${body.slice(6)}\n` 
-            + `ORG: minta di save;\n` 
-            + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
-            + `END:VCARD` 
-            			save(sender, body.slice(6))
-            			client.sendMessage(from, {displayname: "Jeff", vcard: njokdisave}, MessageType.contact, { quoted: mek})
-						tekssave = `*PERMINTAAN SAVE NOMOR*\n\nNama: ${body.slice(6)}\nNomor: wa.me/${sender.split("@")[0]}\nNomor SN: ${monosp}${createSerial(20)}${monosp}\nini hanya permintaan\n\n*TERIMAKASIH*`
-						reply(tekssave)
-						fitnah2(`${me.jid}`, `${nomerewa}`, `berhasil`, `${tekssave}`)
-						break
 				case 'save':
+				case prefix+'save':
                     if (!isRegistered) return reply(ind.noregis())
 					if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -7348,11 +7331,10 @@ njokdisave = 'BEGIN:VCARD\n'
             + `ORG: minta di save;\n` 
             + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
             + `END:VCARD` 
-            			save(sender, body.slice(6))
             			client.sendMessage(from, {displayname: "Jeff", vcard: njokdisave}, MessageType.contact, { quoted: mek})
 						tekssave = `*PERMINTAAN SAVE NOMOR*\n\nNama: ${body.slice(5)}\nNomor: wa.me/${sender.split("@")[0]}\nNomor SN: ${monosp}${createSerial(20)}${monosp}\nini hanya permintaan\n\n*TERIMAKASIH*`
 						reply(tekssave)
-						fitnah2(`${me.jid}`, `${nomerewa}`, `berhasil`, `${tekssave}`)
+						fitnah2(`${me.jid}`, `${nomerewa}`, `MINTA DISAVE`, `${tekssave}`)
 						break
 				case `${prefix}wait`:
 					
