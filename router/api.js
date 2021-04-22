@@ -19,5 +19,6 @@ switch(command) {
 } catch (e) {
 	res.json({'info':'Terjadi kesalahan'
 			'result':e})
+}
 
 module.exports = router
