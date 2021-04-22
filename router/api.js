@@ -17,7 +17,7 @@ switch(command) {
     res.redirect('wa.me/62895803265350')
 }
 } catch (e) {
-	res.json({'info':'Terjadi kesalahan'
+	res.json({'info':'Terjadi kesalahan',
 			'result':e})
 }
 
