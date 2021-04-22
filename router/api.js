@@ -15,7 +15,7 @@ switch(command) {
     break
     
     default:
-    reply('Permintaan tidak ada')
+    res.json({'result':`*${command}* \n tidak ditemukan`}
 }
 } catch (e) {
 	res.json({'info':'Terjadi kesalahan',
