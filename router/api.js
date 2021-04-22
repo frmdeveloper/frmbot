@@ -13,8 +13,9 @@ switch(command) {
 	case 'wa':
     res.redirect('wa.me/62895803265350')
     break
-    case ''
-    res.redirect('wa.me/62895803265350')
+    
+    default:
+    reply('Permintaan tidak ada')
 }
 } catch (e) {
 	res.json({'info':'Terjadi kesalahan',
