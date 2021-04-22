@@ -6,7 +6,7 @@ var express = require('express'),
     secure = require('ssl-express-www');
 const PORT = process.env.PORT || 8080 || 5000 || 3000
 var { color } = require('./lib/color.js')
-var apirouter = require('./routes/api')
+var apirouter = require('./router/api')
 var app = express()
 app.enable('trust proxy');
 app.set("json spaces",2)
