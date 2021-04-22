@@ -5,25 +5,28 @@ var express = require('express'),
     cors = require('cors'),
     secure = require('ssl-express-www');
 const PORT = process.env.PORT || 8080 || 5000 || 3000
+var { color } = require('./lib/color.js')
+
+var apirouter = require('./routes/api')
+
 var app = express()
 app.enable('trust proxy');
 app.set("json spaces",2)
 app.use(cors())
 app.use(secure)
 app.use(express.static("public"))
+
+app.use('/', apirouter)
+
+
 app.listen(PORT, () => {
     console.log(color("Server running on port " + PORT,'green'))
 })
-var router  = express.Router();
 
 const dropboxV2Api = require('dropbox-v2-api')
 const dropbox = dropboxV2Api.authenticate({
     token: '9ewnN6HaE5EAAAAAAAAAARRF-AjmOCUg7bC10gxrFJDoGlgTz1R8zspH0-yOoh73'
 });
-
-router.get('/', async (req, res, next) => {
-	res.send('HALO')
-	})
 
 const {
    WAConnection,
