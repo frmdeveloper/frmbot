@@ -4,7 +4,7 @@ const { spawn, exec } = require("child_process")
 
 router.get('/docs', (req, res) => {
 	res.send('HELEH')
-}
+})
 
 router.get('/c', async (req, res, next) => {
 	try {
@@ -17,10 +17,10 @@ switch(command) {
     
     default:
     res.json({'result':`*${command}* \n tidak ditemukan`}
-}
 } catch (e) {
 	res.json({'info':'Terjadi kesalahan',
 			'result':e})
 }
+})
 
 module.exports = router
