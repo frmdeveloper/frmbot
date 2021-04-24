@@ -1127,6 +1127,35 @@ client.on('group-participants-update', async (anu) => {
 			const fakethumb = (gmbrnya, captionnya, teksnya) => {
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
+        	const sendMediaURL = async(to, url, text="", mids=[]) =>{
+                if(mids.length > 0){
+                    text = normalizeMention(to, text, mids)
+                }
+                const fn = Date.now() / 10000;
+                const filename = fn.toString()
+                let mime = ""
+                var download = function (uri, filename, callback) {
+                    request.head(uri, function (err, res, body) {
+                        mime = res.headers['content-type']
+                        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+                    });
+                };
+                download(url, filename, async function () {
+                    console.log('done');
+                    let media = fs.readFileSync(filename)
+                    let type = mime.split("/")[0]+"Message"
+                    if(mime === "image/gif"){
+                        type = MessageType.video
+                        mime = Mimetype.gif
+                    }
+                    if(mime.split("/")[0] === "audio"){
+                        mime = Mimetype.mp4Audio
+                    }
+                    client(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
+                    
+                    fs.unlinkSync(filename)
+                });
+            }
 			const fakestatus = (teks) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teks, text, {
@@ -5307,13 +5336,30 @@ if (isBanned) return reply(ind.diban())
 					client.sendMessage(from, suaraquran, audio, {mimetype: 'audio/mpeg', filename: `${acakqurane.result.asma}.mp3`, quoted: mek})
 					await limitAdd(sender)
 					break
+				case prefix+'ytmp4':
+                case prefix+'ytv':
+			if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+				if (args.length < 1) return reply('Urlnya mana um?')
+				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+				try {
+				ytv(args[0])
+				.then((res) => {
+				const { dl_link, thumb, title, filesizeF, filesize } = res
+				const captionsYtmp4 = `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+				sendMediaURL(from, thumb, captionsYtmp4)
+				sendMediaURL(from, dl_link).catch(() => reply(mess.error.link))
+				})
+				} catch (err) {
+			    reply('ERROR') 
+				}
+				break
                 case `${prefix}ytmp4`:
 				
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Urlnya mana um?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('LINK RUSAK')
 					ytmp4 = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${body.slice(7)}`, {method: 'get'})
 					dlytmp4 = await getBuffer(ytmp4.result)
 					client.sendMessage(from, dlytmp4, video, {mimetype: 'video/mp4', quoted: mek, filename: `${ytmp4.title}`, caption: `${ytmp4.title}`})
