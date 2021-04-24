@@ -12,7 +12,7 @@ router.get('/c', async (req, res, next) => {
 	command = req.query.c
 switch(command) {
 	case 'wa':
-    res.redirect('wa.me/62895803265350')
+    res.redirect('http://wa.me/62895803265350')
     break
     
     default:
