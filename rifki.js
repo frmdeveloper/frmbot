@@ -5334,7 +5334,7 @@ if (isBanned) return reply(ind.diban())
 				const { dl_link, thumb, title, filesizeF, filesize } = res
 				const captionsYtmp4 = `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 				sendFileFromUrl(thumb, image, {caption: captionsYtmp4, quoted:mek})
-				sendFileFromUrl(dl_link, video, {quoted:mek, caption:`${title}`).catch(() => reply('ERROR'))
+				sendFileFromUrl(dl_link, video, {quoted:mek, caption:`${title}`}).catch(() => reply('ERROR'))
 				})
 				} catch (err) {
 			    reply('ERROR') 
