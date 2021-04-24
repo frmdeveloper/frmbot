@@ -1128,36 +1128,20 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
-        	const sendMediaURL = async(to, url, text="", mids=[]) =>{
-                if(mids.length > 0){
-                    text = normalizeMention(to, text, mids)
-                }
-                const fn = Date.now() / 10000;
-                const filename = fn.toString()
-                let mime = ""
-                var download = function (uri, filename, callback) {
-                    request.head(uri, function (err, res, body) {
-                        mime = res.headers['content-type']
-                        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-                    });
-                };
-                download(url, filename, async function () {
-                    console.log('done');
-                    let media = fs.readFileSync(filename)
-                    let type = mime.split("/")[0]+"Message"
-                    if(mime === "image/gif"){
-                        type = MessageType.video
-                        mime = Mimetype.gif
-                    }
-                    if(mime.split("/")[0] === "audio"){
-                        mime = Mimetype.mp4Audio
-                    }
-                    client.updatePresence(from, Presence.composing)
-                    client(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
-                    
-                    fs.unlinkSync(filename)
-                });
-            }
+        	const sendFileFromUrl = async(link, type, options) => {
+				hasil = await getBuffer(link)
+				client.updatePresence(from, Presence.composing)
+				client.sendMessage(from, hasil, type, options).catch(e => {
+				fetch(link).then((hasil) => {
+				client.sendMessage(from, hasil, type, options).catch(e => {
+				client.sendMessage(from, { url : link }, type, options).catch(e => {
+				reply('_[ ! ] Error Gagal Dalam Mendownload Dan Mengirim Media_')
+				console.log(e)
+				})
+				})
+				})
+				})
+			}
 			const fakestatus = (teks) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teks, text, {
@@ -5349,8 +5333,8 @@ if (isBanned) return reply(ind.diban())
 				.then((res) => {
 				const { dl_link, thumb, title, filesizeF, filesize } = res
 				const captionsYtmp4 = `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-				sendMediaURL(from, thumb, captionsYtmp4)
-				sendMediaURL(from, dl_link).catch(() => reply(mess.error.link))
+				sendFileFromUrl(thumb, image, {caption: captionsYtmp4, quoted:mek})
+				sendFileFromUrl(dl_link, video, {quoted:mek, caption:`${title}`).catch(() => reply('ERROR'))
 				})
 				} catch (err) {
 			    reply('ERROR') 
