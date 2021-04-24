@@ -16,7 +16,8 @@ switch(command) {
     break
     
     default:
-    res.json({'result':`*${command}* \n tidak ditemukan`}
+    res.json({'result':`*${command}* \n tidak ditemukan`})
+}
 } catch (e) {
 	res.json({'info':'Terjadi kesalahan',
 			'result':e})
