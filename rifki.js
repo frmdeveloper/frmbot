@@ -1125,6 +1125,7 @@ client.on('group-participants-update', async (anu) => {
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
 			const fakethumb = (gmbrnya, captionnya, teksnya) => {
+				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
         	const sendMediaURL = async(to, url, text="", mids=[]) =>{
@@ -1151,6 +1152,7 @@ client.on('group-participants-update', async (anu) => {
                     if(mime.split("/")[0] === "audio"){
                         mime = Mimetype.mp4Audio
                     }
+                    client.updatePresence(from, Presence.composing)
                     client(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
                     
                     fs.unlinkSync(filename)
@@ -7405,11 +7407,11 @@ njokdisave = 'BEGIN:VCARD\n'
 //selesai
 //case dari sc ku dulu
 			default:
-				  if (cilik.includes(`tes`) || cilik.includes(`woy`) || cilik.includes(`bot`)) {
+				  if (cilik.match(`tes`) || cilik.match(`woy`) || cilik.match(`bot`)) {
 					client.updatePresence(from, Presence.composing)
 					client.sendMessage(from, `Maaf, ada perlu apa`, text, {quoted: statuswa})
 				  }
-				  if (cilik.startsWith(`p`) || cilik.startsWith(`${prefix}p`) || cilik.includes(`🅿️`))  {
+				  if (cilik.match(`p`) || cilik.match(`${prefix}p`) || cilik.match(`🅿️`))  {
 				  client.updatePresence(from, Presence.composing)
 				  iki = reply(`${tanda}\nالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`)
 				  }
