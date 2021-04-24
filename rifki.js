@@ -451,7 +451,7 @@ ${gaya2} ${prefix}mutual
 ${gaya2} ${prefix}next
 ${gaya2} ${prefix}teswaktu
 ${gaya2} ${prefix}ping
-${gaya2} ${prefix}quoted ~teks~
+${gaya2} ${prefix}quoted ~code~
 ${gaya2} ${prefix}save ~namamu~
 ${gaya2} ${prefix}sisahari
 ${gaya2} ${prefix}thanks
