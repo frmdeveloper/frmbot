@@ -890,7 +890,7 @@ console.log(banner.string)
 	client.on('open', () => {
 		console.log('Terhubung')
 		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
-		exec(`ping frm-bot.herokuapp.com)
+		exec(`ping frm-bot.herokuapp.com`)
 	})
 	client.connect({timeoutMs: 30*1000})
 
