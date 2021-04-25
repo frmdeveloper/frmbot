@@ -3302,7 +3302,7 @@ break
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(`ups`)
-					client.sendMessage(from, `ini hasilnya`, text, {quoted:args.join(' ')}
+					client.sendMessage(from, `ini hasilnya`, text, {quoted:args.join(' ')})
 					await limitAdd(sender)
 					break
 				case 'apatu':
