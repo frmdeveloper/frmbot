@@ -5722,7 +5722,7 @@ if (isBanned) return reply(ind.diban())
 			if (isBanned) return reply(ind.diban())
             if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
             tinyurl = await fetchJson(`https://tinyurl.com/api-create.php?url=${q}`, {method: 'get'})
-            reply(tinyurl)
+            reply(JSON.stringify(tinyurl))
             break
 	case prefix+'jadwalsholat':
 			
