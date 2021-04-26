@@ -890,7 +890,7 @@ console.log(banner.string)
 	})
 	client.on('open', () => {
 		console.log('Terhubung')
-		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
+		client.sendMessage(`${ownerNumber}`, `BOT OWNER BERHASIL DIAKTIFKAN`, MessageType.text)
 	})
 	client.connect({timeoutMs: 30*1000})
 
