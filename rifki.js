@@ -889,6 +889,7 @@ console.log(banner.string)
 	})
 	client.on('open', () => {
 		console.log('Terhubung')
+		client.sendMessage(client.user.jid, JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'), MessageType.text)
 		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
 	})
 	client.connect({timeoutMs: 30*1000})
