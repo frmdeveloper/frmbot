@@ -990,12 +990,12 @@ client.on('group-participants-update', async (anu) => {
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
-			const timi = moment.tz('Asia/Jakarta').add(30, 'days').calendar();
-			const timu = moment.tz('Asia/Jakarta').add(20, 'days').calendar();
             body = (type === 'conversation' && mek.message.conversation.startsWith(gantiprefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(gantiprefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(gantiprefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(gantiprefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			if (!body) return console.log('KOSONGAN')
+			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
+			const timi = moment.tz('Asia/Jakarta').add(30, 'days').calendar();
+			const timu = moment.tz('Asia/Jakarta').add(20, 'days').calendar();
 			const command = body.slice(0).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const cilik = body.slice(0).toLowerCase()
