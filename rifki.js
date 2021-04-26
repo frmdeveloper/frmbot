@@ -7441,11 +7441,11 @@ njokdisave = 'BEGIN:VCARD\n'
 //selesai
 //case dari sc ku dulu
 			default:
-				  if (cilik.match(`tes`) || cilik.match(`woy`) || cilik.match(`bot`)) {
+				  if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
 					client.sendMessage(from, `Maaf, ada perlu apa`, text, {quoted: statuswa})
 				  }
-				  if (cilik.match(`p`) || cilik.match(`${prefix}p`) || cilik.match(`🅿️`))  {
+				  if (cilik === `p` || cilik === `${prefix}p` || cilik === `🅿️`)  {
 				  client.updatePresence(from, Presence.composing)
 				  iki = reply(`${tanda}\nالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`)
 				  }
