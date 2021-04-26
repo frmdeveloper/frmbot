@@ -81,7 +81,6 @@ gaya1 = '║'
 gaya2 = '╠☞'
 gaya3 = '╰═─⊱'
 katasandi = 'FRMbot'
-nomowner = '994402697842'
 nomerewa = ["0@s.whatsapp.net"]
 masaaktif = '1'
 jam1hari = '24'
