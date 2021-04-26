@@ -41,7 +41,8 @@
     "ssl-express-www": "latest",
     "tiktok-scraper": "latest",
     "wa-sticker-formatter": "latest",
-    "webp-converter": "latest"
+    "webp-converter": "latest",
+    "zrapi": "latest"
   },
   "scripts": {
     "start": "node rifki"
