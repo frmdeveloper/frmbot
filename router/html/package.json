@@ -1,0 +1,73 @@
+
+{
+  "name": "FRMAPI",
+  "version": "1.0.0",
+  "description": "FRM Rest API",
+  "main": "rifki.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "latest",
+    "@kagchi/kag-api": "latest",
+    "@vitalets/google-translate-api": "latest",
+    "async": "latest",
+    "axios": "latest",
+    "brainly-scraper": "latest",
+    "canvacord": "latest",
+    "canvas": "latest",
+    "cfonts": "latest",
+    "cheerio": "latest",
+    "cors": "latest",
+    "dropbox-v2-api": "latest",
+    "express": "latest",
+    "fluent-ffmpeg": "latest",
+    "g-i-s": "latest",
+    "google-it": "latest",
+    "image-downloader": "latest",
+    "lolis.life": "latest",
+    "jsdom": "latest",
+    "moment-timezone": "latest",
+    "multistream": "latest",
+    "node-tesseract-ocr": "latest",
+    "node-fetch": "latest",
+    "os": "latest",
+    "performance-now": "latest",
+    "puppeteer": "latest",
+    "qrcode": "latest",
+    "qrcode-terminal": "latest",
+    "random-useragent": "latest",
+    "remove.bg": "latest",
+    "spinnies": "latest",
+    "ssl-express-www": "latest",
+    "tiktok-scraper": "latest",
+    "wa-sticker-formatter": "latest",
+    "webp-converter": "latest",
+    "zrapi": "latest"
+  },
+  "scripts": {
+    "start": "node rifki"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frmdeveloper/apifrm.git"
+  },
+  "keywords": [
+    "k",
+    "youtube",
+    "youtube-fetch",
+    "youtube-scrapper",
+    "youtube-grabber",
+    "youtube trending",
+    "youtube-trending",
+    "youtube without api",
+    "youtube-fetcher",
+    "trending"
+  ],
+  "author": "Fauzan Rifki Maulana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frmdeveloper/apifrm/issues"
+  },
+  "homepage": "https://github.com/frmdeveloper/apifrm/readme"
+}
