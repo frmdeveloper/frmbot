@@ -32,7 +32,6 @@ const getBuffer = async (url, options) => {
 		res.json({'result':`terjadi kesalahan \n${e}`})
 	}
 }
-
 const fetchJson = (url, options) => new Promise(async (resolve, reject) => {
     fetch(url, options)
         .then(response => response.json())
