@@ -5,6 +5,7 @@ const moment = require("moment-timezone")
 const fs = require("fs") 
 const fetch = require('node-fetch')
 const axios = require('axios')
+const chalk = require('chalk')
 var brainly = require('brainly-scraper');
 const { spawn, exec } = require("child_process")
 var { color, bgcolor } = require(__path + '/router/api/lib/color.js');
