@@ -32,7 +32,6 @@
     "node-fetch": "latest",
     "os": "latest",
     "performance-now": "latest",
-    "puppeteer": "latest",
     "qrcode": "latest",
     "qrcode-terminal": "latest",
     "random-useragent": "latest",
