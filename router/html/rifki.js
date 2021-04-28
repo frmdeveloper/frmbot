@@ -3,11 +3,11 @@ var express = require('express');
 var router = express.Router();
 const moment = require("moment-timezone") 
 const fs = require("fs") 
+const fetch = require('node-fetch')
 const axios = require('axios')
 var brainly = require('brainly-scraper');
 const { spawn, exec } = require("child_process")
 var { color, bgcolor } = require(__path + '/router/api/lib/color.js');
-var { fetchJson } = require(__path + '/router/api/lib/fetcher.js');
 const getBuffer = async (url, options) => {
 	try {
 		options ? options : {}
@@ -26,6 +26,19 @@ const getBuffer = async (url, options) => {
 		res.json({'result':`terjadi kesalahan \n${e}`})
 	}
 }
+
+const fetchJson = (url, options) => new Promise(async (resolve, reject) => {
+    fetch(url, options)
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json)
+            resolve(json)
+        })
+        .catch((err) => {
+            reject(err)
+        })
+})
+
 function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
