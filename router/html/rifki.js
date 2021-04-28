@@ -6,8 +6,8 @@ const fs = require("fs")
 const axios = require('axios')
 var brainly = require('brainly-scraper');
 const { spawn, exec } = require("child_process")
-var { color, bgcolor } = require(__path + '/lib/color.js');
-var { fetchJson } = require(__path + '/lib/fetcher.js');
+var { color, bgcolor } = require(__path + '/router/api/lib/color.js');
+var { fetchJson } = require(__path + '/router/api/lib/fetcher.js');
 const getBuffer = async (url, options) => {
 	try {
 		options ? options : {}
