@@ -8,7 +8,12 @@ const axios = require('axios')
 const chalk = require('chalk')
 var brainly = require('brainly-scraper');
 const { spawn, exec } = require("child_process")
-var { color, bgcolor } = require(__path + '/router/api/lib/color.js');
+const color = (text, color) => {
+    return !color ? chalk.green(text) : chalk.keyword(color)(text)
+}
+const bgcolor = (text, bgcolor) => {
+	return !bgcolor ? chalk.green(text) : chalk.bgKeyword(bgcolor)(text)
+}
 const getBuffer = async (url, options) => {
 	try {
 		options ? options : {}
