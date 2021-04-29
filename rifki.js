@@ -6,7 +6,7 @@ var express = require('express'),
     secure = require('ssl-express-www');
 const PORT = process.env.PORT || 8080 || 5000 || 3000
 var { color } = require('./lib/color')
-var apirouter = require('./router/html/rifki.js')
+var apirouter = require('./api.js')
 var app = express()
 app.enable('trust proxy');
 app.set("json spaces",2)
