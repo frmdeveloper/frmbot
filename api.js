@@ -8,41 +8,9 @@ const axios = require('axios')
 const chalk = require('chalk')
 var brainly = require('brainly-scraper');
 const { spawn, exec } = require("child_process")
-const color = (text, color) => {
-    return !color ? chalk.green(text) : chalk.keyword(color)(text)
-}
-const bgcolor = (text, bgcolor) => {
-	return !bgcolor ? chalk.green(text) : chalk.bgKeyword(bgcolor)(text)
-}
-const getBuffer = async (url, options) => {
-	try {
-		options ? options : {}
-		const res = await axios({
-			method: "get",
-			url,
-			headers: {
-				'DNT': 1,
-				'Upgrade-Insecure-Request': 1
-			},
-			...options,
-			responseType: 'arraybuffer'
-		})
-		return res.data
-	} catch (e) {
-		res.json({'result':`terjadi kesalahan \n${e}`})
-	}
-}
-const fetchJson = (url, options) => new Promise(async (resolve, reject) => {
-    fetch(url, options)
-        .then(response => response.json())
-        .then(json => {
-            // console.log(json)
-            resolve(json)
-        })
-        .catch((err) => {
-            reject(err)
-        })
-})
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { fetchJson, uploadImages } = require('./lib/fetcher')
+const { bgcolor, color } = require('./lib/color')
 
 function kyun(seconds){
   function pad(s){
