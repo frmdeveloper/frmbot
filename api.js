@@ -68,6 +68,35 @@ switch(command) {
     	case 'login':
     		
     		break
+    	case 'shadow':
+        		case 'cup':
+                case 'cup1':
+                case 'romance':
+                case 'smoke':
+                case 'burnpaper':
+                case 'lovemessage':
+                case 'undergrass':
+                case 'love':
+                case 'coffe':
+                case 'woodheart':
+                case 'flowerheart':
+                case 'woodenboard':
+                case 'summer3d':
+                case 'wolfmetal':
+                case 'nature3d':
+                case 'underwater':
+                case 'golderrose':
+                case 'summernature':
+                case 'letterleaves':
+                case 'glowingneon':
+                case 'fallleaves':
+                case 'flamming':
+                case 'harrypotter':
+                case 'carvedwood':
+                    lolimg = await getBuffer(`http://api.lolhuman.xyz/api/photooxy1/${command}?apikey=muzharzain&text=${q}`)
+                    await fs.writeFileSync(`./sampah/${command}`, lolimg)
+                    await sendfile(__path + `/sampah/${command}`)
+                    break
     	default:
     	reply(`*${command}* \n tidak ditemukan`)
 	}
