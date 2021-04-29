@@ -60,7 +60,7 @@ router.get('/heleh', (req, res) => {
 	res.send('HELEH')
 	})
 router.get('/login', (req, res) => {
-    res.download('https://frmdeveloper.github.io/frmdev/login.html')
+    res.sendFile(__path + '/login.html')
 	})
 router.get('/loginn', async(req, res) => {
     res.send('yee')
