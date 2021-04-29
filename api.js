@@ -94,8 +94,8 @@ switch(command) {
                 case 'harrypotter':
                 case 'carvedwood':
                     lolimg = await getBuffer(`http://api.lolhuman.xyz/api/photooxy1/${command}?apikey=muzharzain&text=${q}`)
-                    await fs.writeFileSync(`./sampah/${command}`, lolimg)
-                    await sendfile(__path + `/sampah/${command}`)
+                    await fs.writeFileSync(`./sampah/${command}.jpg`, lolimg)
+                    await sendfile(__path + `/sampah/${command}.jpg`)
                     break
     	default:
     	reply(`*${command}* \n tidak ditemukan`)
