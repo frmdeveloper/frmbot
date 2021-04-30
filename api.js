@@ -105,7 +105,7 @@ switch(command) {
 					})
 					break
     	default:
-    	reply(`*${command}* \n tidak ditemukan`)
+    	reply(`reques *${command}* \n tidak ditemukan`)
 	}
 	} catch (e) {
 		res.json({'result':`terjadi kesalahan \n${e}`})
