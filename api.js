@@ -98,8 +98,11 @@ switch(command) {
                     await sendfile(__path + `/sampah/${command}.jpg`)
                     break
 				case 'ytv':
-					ytv = await fetchJson(`https://frmapipy.herokuapp.com/api/ytv?url=${q}`, {method: 'get'})
-					redirect(ytv.result)
+					ytv(args[0])
+					.then((res) => {
+					const { dl_link, thumb, title, filesizeF, filesize } = res
+					redirect(dl_link)
+					})
 					break
     	default:
     	reply(`*${command}* \n tidak ditemukan`)
