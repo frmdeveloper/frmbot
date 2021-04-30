@@ -42,10 +42,10 @@ router.get('/c', async (req, res, next) => {
 			q = req.query.q
 			apikeyku = req.query.apikey
 			command = req.query.cmd
-			const alihkan = (url) => {
+			const redirect = (url) => {
 				res.redirect(url)
 			}
-			const unduh = (link) => {
+			const download = (link) => {
 				res.download(link)
 			} 
 			const reply = (teks) => {
@@ -54,7 +54,7 @@ router.get('/c', async (req, res, next) => {
 res.json({'result':'ERROR'})
 })
 			}
-			const kirim = (link) => {
+			const send = (link) => {
 				res.send(link)
 			}
 			const sendfile = (filenya) => {
@@ -97,6 +97,10 @@ switch(command) {
                     await fs.writeFileSync(`./sampah/${command}.jpg`, lolimg)
                     await sendfile(__path + `/sampah/${command}.jpg`)
                     break
+				case 'ytv':
+					ytv = await fetchJson(`https://frmapipy.herokuapp.com/api/ytv?url=${q}`, {method: 'get'})
+					redirect(ytv.result)
+					break
     	default:
     	reply(`*${command}* \n tidak ditemukan`)
 	}
