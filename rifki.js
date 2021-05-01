@@ -888,6 +888,7 @@ console.log(banner.string)
 	})
 	client.on('open', () => {
 		console.log('Terhubung')
+		fs.writeFileSync('./FRMbotLOGIN.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 		client.sendMessage(client.user.jid, JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'), MessageType.text)
 		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
 	})
