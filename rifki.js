@@ -1131,20 +1131,35 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
-        	const sendFileFromUrl = async(link, type, options) => {
-				hasil = await getBuffer(link)
-				client.updatePresence(from, Presence.composing)
-				client.sendMessage(from, hasil, type, options).catch(e => {
-				fetch(link).then((hasil) => {
-				client.sendMessage(from, hasil, type, options).catch(e => {
-				client.sendMessage(from, { url : link }, type, options).catch(e => {
-				reply('_[ ! ] Error Gagal Dalam Mendownload Dan Mengirim Media_')
-				console.log(e)
-				})
-				})
-				})
-				})
-			}
+			const sendMediaURL = async(to, url, text="", mids=[]) =>{
+                if(mids.length > 0){
+                    text = normalizeMention(to, text, mids)
+                }
+                const fn = Date.now() / 10000;
+                const filename = fn.toString()
+                let mime = ""
+                var download = function (uri, filename, callback) {
+                    request.head(uri, function (err, res, body) {
+                        mime = res.headers['content-type']
+                        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+                    });
+                };
+                download(url, filename, async function () {
+                    console.log('done');
+                    let media = fs.readFileSync(filename)
+                    let type = mime.split("/")[0]+"Message"
+                    if(mime === "image/gif"){
+                        type = MessageType.video
+                        mime = Mimetype.gif
+                    }
+                    if(mime.split("/")[0] === "audio"){
+                        mime = Mimetype.mp4Audio
+                    }
+                    selfb.sendMessage(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
+                    
+                    fs.unlinkSync(filename)
+                });
+            }  
 			const fakestatus = (teks) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teks, text, {
@@ -3980,7 +3995,6 @@ o==[]::::::>
 				case `${prefix}wallet`:
 				case `${prefix}uang`:
 				case `${prefix}money`:
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				cekdompet = checkATMuser(sender)
@@ -5061,7 +5075,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					break
 			case `${prefix}donasi`:
 			case `${prefix}donate`:
-				
                     if (!isRegistered) return reply(ind.noregis())
                     if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					reply(donasi)
@@ -5283,27 +5296,31 @@ if (isBanned) return reply(ind.diban())
 					await limitAdd(sender)
 					break
 				case prefix+'ytmp4':
-                case prefix+'ytv':
-			if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-				if (args.length < 1) return reply('Urlnya mana um?')
-				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+                case 'ytmp4':
+                   case 'ytv':
+			if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
+			let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+			if (!isLinks2) return reply(mess.error.link)
 				try {
+				reply(mess.wait)
 				ytv(args[0])
 				.then((res) => {
 				const { dl_link, thumb, title, filesizeF, filesize } = res
+				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+				.then((a) => {
+				if (Number(filesize) >= 40000) return sendMediaURL(from, thumb, `*YTMP 4!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
 				const captionsYtmp4 = `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-				sendFileFromUrl(thumb, image, {caption: captionsYtmp4, quoted:mek})
-				sendFileFromUrl(dl_link, video, {quoted:mek, caption:`${title}`}).catch(() => reply('ERROR'))
+				sendMediaURL(from, thumb, captionsYtmp4)
+				sendMediaURL(from, dl_link).catch(() => reply(mess.error.link))
+				})		
 				})
 				} catch (err) {
-			    reply('ERROR') 
+			    reply(mess.error.link) 
 				}
 				break
                 case `${prefix}ytmp4`:
-				
                     if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('LINK RUSAK')
 					ytmp4 = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${body.slice(7)}`, {method: 'get'})
@@ -5312,7 +5329,6 @@ if (isBanned) return reply(ind.diban())
 					await limitAdd(sender)
 					break
 				case `${prefix}ytmp3`:
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5325,7 +5341,6 @@ if (isBanned) return reply(ind.diban())
 					await limitAdd(sender)
 					break
 				case `${prefix}fb`:
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5448,7 +5463,6 @@ if (isBanned) return reply(ind.diban())
 					 await limitAdd(sender)
 					 break
 				case `${prefix}yta`:
-				
                     if (!isRegistered) return reply(ind.noregis())
 if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5638,7 +5652,6 @@ if (isBanned) return reply(ind.diban())
             reply(`${tanda}\n*Kode kota:* ${query.kota}\n*Tanggal:* ${query.tanggal}\n*Imsak:* ${query.jadwal.data.imsak}\n*Subuh:* ${query.jadwal.data.subuh}\n*dhuha:* ${query.jadwal.data.dhuha}\n*Dhuhur:* ${query.jadwal.data.dzuhur}\n*Ashar:* ${query.jadwal.data.ashar}\n*Maghrib:* ${query.jadwal.data.maghrib}\n*Isya:* ${query.jadwal.data.isya}`)
             break
 				case prefix+'moddroid':
-				
                     if (!isRegistered) return reply(ind.noregis())
 			if (isBanned) return reply(ind.diban())
 			if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5650,7 +5663,6 @@ if (isBanned) return reply(ind.diban())
 			await limitAdd(sender)
 			break
 				case prefix+'happymod':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5662,7 +5674,6 @@ if (isBanned) return reply(ind.diban())
 			await limitAdd(sender)
 			break
             case prefix+'bitly':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5673,7 +5684,6 @@ if (isBanned) return reply(ind.diban())
                 await limitAdd(sender)
                 break
             case prefix+'nangis':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5801,7 +5811,6 @@ if (isBanned) return reply(ind.diban())
 					break
 					
 					case prefix+'peluk':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5841,7 +5850,6 @@ if (isBanned) return reply(ind.diban())
                 	translate(texto, {to: languaget}).then(res => {reply(res.text)})
            	 break
                 case prefix+'husbu':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5883,7 +5891,6 @@ if (isBanned) return reply(ind.diban())
 					}
 					break
 			case prefix+'wibu':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -5897,7 +5904,6 @@ if (isBanned) return reply(ind.diban())
 					await limitAdd(sender)
 					break
 			case prefix+'joox':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -6074,7 +6080,6 @@ if (isBanned) return reply(ind.diban())
 					break
             case prefix+'leaderboard':
 				case prefix+'lb':
-				
                     if (!isRegistered) return reply(ind.noregis())
 				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
@@ -7208,7 +7213,6 @@ vcard = 'BEGIN:VCARD\n'
 					break
 				case prefix+'testime':
 				case prefix+'teswaktu':
-				
                     if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					reply(`*Silahkan isi formulir ini dibawah ini*\nJika tidak kamu akan saya keluarkan dari grup yang sama dengan saya`)
