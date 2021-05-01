@@ -3334,9 +3334,9 @@ break
             		if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (!isOwner) return reply(ind.ownerb())
-	        		diteruskan(from, `Bye Desu~`, text,{quoted : mek, contextInfo: { forwardingScore: 1000, isForwarded: true}})
+	        		diteruskan(`Bye`)
                 	await sleep(5000)
-					return selfb.sendMessage(from, JSON.stringify(eval(process.exit())), text, {quoted: mek})
+					return reply(JSON.stringify(eval(process.exit())))
 					break
 				case prefix+'on':
 					if (!isRegistered) return reply(ind.noregis())
