@@ -430,7 +430,6 @@ ${gaya2} ${prefix}profile
 ${gaya1}
 ${gaya1} *❀ Check apikey ${head2}
 ${gaya2} ${prefix}itech ~apikey~
-${gaya2} ${prefix}itsmeiky ~apikey~
 ${gaya2} ${prefix}tobz ~apikey~
 ${gaya2} ${prefix}vhtear ~apikey~
 ${gaya2} ${prefix}xteam ~apikey~
