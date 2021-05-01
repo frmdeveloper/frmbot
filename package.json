@@ -19,6 +19,7 @@
     "cheerio": "latest",
     "cors": "latest",
     "dropbox-v2-api": "latest",
+    "emoji-api": "latest",
     "express": "latest",
     "fluent-ffmpeg": "latest",
     "g-i-s": "latest",
