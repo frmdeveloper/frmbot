@@ -139,7 +139,6 @@ imgbbkey = "f4fde56c72298d6d92ce5133024cbba8"
 const liststiker = JSON.parse(fs.readFileSync('./sticker/liststiker.json'))
 const listaudio = JSON.parse(fs.readFileSync('./audio/listaudio.json'))
 const _jadibot = JSON.parse(fs.readFileSync('./database/user/datajadibot.json'))
-const onoffnya = JSON.parse(fs.readFileSync('./database/bot/onoff.json'))
 const promo = JSON.parse(fs.readFileSync('./database/bot/promo.json'))
 const _afk = JSON.parse(fs.readFileSync('./database/user/afk.json'))
 const omongelek = JSON.parse(fs.readFileSync('./database/bot/omongelek.json'))
@@ -545,6 +544,8 @@ ${gaya2} ${prefix}ban
 ${gaya2} ${prefix}bc
 ${gaya2} ${prefix}bcgc
 ${gaya2} ${prefix}block
+${gaya2} ${prefix}bot off
+${gaya2} ${prefix}bot on
 ${gaya2} ${prefix}bunuhbot
 ${gaya2} ${prefix}clearall
 ${gaya2} ${prefix}clearbc
@@ -563,6 +564,8 @@ ${gaya2} ${prefix}kickall
 ${gaya2} ${prefix}leave
 ${gaya2} ${prefix}off ~62xx@g.us~
 ${gaya2} ${prefix}on ~62xx@g.us~
+${gaya2} ${prefix}owneronly off
+${gaya2} ${prefix}owneronly on
 ${gaya2} ${prefix}reboot
 ${gaya2} ${prefix}restart
 ${gaya2} ${prefix}run ~code~
@@ -1248,22 +1251,22 @@ client.on('group-participants-update', async (anu) => {
             /***************** ngganti prefix ********/
             
             // TAMBAHAN SAAT BOT OFF / ON
-            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`)) {
+            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`)) && isOwner) {
 				if (isOnOff) return reply('SUDAH ON')
 				statuson = true
 				reply('BERHASIL MENYALAKAN')
 			}
-			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`)) {
+			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`)) && isOwner) {
 				if (!isOnOff) return reply('SUDAH OFF')
 				statuson = false
 				reply('BERHASIL MEMATIKAN')
 			}
-			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`) && sender.includes(ownerNumber)) {
+			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`) && isOwner) {
 				if (isOwnerOnly) return reply('MODE OWNER SAJA SUDAH AKTIF')
 				statusbot = true
 				reply('MODE OWNER SAJA AKTIF')
 			}
-			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`) && sender.includes(ownerNumber)) {
+			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`off`) && isOwner) {
 				if (!isOwnerOnly) return reply('MODE OWNER SAJA SUDAH MATI')
 				statusbot = false
 				reply('MODE OWNER SAJA MATI')
