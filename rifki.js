@@ -103,6 +103,9 @@ nomersibuk = ''
 nomerwesdaftar = '626262@s.whatsapp.net'
 statusbot = false
 dibanned = '3'
+sisabaterai = `belum diketahui`
+hematdaya = `belum diketahui`
+dicas = `belum diketahui`
 
 /*
 ]=====> INFO-INFO <=====[
