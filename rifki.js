@@ -1624,7 +1624,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					let linkgrup = `${body.split('whatsapp.com/')[1]}`
 					let islink = q.match(/(https:\/\/chat.whatsapp.com)/gi)
 					if (!islink) return reply('Maaf link group-nya salah! ')
-						response = await conn.acceptInvite (linkgrup)
+						response = await client.acceptInvite (linkgrup)
 						reply("Bergabung ke: " + response.gid)
 					break							
 /*
