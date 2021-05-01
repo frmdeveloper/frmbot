@@ -1258,12 +1258,12 @@ client.on('group-participants-update', async (anu) => {
 				statuson = false
 				reply('BERHASIL MEMATIKAN')
 			}
-			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`)) {
+			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`) && sender.includes(ownerNumber)) {
 				if (isOwnerOnly) return reply('MODE OWNER SAJA SUDAH AKTIF')
 				statusbot = true
 				reply('MODE OWNER SAJA AKTIF')
 			}
-			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`)) {
+			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`) && sender.includes(ownerNumber)) {
 				if (!isOwnerOnly) return reply('MODE OWNER SAJA SUDAH MATI')
 				statusbot = false
 				reply('MODE OWNER SAJA MATI')
