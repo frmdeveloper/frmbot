@@ -70,6 +70,8 @@ const loli = new lolis()
 const google = require('google-it')
 const canvas = require('canvacord')
 const fetch = require('node-fetch')
+const { EmojiAPI } = require("emoji-api");
+const emoji = new EmojiAPI()
 const unduhgmb = require('image-downloader')
 const translate = require('@vitalets/google-translate-api')
 webp.grant_permission()
@@ -4941,7 +4943,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                     if (!isRegistered) return reply(ind.noregis())
 					if (isBanned) return reply(ind.diban())
                     if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-					stiker(await getBuffer(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${encodeURIComponent(args[0])}`))
+					stiker(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${encodeURIComponent(args[0])}`)
 					break
 				case prefix+'memeindo':
                     if (!isRegistered) return reply(ind.noregis())
