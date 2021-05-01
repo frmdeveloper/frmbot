@@ -896,7 +896,7 @@ console.log(banner.string)
 
 client.on('group-participants-update', async (anu) => {
 			const mdata = await client.groupMetadata(anu.jid)
-			if (anu.action == 'add' && anu.participants[0].includes(client.user.jid)) return client.sendMessage(mdata.id, `Halo semua, saya member baru.\n\nJangan memasukan saya ke grup *${mdata.subject}*\nJika belum izin kepada wa.me/${nomowner}\n\nbot akan keluar dalam waktu beberapa menit`, MessageType.text, {contextInfo: {"mentionedJid": [anu.participants[0]]}, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `PERINGATAN` }}})
+			if (anu.action == 'add' && anu.participants[0].includes(client.user.jid)) return client.sendMessage(mdata.id, `Halo semua, saya member baru.\n\nJangan memasukan saya ke grup *${mdata.subject}*\nJika belum izin kepada wa.me/${nomowner}\n\nbot akan keluar`, MessageType.text, {contextInfo: {"mentionedJid": [anu.participants[0]]}, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `PERINGATAN` }}})
 		if (!welkom.includes(anu.jid)) return
 		try {
 			console.log(anu)
