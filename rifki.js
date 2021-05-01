@@ -1252,12 +1252,12 @@ client.on('group-participants-update', async (anu) => {
             /***************** ngganti prefix ********/
             
             // TAMBAHAN SAAT BOT OFF / ON
-            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`)) && isOwner) {
+            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`) && isOwner) {
 				if (isOnOff) return reply('SUDAH ON')
 				statuson = true
 				reply('BERHASIL MENYALAKAN')
 			}
-			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`)) && isOwner) {
+			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`) && isOwner) {
 				if (!isOnOff) return reply('SUDAH OFF')
 				statuson = false
 				reply('BERHASIL MEMATIKAN')
