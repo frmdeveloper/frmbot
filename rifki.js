@@ -571,6 +571,7 @@ ${gaya2} ${prefix}on ~62xx@g.us~
 ${gaya2} ${prefix}reboot
 ${gaya2} ${prefix}restart
 ${gaya2} ${prefix}run ~code~
+${gaya2} ${prefix}shutdown
 ${gaya2} ${prefix}sibuk on
 ${gaya2} ${prefix}sibuk off
 ${gaya2} ${prefix}ubahpp
