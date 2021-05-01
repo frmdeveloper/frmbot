@@ -427,14 +427,7 @@ const cekmenu = `
 ${gaya1} *❀ Check User ${head2}
 ${gaya2} *123#
 ${gaya2} ${prefix}profile
-${gaya1}
-${gaya1} *❀ Check apikey ${head2}
-${gaya2} ${prefix}itech ~apikey~
-${gaya2} ${prefix}tobz ~apikey~
-${gaya2} ${prefix}vhtear ~apikey~
-${gaya2} ${prefix}xteam ~apikey~
-${gaya2} ${prefix}zeks ~apikey~
-${gaya1}
+${gaya2}
 ${gaya1} *❀ Bot ${head2}
 ${gaya2} p
 ${gaya2} tes
