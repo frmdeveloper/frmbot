@@ -1275,7 +1275,8 @@ if (!isOnOff) return
 				  }
 				if (cilik === `p` || cilik === `${prefix}p` || cilik === `🅿️`)  {
 				  client.updatePresence(from, Presence.composing)
-				  iki = reply(`${tanda}\nالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`)
+				  reply(`السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`)
+				  reply(`hai`)
 				  }
                 if (budy.includes(`@${me.jid.split('@')[0]}`)) {
                   	client.updatePresence(from, Presence.composing)
