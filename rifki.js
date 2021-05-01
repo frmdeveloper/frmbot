@@ -1288,7 +1288,7 @@ if (!isOnOff) return
 					client.updatePresence(from, Presence.available)
                     const ip =['Ada yang aneh','Ya ada apa','Ada perlu apa','kenapa?','Kamu lagi ngapain?','Disana enak','Apa bisa saya bantu','Halo','Apa kabar','Assalamualaikum','Waalaikumsalam','Kamu siapa','Halo','Hey','Aku siapa','Saya siapa hayoo?','sekarang jam berapa','Kamu siapa','Rumahmu dimana','Mau ngapain','selamat pagi','Selamat siang','Selamat sore','Selamat malam','Selamat tidur','Selamat Whatsapp an','Kamu sekarang lagi apa','Ini siapa ya?','1+1=2','Namaku siapa?']
 					const ki = ip[Math.floor(Math.random() * ip.length)]
-                  reply(`${tanda}\nNama ownerku terdeteksi\n${ki}`)
+                  reply(`Nama ownerku terdeteksi\n${ki}`)
                   }
 			const listbahasa = `*List kode Bahasa*\n
 *Code       Bahasa*
