@@ -31,7 +31,6 @@
     "node-tesseract-ocr": "latest",
     "node-fetch": "latest",
     "os": "latest",
-	"parse-ms": "latest",
     "performance-now": "latest",
     "qrcode": "latest",
     "qrcode-terminal": "latest",
