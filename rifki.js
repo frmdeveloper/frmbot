@@ -1259,14 +1259,14 @@ client.on('group-participants-update', async (anu) => {
 				reply('BERHASIL MEMATIKAN')
 			}
 			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`)) {
-				if (isOnOff) return reply('SUDAH ON')
+				if (isOwnerOnly) return reply('MODE OWNER SAJA SUDAH AKTIF')
 				statusbot = true
-				reply('BERHASIL MENYALAKAN')
+				reply('MODE OWNER SAJA AKTIF')
 			}
 			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`)) {
-				if (!isOnOff) return reply('SUDAH OFF')
+				if (!isOwnerOnly) return reply('MODE OWNER SAJA SUDAH MATI')
 				statusbot = false
-				reply('BERHASIL MEMATIKAN')
+				reply('MODE OWNER SAJA MATI')
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
