@@ -4941,18 +4941,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                     if (!isRegistered) return reply(ind.noregis())
 					if (isBanned) return reply(ind.diban())
                     if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                    options = {
-  url: `https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${args[0]}`,
-  dest: `./sampah/${args[0]}${sender}.png`
-}
-
-unduhgmb.image(options)
-  .then(({ filename }) => {
-    exec(`ffmpeg -i ./sampah/${args[0]}${sender}.png ./sampah/${args[0]}${sender}.webp`, (error, stdout, stderr) => {
-	client.sendMessage(from, fs.readFileSync(`./sampah/${args[0]}${sender}.webp`), sticker, { quoted: mek })
-	fs.unlinkSync(`./sampah/${args[0]}${sender}.webp`)
-	})
-  })
+					stiker(await getBuffer(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${encodeURIComponent(args[0])}`))
 					break
 				case prefix+'memeindo':
                     if (!isRegistered) return reply(ind.noregis())
