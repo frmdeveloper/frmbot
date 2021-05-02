@@ -43,6 +43,12 @@ function kyun(seconds){
 router.get('/heleh', (req, res) => {
 	res.send('HELEH')
 	})
+router.get('/japriwa', (req, res) => {
+	res.json({'result':'mengirim'})
+	.catch(e => {
+	res.json({'result':'ERROR'})
+		})
+	})
 router.get('/login', (req, res) => {
     res.sendFile(__path + '/login.html')
 	})
