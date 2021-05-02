@@ -1631,43 +1631,8 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						}
 					await limitAdd(sender)
 						break
-				case prefix+'stiker2': 
-				case prefix+'sticker2':
-				    if (!isRegistered) return reply(ind.noregis())
-				    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                    await limitAdd(sender)
-					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						exec(`$ ffmpeg -i ${media} -vf "crop=iw:iw" ./sampah/stiker_${sender}.webp`, (error, stdout, stderr) => {
-if (error) {
-exec(`$ ffmpeg -i ${media} -vf "crop=ih:ih" ./sampah/stiker_${sender}.webp`, (error, stdout, stderr) => {
-stikerjadi = fs.readFileSync(`./sampah/stiker_${sender}.webp`)
-client.sendMessage(from, stikerjadi, sticker, {quoted: mek})
-fs.unlinkSync(`./sampah/stiker_${sender}.webp`)
-});
-return;
-}
-						stikerjadi = fs.readFileSync(`./sampah/stiker_${sender}.webp`)
-						client.sendMessage(from, stikerjadi, sticker, {quoted: mek})
-						fs.unlinkSync(`./sampah/stiker_${sender}.webp`)
-});
-					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
-						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						await exec(`ffmpeg -i ${media} ./sampah/stikergif_${sender}.webp`)
-						stikergif = fs.readFileSync(`./sampah/stikergif_${sender}.webp`)
-						stikergif1 = fs.readFileSync(`./sampah/stikergif_${sender}.webp`)
-						stikergif2 = fs.readFileSync(`./sampah/stikergif_${sender}.webp`)
-						client.sendMessage(from, stikergif2, sticker, {quoted: mek})
-						fs.unlinkSync(`./sampah/stikergif_${sender}.webp`)
-							} else {
-						reply(`Kirim gambar dengan caption ${prefix}sticker atau reply/tag gambar`)
-					}
-				break
 			case prefix+'nulis2':
 			case prefix+'tulis2':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('Teksnya mana kak? Contoh : ${prefix}nulis1 Rifki baik hati')
@@ -1687,7 +1652,6 @@ return;
 					await limitAdd(sender)
 					break
 				case prefix+'ninjalogo':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				var gh = body.slice(11)
@@ -1711,7 +1675,6 @@ return;
 					await limitAdd(sender)
 					break				
 		case prefix+'halloweentext':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 				if (args.length < 1) return reply(ind.wrongf())
@@ -1723,7 +1686,6 @@ return;
 		    await limitAdd(sender)	
 		    break
 				case prefix+'pornhub':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				var gh = body.slice(9)
@@ -1737,7 +1699,6 @@ return;
 				break
 //GEMBOK TEXT
                 case prefix+'gemboktext':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					var gh = body.slice(12)
@@ -1750,7 +1711,6 @@ return;
 					await limitAdd(sender)
 					break
                 case prefix+'glitchtext':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					var gh = body.slice(12)
@@ -1781,7 +1741,6 @@ return;
                         await limitAdd(sender)
 					break
 				case prefix+'toimg':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (!isQuotedSticker) return reply('Reply atau Tag sticker yang mau dijadiin gambar kak >_<')
@@ -1827,7 +1786,6 @@ return;
                     await limitAdd(sender)
 			       break
 		case prefix+'silktext':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 				if (args.length < 1) return reply(ind.wrongf())
@@ -2044,8 +2002,7 @@ return;
 					reply(anu.desc)
 					await limitAdd(sender)
 					break
-                  case prefix+'timer':
-                  
+                  case prefix+'timer':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))          
 				if (args.length < 1) return reply(`#timer 5 detik\nitu contoh nya`)      
@@ -2200,8 +2157,7 @@ return;
 					}
 					await limitAdd(sender)
 					break
-				case prefix+'admin':
-                  
+				case prefix+'admin':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())
@@ -2352,8 +2308,7 @@ return;
                         reply('Error!')
                     })
             break
-                 case prefix+'linkgrup':
-                  
+                 case prefix+'linkgrup':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))                
 				    if (!isGroup) return reply(ind.groupo())
@@ -2364,8 +2319,7 @@ return;
 				    reply(yeh)
 			        await limitAdd(sender)
 					break
-				case prefix+'tagall':
-                  
+				case prefix+'tagall':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))		
 					if (!isGroup) return reply(ind.groupo())
@@ -2473,8 +2427,7 @@ return;
 	                .then(() => {client.sendMessage(from, options, text)})
 	                .then(() => {client.sendMessage(from, options, text)})
 					break
-                 case prefix+'fitnah':
-                  
+                 case prefix+'fitnah':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())                 
@@ -2568,8 +2521,7 @@ return;
 					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', caption: `*By.* ${tiktod.result.username}`, quoted: mek})
 					await limitAdd(sender)
 					break
-                     case prefix+'play2':
-                  
+                     case prefix+'play2':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal)) 
                 reply(ind.wait())
@@ -2615,8 +2567,7 @@ return;
 /*
 ]=====> RANDOM MENU <=====[
 */
-                case prefix+'pokemon':
-                  
+                case prefix+'pokemon':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                    anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=pokemon`, {method: 'get'})
@@ -2627,8 +2578,7 @@ return;
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
-                case prefix+'anjing':
-                  
+                case prefix+'anjing':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                    anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anjing`, {method: 'get'})
@@ -2639,8 +2589,7 @@ return;
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
-                case prefix+'blowjob':
-                  
+                case prefix+'blowjob':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					ranp = getRandom('.gif')
@@ -2665,8 +2614,7 @@ return;
 						client.sendMessage(from, neko1, image, {quoted: mek, caption: 'Nih nekonime mu >_<'})
 					await limitAdd(sender)
 					break
-                case prefix+'kpop':
-                  
+                case prefix+'kpop':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                                         reply(ind.wait())
@@ -2676,8 +2624,7 @@ return;
                                         client.sendMessage(from, buffer, image, {quoted: mek, caption: tanda})
                                         await limitAdd(sender)
                                         break
-                case prefix+'husbu':
-                  
+                case prefix+'husbu':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                    if (!isGroup) return reply(ind.groupo())
@@ -2687,15 +2634,13 @@ return;
 					await limitAdd(sender)
 					break
 			case prefix+'chord':
-				
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/chord?q=${body.slice(7)}&apikey=${TobzKey}`)
                 reply(anu.result)
                 await limitAdd(sender)
                 break
-			case prefix+'loli':
-                  
+			case prefix+'loli':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					reply(ind.wait())
@@ -2704,8 +2649,7 @@ return;
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					await limitAdd(sender)
 					break					
-                case prefix+'randomhentong':
-                  
+                case prefix+'randomhentong':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					gatauda = body.slice(15)
@@ -2715,8 +2659,7 @@ return;
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: `nih hentong mu`})
 					await limitAdd(sender)
 					break					
-					case prefix+'wibu':
-                  
+					case prefix+'wibu':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 						data = await fetchJson(`https://api.vhtear.com/randomwibu&apikey=${VhtearKey}`)
@@ -2724,8 +2667,7 @@ return;
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>_<'})
 					await limitAdd(sender)
 					break
-                case prefix+'darkjokes':
-                  
+                case prefix+'darkjokes':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))   
 				 data = fs.readFileSync('./src/darkjokes.js');
@@ -2754,8 +2696,7 @@ return;
                       }
                     await limitAdd(sender)
 					break
-                case prefix+'moddroid':
-                  
+                case prefix+'moddroid':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=${TobzKey}`)
@@ -2806,8 +2747,7 @@ case prefix+'artinama':
       })
       await limitAdd(sender) 
 			break
-			case prefix+'happymod':
-                  
+			case prefix+'happymod':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzKey}`)
@@ -2817,8 +2757,7 @@ case prefix+'artinama':
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
 			break
-            case prefix+'bitly':
-                  
+            case prefix+'bitly':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                client.updatePresence(from, Presence.composing) 
@@ -2827,8 +2766,7 @@ case prefix+'artinama':
                 reply(hasil)
                 await limitAdd(sender)
                 break
-					case prefix+'pinterest':
-                  
+					case prefix+'pinterest':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					client.updatePresence(from, Presence.composing) 
@@ -2845,8 +2783,7 @@ case prefix+'artinama':
 					await limitAdd(sender)
 					break 
 					case prefix+'resepmasakan':
-					case prefix+'resep':
-                  
+					case prefix+'resep':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                    resep = await fetchJson(`https://mnazria.herokuapp.com/api/resep?key=${q}`, {method: 'get'})
@@ -2856,8 +2793,7 @@ case prefix+'artinama':
                    client.sendMessage(from, buff, image, {quoted: mek, caption: hasil})
                    await limitAdd(sender)
 					break
-                case prefix+'beritahoax':
-                  
+                case prefix+'beritahoax':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                     client.updatePresence(from, Presence.composing) 
@@ -2884,8 +2820,7 @@ case prefix+'artinama':
                     })
 					await limitAdd(sender)
 					break
-                case prefix+'virtex':
-                  
+                case prefix+'virtex':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					reply(`*INILAH VIRTEX TERBERAT DI DUNIA*\n\n͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏tapi boong`)
@@ -2894,16 +2829,14 @@ case prefix+'artinama':
 					client.sendMessage(from, lagutapi, audio, {mimetype: 'audio/mp4', quoted: mek, ptt: true})
 					await limitAdd(sender)
 					break
-                case prefix+'virtex2':
-                  
+                case prefix+'virtex2':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (!isGroup) return reply(ind.groupo())
 					await costum(virtex2(pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered), text, tescuk, cr)
 					await limitAdd(sender)
 					break
-				case prefix+'mutual':
-                  
+				case prefix+'mutual':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if (isGroup) return  reply( 'TIDAK BISA DI GRUP KAK')
@@ -2913,8 +2846,7 @@ case prefix+'artinama':
                 await reply( `Pasangan Ditemukan: 🐊\n*${prefix}next* — Temukan Pasangan Baru`)
                 await limitAdd(sender)
             break
-            case prefix+'next':
-                  
+            case prefix+'next':  
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if (isGroup) return  reply( 'TIDAK BISA DI GRUP KAK')
