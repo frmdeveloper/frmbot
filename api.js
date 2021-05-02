@@ -14,6 +14,7 @@ const {
    mentionedJid,
    processTime,
 } = require("@adiwajshing/baileys")
+const { client } = require('./rifki.js')
 var express = require('express');
 var router = express.Router();
 const moment = require("moment-timezone") 
