@@ -23,7 +23,7 @@
     "express": "latest",
     "fluent-ffmpeg": "latest",
     "google-it": "latest",
-    "image-downloader": "latest",
+    "imgbb-uploader": "latest",
     "lolis.life": "latest",
     "jsdom": "latest",
     "moment-timezone": "latest",
