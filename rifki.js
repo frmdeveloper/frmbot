@@ -4148,7 +4148,6 @@ o==[]::::::>
 					 break
 					case `${prefix}summer`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4158,7 +4157,6 @@ if (isBanned) return reply(ind.diban())
 					break
 					case `${prefix}sandwrite`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4168,7 +4166,6 @@ if (isBanned) return reply(ind.diban())
 					break 
 					case `${prefix}metaldark`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4178,7 +4175,6 @@ if (isBanned) return reply(ind.diban())
 					break 
 					case `${prefix}dropwater`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4188,7 +4184,6 @@ if (isBanned) return reply(ind.diban())
 					break 
 					case `${prefix}greenneon`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4235,7 +4230,6 @@ if (isBanned) return reply(ind.diban())
 					break
 					case `${prefix}sumery`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4245,7 +4239,6 @@ if (isBanned) return reply(ind.diban())
 					break
 					case `${prefix}blood`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4255,7 +4248,6 @@ if (isBanned) return reply(ind.diban())
 					break
 					case `${prefix}firework`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -4265,7 +4257,6 @@ if (isBanned) return reply(ind.diban())
 					break
 					case `${prefix}lava`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(ind.wrongf())
 					reply(ind.wait())
@@ -5164,8 +5155,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					await limitAdd(sender)
 					break
                 case `${prefix}hidetag`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (!isGroup) return reply(ind.groupo())
 					var value = body.slice(9)
@@ -5184,8 +5174,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					await limitAdd(sender)
 					break
                 case `${prefix}quotemaker`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 var gh = body.slice(12)
 					var quote = gh.split("|")[0];
@@ -5199,9 +5188,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					await limitAdd(sender)
 					break				
 				case `${prefix}ssweb`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Urlnya mana om')
 					reply(ind.wait())
@@ -5212,9 +5199,7 @@ if (isBanned) return reply(ind.diban())
 					await limitAdd(sender)
 					break
                 case `${prefix}pokemon`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=pokemon`, {method: 'get'})
 					reply(ind.wait())
@@ -5234,9 +5219,7 @@ if (isBanned) return reply(ind.diban())
       				reply(`*GAY LU*\n*Persentase* : ${persenegay}%\n${deskegay}`)
       				break
                 case `${prefix}anjing`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anjing`, {method: 'get'})
 					reply(ind.wait())
@@ -5421,7 +5404,6 @@ if (isBanned) return reply(ind.diban())
 					 break
 				case `${prefix}yta`:
                     if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
@@ -5487,9 +5469,7 @@ function ytv(url) {
 					await limitAdd(sender)
 					break
                 case `${prefix}text3d`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
-if (isBanned) return reply(ind.diban())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
               	    if (args.length < 1) return reply('teksnya mana kak?')
                     teks = `${body.slice(8)}`
@@ -6852,8 +6832,7 @@ vcard = 'BEGIN:VCARD\n'
 					await limitAdd(sender)
 					break
                case `${prefix}setdesc`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
+            	if (!isRegistered) return reply(ind.noregis())
                 if (!isGroup) return reply(ind.groupo())
                 client.groupUpdateDescription(from, `${body.slice(9)}`)
                 client.sendMessage(from, 'Succes, Ganti Deskripsi Grup', text, {quoted: mek})
