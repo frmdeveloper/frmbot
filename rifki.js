@@ -73,7 +73,6 @@ const canvas = require('canvacord')
 const fetch = require('node-fetch')
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
-const unduhgmb = require('image-downloader')
 const translate = require('@vitalets/google-translate-api')
 tanda = '*───❉ FRM BOT ❉──*'
 head1 = '*◪ ❀'
