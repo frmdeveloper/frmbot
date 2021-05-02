@@ -73,6 +73,7 @@ const canvas = require('canvacord')
 const fetch = require('node-fetch')
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
+const imgbb = require('imgbb-uploader')
 const translate = require('@vitalets/google-translate-api')
 tanda = '*───❉ FRM BOT ❉──*'
 head1 = '*◪ ❀'
@@ -2867,8 +2868,8 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
   reply(ind.wait())
   owgi = await client.downloadAndSaveMediaMessage(ted)
   tels = body.slice(7)
-  raindrop = await fetchJson(`https://api.imgbb.com/1/upload?expiration=120&key=${imgbbkey}&image=${owgi}&name=frm_${tanggaltok}${jamtok}${menittok}`, {method: 'get'})
-  hehre = await getBuffer(`https://videfikri.com/api/textmaker/raindrop/?urlgbr=${raindrop.data.display_url}`)
+  raindrop = await imgbb(imgbbkey, owgi)
+  hehre = await getBuffer(`https://videfikri.com/api/textmaker/raindrop/?urlgbr=${raindrop.display_url}`)
  client.sendMessage(from, hehre, image, {quoted:mek})
 } else {
   reply(`Tag gambar nya kak`)
