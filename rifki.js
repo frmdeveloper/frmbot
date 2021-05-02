@@ -1040,7 +1040,7 @@ client.on('group-participants-update', async (anu) => {
 			const isAfkOn = checkAfkUser(sender, _afk)
 			const isOnOff = statuson
 			const isOwnerOnly = {
-				if (isOwner && statusbot) return status = false
+				if (isOwner && statusbot) return false
     			return true
 			}
 			const isUrl = (url) => {
