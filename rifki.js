@@ -60,7 +60,6 @@ const cd = 4.32e+7
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const { ind } = require('./language')
 const { yta, ytv } = require('./lib/ytdl')
-const webp = require('webp-converter')
 const os = require('os')
 const cheerio = require('cheerio')
 const request = require('request')
@@ -74,7 +73,6 @@ const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
 const unduhgmb = require('image-downloader')
 const translate = require('@vitalets/google-translate-api')
-webp.grant_permission()
 tanda = '*───❉ FRM BOT ❉──*'
 head1 = '*◪ ❀'
 head2 = '❀*'
