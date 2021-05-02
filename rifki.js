@@ -5479,8 +5479,7 @@ function ytv(url) {
 			     	await limitAdd(sender)
 					break
 			    case `${prefix}fototiktok`:
-			
-                    if (!isRegistered) return reply(ind.noregis())
+				if (!isRegistered) return reply(ind.noregis())
 			if (isBanned) return reply(ind.diban())
 			if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                     gatauda = body.slice(12)
@@ -5505,8 +5504,7 @@ function ytv(url) {
 					await limitAdd(sender)
 					break
 			    case `${prefix}map`:
-			
-                    if (!isRegistered) return reply(ind.noregis())
+				if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                	 anu = await fetchJson(`https://mnazria.herokuapp.com/api/maps?search=${body.slice(5)}`, {method: 'get'})
                 	buffer = await getBuffer(anu.gambar)
