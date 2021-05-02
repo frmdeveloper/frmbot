@@ -2926,7 +2926,7 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
   tels = body.slice(7)
   anu = await imgbb(imgbbkey, owgi)
   gambare = await getBuffer(anu.display_url)
-  client.sendMessage(from, gambare, image, {quoted: mek, caption: `${anu.data.display_url}`})
+  client.sendMessage(from, gambare, image, {quoted: mek, caption: `${anu.display_url}`})
 } else {
   reply('tag gambar/foto')
 }
