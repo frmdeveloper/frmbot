@@ -1723,7 +1723,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					await limitAdd(sender)
 					break
 					case prefix+'ttperr':
-					
 					if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('yang mau dijadiin text sticker apaan, titit kah?')
@@ -2198,7 +2197,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.groupSettingChange(from, GroupSettingChange.messageSend, true)
 					break
 				case prefix+'add':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())
@@ -2451,7 +2449,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					tagpalsu(`${replace1}`, `${target1}`, `${bot1}`)
 					break
 				case prefix+'pengumuman':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())                 
@@ -2473,7 +2470,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					break
 					break
 				case prefix+'peringatan':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())                 
@@ -2481,7 +2477,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					tuduh(`${nomerewa}`, `⚠️ _peringatan_ ⚠️`, `🔪 *=>* ${q}`)
 					break
 				case prefix+'tuduh':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())                 
@@ -2914,7 +2909,6 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
 }
 break
 				case prefix+'lovemake':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Teksnya mana um')
@@ -2926,7 +2920,6 @@ break
 					await limitAdd(sender)
 					break
 				case prefix+'metalteks':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Teksnya mana um')
@@ -2938,7 +2931,6 @@ break
 					await limitAdd(sender)
 					break
 				case prefix+'apiteks':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Teksnya mana um')
@@ -2950,7 +2942,6 @@ break
 					await limitAdd(sender)
 					break
 				case prefix+'ffbaner':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Teksnya mana um')
@@ -2962,7 +2953,6 @@ break
 					await limitAdd(sender)
 					break
 				case prefix+'ramalhp':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('teks nya mana om')
@@ -2971,7 +2961,6 @@ break
 					await limitAdd(sender)
 					break
 				case `${prefix}banner`:
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					tipelist = ['console','block','simpleBlock','simple','3d','simple3d','chrome','huge','shade','slick','grid','pallet','tiny']
@@ -6786,7 +6775,6 @@ vcard = 'BEGIN:VCARD\n'
 					await limitAdd(sender)
 					break
 				case prefix+'promote.me':
-					
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))				
 					if (!isGroup) return reply(ind.groupo())
