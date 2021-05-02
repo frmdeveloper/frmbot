@@ -2878,7 +2878,7 @@ break
                                          if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
                                          ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
                                          owgi = await client.downloadAndSaveMediaMessage(ger)
-                                         anu = = await imgbb(imgbbkey, owgi)
+                                         anu = await imgbb(imgbbkey, owgi)
                                         teks = `${anu.display_url}`
                                         ranp = getRandom('.gif')
                                         rano = getRandom('.webp')
