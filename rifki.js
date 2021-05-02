@@ -1113,6 +1113,13 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
 			}
+			const stikerwm = async(dadistiker, wmnya) => {
+				stickermk = new WSF.Sticker(`${dadistiker}`, { crop: true, animated: false, pack: `${wmnya}`, author: 'By FRM BOT' })
+				await stickermk.build()
+				stcBuffr = await stickermk.get()
+				client.updatePresence(from, Presence.composing)
+				client.sendMessage(from, stcBuffr, sticker, {quoted:mek}).catch((err) => reply('error'))
+			}
 			const stikergif = async(bahanstiker) => {
 				stickermk = new WSF.Sticker(`${bahanstiker}`, { crop: true, animated: true, pack: `${pushname}`, author: 'By FRM BOT' })
 				await stickermk.build()
