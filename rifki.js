@@ -412,12 +412,8 @@ NB: Tanda kurung itu info
     tidak perlu diketik lagi`
 
 const cekmenu = `
-╭═─⊱ ❰ *CHECK* ❱ ⊰─═
-${gaya1} *❀ Check User ${head2}
+${head1} MENU PENGECEKAN ${head2}
 ${gaya2} *123#
-${gaya2} ${prefix}profile
-${gaya2}
-${gaya1} *❀ Bot ${head2}
 ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}banlist
@@ -433,6 +429,7 @@ ${gaya2} ${prefix}mutual
 ${gaya2} ${prefix}next
 ${gaya2} ${prefix}teswaktu
 ${gaya2} ${prefix}ping
+${gaya2} ${prefix}profile
 ${gaya2} ${prefix}quoted ~code~
 ${gaya2} ${prefix}save ~namamu~
 ${gaya2} ${prefix}sisahari
