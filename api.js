@@ -51,7 +51,7 @@ chain.add(
 ).every(1000)
 
 router.get('/heleh', (req, res) => {
-	res.send('HELEH')
+	res.json({result:'HELEH'})
 	})
 router.get('/repeatoff', (req, res) => {
 	chain.cancel()
