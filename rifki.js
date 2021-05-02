@@ -5047,8 +5047,6 @@ _${sisabaterai}_
 _${hematdaya}_
 *❀ Dicas: ❀*
 _${dicas}_
-*NB:* jika _true_ berarti ya
-jika _false_ berarti tidak`
 					
 //INFO TERMINAL
 client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Ping Internet:*
