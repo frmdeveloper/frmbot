@@ -5033,7 +5033,7 @@ _${dicas}_
 jika _false_ berarti tidak`
 					
 //INFO TERMINAL
-client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Kecepatan Internet:*
+client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Ping Internet:*
 _${latensi.toFixed(4)} detik_
    _(lebih besar lebih lambat)_
 *❀ Sistem Operasi:*
