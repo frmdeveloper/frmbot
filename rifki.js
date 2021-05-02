@@ -5001,12 +5001,8 @@ kontak terblokir kadang error
 *❀ PP Bot:*
 ╰> ${me.imgUrl}
 
-*Follow igku*
-instagram.com/frm_developer
-*Facebook*
-fb.com/fauzan.rifki.m
-*Telegram*
-t.me/frm_developer
+*WEBSITE KU*
+https://frmdeveloper.github.com/frmdev/about.html
 ▬▭▬▭▬▭▬▭▬▭▬▭▬
 *Dibanned ${dibanned} kali, sebab*
 ${prefix}kickall
