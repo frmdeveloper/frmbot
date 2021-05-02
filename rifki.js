@@ -6555,7 +6555,7 @@ tesseract.recognize(media, config)
 					client.blockUser (`${body.slice(7)}@c.us`, "add")
 					client.sendMessage(from, `perintah Diterima, memblokir ${body.slice(7)}@c.us`, text)
 					break
-                    case `${prefix}unblock`:
+                case `${prefix}unblock`:
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerb())
 				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
