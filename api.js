@@ -48,8 +48,7 @@ chain.add(
   () => console.log('cat'),
   () => console.log('dog'),
   () => console.log('fish')
-)
-.every(1000)
+).every(1000)
 
 router.get('/heleh', (req, res) => {
 	res.send('HELEH')
