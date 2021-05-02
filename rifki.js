@@ -5054,6 +5054,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					break
 			case `${prefix}donasi`:
 			case `${prefix}donate`:
+			case `${prefix}menyumbang`:
                     if (!isRegistered) return reply(ind.noregis())
                     if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					reply(donasi)
