@@ -29,6 +29,8 @@ const { spawn, exec } = require("child_process")
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { bgcolor, color } = require('./lib/color')
+let { Chain } = require('repeat')
+let chain = new Chain()
 
 function kyun(seconds){
   function pad(s){
@@ -41,6 +43,13 @@ function kyun(seconds){
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
+
+chain.add(
+  () => console.log('cat'),
+  () => console.log('dog'),
+  () => console.log('fish')
+)
+.every(1000)
 
 router.get('/heleh', (req, res) => {
 	res.send('HELEH')
