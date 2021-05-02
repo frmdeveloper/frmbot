@@ -958,10 +958,10 @@ client.on('group-participants-update', async (anu) => {
 		batre = []
 		statusbatre = json[2][0][1]
 		batre.push(statusbatre)
-        if (json[2][0][1].live == 'true') dicas = 'Ya'
-        if (json[2][0][1].live == 'false') dicas = 'Tidak'
-        if (json[2][0][1].powersave == 'true' ) hematdaya = 'Hemat daya aktif'
-        if (json[2][0][1].powersave == 'false' ) hematdaya = 'Hemat daya mati'
+        if (json[2][0][1].live == 'true') dicas = 'ya'
+        if (json[2][0][1].live == 'false') dicas = 'tidak'
+        if (json[2][0][1].powersave == 'true' ) hematdaya = 'aktif'
+        if (json[2][0][1].powersave == 'false' ) hematdaya = 'mati'
         console.log(json[2][0][1])
 		sisabaterai = `${json[2][0][1].value}%`
 	})
