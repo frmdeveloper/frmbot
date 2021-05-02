@@ -958,12 +958,12 @@ client.on('group-participants-update', async (anu) => {
 		batre = []
 		statusbatre = json[2][0][1]
 		batre.push(statusbatre)
-        if (json[2][0][1].live == 'true') charging = true
-        if (json[2][0][1].live == 'false') charging = false
+        if (json[2][0][1].live == 'true') dicas = 'Tersambung dengan charger'
+        if (json[2][0][1].live == 'false') dicas = 'Terputus dengan charger'
+        if (json[2][0][1].powersave == 'true' ) hematdaya = 'Hemat daya aktif'
+        if (json[2][0][1].powersave == 'false' ) hematdaya = 'Hemat daya mati'
         console.log(json[2][0][1])
 		sisabaterai = `${json[2][0][1].value}%`
-		hematdaya = json[2][0][1].powersave
-		dicas = json[2][0][1].live
 	})
 
 	client.on('chat-update', async (mek) => {
