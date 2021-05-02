@@ -1846,7 +1846,6 @@ return;
 				case `${prefix}bisakah`:
 				case `${prefix}bisa`:
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply(`Yang di tanyakan apa ?\n*KETIK* ${command} pertanyaanmu\n*CONTOH* ${command} saya hidup ?`)
 					bisakah = body.slice(1)
@@ -1858,7 +1857,6 @@ return;
 				case `${prefix}kapankah`:
 				case `${prefix}kapan`:
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply(`Yang di tanyakan apa ?\n*KETIK* ${command} pertanyaanmu\n*CONTOH* ${command} saya hidup ?`)
 					kapankah = body.slice(1)
@@ -1881,7 +1879,6 @@ return;
 					break
 			case `${prefix}rate`:
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply(`Yang di tanyakan apa ?\n*KETIK* ${command} pertanyaanmu\n*CONTOH* ${command} hidupku`)
 					rate = body.slice(1)
@@ -2606,7 +2603,6 @@ return;
 				case `${prefix}buy`:
 				case `${prefix}buylimit`:
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (args.length < 1) return reply(`* SELAMAT DATANG *\nSelamat datang\n\n\n*Harga*\nRp 1000 = 1 pesan\n\n*Cara Beli:*\n${prefix}buylimit ~jumlah limitnya~\n*Contoh:*\n${prefix}buylimit 5`)
 				payout = body.slice(10)
 				koinPerlimit = 1000
@@ -3244,7 +3240,6 @@ case prefix+'firework2':
             case prefix+'getaudio':
             case prefix+'getvn':
             	if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('Judulnya mana')
 				if (!listaudio.includes(qcilik)) return reply(`Kami tidak memiliki audio yang bernama ${q}`)
@@ -3261,7 +3256,6 @@ break
 			case prefix+'getstiker':
 			case prefix+'getsticker':
             	if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('Namanya apa ?')
 				if (!liststiker.includes(q)) return reply(`Kami tidak memiliki stiker yang bernama ${q}`)
@@ -4004,7 +3998,6 @@ o==[]::::::>
 				case `${prefix}uang`:
 				case `${prefix}money`:
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				cekdompet = checkATMuser(sender)
 				fitnah(`${nomerewa}`, `ISI DOMPET MU`, `* dompet *\n*Nama* : ${pushname}\n*Nomer* : ${sender.split("@")[0]}\n*Uang* : Rp ${cekdompet}\n`)
 				
@@ -4012,7 +4005,6 @@ o==[]::::::>
 			case `${prefix}gift.kuota `:
 				
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (args.length < 1) return reply(`* SELAMAT DATANG *\nSelamat datang\n\nSilahkan ketik\n${prefix}gift.kuota limit ~nomor~  ~jumlah kuota limit~\n*CONTOH*\n${prefix}gift.kuota limit 62895803265350 7`)
 				if (!isUser) return reply(`nomor tidak terdaftar`)
 				payout = (`-${args[1]}`)
@@ -4111,7 +4103,6 @@ o==[]::::::>
 					case prefix+'attp':
 					case prefix+'ttp':
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
 				let yosh = body.slice(6)
@@ -4335,7 +4326,6 @@ if (isBanned) return reply(ind.diban())
 					break
 				case prefix+'quotes2':
 				if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				 quotes = body.slice(1)
 				 const quo =['Lebih baik mengerti sedikit daripada salah mengerti.','Hampir semua pria memang mampu bertahan menghadapi kesulitan. Namun, jika Anda ingin menguji karakter sejati pria, beri dia kekuasaan.','Bila tekad seseorang kuat dan teguh, Tuhan akan bergabung dalam usahanya.','Penderitaan adalah pelajaran.','Ilmu pengetahuan tanpa agama adalah pincang.','Hidup itu seperti sebuah sepeda, agar tetap seimbang kita harus tetap bergerak.','Perbedaan masa lalu, sekarang, dan masa depan tak lebih dari ilusi yang keras kepala.','Sebuah meja, sebuah kursi, semangkuk buah, dan sebuah biola; apa lagi yang dibutuhkan agar seseorang bisa merasa bahagia?','Belas kasihanlah terhadap sesama, bersikap keraslah terhadap diri sendiri.','Cara paling baik untuk menggerakkan diri Anda ialah memberi tugas kepada diri sendiri.','Kita tidak boleh kehilangan semangat. Semangat adalah stimulan terkuat untuk mencintai, berkreasi dan berkeinginan untuk hidup lebih lama.','Manusia akan bahagia selama ia memilih untuk bahagia.','Saya tidak berharap menjadi segalanya bagi setiap orang. Saya hanya ingin menjadi sesuatu untuk seseorang.','Apabila sempurna akal seseorang, maka sedikit perkataannya.','Bahagialah orang yang dapat menjadi tuan untuk dirinya, menjadi kusir untuk nafsunya dan menjadi kapten untuk bahtera hidupnya.','Sahabat yang jujur lebih besar harganya daripada harta benda yang diwarisi dari nenek moyang.','Yang paling melelahkan dalam hidup adalah menjadi orang yang tidak tulus.','Terbuka untuk Anda, begitulah Tuhan memberi kita jalan untuk berusaha. Jangan pernah berfikir jalan sudah tertutup.','Penundaan adalah kuburan dimana peluang dikuburkan.','Cinta bukan saling menatap mata, namun melihat ke arah yang sama bersama-sama.','Kita adalah apa yang kita kerjakan berulang kali. Dengan demikian, kecemerlangan bukan tindakan, tetapi kebiasaan.','Jangan pernah mencoba menjadikan putra atau putri Anda menjadi seperti Anda. Diri Anda hanya cukup satu saja.','Jika Anda bisa membuat orang lain tertawa, maka Anda akan mendapatkan semua cinta yang Anda inginkan.','Masalah akan datang cepat atau lambat. Jika masalah datang, sambut dengan sebaik mungkin. Semakin ramah Anda menyapanya, semakin cepat ia pergi.','Kita tak bisa melakukan apapun untuk mengubah masa lalu. Tapi apapun yang kita lakukan bisa mengubah masa depan.','Kesabaran adalah teman dari kebijaksanaan.','Orang-orang kreatif termotivasi oleh keinginan untuk maju, bukan oleh keinginan untuk mengalahkan orang lain.','Dimanapun engkau berada selalulah menjadi yang terbaik dan berikan yang terbaik dari yang bisa kita berikan.','Kebencian seperti halnya cinta, berkobar karena hal-hal kecil.','Anda tidak perlu harus berhasil pada kali pertama.','Satu jam yang intensif, jauh lebih baik dan menguntungkan daripada bertahun-tahun bermimpi dan merenung-renung.','Hal terbaik yang bisa Anda lakukan untuk orang lain bukanlah membagikan kekayaan Anda, tetapi membantu dia untuk memiliki kekayaannya sendiri.','Tidak ada jaminan keberhasilan, tetapi tidak berusaha adalah jaminan kegagalan.','Aku tidak tahu kunci sukses itu apa, tapi kunci menuju kegagalan adalah mencoba membuat semua orang senang.']
@@ -4968,7 +4958,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					break
 			case `${prefix}daftar`:
                 if (isRegistered) return  reply(ind.rediregis())
-				if (isBanned) return reply(ind.diban())
                 if (!q.includes('|')) return  reply(`${prefix}daftar Rifki|16\n*itu contohnya*`)
                 const namaUser = q.substring(0, q.indexOf('|') - 0)
                 const umurUser = q.substring(q.lastIndexOf('|') + 1)
@@ -5002,7 +4991,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 			case prefix+'heleh':
 			case prefix+'holoh':
 				if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				hlh = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
@@ -5012,7 +5000,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				break
 			case prefix+'totalhuruf':
 				if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				ttlhrf = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
@@ -5179,7 +5166,6 @@ Speed: _${os.cpus()[0].speed}_` })
                 case `${prefix}hidetag`:
                 
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (!isGroup) return reply(ind.groupo())
 					var value = body.slice(9)
@@ -5200,7 +5186,6 @@ Speed: _${os.cpus()[0].speed}_` })
                 case `${prefix}quotemaker`:
                 
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 var gh = body.slice(12)
 					var quote = gh.split("|")[0];
@@ -5307,7 +5292,6 @@ if (isBanned) return reply(ind.diban())
 					break
 				case `${prefix}ytmp3`:
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.wrogf)
@@ -5319,7 +5303,6 @@ if (isBanned) return reply(ind.diban())
 					break
 				case `${prefix}fb`:
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Urlnya mana um?')
 					fbdl = await fetchJson(`http://lolhuman.herokuapp.com/api/facebook?apikey=${LolKey}&url=${q}`, {method: 'get'})
@@ -5357,7 +5340,6 @@ if (isBanned) return reply(ind.diban())
 					break
 			case prefix+'snack':
 				if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('Urlnya mana gan?')
 				if (!isUrl(args[0]) && !args[0].includes('sck')) return reply(mess.error.Iv)
@@ -5373,7 +5355,6 @@ if (isBanned) return reply(ind.diban())
                 break
 			case prefix+'soundcloud':
 				if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('Urlnya mana um?')
 				client.updatePresence(from, Presence.composing)
@@ -5639,7 +5620,6 @@ if (isBanned) return reply(ind.diban())
 			break
 				case prefix+'happymod':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzKey}`, {method: 'get'})
 			hupo = data.result[0] 
@@ -5650,7 +5630,6 @@ if (isBanned) return reply(ind.diban())
 			break
             case prefix+'bitly':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                client.updatePresence(from, Presence.composing) 
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/bitly?url=${args[0]}&apikey=${TobzKey}`, {method: 'get'})
@@ -5660,7 +5639,6 @@ if (isBanned) return reply(ind.diban())
                 break
             case prefix+'nangis':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
@@ -5677,7 +5655,6 @@ if (isBanned) return reply(ind.diban())
 					break
 				case prefix+'waifu':
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 						res = await fetchJson(`https://waifu.pics/api/nsfw/waifu`, {method: 'get'})
 						bufferm = await getBuffer(res.url)
@@ -5687,7 +5664,6 @@ if (isBanned) return reply(ind.diban())
 				case prefix+'waifu2':
 				
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					reply(ind.wait())
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/waifu?apikey=${TobzKey}`, {method: 'get'})
@@ -5701,7 +5677,6 @@ if (isBanned) return reply(ind.diban())
 				    try {
 					
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					
 						res = await fetchJson(`https://waifu.pics/api/sfw/cry`, {method: 'get'})
@@ -5733,7 +5708,6 @@ if (isBanned) return reply(ind.diban())
                 case prefix+'blowjoberror':
 				
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
@@ -5753,7 +5727,6 @@ if (isBanned) return reply(ind.diban())
 				    try {
 				
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 						res = await fetchJson(`https://waifu.pics/api/sfw/kiss`, {method: 'get'})
 						bufferv = await getBuffer(res.url)
@@ -5769,7 +5742,6 @@ if (isBanned) return reply(ind.diban())
 					case prefix+'cium':
 				
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
@@ -5787,7 +5759,6 @@ if (isBanned) return reply(ind.diban())
 					
 					case prefix+'peluk':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
@@ -5824,7 +5795,6 @@ if (isBanned) return reply(ind.diban())
            	 break
                 case prefix+'husbu':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				    try {
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/husbu?apikey=${TobzKey}`)
@@ -5839,7 +5809,6 @@ if (isBanned) return reply(ind.diban())
                 case prefix+'randomanime':
 				case prefix+'ranime':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					gatauda = body.slice(8)
 					reply(ind.wait())
@@ -5850,7 +5819,6 @@ if (isBanned) return reply(ind.diban())
 					break
 			case `${prefix}nekonime`:
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				    try {
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nekonime?apikey=${TobzKey}`, {method: 'get'})
@@ -5864,7 +5832,6 @@ if (isBanned) return reply(ind.diban())
 					break
 			case prefix+'wibu':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				
 					reply(ind.wait())
@@ -5877,7 +5844,6 @@ if (isBanned) return reply(ind.diban())
 					break
 			case prefix+'joox':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=${TobzKey}`, {method: 'get'})
                if (data.error) return reply(data.error)
@@ -5893,7 +5859,6 @@ if (isBanned) return reply(ind.diban())
 			case prefix+'meme':
                 
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					meme = await kagApi.memes()
 					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
@@ -6053,7 +6018,6 @@ if (isBanned) return reply(ind.diban())
             case prefix+'leaderboard':
 				case prefix+'lb':
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				_level.sort((a, b) => (a.xp < b.xp) ? 1 : -1)
 				uang.sort((a, b) => (a.uang < b.uang) ? 1 : -1)
@@ -6077,7 +6041,6 @@ if (isBanned) return reply(ind.diban())
 				case prefix+'mutual':
                 
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if (isGroup) return  reply( 'Command ini tidak bisa digunakan di dalam grup!')
                 anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
@@ -6088,7 +6051,6 @@ if (isBanned) return reply(ind.diban())
             case prefix+'next':
                 
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if (isGroup) return  reply( 'Command ini tidak bisa digunakan di dalam grup!')
                 anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
@@ -6100,7 +6062,6 @@ if (isBanned) return reply(ind.diban())
             
                 const googleQuery = body.slice(8)
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if(googleQuery == undefined || googleQuery == ' ') return reply(`*Hasil Pencarian : ${googleQuery}* tidak ditemukan`)
                 google({ 'query': googleQuery }).then(results => {
@@ -6118,7 +6079,6 @@ if (isBanned) return reply(ind.diban())
             case prefix+'virtexasli':
             	
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				reply(`Halo ${pushname} / ${namaneuser(sender)}\nWaktu � 5 detik lagi_\nBersiap siaplah`)
 				setTimeout( () => {
@@ -6129,7 +6089,6 @@ if (isBanned) return reply(ind.diban())
 			case prefix+'tulis': // BY MFARELS
                 
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if (args.length < 1) return reply(`Kirim Perintah ${command} Teks|Nama|Kelas-\n\n*Contoh :*\n${command} satu ditambah satu|Rifki|X`) // https://github.com/MFarelS/RajinNulis-BOT
                 arg = body.trim().split('|') // INSTALL IMAGEMAGICK KALO MAU WORK
@@ -6476,7 +6435,6 @@ tesseract.recognize(media, config)
 				case `${prefix}reboot`:
 				if (!isOwner) return reply(ind.ownerb())
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				try {
 					botdipateni = {
@@ -6510,7 +6468,6 @@ tesseract.recognize(media, config)
 				case prefix+'forceclose':
 				if (!isOwner) return reply(ind.ownerb())
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				try {
 					botdipateni = {
@@ -6638,7 +6595,6 @@ tesseract.recognize(media, config)
         case prefix+'tafsir': // ARUGAZ
             
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
             if (args.length == 1) return reply(`Kirim perintah *#tafsir [ Nama Surah ] [ Ayat ]*\nContoh : *#tafsir al-fatihah 2*`)
                 var responsh = await axios.get('https://raw.githubusercontent.com/ArugaZ/scraper-results/main/islam/surah.json')
@@ -6666,7 +6622,6 @@ tesseract.recognize(media, config)
             break
         	case prefix+'listonline':
         		if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (!isGroup) return reply(ind.groupo())
         		let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
@@ -6857,7 +6812,6 @@ tesseract.recognize(media, config)
             case `${prefix}creator`:
             	
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
             + `FN:${devName}\n`
@@ -6870,7 +6824,6 @@ vcard = 'BEGIN:VCARD\n'
            case `${prefix}setname`:
            	
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
                 if (!isGroup) return reply(ind.groupo()) 
 				try {
                 client.groupUpdateSubject(from, `${body.slice(9)}`)
@@ -6888,7 +6841,6 @@ vcard = 'BEGIN:VCARD\n'
           	      if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					client.updatePresence(from, Presence.composing)  
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
                 
 					kae = await client.chats.all()
 					teks = `${tanda}\n  *INI CHATKU* \n`
@@ -6902,7 +6854,6 @@ vcard = 'BEGIN:VCARD\n'
                case `${prefix}setdesc`:
                 
                     if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
                 if (!isGroup) return reply(ind.groupo())
                 client.groupUpdateDescription(from, `${body.slice(9)}`)
                 client.sendMessage(from, 'Succes, Ganti Deskripsi Grup', text, {quoted: mek})
@@ -7067,7 +7018,6 @@ vcard = 'BEGIN:VCARD\n'
 					break
 			case prefix+'afk': // by Slavyan
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                 if (isAfkOn) return reply(ind.afkOnAlready())
                 const reason = q ? q : '_Nggak punya alasan_'
@@ -7078,7 +7028,6 @@ vcard = 'BEGIN:VCARD\n'
 			case `${prefix}toimg`:
 			case `${prefix}stikimg`:
                 if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (!isQuotedSticker) return reply('tidak ada sticker')
 					reply(ind.wait())
@@ -7192,9 +7141,7 @@ vcard = 'BEGIN:VCARD\n'
 					await limitAdd(sender)
 					break
                 case `${prefix}leveling`:
-                
-                    if (!isRegistered) return reply(ind.noregis())
-				if (isBanned) return reply(ind.diban())
+				if (!isRegistered) return reply(ind.noregis())
                 if (args.length < 1) return reply('Boo :')
                 if (args[0] === 'on') {
                     if (isLevelingOn) return reply('*fitur level sudah aktif sebelum nya*')
