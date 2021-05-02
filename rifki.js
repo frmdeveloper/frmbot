@@ -107,7 +107,7 @@ dibanned = '3'
 sisabaterai = `belum diketahui`
 hematdaya = `belum diketahui`
 dicas = `belum diketahui`
-
+sampah = ''
 /*
 ]=====> INFO-INFO <=====[
 */
@@ -1269,7 +1269,7 @@ client.on('group-participants-update', async (anu) => {
 				reply(`WIDIH`)
 			}
 if (!isOnOff) return
-if (!isOwnerOnly) return
+if (!isOwnerOnly && !statusbot) return sampah.push('a')
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
