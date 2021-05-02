@@ -89,7 +89,6 @@ monosp = '```'
 prefix = '.'
 gantiprefix = ''
 blocked = []  
-batre = [] 
 limitawal = '70'
 memberlimit = '3'
 nggoroboguru = ''
@@ -955,9 +954,6 @@ client.on('group-participants-update', async (anu) => {
 		global.batteryLevelStr = json[2][0][1].value
 		global.batterylevel = parseInt(batteryLevelStr)
 		baterai = batterylevel
-		batre = []
-		statusbatre = json[2][0][1]
-		batre.push(statusbatre)
         if (json[2][0][1].live == 'true') dicas = 'ya'
         if (json[2][0][1].live == 'false') dicas = 'tidak'
         if (json[2][0][1].powersave == 'true') hematdaya = 'aktif'
