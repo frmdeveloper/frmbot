@@ -1270,7 +1270,6 @@ client.on('group-participants-update', async (anu) => {
 				reply(`WIDIH`)
 			}
 if (!isOnOff) return
-if (!isOwnerOnly) return
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
