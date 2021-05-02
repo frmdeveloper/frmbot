@@ -268,19 +268,7 @@ const donasi = `
 
 *「 KIRIM UANG 」*
 *•* Aplikasi Dana
-https://link.dana.id/minta/2o71z66ipu
-*•* BCA
-3901081615901727
-*•* BRI
-88810081615901727
-*•* BNI
-8810081615901727
-*•* Alfamart
-081615901727
-
-*Rekening A.N.* 81615901727
-*NB* _Min. Rp 10.000_
-agar bisa transfer ke rekening`
+https://link.dana.id/qr/3jstu95e`
 
 const edukasimenu = `
 ${head1} BELAJAR ${head2}
