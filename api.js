@@ -45,7 +45,7 @@ function kyun(seconds){
 }
 
 chain.add(
-  () => repeate = fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'}),
+  () => repeate = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'}),
   () => console.log(repeate.result)
 ).every(1000)
 
