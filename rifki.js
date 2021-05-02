@@ -1041,13 +1041,6 @@ client.on('group-participants-update', async (anu) => {
 			const isPromo = promo.includes(sender)
 			const isAfkOn = checkAfkUser(sender, _afk)
 			const isOnOff = statuson
-			const isOwnerOnly = {
-				if (statusbot) {
-					if (isOwner) return true
-				} else if (!statusbot) {
-    				return false
-    			}
-			}
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
