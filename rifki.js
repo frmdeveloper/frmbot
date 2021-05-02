@@ -2907,7 +2907,7 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: mek
   owgi = await client.downloadAndSaveMediaMessage(ted)
   tels = body.slice(7)
-  anu = = await imgbb(imgbbkey, owgi)
+  anu = await imgbb(imgbbkey, owgi)
   gambare = await getBuffer(anu.display_url)
   client.sendMessage(from, gambare, image, {quoted: mek, caption: `${anu.data.display_url}`})
 } else {
