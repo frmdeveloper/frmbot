@@ -1625,7 +1625,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 ]=====> SIMPLE MENU <=====[
 */			  case prefix+'stiker': 
 				case prefix+'sticker':
-				
 				    if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
@@ -1636,6 +1635,21 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
 						stikergif('./undefined.jpeg')
+						}
+					await limitAdd(sender)
+						break
+				case prefix+'stikerwm': 
+				case prefix+'stickerwm':
+				    if (!isRegistered) return reply(ind.noregis())
+				    if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						media = await client.downloadAndSaveMediaMessage(encmedia)
+						stikerwm('./undefined.jpeg', q)
+					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
+						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						const media = await client.downloadAndSaveMediaMessage(encmedia)
+						stikerwm('./undefined.jpeg', q)
 						}
 					await limitAdd(sender)
 						break
