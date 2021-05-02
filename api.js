@@ -53,6 +53,10 @@ chain.add(
 router.get('/heleh', (req, res) => {
 	res.send('HELEH')
 	})
+router.get('/repeatoff', (req, res) => {
+	chain.cancel()
+	res.send('chain dibatalkan')
+	})
 router.get('/japriwa', (req, res) => {
 	q = req.query.q
 	untuk = req.query.untuk
