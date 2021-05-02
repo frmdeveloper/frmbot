@@ -44,9 +44,13 @@ router.get('/heleh', (req, res) => {
 	res.send('HELEH')
 	})
 router.get('/japriwa', (req, res) => {
-	res.json({result:'mengirim'})
+	q = req.query.q
+	untuk = req.query.untuk
+	if (untuk.length == 0) return res.json({result:`UNTUK SIAPA ?`})
+	if (!untuk.includes('@')) return res.json({result:`FORMAT TUJUAN SALAH`})
+	res.json({result:`mengirim ke ${untuk.split('@')[0]}\n*isi pesan:* ${q}`})
 	.catch(e => {
-	res.json({result:'ERROR'})
+		res.json({result:'ERROR'})
 		})
 	})
 router.get('/login', (req, res) => {
