@@ -2883,8 +2883,8 @@ break
                                          if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
                                          ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
                                          owgi = await client.downloadAndSaveMediaMessage(ger)
-                                         anu = await fetchJson(`https://api.imgbb.com/1/upload?expiration=120&key=${imgbbkey}&image=${owgi}&name=frm_${tanggaltok}${jamtok}${menittok}`, {method: 'get'})
-                                        teks = `${anu.data.display_url}`
+                                         anu = = await imgbb(imgbbkey, owgi)
+                                        teks = `${anu.display_url}`
                                         ranp = getRandom('.gif')
                                         rano = getRandom('.webp')
                                         anu1 = `https://some-random-api.ml/canvas/triggered?avatar=${teks}`
@@ -2907,7 +2907,7 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
   ted = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: mek
   owgi = await client.downloadAndSaveMediaMessage(ted)
   tels = body.slice(7)
-  anu = await fetchJson(`https://api.imgbb.com/1/upload?expiration=120&key=${imgbbkey}&image=${owgi}&name=frm_${tanggaltok}${jamtok}${menittok}`, {method: 'get'})
+  anu = = await imgbb(imgbbkey, owgi)
   gambare = await getBuffer(anu.display_url)
   client.sendMessage(from, gambare, image, {quoted: mek, caption: `${anu.data.display_url}`})
 } else {
