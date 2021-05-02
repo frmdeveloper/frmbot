@@ -10,9 +10,11 @@ const {
    ReconnectMode,
    ProxyAgent,
    GroupSettingChange,
+   ChatModification,
    waChatKey,
    mentionedJid,
    processTime,
+   WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
 const { client } = require('./rifki.js')
 var express = require('express');
