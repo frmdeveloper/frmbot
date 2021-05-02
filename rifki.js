@@ -1277,7 +1277,7 @@ client.on('group-participants-update', async (anu) => {
 				reply(`WIDIH`)
 			}
 if (!isOnOff) return
-if (!statusbot && !isOwner) return
+if (statusbot && !isOwner) return
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
