@@ -2987,9 +2987,6 @@ har = body.slice(12)
 reply('「❗」Hirti Tihti Tai Anjg :v')
 tahta = await getBuffer(`https://api.vhtear.com/hartatahta?text=${q}&apikey=${VhtearKey}`)
 client.sendMessage(from, tahta, image, {quoted: mek})
-exec(`cwebp -q 75 tahta -o ./sampah/tahta_${sender.split('@')[0]}.webp`)
-stiketahta = fs.readFileSync(`./sampah/tahta_${sender.split('@')[0]}.webp`)
-client.sendMessage(from, stiketahta, sticker, {quoted: mek})
 await limitAdd(sender)
 break
 case prefix+'cphlogo':
