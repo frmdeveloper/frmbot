@@ -1269,7 +1269,7 @@ client.on('group-participants-update', async (anu) => {
 				reply(`WIDIH`)
 			}
 if (!isOnOff) return
-if (!isOwnerOnly && !statusbot) return sampah.push('a')
+if (isOwnerOnly && !statusbot) return sampah.push('a')
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
