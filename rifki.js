@@ -4996,8 +4996,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 kontak terblokir kadang error
 *❀ Total Chat:*
 ╰> ${totalchat.length}
-*❀ Total pengguna:*
-╰> ${_registered.length}
 *❀ Lama bot aktif:*
 ╰> ${kyun(uptime)}
 *❀ PP Bot:*
