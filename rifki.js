@@ -4973,8 +4973,8 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 			case `${prefix}donate`:
 			case `${prefix}menyumbang`:
                     if (!isRegistered) return reply(ind.noregis())
-					reply(donasi)
-					client.sendMessage(from, fs.readFileSync(`./fauzan.rifki.m/qrdanafrm.webp`), sticker, {quoted:mek})
+					await reply(donasi)
+					await client.sendMessage(from, fs.readFileSync(`./fauzan.rifki.m/qrdanafrm.webp`), sticker, {quoted:mek})
 					break
 				case prefix+'runtime':
 					if (!isRegistered) return reply(ind.noregis())
