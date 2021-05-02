@@ -84,7 +84,6 @@ gaya3 = '╰═─⊱'
 katasandi = 'FRMbot'
 nomerewa = ["0@s.whatsapp.net"]
 masaaktif = '1'
-jam1hari = '24'
 monosp = '```'
 prefix = '.'
 gantiprefix = ''
@@ -3765,6 +3764,7 @@ ${prefix}kerja
 					break
 				case prefix+'sisa.hari':
 				case prefix+'sisahari':
+					jam1hari = '24'
 					sakjamberapamenit = '60'
 					sakhariberapamenit = '1440'
 					sisojam = jam1hari - jamtok
