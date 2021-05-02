@@ -7118,4 +7118,4 @@ njokdisave = 'BEGIN:VCARD\n'
 		}
 	})
 
-exports.client = client
+module.exports.client = client
