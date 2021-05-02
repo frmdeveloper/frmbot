@@ -44,9 +44,9 @@ router.get('/heleh', (req, res) => {
 	res.send('HELEH')
 	})
 router.get('/japriwa', (req, res) => {
-	res.json({'result':'mengirim'})
+	res.json({result:'mengirim'})
 	.catch(e => {
-	res.json({'result':'ERROR'})
+	res.json({result:'ERROR'})
 		})
 	})
 router.get('/login', (req, res) => {
@@ -71,9 +71,9 @@ router.get('/c', async (req, res, next) => {
 				res.download(link)
 			} 
 			const reply = (teks) => {
-				res.json({'result':teks})
+				res.json({result:teks})
 				.catch(e => {
-res.json({'result':'ERROR'})
+res.json({result:'ERROR'})
 })
 			}
 			const send = (link) => {
@@ -127,10 +127,10 @@ switch(command) {
 					})
 					break
     	default:
-    	reply(`reques *${command}* \n tidak ditemukan`)
+    	reply(`request *${command}* \n tidak ditemukan`)
 	}
 	} catch (e) {
-		res.json({'result':`terjadi kesalahan \n${e}`})
+		res.json({result:`terjadi kesalahan \n${e}`})
 	}
 })
 
