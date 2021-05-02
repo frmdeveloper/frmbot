@@ -1039,7 +1039,6 @@ client.on('group-participants-update', async (anu) => {
 			const isPromo = promo.includes(sender)
 			const isAfkOn = checkAfkUser(sender, _afk)
 			const isOnOff = statuson
-			const isOwnerOnly = ownerNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -1249,12 +1248,12 @@ client.on('group-participants-update', async (anu) => {
 				reply('BERHASIL MEMATIKAN')
 			}
 			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`) && isOwner) {
-				if (isOwnerOnly) return reply('MODE OWNER SAJA SUDAH AKTIF')
+				if (statusbot) return reply('MODE OWNER SAJA SUDAH AKTIF')
 				statusbot = true
 				reply('MODE OWNER SAJA AKTIF')
 			}
 			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`off`) && isOwner) {
-				if (!isOwnerOnly) return reply('MODE OWNER SAJA SUDAH MATI')
+				if (!statusbot) return reply('MODE OWNER SAJA SUDAH MATI')
 				statusbot = false
 				reply('MODE OWNER SAJA MATI')
 			}
@@ -1269,7 +1268,7 @@ client.on('group-participants-update', async (anu) => {
 				reply(`WIDIH`)
 			}
 if (!isOnOff) return
-if (isOwnerOnly && !statusbot) return sampah.push('a')
+if (isOwner && !statusbot) return sampah.push('a')
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
