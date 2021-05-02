@@ -5504,7 +5504,7 @@ function ytv(url) {
 					await limitAdd(sender)
 					break
 			    case `${prefix}map`:
-				if (!isRegistered) return reply(ind.noregis())
+					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
                	 anu = await fetchJson(`https://mnazria.herokuapp.com/api/maps?search=${body.slice(5)}`, {method: 'get'})
                 	buffer = await getBuffer(anu.gambar)
@@ -5513,8 +5513,7 @@ function ytv(url) {
 					await limitAdd(sender)
 					break
 				case `${prefix}kbbi`:
-             	   
-                    if (!isRegistered) return reply(ind.noregis())
+					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply('Apa yang mau dicari um?')
 					try {
