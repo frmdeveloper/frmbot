@@ -34,9 +34,11 @@ const {
    ReconnectMode,
    ProxyAgent,
    GroupSettingChange,
+   ChatModification,
    waChatKey,
    mentionedJid,
    processTime,
+   WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
 const qrcode = require("qrcode-terminal") 
 const moment = require("moment-timezone") 
