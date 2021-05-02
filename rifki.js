@@ -5051,7 +5051,7 @@ _${sisabaterai}_
 *❀ Penghemat Baterai: ❀*
 _${hematdaya}_
 *❀ Dicas: ❀*
-_${dicas}_
+_${dicas}_`
 					
 //INFO TERMINAL
 client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Ping Internet:*
