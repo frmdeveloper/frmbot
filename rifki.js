@@ -255,18 +255,22 @@ ${gaya1}
 ${gaya3}`
 
 const donasi = `
-*「 KIRIM PULSA 」*
+*「 PULSA 」*
 *•* indosat
 081615901727
 *•* three
 0895803265350
-
 *══════════*
 *══════════*
-
-*「 KIRIM UANG 」*
+*「 UANG 」*
 *•* Aplikasi Dana
-https://link.dana.id/qr/3jstu95e`
+081615901727
+https://link.dana.id/qr/3jstu95e
+*══════════*
+*══════════*
+*「 REFF 」*
+*•* Tiktok Lite
+https://vm.tiktok.com/ZSJAnRtgx/`
 
 const edukasimenu = `
 ${head1} BELAJAR ${head2}
