@@ -43,7 +43,7 @@ function kyun(seconds){
 }
 
 router.get('/heleh', (req, res) => {
-	res.json({result:'HELEH'})
+	res.json({result:'heleh terdeteksi'})
 	})
 router.get('/repeatoff', (req, res) => {
 	chain.cancel()
