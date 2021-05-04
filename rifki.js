@@ -857,7 +857,7 @@ function kyun(seconds){
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
 
-function refresh() {
+refresh = async() => {
 	heleh = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
 	console.log(heleh.result)
 }
