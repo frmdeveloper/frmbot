@@ -45,7 +45,7 @@ function kyun(seconds){
 }
 
 chain.add(
-  () => await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'}),
+  () => await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
 ).every(1000)
 
 router.get('/heleh', (req, res) => {
