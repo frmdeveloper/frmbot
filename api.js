@@ -16,7 +16,7 @@ const {
    processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
-const { client } = require('./rifki.js')
+const { japrivialink } = require('./rifki.js')
 var express = require('express');
 var router = express.Router();
 const moment = require("moment-timezone") 
