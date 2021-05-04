@@ -52,7 +52,7 @@ router.get('/japriwa', (req, res) => {
 	if (untuk.length == 0) return res.json({result:`UNTUK SIAPA ?`})
 	if (!untuk.includes('@')) return res.json({result:`FORMAT TUJUAN SALAH`})
 	res.json({result:`mengirim ke ${untuk.split('@')[0]}\n*isi pesan:* ${q}`})
-	client.sendMessage(untuk, q, MessageType.text)
+	japrivialink(untuk, q)
 	.catch(e => {
 		res.json({result:'ERROR'})
 		})
