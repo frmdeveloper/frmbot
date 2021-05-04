@@ -51,6 +51,7 @@ router.get('/japriwa', (req, res) => {
 	if (!untuk) return res.json({result:`silahkan tambahkan parameter untuk`})
 	if (untuk.length == 0) return res.json({result:`UNTUK SIAPA ?`})
 	if (!untuk.includes('@s.whatsapp.net') || !untuk.includes('@g.us')) return res.json({result:`FORMAT TUJUAN SALAH`})
+	if (untuk.includes('@g.us') && !untuk.includes('-')) return res.json({result:`FORMAT TUJUAN GRUP SALAH`})
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
 	res.json({result:`mengirim ke ${untuk.split('@')[0]}\n*isi pesan:* ${q}`})
