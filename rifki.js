@@ -976,6 +976,8 @@ client.on('group-participants-update', async (anu) => {
 			if (mek.key.fromMe) return
 			global.prefix
 			global.blocked
+			heleh = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
+			console.log(heleh.result)
 			const me = client.user
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
