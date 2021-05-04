@@ -45,10 +45,6 @@ function kyun(seconds){
 router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
-router.get('/repeatoff', (req, res) => {
-	chain.cancel()
-	res.send('chain dibatalkan')
-	})
 router.get('/japriwa', (req, res) => {
 	q = req.query.q
 	untuk = req.query.untuk
