@@ -3290,7 +3290,7 @@ break
 					reply(`*stderr:*\nmiringkan hpmu\n\n${monosp}${stderr}${monosp}`);
 					});
 				break
-				case 'shutdown':
+				case prefix+'shutdown':
             		if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (!isOwner) return reply(ind.ownerb())
