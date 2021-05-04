@@ -18,11 +18,6 @@ app.use('/', apirouter)
 app.listen(PORT, () => {
     console.log(color("Server running on port " + PORT,'green'))
 })
-reload(app).then(function (reloadReturned) {
-	console.log('APP DIREFRESH')
- }).catch(function (err) {
-  console.error('Reload could not start, could not start server/sample app', err)
-}) 
 
 const dropboxV2Api = require('dropbox-v2-api')
 const dropbox = dropboxV2Api.authenticate({
