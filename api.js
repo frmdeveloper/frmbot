@@ -44,10 +44,6 @@ function kyun(seconds){
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
 
-chain.add(
-  () => await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
-).every(1000)
-
 router.get('/heleh', (req, res) => {
 	res.json({result:'HELEH'})
 	})
