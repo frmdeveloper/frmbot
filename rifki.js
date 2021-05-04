@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8080 || 5000 || 3000
 var { color } = require('./lib/color')
 var apirouter = require('./api.js')
 var app = express()
+var reload = require('reload')
 app.enable('trust proxy');
 app.set("json spaces",2)
 app.use(cors())
@@ -17,6 +18,11 @@ app.use('/', apirouter)
 app.listen(PORT, () => {
     console.log(color("Server running on port " + PORT,'green'))
 })
+reload(app).then(function (reloadReturned) {
+	console.log('APP DIREFRESH')
+ }).catch(function (err) {
+  console.error('Reload could not start, could not start server/sample app', err)
+}) 
 
 const dropboxV2Api = require('dropbox-v2-api')
 const dropbox = dropboxV2Api.authenticate({
