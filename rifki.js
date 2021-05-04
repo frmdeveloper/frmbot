@@ -856,6 +856,11 @@ function kyun(seconds){
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
+
+function refresh() {
+	heleh = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
+	console.log(heleh.result)
+}
 /*
 ]=====> SCAN QR <=====[
 */
@@ -971,8 +976,7 @@ client.on('group-participants-update', async (anu) => {
 			if (mek.key.fromMe) return
 			global.prefix
 			global.blocked
-			heleh = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
-			console.log(heleh.result)
+			refresh()
 			const me = client.user
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
