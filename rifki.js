@@ -261,12 +261,10 @@ const donasi = `
 *•* three
 0895803265350
 *══════════*
-*══════════*
 *「 UANG 」*
-*•* Aplikasi Dana
+*•* Dana
 081615901727
 https://link.dana.id/qr/3jstu95e
-*══════════*
 *══════════*
 *「 REFF 」*
 *•* Tiktok Lite
