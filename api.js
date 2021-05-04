@@ -29,8 +29,6 @@ const { spawn, exec } = require("child_process")
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { bgcolor, color } = require('./lib/color')
-let { Chain } = require('repeat')
-let chain = new Chain()
 
 function kyun(seconds){
   function pad(s){
