@@ -7140,4 +7140,5 @@ njokdisave = 'BEGIN:VCARD\n'
 	})
 
 exports.japrivialink = japrivialink = async (tujuan, pesan) => {
-	client.sendMessage(tujuan, pesan, MessageType.text, {quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_Notifikasi grup_` }}})
+	client.sendMessage(tujuan, pesan, MessageType.text, {quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_FRM BOT_` }}})
+}
