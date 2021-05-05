@@ -5182,13 +5182,11 @@ Speed: _${os.cpus()[0].speed}_` })
 					await limitAdd(sender)
 					break
 				case prefix+'ytmp4':
-                case 'ytmp4':
-                   case 'ytv':
-			if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
+                   case prefix+'ytv':
+			if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 ~linknya~*`)
 			let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-			if (!isLinks2) return reply(mess.error.link)
+			if (!isLinks2) return reply(`LINK SALAH`)
 				try {
-				reply(mess.wait)
 				ytv(args[0])
 				.then((res) => {
 				const { dl_link, thumb, title, filesizeF, filesize } = res
@@ -5197,11 +5195,11 @@ Speed: _${os.cpus()[0].speed}_` })
 				if (Number(filesize) >= 40000) return sendMediaURL(from, thumb, `*YTMP 4!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
 				const captionsYtmp4 = `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 				sendMediaURL(from, thumb, captionsYtmp4)
-				sendMediaURL(from, dl_link).catch(() => reply(mess.error.link))
+				sendMediaURL(from, dl_link).catch(() => reply(`ERROR`))
 				})		
 				})
 				} catch (err) {
-			    reply(mess.error.link) 
+			    reply(`ERROR`) 
 				}
 				break
                 case `${prefix}ytmp4`:
@@ -5266,12 +5264,12 @@ Speed: _${os.cpus()[0].speed}_` })
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 				if (args.length < 1) return reply('Urlnya mana gan?')
-				if (!isUrl(args[0]) && !args[0].includes('sck')) return reply(mess.error.Iv)
+				if (!isUrl(args[0]) && !args[0].includes('sck')) return reply(`ERROR`)
                 anu = await fetchJson(`https://api-anoncybfakeplayer.herokuapp.com/sckdown?url=${args[0]}`, {method: 'get'})
                if (anu.error) return reply(anu.error)
                  sck = `「 *SNACK VIDEO DOWNLOADER* 」\n\n*• Format:* ${anu.format}\n*• Size:* ${anu.size}\n\n*TUNGGU SEBENTAR LAGI DIKIRIM MOHON JANGAN SPAM*`
                 bufferddd = await getBuffer('https://raw.githubusercontent.com/azizae-official/aebot/main/src/glitchtext.png')
-                 reply(mess.wait)
+                 reply(`ERROR`)
                 buff = await getBuffer(anu.result)
                 client.sendMessage(from, bufferddd, image, {quoted: mek, caption: sck})
                 client.sendMessage(from, buff, video, {mimetype: 'video/mp4', filename: `${anu.format}.mp4`, quoted: mek})
