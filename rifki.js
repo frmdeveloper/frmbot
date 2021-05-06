@@ -3773,16 +3773,14 @@ ${prefix}kerja
 				case prefix+'bug':
 				case prefix+'lapor':
 				case prefix+'report':
+				case prefix+'bugreport':
 					if (!isRegistered) return reply(ind.noregis())
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					if (args.length < 1) return reply(`Pesan mu mana ?`)
 					reply(`Mengirim laporan bug ke wa.me/${nomowner}\n*Dengan pesan*\n${q}`)
-					client.updatePresence(`${ownerNumber}`, Presence.composing)
 					client.sendMessage(`${ownerNumber}`, `${q}`, text, {quoted: mek})
-					client.updatePresence(`${ownerNumber}`, Presence.composing)
 					client.sendMessage(`${ownerNumber}`, `untuk membalas silahkan gunakan pesan di bawah ini`, text, {quoted: mek})
-					client.updatePresence(`${ownerNumber}`, Presence.composing)
-					client.sendMessage(`${ownerNumber}`, `${prefix}balas ${sender} ${from}| ~pesanmu~`, text, {quoted: mek})
+					faketag(`${ownerNumber}`, `${sender}`, `${prefix}balas ${sender} ${from}| ~pesanmu~`, text, {quoted: mek})
 					break
 				case prefix+'balas':
 					if (!isRegistered) return reply(ind.noregis())
