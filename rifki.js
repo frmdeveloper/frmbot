@@ -887,6 +887,11 @@ console.log(banner.string)
 		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
 	})
 	client.connect({timeoutMs: 30*1000})
+	
+	client.on('contacts-received', () => {
+		client.sendMessage(client.user.jid, 'you have ' + Object.keys(client.contacts).length + ' contacts', MessageType.text)
+        console.log('you have ' + Object.keys(client.contacts).length + ' contacts')
+    })
 
 client.on('group-participants-update', async (anu) => {
 			const mdata = await client.groupMetadata(anu.jid)
