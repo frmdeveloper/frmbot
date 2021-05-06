@@ -3780,7 +3780,7 @@ ${prefix}kerja
 					reply(`Mengirim laporan bug ke wa.me/${nomowner}\n*Dengan pesan*\n${q}`)
 					client.sendMessage(`${ownerNumber}`, `${q}`, text, {quoted: mek})
 					client.sendMessage(`${ownerNumber}`, `untuk membalas silahkan gunakan pesan di bawah ini`, text, {quoted: mek})
-					faketag(`${ownerNumber}`, `${sender}`, `${prefix}balas ${sender} ${from}| ~pesanmu~`, text, {quoted: mek})
+					faketag(`${ownerNumber}`, `${sender}`, `LAPORAN BUG DARI ${pushname}`, `${prefix}balas ${sender} ${from}| ~pesanmu~`, text, {quoted: mek})
 					break
 				case prefix+'balas':
 					if (!isRegistered) return reply(ind.noregis())
