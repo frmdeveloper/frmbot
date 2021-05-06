@@ -870,13 +870,9 @@ refresh = async() => {
 const client = new WAConnection()
 client.logger.level = 'warn'
 console.log(banner.string)
-   client.on('qr', () => {
-	console.log(color('[','white'), color('!','red'), color(']','white'), color(' SCAN KODE QR DIATAS, PAKAI WHATSAPP'))
-})
 
-	client.on('credentials-updated', () => {
-		fs.writeFileSync('./FRMbotLOGIN.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
-		console.log('ingfokan cuyy...')
+	client.on('qr', () => {
+	console.log(color('[','white'), color('!','red'), color(']','white'), color(' SCAN KODE QR DIATAS, PAKAI WHATSAPP'))
 	})
 	fs.existsSync('./FRMbotLOGIN.json') && client.loadAuthInfo('./FRMbotLOGIN.json')
 	client.on('connecting', () => {
