@@ -16,7 +16,7 @@ const {
    processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
-const { japrivialink } = require('./rifki.js')
+const rifki = require('./rifki.js')
 var express = require('express');
 var router = express.Router();
 const moment = require("moment-timezone") 
@@ -55,7 +55,7 @@ router.get('/japriwa', (req, res) => {
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
 	res.json({result:`mengirim ke ${untuk.split('@')[0]}\n*isi pesan:* ${q}`})
-	japrivialink(untuk, q)
+	rifki(untuk, q)
 	.catch(e => {
 		res.json({result:'ERROR'})
 		})
