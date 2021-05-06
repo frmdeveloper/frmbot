@@ -520,6 +520,7 @@ ${gaya2} ${prefix}setdesc ~desk grup~
 ${gaya2} ${prefix}tagall
 ${gaya2} ${prefix}tagme
 ${gaya2} ${prefix}ubah.ikon
+${gaya2} ${prefix}ubahlinkgrup
 ${gaya1}
 ${gaya3}`
 
@@ -2046,6 +2047,13 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 /*
 ]=====> MENU GRUP <=====[
 */		 
+				case prefix+'ubahlinkgrup':
+				case prefix+'revokelinkgroup':
+					if (!isRegistered) return reply(ind.noregis())
+					if (!isGroup) return reply(ind.groupo())
+					editlinkgrup = await client.revokeInvite(from)
+					reply(`Link grup diubah menjadi https://chat.whatsapp.com/${editlinkgrup.code}`)
+					break
 				case `${prefix}welcome`:
 				case `${prefix}notifgrup`:
                     if (!isRegistered) return reply(ind.noregis())
