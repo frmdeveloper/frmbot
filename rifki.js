@@ -7137,7 +7137,7 @@ njokdisave = 'BEGIN:VCARD\n'
 		}
 	})
 
-exports.japrivialink = japrivialink = async (tujuan, pesan) => {
+module.exports = function (tujuan, pesan) => {
 	console.log(`mengirim pesan lewat link ke ${tujuan}`)
 	client.sendMessage(tujuan, pesan, MessageType.text, {quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_FRM BOT_` }}})
 }
