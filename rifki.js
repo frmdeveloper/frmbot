@@ -515,6 +515,7 @@ ${gaya2} ${prefix}nsfw off
 ${gaya2} ${prefix}pengumuman ~teks~
 ${gaya2} ${prefix}peringatan ~teks~
 ${gaya2} ${prefix}promote
+${gaya2} ${prefix}rusak
 ${gaya2} ${prefix}setname ~nama grup~
 ${gaya2} ${prefix}setdesc ~desk grup~
 ${gaya2} ${prefix}tagall
@@ -2047,12 +2048,20 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 /*
 ]=====> MENU GRUP <=====[
 */		 
+				case prefix+'rusak':
+					if (!isRegistered) return reply(ind.noregis())
+					await client.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL)
+					await reply(`Hello gan!`)
+					await client.toggleDisappearingMessages(from, 0)
+					await limitAdd(sender)
+					break
 				case prefix+'ubahlinkgrup':
 				case prefix+'revokelinkgroup':
 					if (!isRegistered) return reply(ind.noregis())
 					if (!isGroup) return reply(ind.groupo())
 					editlinkgrup = await client.revokeInvite(from)
 					reply(`Link grup diubah menjadi https://chat.whatsapp.com/${editlinkgrup.code}`)
+					await limitAdd(sender)
 					break
 				case `${prefix}welcome`:
 				case `${prefix}notifgrup`:
