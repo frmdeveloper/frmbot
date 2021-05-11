@@ -932,7 +932,7 @@ client.on('group-participants-update', async (anu) => {
 	client.on('CB:action,,call', async json => {
     const callerId = json[2][0][1].from;
     console.log("call dari "+ callerId)
-        await client.sendMessage(callerId, `Jangan melakukan panggilan suara dengan bot, silahkan lakukan pamggilan suara dengan wa.me/${nomowner}\nOKE`, MessageType.text)
+        await client.sendMessage(callerId, `Jangan menelepon bot, kami akan memblokir nomor anda.`, MessageType.text)
         await client.blockUser(callerId, "add")
 })
 	
