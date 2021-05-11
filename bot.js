@@ -2295,7 +2295,7 @@ case prefix+'artinama':
 				case prefix+'hidetumb':
 				case prefix+'hidetum':
 					if (isMedia || isQuotedSticker) {
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					if (!q) return reply('textnya apa brohh')
 					client.sendMessage(from, `${q}`,
