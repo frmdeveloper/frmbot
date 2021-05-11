@@ -4263,14 +4263,14 @@ Speed: _${os.cpus()[0].speed}_` })
 					client.updatePresence(from, Presence.recording)
 					ytmp3 = await fetchJson(`https://st4rz.herokuapp.com/api/yta2?url=${q}`, {method: 'get'})
 					ytmp3dl = await getBuffer(ytmp3.result)
-					client.sendMessage(from, ytmp3dl, audio, {mimetype: 'audio/mpeg', filename: `FRM`, quoted: mek})
+					client.sendMessage(from, ytmp3dl, audio, {mimetype: 'audio/mpeg', filename: `FRM.mp4`, quoted: mek})
 					break
 				case `${prefix}fb`:
                     
 				if (args.length < 1) return reply('Urlnya mana um?')
 					fbdl = await fetchJson(`http://lolhuman.herokuapp.com/api/facebook?apikey=${LolKey}&url=${q}`, {method: 'get'})
 					hasilfbdl = await getBuffer(fbdl.result[1].link)
-					client.sendMessage(from, hasilfbdl, video, {mimetype: 'video/mp4', filename: `FRM`, quoted: mek, caption: 'nih'})
+					client.sendMessage(from, hasilfbdl, video, {mimetype: 'video/mp4', filename: `FRM.mp4`, quoted: mek, caption: 'nih'})
 					break
 				case prefix+'fbdl':
 					fbdl.getInfo("https://www.facebook.com/111683913906599/posts/195671178841205/")
