@@ -418,7 +418,6 @@ NB: Tanda kurung itu info
 
 const cekmenu = `
 ${head1} MENU PENGECEKAN ${head2}
-${gaya2} *123#
 ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}banlist
@@ -3041,27 +3040,6 @@ ${grupmenu}
 ${makermenu}
 ${makermenu2}`)
 					break
-				case '*123#':
-                    
-					reply(`Kode USSD berjalan...`)
-					setTimeout( () => {
-					
-					reply(`*${sender.split("@")[0]} Saldo Rp ${checkATMuser(sender)} s.d null*
-
-${prefix}level
-${prefix}limit
-${prefix}mining
-${prefix}belikuota limit ~jumlah~
-${prefix}buylimit ~jumlah~
-${prefix}kerja
-
-
-
-*════════════*`)
-					}, 2000) // 1000 = 1s,
-					promo.push(sender)
-						fs.writeFileSync('./database/bot/promo.json', JSON.stringify(promo))
-					break
 				case prefix+'bug':
 				case prefix+'lapor':
 				case prefix+'report':
@@ -3089,41 +3067,6 @@ ${prefix}kerja
 					sisonejamtambahmenit = sisomenit - menittok
 					reply(`Sisa hari di indonesia bagian barat adalah \n${sisojam} jam *atau* ${sisonejamtambahmenit} menit`)
 					break
-				case prefix+'1k10':
-                    if (!isPromo) return reply(`Maaf, kamu tidak dapat menggunakan promo ini. Silahkan coba lagi nanti`)
-					if (args.length < 1) return reply(`kuota limit bot murah, Rp 1000 dapat 10 pesan untuk 1 hari\nuntuk membeli silahkan ketik 1k10 y`)
-					if (args[0] === 'y') {
-					if ( checkATMuser(sender) <= '1000') return reply(`maaf uang kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
-						confirmATM(sender, '1000')
-						bayarLimit(sender, '10')
-						fitnah(`${nomerewa}`, `* PEMBELIAN kuota limit BERHASIL *`, `*PEMBELIAN kuota limit*\n\n\n*Penerima* : ${namaneuser(sender)}\n*nominal pembelian* : 5 pesan\n *harga kuota limit* : Rp 1000\n *Sisa saldo mu* : Rp ${checkATMuser(sender)}\n\n\n${createSerial(15)}`)
-				  }
-					promo.splice(sender, 1)
-						fs.writeFileSync('./database/bot/promo.json', JSON.stringify(promo))
-					break
-				case prefix+'free5k':
-                    if (!isPromo) return reply(`Maaf, kamu tidak dapat menggunakan promo ini. Silahkan coba lagi nanti`)
-					if (args.length < 1) return reply(`saldo gratis untuk kamu, Rp 5000.\nMau? ketik free5k y`)
-					if (args[0] === 'y') {
-                      addKoinUser(sender, '5000')
-                      dompetisi = checkATMuser(sender)
-                      fitnah(`${nomerewa}`, `berhasil`, `Pembelian saldo Rp 5000 dengan biaya Rp 0 berhasil. Silahkan ketik *123# lalu kirim`)
-                     }
-                     promo.splice(sender, 1)
-						fs.writeFileSync('./database/bot/promo.json', JSON.stringify(promo))
-                     break
-				case prefix+'listuser':
-                    listuser = `*PENGGUNA BOT INI*\nJumlah: ${_registered.length}\nMạ.af kan saya\n\n`
-					for (let listuser1 of _registered) {
-						listuser += `*Nama:* ${listuser1.name}
-*Umur:* ${listuser1.age}
-*No. Wa:* ${listuser1.id.split("@")[0]}
-*Waktu daftar:* ${listuser1.time}
-*No. SN:* ${listuser1.serial}\n\n`
-					}
-					listuser += `\nBot by Fauzan Rifki Maulana\nMạ.af saya telah membocorkan`
-					reply(listuser.trim())
-					break
 				case prefix+'listaudio':
 					listaudionya = `*DAFTAR AUDIO YANG TERSIMPAN*\n\n`
 					for (let listaudione of listaudio) {
@@ -3143,9 +3086,6 @@ ${prefix}kerja
 						liststikernya += `\n*SELESAI*`
 					reply(liststikernya.trim())
 					reply(`*CARA AMBIL*\nCukup ketik *${prefix}getstik ~nama stiker~*, lalu kirim\n\n*NB:* _perhatikan huruf besar kecil nya, harus sama_`)
-					break
-				case `*${body.slice(1).split("#")[0]}#`:
-                    fitnah(`${sender}`, `${tanda}`, `Kode MMI *${body.slice(1).split("#")[0]}# ada masalah sambungan atau kode MMI tidak berlaku`)
 					break
 				case `${prefix}makermenu`:
                     reply(`${makermenu}`)
