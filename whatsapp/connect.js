@@ -32,5 +32,5 @@ console.log(banner.string)
 		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
 	})
 	client.connect({timeoutMs: 30*1000})
-    return xinz
+    return client
 }
