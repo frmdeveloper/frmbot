@@ -1338,10 +1338,24 @@ ${monosp} sq        Albanian
  	       }
  
 			
-            if (checkAfkUser(sender, _afk) && !isCmd) {
-                _afk.splice(getAfkPosition(sender, _afk), 1)
+            //AFK NGULI
+
+             if (isGroup) {
+            mentioneddd = mek.message[Object.keys(mek.message)[0]].contextInfo ? mek.message[Object.keys(mek.message)[0]].contextInfo.mentionedJid : []
+            for (let ment of mentioneddd) {
+                if (checkAfkUser(ment)) {
+                    const getId = getAfkId(ment)
+                    const getReason = getAfkReason(getId)
+                    const getTime = getAfkTime(getId)
+                    reply(ind.afkMentioned(getReason, getTime))
+                }
+            }
+                }
+            
+            if (checkAfkUser(sender)) {
+                _afk.splice(getAfkPosition(sender.id, _afk), 1)
                 fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
-                reply(ind.afkDone(namaneuser(sender)))
+                	client.sendMessage(from, ind.afkDone(pushname), text)
             }
 
 			colors = ['red','white','black','blue','yellow','green']
