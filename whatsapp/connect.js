@@ -5,7 +5,6 @@ YANG PASTINYA BANYAK COPY PASTE
 OKE TERIMA KASIH
 */
 const { WAConnection, MessageType } = require("@adiwajshing/baileys")
-const qrcode = require("qrcode-terminal")
 const fs = require('fs')
 const { color } = require('../lib/color')
 
