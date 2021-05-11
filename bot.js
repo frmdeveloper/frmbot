@@ -350,6 +350,7 @@ ${gaya2} ${prefix}gemuk (geser vn)
 ${gaya2} ${prefix}glitchtext ~teks~
 ${gaya2} ${prefix}greenneon ~teks~
 ${gaya2} ${prefix}halloweentext ~teks~
+${gaya2} ${prefix}hidethumb ~teks~
 ${gaya2} ${prefix}halah (geser pesan teks)
 ${gaya2} ${prefix}hilih (geser pesan teks)
 ${gaya2} ${prefix}huluh (geser pesan teks)
@@ -2552,7 +2553,10 @@ case prefix+'artinama':
 /*
 ]=====> MAKER MENU <=====[
 */
-				case 'ephemeral'://DhyZx:v
+				case prefix+'hidethumb'://DhyZx:v
+				case prefix+'hidethum':
+				case prefix+'hidetumb':
+				case prefix+'hidetum':
 					if (isMedia || isQuotedSticker) {
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 					media = await client.downloadAndSaveMediaMessage(encmedia)
