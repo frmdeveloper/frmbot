@@ -1000,11 +1000,11 @@ client.on('group-participants-update', async (anu) => {
                 }
             
             // TAMBAHAN SAAT BOT OFF / ON
-			if (command.includes(`${prefix}self`)) {
+			if (command.includes(`${prefix}self`) && isOwner || isMe) {
 				public = false
 				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
-			if (command.includes(`${prefix}public`)) {
+			if (command.includes(`${prefix}public`) && isOwner || isMe) {
 				public = true
 				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
@@ -1018,7 +1018,7 @@ client.on('group-participants-update', async (anu) => {
 			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
 				reply(`WIDIH`)
 			}
-if (public && !isOwner && !isMe) return
+if (public && !isOwner || !isMe) return
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
