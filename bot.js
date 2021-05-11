@@ -5894,8 +5894,8 @@ njokdisave = 'BEGIN:VCARD\n'
 					}
 					client.sendMessage(from, prefixnya, text, {quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `prefix bot ini` }}})
 					}
-			if (body.startsWith(prefix) && isRegistered) {
-					reply(`Maaf ${namaneuser(sender)}, Perintah *${command}* tidak ditemukan.\nSilahkan hubungi wa.me/${nomowner} untuk melaporkan kepada pembuat bot ini`)
+			if (body.startsWith(prefix)) {
+					reply(`Maaf ${pushname}, Perintah *${command}* tidak ditemukan.\nSilahkan hubungi wa.me/${nomowner} untuk melaporkan kepada pembuat bot ini`)
 					}
 					console.log(`Perintah tidak ditemukan`)
 					}
