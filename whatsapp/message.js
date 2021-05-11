@@ -9,81 +9,81 @@ const axios = require('axios');
 const request = require('request');
 const { resolve } = require("path");
 
-const xinz = conn.xinz
+const client = conn.client
 
 exports.sendText = (from, text) => {
-    xinz.sendMessage(from, text, MessageType.text)
+    client.sendMessage(from, text, MessageType.text)
 }
 exports.sendImage = (from, image, caption, qul) => {
-	xinz.sendMessage(from, image, MessageType.image, {quoted: qul, caption: caption})
+	client.sendMessage(from, image, MessageType.image, {quoted: qul, caption: caption})
 }
 exports.sendVideo = (from, video, caption, qul) => {
-	xinz.sendMessage(from, video, MessageType.video, {quoted: qul, caption: caption})
+	client.sendMessage(from, video, MessageType.video, {quoted: qul, caption: caption})
 }
 exports.sendGif = (from, gif) => {
-	xinz.sendMessage(from, gif, MessageType.video, {mimetype: "video/gif"})
+	client.sendMessage(from, gif, MessageType.video, {mimetype: "video/gif"})
 }
 exports.reply = (from, text, qul) => {
-    xinz.sendMessage(from, text, MessageType.text, {quoted: qul})
+    client.sendMessage(from, text, MessageType.text, {quoted: qul})
 }
 exports.sendSticker = (from, filename, qul) => {
-	xinz.sendMessage(from, filename, MessageType.sticker, {quoted: qul})
+	client.sendMessage(from, filename, MessageType.sticker, {quoted: qul})
 }
 exports.sendKontak = (from, nomor, nama) => {
 	const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
-	xinz.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact)
+	client.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact)
 }
 exports.sendFakeStatus = (from, teks, faketeks) => {
-	xinz.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } } })
+	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } } })
 }
 exports.FakeStatusForwarded = (from, teks, faketeks) => {
-	xinz.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} }, contextInfo: {"forwardingScore": 999, "isForwarded": true} } })
+	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} }, contextInfo: {"forwardingScore": 999, "isForwarded": true} } })
 }
 exports.FakeStatusImgForwarded = (from, image, caption, faketeks) => {
-	xinz.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } }, caption: caption, contextInfo: {"forwardingScore": 999, "isForwarded": true} })
+	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } }, caption: caption, contextInfo: {"forwardingScore": 999, "isForwarded": true} })
 }
 exports.sendFakeStatusWithImg = (from, image, caption, faketeks) => {
-	xinz.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } }, caption: caption })
+	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } }, caption: caption })
 }
 exports.sendMention = (from, text, orangnya, qul) => {
-	xinz.sendMessage(from, text, MessageType.extendedText, {contextInfo: {mentionedJid: orangnya}, quoted: qul})
+	client.sendMessage(from, text, MessageType.extendedText, {contextInfo: {mentionedJid: orangnya}, quoted: qul})
 }
 exports.hideTag = async function(from, text){
-	let anu = await xinz.groupMetadata(from)
+	let anu = await client.groupMetadata(from)
 	let members = anu.participants
 	let ane = []
 	for (let i of members){
 		ane.push(i.jid)
 	}
-	xinz.sendMessage(from, text, MessageType.text, {contextInfo: {"mentionedJid": ane}})
+	client.sendMessage(from, text, MessageType.text, {contextInfo: {"mentionedJid": ane}})
 }
 exports.hideTagImg = async function(from, image){
-	let anu = await xinz.groupMetadata(from)
+	let anu = await client.groupMetadata(from)
 	let members = anu.participants
 	let ane = []
 	for (let i of members){
 		ane.push(i.jid)
 	}
-	xinz.sendMessage(from, image, MessageType.image, {contextInfo: {"mentionedJid": ane}})
+	client.sendMessage(from, image, MessageType.image, {contextInfo: {"mentionedJid": ane}})
 }
 exports.hideTagSticker = async function(from, sticker){
-	let anu = await xinz.groupMetadata(from)
+	let anu = await client.groupMetadata(from)
 	let members = anu.participants
 	let ane = []
 	for (let i of members){
 		ane.push(i.jid)
 	}
-	xinz.sendMessage(from, sticker, MessageType.sticker, {contextInfo: {"mentionedJid": ane}})
+	client.sendMessage(from, sticker, MessageType.sticker, {contextInfo: {"mentionedJid": ane}})
 }
 exports.hideTagKontak = async function(from, nomor, nama){
 	let vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
-	let anu = await xinz.groupMetadata(from)
+	let anu = await client.groupMetadata(from)
 	let members = anu.participants
 	let ane = []
 	for (let i of members){
 		ane.push(i.jid)
 	}
-	xinz.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact, {contextInfo: {"mentionedJid": ane}})
+	client.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact, {contextInfo: {"mentionedJid": ane}})
 }
 exports.getRandom = (ext) => {
     return `${Math.floor(Math.random() * 10000)}${ext}`
@@ -127,7 +127,7 @@ exports.FakeTokoForwarded = (from, teks, fake) => {
 		}
 	}
 }
-	xinz.sendMessage(from, teks, MessageType.text, {quoted: anu, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
+	client.sendMessage(from, teks, MessageType.text, {quoted: anu, contextInfo: {"forwardingScore": 999, "isForwarded": true}})
 }
 exports.sendFakeToko = (from, teks, fake) => {
 	anu = {
@@ -153,25 +153,25 @@ exports.sendFakeToko = (from, teks, fake) => {
 		}
 	}
 }
-	xinz.sendMessage(from, teks, MessageType.text, {quoted: anu})
+	client.sendMessage(from, teks, MessageType.text, {quoted: anu})
 }
 exports.sendFakeThumb = async function(from, url, title, desc, comnya, fotonya){
 	var anoim = {
 		detectLinks: false
 	}
-	var qul = await xinz.generateLinkPreview(url)
+	var qul = await client.generateLinkPreview(url)
 	qul.title = title
 	qul.description = desc
 	qul.jpegThumbnail = fotonya ? fotonya : fs.readFileSync(`./media/aqul.jpeg`)
 	qul.canonicaUrl = comnya
-	xinz.sendMessage(from, qul, MessageType.extendedText, anoim)
+	client.sendMessage(from, qul, MessageType.extendedText, anoim)
 }
 exports.sendFakeImg = function(from, imageasli, caption, thumbnail, qul){
 	let ai = {
 		thumbnail: thumbnail ? thumbnail : fs.readFileSync(`./media/aqul.jpeg`),
 		quoted: qul ? qul : ''
 	}
-	xinz.sendMessage(from, imageasli, MessageType.image, ai)
+	client.sendMessage(from, imageasli, MessageType.image, ai)
 }
 exports.sendMediaURL = async(to, url, text="", qul, mids=[]) =>{
 	if(mids.length > 0){
@@ -197,7 +197,7 @@ exports.sendMediaURL = async(to, url, text="", qul, mids=[]) =>{
 		if(mime.split("/")[0] === "audio"){
 			mime = Mimetype.mp4Audio
 		}
-		xinz.sendMessage(to, media, type, { quoted: qul, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
+		client.sendMessage(to, media, type, { quoted: qul, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
 		
 		fs.unlinkSync(filename)
 	});
@@ -228,38 +228,38 @@ exports.getBuffer = async (url, options) => {
 	}
 }
 exports.setName = async function(query){
-    const response = await xinz.updateProfileName(query)
+    const response = await client.updateProfileName(query)
     return response
 }
 exports.setBio = async function(query){
-    const response = await xinz.setStatus(query)
+    const response = await client.setStatus(query)
     return response
 }
 exports.kick = function(from, orangnya){
 	for (let i of orangnya){
-		xinz.groupRemove(from, [i])
+		client.groupRemove(from, [i])
 	}
 }
 exports.add = function(from, orangnya){
-	xinz.groupAdd(from, orangnya)
+	client.groupAdd(from, orangnya)
 }
 exports.promote = function(from, orangnya){
-	xinz.groupMakeAdmin(from, orangnya)
+	client.groupMakeAdmin(from, orangnya)
 }
 exports.demote = function(from, orangnya){
-	xinz.groupDemoteAdmin(from, orangnya)
+	client.groupDemoteAdmin(from, orangnya)
 }
 exports.upTextStatus = function(text){
-	xinz.sendMessage('status@broadcast', text, MessageType.extendedText)
+	client.sendMessage('status@broadcast', text, MessageType.extendedText)
 }
 exports.upImgStatus = function(image, text){
-	xinz.sendMessage('status@broadcast', image, MessageType.image, {caption: text})
+	client.sendMessage('status@broadcast', image, MessageType.image, {caption: text})
 }
 exports.upVidStatus = function(video, text){
-	xinz.sendMessage('status@broadcast', video, MessageType.video, {caption: text})
+	client.sendMessage('status@broadcast', video, MessageType.video, {caption: text})
 }
 exports.createGroup = function(nama, member){
-	xinz.groupCreate(nama, member)
+	client.groupCreate(nama, member)
 	let anj = {
 		status: true,
 		creator: 'aqulzz',
@@ -282,7 +282,7 @@ exports.getGroup = async function(totalchat){
 		}
 	}
 	for (e of b){
-		let ingfo = await xinz.groupMetadata(e)
+		let ingfo = await client.groupMetadata(e)
 		grup.push(ingfo)
 	}
 	return grup
