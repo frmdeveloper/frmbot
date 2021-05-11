@@ -1059,7 +1059,7 @@ client.on('group-participants-update', async (anu) => {
                     if(mime.split("/")[0] === "audio"){
                         mime = Mimetype.mp4Audio
                     }
-                    selfb.sendMessage(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
+                    client.sendMessage(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
                     
                     fs.unlinkSync(filename)
                 });
