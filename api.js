@@ -53,7 +53,7 @@ function kyun(seconds){
 router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
-router.get('/refresh', (req, res) = {
+router.get('/refresh', (req, res) => {
 	res.json({result:'MAU NGAPAIN ? mau refresh kan'})
 	setTimeout( () => {
 	axios.get(linkapp)
