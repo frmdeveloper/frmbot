@@ -1731,8 +1731,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 					break
 				case prefix+'admin':  
-				
-								
 					if (!isGroup) return reply(ind.groupo())
 					teks = `*DAFTAR ATASAN GROUP* _${groupMetadata.subject}_\n*TOTAL* : ${groupAdmins.length}\n\n`
 					no = 0
