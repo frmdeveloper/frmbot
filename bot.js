@@ -1020,7 +1020,7 @@ client.on('group-participants-update', async (anu) => {
 				reply(`WIDIH`)
 			}
 if (!public) {
-	if (!qul.key.fromMe) return
+	if (!mek.key.fromMe) return
 }
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
