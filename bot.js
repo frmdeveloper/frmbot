@@ -999,7 +999,7 @@ client.on('group-participants-update', async (anu) => {
 			const q = args.join(' ')
 			const qcilik = args.join(' ').toLowerCase()
 			const botNumber = client.user.jid
-			const sender = isGroup ? mek.participant : mek.key.remoteJid
+			const sender = mek.key.fromMe ? xinz.user.jid : isGroup ? mek.participant : mek.key.remoteJid
 			pushname = client.contacts[sender] != undefined ? client.contacts[sender].vname || client.contacts[sender].notify : undefined
 			const speed = require('performance-now')
 			const totalchat = await client.chats.all()
