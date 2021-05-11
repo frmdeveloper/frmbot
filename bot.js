@@ -1825,8 +1825,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				    reply(yeh)
 			        break
 				case prefix+'tagall':  
-				
-						
 					if (!isGroup) return reply(ind.groupo())
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -1839,8 +1837,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					mentions(teks, members_id, true)
 					break
            case prefix+'setname':
-                           
-                if (!isGroup) return reply(ind.groupo())
+				if (!isGroup) return reply(ind.groupo())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateSubject(from, `${body.slice(9)}`)
                 reply('⟪ SUKSES ⟫ Mengubah Nama Grup')
