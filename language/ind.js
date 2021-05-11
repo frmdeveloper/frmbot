@@ -6,20 +6,20 @@ exports.followig = () => {
 	return`Silahkan follow ig ku ku\ninstagram.com/frm_developer`
 }
 
-exports.afkMentioned = (getReason, getTime) => {
-    return `*「 AFK MODE 」*\n\nSssttt! Orangnya lagi AFK, jangan diganggu!\n➸ *Alasan*: ${getReason}\n➸ *Sejak*: ${getTime}`
-}
-
-exports.afkDone = (jenenge) => {
-    return `*${jenenge}* telah kembali dari AFK! Selamat datang kembali~`
+exports.afkOn = (pushname, reason) => {
+    return `Fitur AFK berhasil *diaktifkan*!\n\n➸ *Username*: ${pushname}\n➸ *Alasan*: ${reason}`
 }
 
 exports.afkOnAlready = () => {
     return `Fitur AFK telah diaktifkan sebelumnya.`
 }
 
-exports.afkOn = (jenengeafk, reason) => {
-    return `Fitur AFK berhasil *diaktifkan*!\n\n➸ *Nama*: ${jenengeafk}\n➸ *Alasan*: ${reason}`
+exports.afkMentioned = (getReason, getTime) => {
+    return `*「 AFK MODE 」*\n\nSssttt! Orangnya lagi AFK, jangan diganggu!\n➸ *Alasan*: ${getReason}\n➸ *Sejak*: ${getTime}`
+}
+
+exports.afkDone = (pushname) => {
+    return `*${pushname}* telah kembali dari AFK! Selamat datang kembali~`
 }
 
 exports.diban = () => {
