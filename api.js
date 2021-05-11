@@ -45,6 +45,11 @@ function kyun(seconds){
 router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
+router.get('/refresh', (req, res) = {
+	setTimeout( () => {
+	axios.get('http://frmdev.repl.co/refresh')
+	}, 10000)
+}
 router.get('/japriwa', (req, res) => {
 	q = req.query.q
 	untuk = req.query.untuk
