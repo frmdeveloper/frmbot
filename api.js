@@ -30,6 +30,12 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { bgcolor, color } = require('./lib/color')
 
+
+axios.get('http://frmdev.repl.co/refresh')
+	.then((a) => {
+		console.log(a.data.result)
+	})
+
 function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
