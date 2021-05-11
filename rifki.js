@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 8080 || 5000 || 3000
 var { color } = require('./lib/color')
 var apirouter = require('./api.js')
 var app = express()
-var reload = require('reload')
 app.enable('trust proxy');
 app.set("json spaces",2)
 app.use(cors())
