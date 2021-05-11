@@ -91,7 +91,6 @@ monosp = '```'
 prefix = '.'
 gantiprefix = ''
 blocked = []  
-limitawal = '70'
 memberlimit = '3'
 nggoroboguru = ''
 nggopln = ''
@@ -1336,112 +1335,6 @@ ${monosp} sq        Albanian
  vi        Vietnamese
  cy        Welsh
       ${monosp}`
-      
-      
-/*
-]=====> LEVELING <=====[
-*/
-            if (isGroup && isRegistered && isLevelingOn) {
-            const currentLevel = getLevelingLevel(sender)
-            const checkId = getLevelingId(sender)
-            try {
-                if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
-                const amountXp = Math.floor(Math.random() * 10) + 500
-                const requiredXp = 5000 * (Math.pow(2, currentLevel) - 1)
-                const getLevel = getLevelingLevel(sender)
-                addLevelingXp(sender, amountXp)
-                if (requiredXp <= getLevelingXp(sender)) {
-                    addLevelingLevel(sender, 1)
-                    bayarLimit(sender, 3)
-                    await reply(ind.levelup(namaneuser, sender, getLevelingXp,  getLevel, getLevelingLevel))
-                }
-            } catch (err) {
-                console.error(err)
-            }
-        }
-        
-        	if (!isGroup && isRegistered) {
-            const currentLevel = getLevelingLevel(sender)
-            const checkId = getLevelingId(sender)
-            try {
-                if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
-                const amountXp = Math.floor(Math.random() * 10) + 500
-                const requiredXp = 5000 * (Math.pow(2, currentLevel) - 1)
-                const getLevel = getLevelingLevel(sender)
-                addLevelingXp(sender, amountXp)
-                if (requiredXp <= getLevelingXp(sender)) {
-                    addLevelingLevel(sender, 1)
-                    bayarLimit(sender, 3)
-                    await reply(ind.levelup(namaneuser, sender, getLevelingXp,  getLevel, getLevelingLevel))
-                }
-            } catch (err) {
-                console.error(err)
-            }
-        }
-/*
-]=====> CHECK LIMIT BY LANN ID <=====[
-*/
-          const checkLimit = (sender) => {
-          	let found = false
-                    for (let lmt of _limit) {
-                        if (lmt.id === sender) {
-                            let limitCounts = limitawal - lmt.limit
-                            if (limitCounts <= 0) return client.sendMessage(from,`Limit anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan naik level atau besok anda kami beri ${limitawal} pesan_`, text,{ quoted: mek})
-                            reply(ind.limitcount(limitCounts))
-                            found = true
-                        }
-                    }
-                    if (found === false) {
-                        let obj = { id: sender, limit: 0 }
-                        _limit.push(obj)
-                        fs.writeFileSync('./database/user/limit.json', JSON.stringify(_limit))
-                        reply(ind.limitcount(limitCounts))
-                    }
-				}
-			const ceklimit = (sender) => {
-          	let cari = false
-                    for (let lmit of _limit) {
-                        if (lmit.id === sender) {
-                            let sisalimit = limitawal - lmit.limit
-                            return sisalimit
-                            cari = true
-                        }
-                    }
-                    if (cari === false) {
-                        let objl = { id: sender, limit: 0 }
-                        _limit.push(objl)
-                        fs.writeFileSync('./database/user/limit.json', JSON.stringify(_limit))
-                    }
-				}
-			
-			
-				
-/*
-]=====> LIMITED BY LANN ID <=====[
-*/
-           const isLimit = (sender) =>{ 
-		      let position = false
-              for (let i of _limit) {
-              if (i.id === sender) {
-              	let limits = i.limit
-              if (limits >= limitawal ) {
-              	  position = true
-                    reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                    return true
-              } else {
-              	_limit
-                  position = true
-                  return false
-               }
-             }
-           }
-           if (position === false) {
-           	const obj = { id: sender, limit: 0 }
-                _limit.push(obj)
-                fs.writeFileSync('./database/user/limit.json',JSON.stringify(_limit))
-           return false
-       }
-     }
 
         
             if (isGroup) {
