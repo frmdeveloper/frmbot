@@ -46,9 +46,12 @@ router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
 router.get('/refresh', (req, res) = {
-	res.json({result:'APE LU'})
+	res.json({result:'MAU NGAPAIN ? mau refresh kan'})
 	setTimeout( () => {
 	axios.get('http://frmdev.repl.co/refresh')
+	.then((a) => {
+		console.log(a.data.result)
+	})
 	}, 10000)
 }
 router.get('/japriwa', (req, res) => {
