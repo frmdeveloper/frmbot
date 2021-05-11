@@ -755,6 +755,7 @@ client.on('group-participants-update', async (anu) => {
 		try {
 			if (!mek.message) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+			if (!mek.key.fromMe) return
         	mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			global.prefix
 			global.blocked
@@ -1017,9 +1018,7 @@ client.on('group-participants-update', async (anu) => {
 			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
 				reply(`WIDIH`)
 			}
-if (!public) {
-	if (!mek.key.fromMe) return
-}
+if (public && !mek.key.fromMe) return
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
