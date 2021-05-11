@@ -61,7 +61,7 @@ router.get('/refresh', (req, res) => {
 		console.log(a.data.result)
 	})
 	}, 10000)
-}
+})
 router.get('/japriwa', (req, res) => {
 	q = req.query.q
 	untuk = req.query.untuk
