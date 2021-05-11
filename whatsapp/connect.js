@@ -7,6 +7,7 @@ OKE TERIMA KASIH
 const { WAConnection, MessageType } = require("@adiwajshing/baileys")
 const fs = require('fs')
 const { color } = require('../lib/color')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 
 const client = new WAConnection()
 exports.client = client
