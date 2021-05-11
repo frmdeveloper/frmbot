@@ -6481,21 +6481,6 @@ vcard = 'BEGIN:VCARD\n'
 					client.sendMessage(from, `${tanda}\n_Tes waktu akan dimulai_�`, text, {quoted: mek}) // ur cods
 					}, 0) // 1000 = 1s,
 					break
-                case `${prefix}leveling`:
-				if (args.length < 1) return reply('Boo :')
-                if (args[0] === 'on') {
-                    if (isLevelingOn) return reply('*fitur level sudah aktif sebelum nya*')
-                    _leveling.push(from)
-                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
-                     reply(ind.lvlon())
-                } else if (args[0] === 'off') {
-                    _leveling.splice(from, 1)
-                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
-                     reply(ind.lvloff())
-                } else {
-                    reply(ind.satukos())
-                }
-                break
 				case 'save':
 				case prefix+'save':
                     if (args.length < 1) return reply(`Maaf, anda belum memasukan nama, silahkan ketik ${prefix}save namamu\n*CONTOH* ${prefix}save Rifki`)
