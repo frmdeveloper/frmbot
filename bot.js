@@ -90,7 +90,6 @@ masaaktif = '1'
 monosp = '```'
 prefix = '.'
 gantiprefix = ''
-blocked = []  
 memberlimit = '3'
 nggoroboguru = ''
 nggopln = ''
@@ -110,6 +109,8 @@ sisabaterai = `belum diketahui`
 hematdaya = `belum diketahui`
 dicas = `belum diketahui`
 sampah = ''
+blocked = []  
+_afk = []
 /*
 ]=====> INFO-INFO <=====[
 */
@@ -140,7 +141,6 @@ const liststiker = JSON.parse(fs.readFileSync('./sticker/liststiker.json'))
 const listaudio = JSON.parse(fs.readFileSync('./audio/listaudio.json'))
 const _jadibot = JSON.parse(fs.readFileSync('./database/user/datajadibot.json'))
 const promo = JSON.parse(fs.readFileSync('./database/bot/promo.json'))
-const _afk = JSON.parse(fs.readFileSync('./database/user/afk.json'))
 const omongelek = JSON.parse(fs.readFileSync('./database/bot/omongelek.json'))
 const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
 const _level = JSON.parse(fs.readFileSync('./database/user/level.json'))
@@ -577,62 +577,61 @@ const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-const addAfkUser = (userId, time, reason, _dir) => {
-    const obj = { id: userId, time: time, reason: reason }
-    _dir.push(obj)
-    fs.writeFileSync('./database/user/afk.json', JSON.stringify(_dir))
-}
+const addAfkUser = (userid, time, reason) => {
+    const obj = { id: userid, time: time, reason: reason }
+    	_afk.push(obj)
+	}
 
-const checkAfkUser = (userId, _dir) => {
+const checkAfkUser = (sender) => {
     let status = false
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
-            status = true
+    Object.keys(_afk).forEach((i) => {
+        if (_afk[i].id === sender) {
+            status = i
         }
     })
     return status
 }
 
-const getAfkReason = (userId, _dir) => {
+const getAfkReason = (sender) => {
     let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
+    Object.keys(_afk).forEach((i) => {
+        if (_afk[i].id === sender) {
             position = i
         }
     })
     if (position !== null) {
-        return _dir[position].reason
+        return _afk[position].reason
     }
 }
 
-const getAfkTime = (userId, _dir) => {
+const getAfkTime = (sender) => {
     let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
+    Object.keys(_afk).forEach((i) => {
+        if (_afk[i].id === sender) {
             position = i
         }
     })
     if (position !== null) {
-        return _dir[position].time
+        return _afk[position].time
     }
 }
 
-const getAfkId = (userId, _dir) => {
+const getAfkId = (sender) => {
     let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
+    Object.keys(_afk).forEach((i) => {
+        if (_afk[i].id === sender) {
             position = i
         }
     })
     if (position !== null) {
-        return _dir[position].id
+        return _afk[position].id
     }
 }
 
-const getAfkPosition = (userId, _dir) => {
+const getAfkPosition = (sender) => {
     let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
+    Object.keys(_afk).forEach((i) => {
+        if (_afk[i].id === sender) {
             position = i
         }
     })
