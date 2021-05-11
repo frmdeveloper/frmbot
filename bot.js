@@ -6214,15 +6214,13 @@ vcard = 'BEGIN:VCARD\n'
 					console.log(encmedia)
 					reply(JSON.stringify(encmedia, null, 2))
 					break
-			case prefix+'afk': // by Slavyan
-                if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                if (isAfkOn) return reply(ind.afkOnAlready())
-                const reason = q ? q : '_Nggak punya alasan_'
-                addAfkUser(sender, time, reason, _afk)
-				reply(ind.afkOn(namaneuser(sender), reason))
-                
-           	 break
+				case prefix+'afk':
+                	if (!isGroup) return reply(ind.groupo())
+               	 if (isAfkOn) return reply(ind.afkOnAlready())
+                	const reason = q ? q : 'Nothing.'
+                	addAfkUser(sender, time, reason, _afk)
+                	client.sendMessage(from, ind.afkOn(pushname, reason), text)
+            		break
 			case `${prefix}toimg`:
 			case `${prefix}stikimg`:
                 if (!isRegistered) return reply(ind.noregis())
