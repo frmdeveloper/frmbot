@@ -40,7 +40,6 @@ const {
    processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
-const qrcode = require("qrcode-terminal") 
 const moment = require("moment-timezone") 
 const fs = require("fs") 
 const crypto = require('crypto')
@@ -75,7 +74,6 @@ const fetch = require('node-fetch')
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
 const imgbb = require('imgbb-uploader')
-const translate = require('@vitalets/google-translate-api')
 const frm = require('./whatsapp/message.js')
 const conn = require('./whatsapp/connect')
 const client = conn.client
@@ -5238,16 +5236,6 @@ function ytv(url) {
 						client.sendMessage(from, buffer, sticker, {quoted: mek})
 						fs.unlinkSync(rano)
 					})
-					break
-				case prefix+'qrcode1':
-                    exec(`qrencode -o ./sampah/qr_${sender.split("@")[0]}.png ${body.slice(8)}`)
-					reply(`tunggu...`)
-					setTimeout( () => {
-					qrcodene = fs.readFileSync(`./sampah/qr_${sender.split("@")[0]}.png`)
-					}, 1000) // 1000 = 1detik,
-					setTimeout( () => {
-					client.sendMessage(from, qrcodene, image, {quoted: mek, caption: 'ni'})
-					}, 1500) // 1000 = 1detik,
 					break
 				case prefix+'translate':
                     if (args.length < 1) return reply(`${prefix}translate kode bahasa  teks\n*CONTOH*\n${prefix}translate id i love you\n\n*TIDAK TAHU KODE BAHASA ?*\nketik${prefix}kodebhs\n*or* type ${prefix}codelang`)
