@@ -747,7 +747,7 @@ client.on('group-participants-update', async (anu) => {
 		sisabaterai = `${json[2][0][1].value}%`
 	})
 
-	client.on('chat-update', async (mek) => {
+	client.on('message-new', async (mek) => {
 		try {
 			if (!mek.message) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
