@@ -1798,8 +1798,9 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					mentions(teks, groupAdmins, true)
 					break
 				case prefix+'grup':
+				case prefix+'grub':
 				case prefix+'group':
-										
+				case prefix+'groub':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (args[0] === 'buka') {
@@ -1811,7 +1812,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 				case prefix+'open':
 				case prefix+'buka':
-										
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					reply(`*BERHASIL MEMBUKA GROUP*`)
@@ -1819,14 +1819,12 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					break
 				case prefix+'close':
 				case prefix+'tutup':
-										
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					reply(`*BERHASIL MENUTUP GROUP*`)
 					client.groupSettingChange(from, GroupSettingChange.messageSend, true)
 					break
 				case prefix+'add':
-									
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (args.length < 1) return reply(`Salah\n\nGini contoh nya\n${prefix}add ${me.jid.split("@")[0]}`)
@@ -1845,7 +1843,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 					break
                 case prefix+'hidetag':
-					                
 					if (!isGroup) return reply(ind.groupo())
 					var value = body.slice(9)
 					var group = await client.groupMetadata(from)
@@ -5760,19 +5757,6 @@ tesseract.recognize(media, config)
 						nyulik20 = culiklist[Math.floor(Math.random() * culiklist.length)]
 						client.groupAdd(args[0], nyulik20)
 					break
-					case `${prefix}grup`:
-					case `${prefix}grub`:
-					case `${prefix}group`:
-					if (!isGroup) return reply(ind.groupo())
-					if (!isBotGroupAdmins) return reply(ind.badmin())
-					if (args[0] === 'buka') {
-					    reply(`*BERHASIL MEMBUKA GROUP*`)
-						client.groupSettingChange(from, GroupSettingChange.messageSend, false)
-					} else if (args[0] === 'tutup') {
-						reply(`*BERHASIL MENUTUP GROUP`)
-						client.groupSettingChange(from, GroupSettingChange.messageSend, true)
-					}
-					break      
             case `${prefix}admin`:
             case `${prefix}owner`:
             case `${prefix}creator`:
