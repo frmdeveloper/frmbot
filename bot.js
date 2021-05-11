@@ -1817,11 +1817,8 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
             + `END:VCARD` 
             			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek, sendEphemeral: true, thumbnail: ppneme})
 				break
-                 case prefix+'linkgrup':  
-				
-				                
+                 case prefix+'linkgrup':                
 				    if (!isGroup) return reply(ind.groupo())
-				    
 				    if (!isBotGroupAdmins) return reply(ind.badmin())
 				    linkgc = await client.groupInviteCode (from)
 				    yeh = `https://chat.whatsapp.com/${linkgc}\n\nlink Group *${groupName}*`
