@@ -1021,6 +1021,7 @@ client.on('group-participants-update', async (anu) => {
 /*
 ]=====> Rifki ID <=====[
 */
+			const isMe = sender === client.user.jid ? true : false
             const isEventon = isGroup ? event.includes(from) : false
             const isRegistered = checkRegisteredUser(sender)
             const isUser = cekWesDaftar(nomerwesdaftar)
