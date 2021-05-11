@@ -14,39 +14,39 @@ const client = conn.client
 exports.sendText = (from, text) => {
     client.sendMessage(from, text, MessageType.text)
 }
-exports.sendImage = (from, image, caption, qul) => {
-	client.sendMessage(from, image, MessageType.image, {quoted: qul, caption: caption})
+exports.sendImage = (from, image, caption, mek) => {
+	client.sendMessage(from, image, MessageType.image, {quoted: mek, caption: caption})
 }
-exports.sendVideo = (from, video, caption, qul) => {
-	client.sendMessage(from, video, MessageType.video, {quoted: qul, caption: caption})
+exports.sendVideo = (from, video, caption, mek) => {
+	client.sendMessage(from, video, MessageType.video, {quoted: mek, caption: caption})
 }
 exports.sendGif = (from, gif) => {
 	client.sendMessage(from, gif, MessageType.video, {mimetype: "video/gif"})
 }
-exports.reply = (from, text, qul) => {
-    client.sendMessage(from, text, MessageType.text, {quoted: qul})
+exports.reply = (from, text, mek) => {
+    client.sendMessage(from, text, MessageType.text, {quoted: mek})
 }
-exports.sendSticker = (from, filename, qul) => {
-	client.sendMessage(from, filename, MessageType.sticker, {quoted: qul})
+exports.sendSticker = (from, filename, mek) => {
+	client.sendMessage(from, filename, MessageType.sticker, {quoted: mek})
 }
 exports.sendKontak = (from, nomor, nama) => {
 	const vcard = 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + 'FN:' + nama + '\n' + 'ORG:Kontak\n' + 'TEL;type=CELL;type=VOICE;waid=' + nomor + ':+' + nomor + '\n' + 'END:VCARD'
 	client.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact)
 }
 exports.sendFakeStatus = (from, teks, faketeks) => {
-	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } } })
+	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} } } })
 }
 exports.FakeStatusForwarded = (from, teks, faketeks) => {
-	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} }, contextInfo: {"forwardingScore": 999, "isForwarded": true} } })
+	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} }, contextInfo: {"forwardingScore": 999, "isForwarded": true} } })
 }
 exports.FakeStatusImgForwarded = (from, image, caption, faketeks) => {
-	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } }, caption: caption, contextInfo: {"forwardingScore": 999, "isForwarded": true} })
+	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} } }, caption: caption, contextInfo: {"forwardingScore": 999, "isForwarded": true} })
 }
 exports.sendFakeStatusWithImg = (from, image, caption, faketeks) => {
-	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)} } }, caption: caption })
+	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} } }, caption: caption })
 }
-exports.sendMention = (from, text, orangnya, qul) => {
-	client.sendMessage(from, text, MessageType.extendedText, {contextInfo: {mentionedJid: orangnya}, quoted: qul})
+exports.sendMention = (from, text, orangnya, mek) => {
+	client.sendMessage(from, text, MessageType.extendedText, {contextInfo: {mentionedJid: orangnya}, quoted: mek})
 }
 exports.hideTag = async function(from, text){
 	let anu = await client.groupMetadata(from)
@@ -114,10 +114,10 @@ exports.FakeTokoForwarded = (from, teks, fake) => {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)
+						"jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)
 					},
 					"title": fake,
-					"description": "Self Aqulzz nih Boss",
+					"description": "Self Amekzz nih Boss",
 					"currencyCode": "IDR",
 					"priceAmount1000": "50000000",
 					"retailerId": "Self Bot",
@@ -140,10 +140,10 @@ exports.sendFakeToko = (from, teks, fake) => {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./media/aqul.jpeg`)
+						"jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)
 					},
 					"title": fake,
-					"description": "Self Aqulzz nih Boss",
+					"description": "Self Amekzz nih Boss",
 					"currencyCode": "IDR",
 					"priceAmount1000": "50000000",
 					"retailerId": "Self Bot",
@@ -159,21 +159,21 @@ exports.sendFakeThumb = async function(from, url, title, desc, comnya, fotonya){
 	var anoim = {
 		detectLinks: false
 	}
-	var qul = await client.generateLinkPreview(url)
-	qul.title = title
-	qul.description = desc
-	qul.jpegThumbnail = fotonya ? fotonya : fs.readFileSync(`./media/aqul.jpeg`)
-	qul.canonicaUrl = comnya
-	client.sendMessage(from, qul, MessageType.extendedText, anoim)
+	var mek = await client.generateLinkPreview(url)
+	mek.title = title
+	mek.description = desc
+	mek.jpegThumbnail = fotonya ? fotonya : fs.readFileSync(`./media/amek.jpeg`)
+	mek.canonicaUrl = comnya
+	client.sendMessage(from, mek, MessageType.extendedText, anoim)
 }
-exports.sendFakeImg = function(from, imageasli, caption, thumbnail, qul){
+exports.sendFakeImg = function(from, imageasli, caption, thumbnail, mek){
 	let ai = {
-		thumbnail: thumbnail ? thumbnail : fs.readFileSync(`./media/aqul.jpeg`),
-		quoted: qul ? qul : ''
+		thumbnail: thumbnail ? thumbnail : fs.readFileSync(`./media/amek.jpeg`),
+		quoted: mek ? mek : ''
 	}
 	client.sendMessage(from, imageasli, MessageType.image, ai)
 }
-exports.sendMediaURL = async(to, url, text="", qul, mids=[]) =>{
+exports.sendMediaURL = async(to, url, text="", mek, mids=[]) =>{
 	if(mids.length > 0){
 		text = normalizeMention(to, text, mids)
 	}
@@ -197,7 +197,7 @@ exports.sendMediaURL = async(to, url, text="", qul, mids=[]) =>{
 		if(mime.split("/")[0] === "audio"){
 			mime = Mimetype.mp4Audio
 		}
-		client.sendMessage(to, media, type, { quoted: qul, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
+		client.sendMessage(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
 		
 		fs.unlinkSync(filename)
 	});
@@ -262,7 +262,7 @@ exports.createGroup = function(nama, member){
 	client.groupCreate(nama, member)
 	let anj = {
 		status: true,
-		creator: 'aqulzz',
+		creator: 'FRM BOT',
 		grup: nama,
 		peserta: member,
 		message: 'Pembuatan grup berhasil'
