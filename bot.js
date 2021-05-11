@@ -378,6 +378,7 @@ ${gaya2} ${prefix}textlight ~teks~
 ${gaya2} ${prefix}toimg (tag stiker)
 ${gaya2} ${prefix}tomp3 (tag video)
 ${gaya2} ${prefix}tourl (tag foto)
+${gaya2} ${prefix}tovideo (tag stiker)
 ${gaya2} ${prefix}triggered (tag foto)
 ${gaya2} ${prefix}ttp ~teks~
 ${gaya2} ${prefix}tts ~kodebhs~  ~teks~
