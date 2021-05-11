@@ -1001,25 +1001,13 @@ client.on('group-participants-update', async (anu) => {
                 }
             
             // TAMBAHAN SAAT BOT OFF / ON
-            if (command.includes(`${prefix}bot`) && qcilik.includes(`on`) && isOwner) {
-				if (isOnOff) return reply('SUDAH ON')
-				statuson = true
-				reply('BERHASIL MENYALAKAN')
+			if (command.includes(`${prefix}self`)) {
+				public = false
+				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
-			if (command.includes(`${prefix}bot`) && qcilik.includes(`off`) && isOwner) {
-				if (!isOnOff) return reply('SUDAH OFF')
-				statuson = false
-				reply('BERHASIL MEMATIKAN')
-			}
-			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`on`) && isOwner) {
-				if (statusbot) return reply('MODE OWNER SAJA SUDAH AKTIF')
-				statusbot = true
-				reply('MODE OWNER SAJA AKTIF')
-			}
-			if (command.includes(`${prefix}owneronly`) && qcilik.includes(`off`) && isOwner) {
-				if (!statusbot) return reply('MODE OWNER SAJA SUDAH MATI')
-				statusbot = false
-				reply('MODE OWNER SAJA MATI')
+			if (command.includes(`${prefix}public`)) {
+				public = true
+				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
@@ -1031,8 +1019,9 @@ client.on('group-participants-update', async (anu) => {
 			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
 				reply(`WIDIH`)
 			}
-if (!isOnOff) return
-if (statusbot && !ownerNumber.includes(isGroup ? mek.participant : mek.key.remoteJid)) return
+if (!public) {
+	if (!qul.key.fromMe) return
+}
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
