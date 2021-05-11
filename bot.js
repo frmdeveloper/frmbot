@@ -46,6 +46,7 @@ const fs = require("fs")
 const crypto = require('crypto')
 const axios = require('axios')
 const WSF = require('wa-sticker-formatter')
+const conn = require('./whatsapp/connect');
 const { bgcolor } = require('./lib/color')
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
