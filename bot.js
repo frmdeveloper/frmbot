@@ -1288,7 +1288,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 ]=====> SIMPLE MENU <=====[
 */			  case prefix+'stiker': 
 				case prefix+'sticker':
-				    if (!isRegistered) return reply(ind.noregis())
+				    
 				    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -1301,7 +1301,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						break
 				case prefix+'stikerwm': 
 				case prefix+'stickerwm':
-				    if (!isRegistered) return reply(ind.noregis())
+				    
 				    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -1336,7 +1336,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				client.sendMessage(from, buffer, image, {quoted: mek})
 				break
 			case prefix+'coffetext':
-                  if (!isRegistered) return reply(ind.noregis())
+                  
 				if (args.length < 1) return reply(`「❗」Contoh : ${prefix}blackpink Rifki`)
 					coff = body.slice(11)
 					mhe = await fetchJson(`https://api.shizukaa.xyz/api/coffie?apikey=${shizukakey}&text=${coff}`)
@@ -1345,7 +1345,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.sendMessage(from, atu, image, {quoted: mek})
 					break				
 		case prefix+'halloweentext':
-				if (!isRegistered) return reply(ind.noregis())
+				
 								
 				if (args.length < 1) return reply(ind.wrongf())
 				ween = body.slice(15)
@@ -1367,7 +1367,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				break
 //GEMBOK TEXT
                 case prefix+'gemboktext':
-				if (!isRegistered) return reply(ind.noregis())
+				
 				var gh = body.slice(12)
 					var gem = gh.split("&")[0];
 					var bok = gh.split("&")[1];
@@ -1377,7 +1377,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					break
                 case prefix+'glitchtext':
-				if (!isRegistered) return reply(ind.noregis())
+				
 				var gh = body.slice(12)
 					var gli = gh.split("&")[0];
 					var tch = gh.split("&")[1];
@@ -1387,7 +1387,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					break
 					case prefix+'ttperr':
-					if (!isRegistered) return reply(ind.noregis())
+					
 				    if (args.length < 1) return reply('yang mau dijadiin text sticker apaan, titit kah?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -1453,7 +1453,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                     
 			       break
 		case prefix+'silktext':
-				if (!isRegistered) return reply(ind.noregis())
+				
 								
 				if (args.length < 1) return reply(ind.wrongf())
 				silk = body.slice(10)
@@ -1484,7 +1484,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					break
            case `${prefix}apakah`:
            case `${prefix}apa`:
-           if (!isRegistered) return reply(ind.noregis())
+           
 		   if (isBanned) return reply(ind.diban())
            
            if (args.length < 1) return reply(`Yang di tanyakan apa ?\n*KETIK* ${command} pertanyaanmu\n*CONTOH* ${command} saya hidup ?`)
@@ -1550,7 +1550,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				break
            case prefix+'seberapagay':
            
-           if (!isRegistered) return reply(ind.noregis())
+           
            gay = body.slice(13)
 		   seberapagay = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
 		   hasil = `Nih Liat Data Gay Si ${gay}\n\n\nPersentase Gay : ${seberapagay.persen}%\nAlert!!! : ${seberapagay.desc}`
@@ -1559,7 +1559,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                 case prefix+'nangis':
                 case prefix+'cry':
                 
-				if (!isRegistered) return reply(ind.noregis())
+				
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					cry = await fetchJson(`https://waifu.pics/api/sfw/cry`, {method: 'get'})
@@ -1575,7 +1575,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					break
 					case prefix+'cium':
 					
-				if (!isRegistered) return reply(ind.noregis())
+				
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					cium = await fetchJson(`https://waifu.pics/api/sfw/kiss`, {method: 'get'})
@@ -1591,7 +1591,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					break
 					case prefix+'peluk':
 					
-				if (!isRegistered) return reply(ind.noregis())
+				
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					reply('Peyukkkk')
@@ -1608,7 +1608,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					break
                 case prefix+'truth':
                 
-                if (!isRegistered) return reply(ind.noregis())
+                
 				const trut =['Pernah suka sama siapa aja? berapa lama?','Kalau boleh atau kalau mau, di gc/luar gc siapa yang akan kamu jadikan sahabat?(boleh beda/sma jenis)','apa ketakutan terbesar kamu?','pernah suka sama orang dan merasa orang itu suka sama kamu juga?','Siapa nama mantan pacar teman mu yang pernah kamu sukai diam diam?','pernah gak nyuri uang nyokap atau bokap? Alesanya?','hal yang bikin seneng pas lu lagi sedih apa','pernah cinta bertepuk sebelah tangan? kalo pernah sama siapa? rasanya gimana brou?','pernah jadi selingkuhan orang?','hal yang paling ditakutin','siapa orang yang paling berpengaruh kepada kehidupanmu','hal membanggakan apa yang kamu dapatkan di tahun ini','siapa orang yang bisa membuatmu sange','siapa orang yang pernah buatmu sange','(bgi yg muslim) pernah ga solat seharian?','Siapa yang paling mendekati tipe pasangan idealmu di sini','suka mabar(main bareng)sama siapa?','pernah nolak orang? alasannya kenapa?','Sebutkan kejadian yang bikin kamu sakit hati yang masih di inget','pencapaian yang udah didapet apa aja ditahun ini?','kebiasaan terburuk lo pas di sekolah apa?']
 					const ttrth = trut[Math.floor(Math.random() * trut.length)]
 					truteh = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
@@ -1628,7 +1628,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					reply(anu.desc)
 					break
                   case prefix+'timer':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				          
 				if (args.length < 1) return reply(`#timer 5 detik\nitu contoh nya`)      
 				if (args[1]=="detik") {var timer = args[0]+"000"
@@ -1786,7 +1786,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 					break
 				case prefix+'admin':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 								
 					if (!isGroup) return reply(ind.groupo())
 					teks = `*DAFTAR ATASAN GROUP* _${groupMetadata.subject}_\n*TOTAL* : ${groupAdmins.length}\n\n`
@@ -1875,7 +1875,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
             			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek, sendEphemeral: true, thumbnail: ppneme})
 				break
                  case prefix+'linkgrup':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				                
 				    if (!isGroup) return reply(ind.groupo())
 				    
@@ -1885,7 +1885,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				    reply(yeh)
 			        break
 				case prefix+'tagall':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 						
 					if (!isGroup) return reply(ind.groupo())
 					members_id = []
@@ -1899,21 +1899,21 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					mentions(teks, members_id, true)
 					break
            case prefix+'setname':
-                if (!isRegistered) return reply(ind.noregis())           
+                           
                 if (!isGroup) return reply(ind.groupo())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateSubject(from, `${body.slice(9)}`)
                 reply('⟪ SUKSES ⟫ Mengubah Nama Grup')
 					break
                 case prefix+'setdesc':
-                if (!isRegistered) return reply(ind.noregis())                
+                                
                 if (!isGroup) return reply(ind.groupo())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateDescription(from, `${body.slice(9)}`)
                 reply('⟪ SUKSES ⟫ Mengubah Desk Grup')
 					break
            case prefix+'demote':
-                if (!isRegistered) return reply(ind.noregis())           
+                           
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply(`Minta contoh ?\n${command} @62xxxx`)
@@ -1932,7 +1932,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 					break
 				case prefix+'promote':
-                if (!isRegistered) return reply(ind.noregis())				
+                				
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply(`Minta contoh ?\n${command} @62xxxx`)
@@ -1951,7 +1951,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 					break
 				case prefix+'hedsot':
-                if (!isRegistered) return reply(ind.noregis())				
+                				
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply(`Minta contoh ?\n${command} @62xxxx`)
@@ -1971,7 +1971,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						}
 					break
 					case prefix+'hidetag5':
-                if (!isRegistered) return reply(ind.noregis())				
+                				
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					var value = body.slice(9)
@@ -1993,7 +1993,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 	                .then(() => {client.sendMessage(from, options, text)})
 					break
                  case prefix+'fitnah':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 								
 					if (!isGroup) return reply(ind.groupo())                 
 				if (args.length < 1) return reply(`Gini kak : ${prefix}fitnah @tag&pesan&balasanbot\n\nContoh : ${prefix}fitnah @628xxx&hai&hai juga`)
@@ -2055,7 +2055,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				case prefix+'yutubdl':
 					if (args.length < 1) return reply('Urlnya mana um?')
                   
-				if (!isRegistered) return reply(ind.noregis())
+				
 				if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('URL NYA TIDAK VALID KAK')				
 		yutubdl = await fetchJson(`https://api.vhtear.com/ytdl?link=${args[0]}&apikey=${VhtearKey}`, {method: 'get'})
 					if (yutubdl.error) return reply(yutubdl.error)
@@ -2068,14 +2068,14 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				case prefix+'tiktod':
 					if (args.length < 1) return reply('Urlnya mana um?')
                   
-				if (!isRegistered) return reply(ind.noregis())
+				
 				tiktod = await fetchJson(`https://api.zeks.xyz/api/tiktok?url=${args[0]}&apikey=${ZeksKey}`,)
 					reply('[WAIT] Proses Dumlu Yakan')
 					rmln = await getBuffer(tiktod.result.result.server_1)
 					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', caption: `*By.* ${tiktod.result.username}`, quoted: mek})
 					break
                      case prefix+'play2':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				 
                 reply(ind.wait())
                 play2 = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=${VhtearKey}`)
@@ -2092,12 +2092,12 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 */
 				case prefix+'limit':
 				                  
-				   if (!isRegistered) return reply(ind.noregis())
+				   
 				   checkLimit(sender)
 					break
 				case prefix+'atm':
                   				
-				if (!isRegistered) return reply(ind.noregis())
+				
 				const kantong = checkATMuser(sender)
 				reply(ind.uangkau(pushname, sender, kantong))
 				break
@@ -2105,7 +2105,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				case `${prefix}belikuota limit`:
 				case `${prefix}buy`:
 				case `${prefix}buylimit`:
-                if (!isRegistered) return reply(ind.noregis())
+                
 				if (args.length < 1) return reply(`* SELAMAT DATANG *\nSelamat datang\n\n\n*Harga*\nRp 1000 = 1 pesan\n\n*Cara Beli:*\n${prefix}buylimit ~jumlah limitnya~\n*Contoh:*\n${prefix}buylimit 5`)
 				payout = body.slice(10)
 				koinPerlimit = 1000
@@ -2121,7 +2121,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 ]=====> RANDOM MENU <=====[
 */
                 case prefix+'pokemon':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                    anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=pokemon`, {method: 'get'})
 					reply(ind.wait())
@@ -2131,7 +2131,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
                 case prefix+'anjing':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                    anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anjing`, {method: 'get'})
 					reply(ind.wait())
@@ -2141,7 +2141,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
                 case prefix+'blowjob':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					blowjob = await fetchJson('https://waifu.pics/api/nsfw/blowjob', {method: 'get'})
@@ -2161,7 +2161,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						client.sendMessage(from, neko1, image, {quoted: mek, caption: 'Nih nekonime mu >_<'})
 					break
                 case prefix+'kpop':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                                         reply(ind.wait())
                                         kpop = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzKey}`, {method: 'get'})
@@ -2171,7 +2171,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                                         
                                         break
                 case prefix+'husbu':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                    if (!isGroup) return reply(ind.groupo())
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/husbu?apikey=${TobzKey}`)
@@ -2179,21 +2179,21 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>_<'})
 					break
 			case prefix+'chord':
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/chord?q=${body.slice(7)}&apikey=${TobzKey}`)
                 reply(anu.result)
                 
                 break
 			case prefix+'loli':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				reply(ind.wait())
 					loline = await fetchJson(`https://api.vhtear.com/randomloli&apikey=${VhtearKey}`, {method: 'get'})
 					buffer = await getBuffer(loline.result.result)
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					break					
                 case prefix+'randomhentong':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				gatauda = body.slice(15)
 					reply(ind.wait())
 					randomhentong = await fetchJson(`https://api.vhtear.com/randomhentai?apikey=${VhtearKey}`, {method: 'get'})
@@ -2201,13 +2201,13 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: `nih hentong mu`})
 					break					
 					case prefix+'wibu':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 					data = await fetchJson(`https://api.vhtear.com/randomwibu&apikey=${VhtearKey}`)
 						buffer = await getBuffer(data.result.foto)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>_<'})
 					break
                 case prefix+'darkjokes':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				   
 				 data = fs.readFileSync('./src/darkjokes.js');
                  jsonData = JSON.parse(data);
@@ -2234,7 +2234,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                       }
                     break
                 case prefix+'moddroid':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=${TobzKey}`)
 			hepi = data.result[0] 
@@ -2244,7 +2244,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 			
 			break
 		case prefix+'lirik':
-			if (!isRegistered) return reply(ind.noregis())
+			
 			if (isBanned) return reply(ind.diban())
 			
 			anu = await fetchJson(`https://tobz-api.herokuapp.com/api/lirik?q=${body.slice(7)}&apikey=${TobzKey}`)
@@ -2267,7 +2267,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 case prefix+'nama':
 case prefix+'artinama':
 	
-	if (!isRegistered) return reply(ind.noregis())
+	
 	
     request.get({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
@@ -2285,7 +2285,7 @@ case prefix+'artinama':
        
 			break
 			case prefix+'happymod':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzKey}`)
 			hupo = data.result[0] 
@@ -2295,7 +2295,7 @@ case prefix+'artinama':
 			
 			break
             case prefix+'bitly':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                client.updatePresence(from, Presence.composing) 
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/bitly?url=${args[0]}&apikey=${TobzKey}`)
@@ -2304,7 +2304,7 @@ case prefix+'artinama':
                 
                 break
 					case prefix+'pinterest':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://api.vhtear.com/pinterest?query=${q}&apikey=${VhtearKey}`, {method: 'get'})
 					reply(ind.wait())
@@ -2319,7 +2319,7 @@ case prefix+'artinama':
 					break 
 					case prefix+'resepmasakan':
 					case prefix+'resep':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                    resep = await fetchJson(`https://mnazria.herokuapp.com/api/resep?key=${q}`, {method: 'get'})
                    if (resep.error) return reply(resep.error)
@@ -2328,7 +2328,7 @@ case prefix+'artinama':
                    client.sendMessage(from, buff, image, {quoted: mek, caption: hasil})
                    break
                 case prefix+'beritahoax':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                     client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://docs-jojo.herokuapp.com/api/infohoax`, {method: 'get'})
@@ -2340,7 +2340,7 @@ case prefix+'artinama':
 					break
 					case prefix+'brainly':
 	                  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				
                     brien = body.slice(9)
 					brainly(`${brien}`).then(res => {
@@ -2353,7 +2353,7 @@ case prefix+'artinama':
                     })
 					break
                 case prefix+'virtex':  
-				if (!isRegistered) return reply(ind.noregis())
+				
 				reply(`*INILAH VIRTEX TERBERAT DI DUNIA*\n\n͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏tapi boong`)
 					lagutapi = fs.readFileSync('./fauzan.rifki.m/tapiboong.m4a')
 					client.updatePresence(from, Presence.recording)
@@ -2384,7 +2384,7 @@ case prefix+'artinama':
 					}
 				break
 				case prefix+'raindrop':
-if (!isRegistered) return reply(ind.noregis())
+
 
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
   ted = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: mek
@@ -2423,7 +2423,7 @@ break
 				case prefix+'imgtourl':
 				case prefix+'tourl':
 				case prefix+'tolink':
-					if (!isRegistered) return reply(ind.noregis())
+					
 
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
   ted = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: mek
@@ -2490,7 +2490,7 @@ break
 case prefix+'hartatahta':
 case prefix+'tahta':
 
-if (!isRegistered) return reply(ind.noregis())
+
 
 if (args.length < 1) return reply('「❗」Contoh : ${prefix}hartatahta bagi duit')
 har = body.slice(12)
@@ -2500,7 +2500,7 @@ client.sendMessage(from, tahta, image, {quoted: mek})
 
 break
 case prefix+'cphlogo':
-    if (!isRegistered) return reply(ind.noregis())
+    
 	
 	gh = `${body.slice(9)}`
 	gbl1 = gh.split("&")[0];
@@ -2511,7 +2511,7 @@ case prefix+'cphlogo':
 	 
 	break
 case prefix+'cglitch':
-	if (!isRegistered) return reply(ind.noregis())
+	
 	
     if (args.length < 1) return reply(`*CONTOH:*\n${prefix}cglitch Fauzan & Rifki`)
     hm = `${body.slice(8)}`
@@ -2522,7 +2522,7 @@ case prefix+'cglitch':
 	 
 	break 
 case prefix+'cml':
-				if (!isRegistered) return reply(ind.noregis())
+				
 	
 				if (args.length < 1) return reply(`${command} Fauzan & Rifki`)
                      if (args.length > 10) return reply('karakter minimal 10')
@@ -2546,7 +2546,7 @@ case prefix+'cml':
 					break
 case prefix+'cloudtext':
 
-if (!isRegistered) return reply(ind.noregis())
+
 
 if (args.length < 1) return reply('「❗」Contoh : ${prefix}cloudtext Rifki')
 cloud = body.slice(11)
@@ -2638,7 +2638,7 @@ case prefix+'firework2':
 					})
 					break
 		case prefix+'img2url':
-			if (!isRegistered) return reply(ind.noregis())
+			
 			if (isBanned) return reply(ind.diban())
 			
 			if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
@@ -3321,14 +3321,14 @@ o==[]::::::>
 				case `${prefix}wallet`:
 				case `${prefix}uang`:
 				case `${prefix}money`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				cekdompet = checkATMuser(sender)
 				fitnah(`${nomerewa}`, `ISI DOMPET MU`, `* dompet *\n*Nama* : ${pushname}\n*Nomer* : ${sender.split("@")[0]}\n*Uang* : Rp ${cekdompet}\n`)
 				
 				break
 			case `${prefix}gift.kuota `:
 				
-                if (!isRegistered) return reply(ind.noregis())
+                
 				if (args.length < 1) return reply(`* SELAMAT DATANG *\nSelamat datang\n\nSilahkan ketik\n${prefix}gift.kuota limit ~nomor~  ~jumlah kuota limit~\n*CONTOH*\n${prefix}gift.kuota limit 62895803265350 7`)
 				if (!isUser) return reply(`nomor tidak terdaftar`)
 				payout = (`-${args[1]}`)
@@ -3358,7 +3358,7 @@ o==[]::::::>
 					break
 				case `${prefix}kerja`:
                       
-                	  if (!isRegistered) return reply(ind.noregis())
+                	  
 				      if (isBanned) return reply(ind.diban())
 				if (args.length < 1) {
                       bayaran = 1000
@@ -3382,7 +3382,7 @@ o==[]::::::>
 					break
 				case `${prefix}10k`:
                       
-                	  if (!isRegistered) return reply(ind.noregis())
+                	  
 				      if (isBanned) return reply(ind.diban())
 					tipelist = [`${katasandi}`]
 					if (!tipelist.includes(args[0])) return reply(`${tanda}\nKatasandi salah, silahkan beli. Hubungi wa.me/62895803265350`)
@@ -3429,7 +3429,7 @@ o==[]::::::>
             	
            	 break
            case prefix+'ninjalogo':
-				 if (!isRegistered) return reply(ind.noregis())
+				 
 				 if (isBanned) return reply(ind.diban())
 				 
 				 var gh = body.slice(11)
@@ -3442,7 +3442,7 @@ o==[]::::::>
 				 
 				 break
            	case prefix+'cloudtext':
- if (!isRegistered) return reply(ind.noregis())
+ 
 				 	if (isBanned) return reply(ind.diban())
 				 	
  if (args.length < 1) return reply(`Contoh : ${prefix}cloudtext Rifki`)
@@ -3453,7 +3453,7 @@ o==[]::::::>
  
  break
            		case prefix+'glitchtext':
-				 	if (!isRegistered) return reply(ind.noregis())
+				 	
 				 	if (isBanned) return reply(ind.diban())
 				 	 var gh = body.slice(12)
 					 var gli = gh.split("&")[0];
@@ -3605,7 +3605,7 @@ o==[]::::::>
 					reply(teks.trim())
 					break
 					case `${prefix}infonomor`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 if (isBanned) return reply(`Maaf, nomor kamu tidak dapat menggunakan bot ini\nSilahkan mohon kepada bosku / ownerku`)
 					
                     if (args.length < 1) return reply(`Masukan Nomor\nContoh : ${prefix}infonomor 0812345678`)
@@ -3973,13 +3973,13 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                     })
 					break 
 				case prefix+'buatstatus':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				    if (!isOwner || !isMe) return reply(ind.ownerb())
 					client.sendMessage('status@broadcast', body.slice(12), text, {quoted: mek})
 					fitnah('status@broadcast', 'sudah', ' ')
 					break 
 				case `${prefix}bcgc`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				     if (!isOwner || !isMe) return reply(ind.ownerb())
 					if (args.length < 1) return reply('.......')
 					anu = await groupMembers
@@ -4218,7 +4218,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					
 				break
 				case `${prefix}info`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
          	       timestamp = speed()
                     latensi = speed() - timestamp
 					uptime = process.uptime()
@@ -4306,7 +4306,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					break
 				case `${prefix}blocklist`: 
 				case `${prefix}listblock`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
              	   teks = 'KONTAK TERBLOKIR:\n'
 					for (let block of blocked) {
 						teks += ` @${block.split('@')[0]}\n`
@@ -4411,7 +4411,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					client.sendMessage(from, dlytmp4, video, {mimetype: 'video/mp4', quoted: mek, filename: `${ytmp4.title}`, caption: `${ytmp4.title}`})
 					break
 				case `${prefix}ytmp3`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.wrogf)
 					client.updatePresence(from, Presence.recording)
@@ -4420,7 +4420,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					client.sendMessage(from, ytmp3dl, audio, {mimetype: 'audio/mpeg', quoted: mek})
 					break
 				case `${prefix}fb`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				if (args.length < 1) return reply('Urlnya mana um?')
 					fbdl = await fetchJson(`http://lolhuman.herokuapp.com/api/facebook?apikey=${LolKey}&url=${q}`, {method: 'get'})
 					hasilfbdl = await getBuffer(fbdl.result[1].link)
@@ -4497,7 +4497,7 @@ Speed: _${os.cpus()[0].speed}_` })
 										 
 					 break
 		 case prefix+'silktext':
-				 if (!isRegistered) return reply(ind.noregis())
+				 
 				 if (isBanned) return reply(ind.diban())
 				 				
 				 if (args.length < 1) return reply(ind.wrongf())
@@ -4509,7 +4509,7 @@ Speed: _${os.cpus()[0].speed}_` })
 			 	
 			 break	
 			case prefix+'gemboktext':
-				 if (!isRegistered) return reply(ind.noregis())
+				 
 				 if (isBanned) return reply(ind.diban())
 				  var gh = body.slice(12)
 					 var gem = gh.split("&")[0];
@@ -4521,7 +4521,7 @@ Speed: _${os.cpus()[0].speed}_` })
 					 
 					 break
 				case `${prefix}yta`:
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
 					function post(url, formdata) {
@@ -4593,7 +4593,7 @@ function ytv(url) {
                     client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	break
 			    case `${prefix}fototiktok`:
-				if (!isRegistered) return reply(ind.noregis())
+				
 			if (isBanned) return reply(ind.diban())
 			
                     gatauda = body.slice(12)
@@ -4660,13 +4660,13 @@ function ytv(url) {
 	case prefix+'jamindo':
 	case prefix+'waktuindo':
 			
-            if (!isRegistered) return reply(ind.noregis())
+            
 			if (isBanned) return reply(ind.diban())
             
 			reply(`Waktu Indonesia Barat: *${moment().utcOffset('+0700').format('HH:mm')}* WIB \nWaktu Indonesia Tengah: *${moment().utcOffset('+0800').format('HH:mm')}* WITA \nWaktu Indonesia Timur: *${moment().utcOffset('+0900').format('HH:mm')}* WIT`)
 			break
 	case prefix+'tinyurl':
-			if (!isRegistered) return reply(ind.noregis())
+			
 			if (isBanned) return reply(ind.diban())
             
             tinyurl = await fetchJson(`https://tinyurl.com/api-create.php?url=${q}`, {method: 'get'})
@@ -4674,7 +4674,7 @@ function ytv(url) {
             break
 	case prefix+'jadwalsholat':
 			
-            if (!isRegistered) return reply(ind.noregis())
+            
 			if (isBanned) return reply(ind.diban())
             
             tanggalsholat = moment.tz('Asia/Jakarta').format('YYYY-MM-DD')
@@ -4688,7 +4688,7 @@ function ytv(url) {
             reply(`${tanda}\n*Kode kota:* ${query.kota}\n*Tanggal:* ${query.tanggal}\n*Imsak:* ${query.jadwal.data.imsak}\n*Subuh:* ${query.jadwal.data.subuh}\n*dhuha:* ${query.jadwal.data.dhuha}\n*Dhuhur:* ${query.jadwal.data.dzuhur}\n*Ashar:* ${query.jadwal.data.ashar}\n*Maghrib:* ${query.jadwal.data.maghrib}\n*Isya:* ${query.jadwal.data.isya}`)
             break
 				case prefix+'moddroid':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 			if (isBanned) return reply(ind.diban())
 			
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=${TobzKey}`, {method: 'get'})
@@ -4699,7 +4699,7 @@ function ytv(url) {
 			
 			break
 				case prefix+'happymod':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzKey}`, {method: 'get'})
 			hupo = data.result[0] 
@@ -4709,7 +4709,7 @@ function ytv(url) {
 			
 			break
             case prefix+'bitly':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				
                client.updatePresence(from, Presence.composing) 
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/bitly?url=${args[0]}&apikey=${TobzKey}`, {method: 'get'})
@@ -4718,7 +4718,7 @@ function ytv(url) {
                 
                 break
             case prefix+'nangis':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/cry?apikey=${TobzKey}', {method: 'get'})
@@ -4732,14 +4732,14 @@ function ytv(url) {
 					})
 					break
 				case prefix+'waifu':
-                if (!isRegistered) return reply(ind.noregis())
+                
 					res = await fetchJson(`https://waifu.pics/api/nsfw/waifu`, {method: 'get'})
 						bufferm = await getBuffer(res.url)
 						client.sendMessage(from, bufferm, image, {quoted: mek, caption: 'ezzzz'})
 						break
 				case prefix+'waifu2':
 				
-                if (!isRegistered) return reply(ind.noregis())
+                
 				reply(ind.wait())
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/waifu?apikey=${TobzKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -4778,7 +4778,7 @@ function ytv(url) {
 					break
                 case prefix+'blowjoberror':
 				
-                if (!isRegistered) return reply(ind.noregis())
+                
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/nsfwblowjob?apikey=${TobzKey}', {method: 'get'})
@@ -4795,7 +4795,7 @@ function ytv(url) {
 				case prefix+'cium':
 				    try {
 				
-                if (!isRegistered) return reply(ind.noregis())
+                
 					res = await fetchJson(`https://waifu.pics/api/sfw/kiss`, {method: 'get'})
 						bufferv = await getBuffer(res.url)
 						client.sendMessage(from, bufferv, image, {quoted: mek, caption: 'ezzzz'})
@@ -4809,7 +4809,7 @@ function ytv(url) {
 					break
 					case prefix+'cium':
 				
-                if (!isRegistered) return reply(ind.noregis())
+                
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/kiss?apikey=${TobzKey}', {method: 'get'})
@@ -4824,7 +4824,7 @@ function ytv(url) {
 					break
 					
 					case prefix+'peluk':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/hug?apikey=${TobzKey}', {method: 'get'})
@@ -4855,7 +4855,7 @@ function ytv(url) {
 					break
                 case prefix+'randomanime':
 				case prefix+'ranime':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				gatauda = body.slice(8)
 					reply(ind.wait())
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomanime?apikey=${TobzKey}`, {method: 'get'})
@@ -4883,7 +4883,7 @@ function ytv(url) {
 					client.sendMessage(from, bufferhh, image, {quoted: mek, caption: wibu})
 					break
 			case prefix+'joox':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=${TobzKey}`, {method: 'get'})
                if (data.error) return reply(data.error)
@@ -4898,7 +4898,7 @@ function ytv(url) {
                 break
 			case prefix+'meme':
                 
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				meme = await kagApi.memes()
 					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
@@ -5039,7 +5039,7 @@ function ytv(url) {
             case`${prefix}google`:
             
                 const googleQuery = body.slice(8)
-                if (!isRegistered) return reply(ind.noregis())
+                
 				
                 if(googleQuery == undefined || googleQuery == ' ') return reply(`*Hasil Pencarian : ${googleQuery}* tidak ditemukan`)
                 google({ 'query': googleQuery }).then(results => {
@@ -5518,7 +5518,7 @@ tesseract.recognize(media, config)
             break
         case prefix+'tafsir': // ARUGAZ
             
-                    if (!isRegistered) return reply(ind.noregis())
+                    
 				
             if (args.length == 1) return reply(`Kirim perintah *#tafsir [ Nama Surah ] [ Ayat ]*\nContoh : *#tafsir al-fatihah 2*`)
                 var responsh = await axios.get('https://raw.githubusercontent.com/ArugaZ/scraper-results/main/islam/surah.json')
@@ -5709,8 +5709,6 @@ tesseract.recognize(media, config)
             case `${prefix}admin`:
             case `${prefix}owner`:
             case `${prefix}creator`:
-            	
-                    if (!isRegistered) return reply(ind.noregis())
 vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
             + `FN:${devName}\n`
@@ -5733,7 +5731,7 @@ vcard = 'BEGIN:VCARD\n'
 				case prefix+'chatlist':
 				case prefix+'chatmu':
 				case prefix+'listchat':
-                    if (!isRegistered) return reply(ind.noregis())
+                    
           	      client.updatePresence(from, Presence.composing)  
                     
 					kae = await client.chats.all()
