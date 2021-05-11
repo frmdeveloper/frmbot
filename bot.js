@@ -1870,22 +1870,13 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                 } catch {
 					ppneme = fs.readFileSync(`./fauzan.rifki.m/ppkosong.png`)
                 }
-					menya = `*TAG:* @${sender.split("@")[0]}
-*Nama:* ${pushname}
-*Nama terdaftar:* ${namaneuser(sender)}
-*Nomor:* ${sender.split("@")[0]}
-*Limit:* ${ceklimit(sender)} pesan
-*Saldo:* Rp ${checkATMuser(sender)}
-*Level:* ${levele}
-*XP:* ${xpne}/${butuhxp}`
-					client.sendMessage(from, ppneme, image, {quoted:mek, caption: `${menya}`, contextInfo: { mentionedJid: [sender] }})
 	kontakme = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
             + `FN:${args.join(' ')}\n` 
             + `ORG: minta di save;\n` 
             + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
             + `END:VCARD` 
-            			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek })
+            			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek, sendEphemeral: true, thumbnail: ppneme})
 				break
 			case prefix+'level':
                                 
