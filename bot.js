@@ -1599,22 +1599,32 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						fs.unlinkSync(rano)
 					})
                         break
-				case prefix+'toimg':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-				if (!isQuotedSticker) return reply('Reply atau Tag sticker yang mau dijadiin gambar kak >_<')
-					reply(ind.wait())
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await client.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.png')
+				case 'toimg': case 'tovideo':
+					if (!isQuotedSticker) return reply('Reply stiker nya')
+					if (mek.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
+					const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					const media = await client.downloadAndSaveMediaMessage(encmedia)
+					const uploadn = await uptonaufal(media, Date.now() + '.webp')
+					const anjj = await axios.get(`http://nzcha-apii.herokuapp.com/webp-to-mp4?url=${uploadn.result.image}`)
+					await frm.sendMediaURL(from, anjj.data.result, 'Nih')
+					fs.unlinkSync(media)
+				} else {
+					const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					const media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = frm.getRandom('.png')
 					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 						fs.unlinkSync(media)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'nih kak [(^.^)]'})
-						fs.unlinkSync(ran)
+						if (err) {
+							frm.reply(from, `gagal`, mek)
+							fs.unlinkSync(ran)
+						} else {
+							buffer = fs.readFileSync(ran)
+							frm.sendImage(from, buffer, 'nih', mek)
+							fs.unlinkSync(ran)
+						}
 					})
-					break
+				}
+				break
                 case prefix+'bikinquote':
                 
                 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
