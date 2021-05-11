@@ -1842,15 +1842,15 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                 client.groupUpdateSubject(from, `${body.slice(9)}`)
                 reply('⟪ SUKSES ⟫ Mengubah Nama Grup')
 					break
-                case prefix+'setdesc':
-                                
+           case prefix+'setdesc':
+           case prefix+'setdesk':
+           case prefix+'setdes':
                 if (!isGroup) return reply(ind.groupo())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateDescription(from, `${body.slice(9)}`)
                 reply('⟪ SUKSES ⟫ Mengubah Desk Grup')
 					break
            case prefix+'demote':
-                           
 					if (!isGroup) return reply(ind.groupo())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply(`Minta contoh ?\n${command} @62xxxx`)
