@@ -423,9 +423,6 @@ ${gaya2} ${prefix}banlist
 ${gaya2} ${prefix}chatmu
 ${gaya2} ${prefix}hapus (geser pesanku)
 ${gaya2} ${prefix}info
-${gaya2} ${prefix}lb
-${gaya2} ${prefix}leaderboard
-${gaya2} ${prefix}listuser
 ${gaya2} ${prefix}makasih
 ${gaya2} ${prefix}teswaktu
 ${gaya2} ${prefix}ping
@@ -4864,27 +4861,6 @@ function ytv(url) {
 					nyel = await getBuffer(ku)
 					client.sendMessage(from, nyel, image, { caption: 'miku chan!!', quoted: mek })
 					break
-            case prefix+'leaderboard':
-				case prefix+'lb':
-                    _level.sort((a, b) => (a.xp < b.xp) ? 1 : -1)
-				uang.sort((a, b) => (a.uang < b.uang) ? 1 : -1)
-                let leaderboardlvl = '-----[ *LEADERBOARD LEVEL* ]----\n\n'
-                let leaderboarduang = '-----[ *LEADERBOARD UANG* ]----\n\n'
-                let nom = 0
-                try {
-                    for (let i = 0; i < 10; i++) {
-                        nom++
-                        leaderboardlvl += `*[${nom}]* wa.me/${_level[i].id.replace('@s.whatsapp.net', '')}\n *XP*: ${_level[i].xp} *Level*: ${_level[i].level}\n`
-                        leaderboarduang += `*[${nom}]* wa.me/${uang[i].id.replace('@s.whatsapp.net', '')}\n *Uang*: _Rp${uang[i].uang}_\n *Limit*: ${limitawal - _limit[i].limit}\n`
-                    }
-                    await reply(leaderboardlvl)
-                    await reply(leaderboarduang)
-                    
-                } catch (err) {
-                    console.error(err)
-                    await reply(`minimal 10 user untuk bisa mengakses database`)
-                }
-				break
             case`${prefix}google`:
             
                 const googleQuery = body.slice(8)
