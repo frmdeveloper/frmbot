@@ -1861,10 +1861,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 			case prefix+'me':
 			case prefix+'profil':
 			case prefix+'profile':
-				levele = getLevelingLevel(sender)
-                xpne = getLevelingXp(sender)
-                if (levele === undefined && xpne === undefined) return reply(`*Aktifkan level, ketik*\n${prefix}leveling on`)
-                butuhxp = 5000 * (Math.pow(2, levele) - 1)
 				try {
                 	ppneme = await client.getProfilePicture(`${sender.split('@')[0]}@c.us`)
                 } catch {
