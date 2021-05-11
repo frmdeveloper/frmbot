@@ -54,7 +54,7 @@ router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
 router.get('/refresh', (req, res) => {
-	res.json({result:'MAU NGAPAIN ? mau refresh kan'})
+	res.json({result:'Ada yang membuka ${linkapp}'})
 	setTimeout( () => {
 	axios.get(linkapp)
 	.then((a) => {
