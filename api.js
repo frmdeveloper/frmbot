@@ -16,7 +16,9 @@ const {
    processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
-const rifki = require('./rifki.js')
+const frm = require('./whatsapp/message.js')
+const conn = require('./whatsapp/connect')
+const client = conn.client
 var express = require('express');
 var router = express.Router();
 const moment = require("moment-timezone") 
@@ -30,8 +32,8 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { bgcolor, color } = require('./lib/color')
 
-
-axios.get('http://frmdev.repl.co/refresh')
+linkapp = 'http://frmdev.repl.co/refresh'
+axios.get(linkapp)
 	.then((a) => {
 		console.log(a.data.result)
 	})
@@ -54,7 +56,7 @@ router.get('/heleh', (req, res) => {
 router.get('/refresh', (req, res) = {
 	res.json({result:'MAU NGAPAIN ? mau refresh kan'})
 	setTimeout( () => {
-	axios.get('http://frmdev.repl.co/refresh')
+	axios.get(linkapp)
 	.then((a) => {
 		console.log(a.data.result)
 	})
@@ -70,7 +72,7 @@ router.get('/japriwa', (req, res) => {
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
 	res.json({result:`mengirim ke ${untuk.split('@')[0]}\n*isi pesan:* ${q}`})
-	rifki(untuk, q)
+	frm.reply(untuk, q)
 	.catch(e => {
 		res.json({result:'ERROR'})
 		})
