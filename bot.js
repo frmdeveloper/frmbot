@@ -963,6 +963,8 @@ client.on('group-participants-update', async (anu) => {
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
             body = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+			const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
+            const prefix = /^[°•π÷×¶∆£¢€¥®™=|~!#$%^&.?/\\©^z+*@,;]/.test(cmd) ? cmd.match(/^[°•π÷×¶∆£¢€¥®™=|~!#$%^&.?/\\©^z+*,;]/gi) : '-'
 			if (body === null || body === undefined) return console.log('TIDAK ADA TEKS')
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			const timi = moment.tz('Asia/Jakarta').add(30, 'days').calendar();
@@ -1192,39 +1194,6 @@ client.on('group-participants-update', async (anu) => {
                         }
                     }
                 }
-		
-			/***************** ngganti prefix ********/
-				  if (body.startsWith(`.`)) {
-                  	prefix = '.'
-                  }
-                  if (body.startsWith(`!`)) {
-                  	prefix = '!'
-                  }
-                  if (body.startsWith(`#`)) {
-                  	prefix = '#'
-                  }
-                  if (body.startsWith(`/`)) {
-                  	prefix = '/'
-                  }
-                  if (body.startsWith(`~`)) {
-                  	prefix = '~'
-                  }
-                  if (body.startsWith(`%`)) {
-                  	prefix = '%'
-                  }
-                  if (body.startsWith(`-`)) {
-                  	prefix = '-'
-                  }
-                  if (body.startsWith(`+`)) {
-                  	prefix = '+'
-                  }
-                  if (body.startsWith(`=`)) {
-                  	prefix = '='
-                  }
-                  if (body.startsWith(`_`)) {
-                  	prefix = '_'
-                  }
-            /***************** ngganti prefix ********/
             
             // TAMBAHAN SAAT BOT OFF / ON
             if (command.includes(`${prefix}bot`) && qcilik.includes(`on`) && isOwner) {
