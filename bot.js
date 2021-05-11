@@ -429,8 +429,6 @@ ${gaya2} ${prefix}lb
 ${gaya2} ${prefix}leaderboard
 ${gaya2} ${prefix}listuser
 ${gaya2} ${prefix}makasih
-${gaya2} ${prefix}mutual
-${gaya2} ${prefix}next
 ${gaya2} ${prefix}teswaktu
 ${gaya2} ${prefix}ping
 ${gaya2} ${prefix}profile
@@ -639,83 +637,6 @@ const getAfkPosition = (sender) => {
     return position
 }
 
-const getLevelingXp = (sender) => {
-            let position = false
-            Object.keys(_level).forEach((i) => {
-                if (_level[i].id === sender) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                return _level[position].xp
-            }
-        }
-
-        const getLevelingLevel = (sender) => {
-            let position = false
-            Object.keys(_level).forEach((i) => {
-                if (_level[i].id === sender) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                return _level[position].level
-            }
-        }
-
-        const getLevelingId = (sender) => {
-            let position = false
-            Object.keys(_level).forEach((i) => {
-                if (_level[i].id === sender) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                return _level[position].id
-            }
-        }
-
-        const addLevelingXp = (sender, amount) => {
-            let position = false
-            Object.keys(_level).forEach((i) => {
-                if (_level[i].id === sender) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                _level[position].xp += amount
-                fs.writeFileSync('./database/user/level.json', JSON.stringify(_level))
-            }
-        }
-
-        const addLevelingLevel = (sender, amount) => {
-            let position = false
-            Object.keys(_level).forEach((i) => {
-                if (_level[i].id === sender) {
-                    position = i
-                }
-            })
-            if (position !== false) {
-                _level[position].level += amount
-                fs.writeFileSync('./database/user/level.json', JSON.stringify(_level))
-            }
-        }
-
-        const addLevelingId = (sender) => {
-            const obj = {id: sender, xp: 1, level: 1}
-            _level.push(obj)
-            fs.writeFileSync('./database/user/level.json', JSON.stringify(_level))
-        }
-             
-         const getRegisteredRandomId = () => {
-            return _registered[Math.floor(Math.random() * _registered.length)].id
-        }
-
-        const addRegisteredUser = (userid, sender, age, time, serials) => {
-            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
-            _registered.push(obj)
-            fs.writeFileSync('./database/bot/registered.json', JSON.stringify(_registered))
-        }
 
         const createSerial = (size) => {
             return crypto.randomBytes(size).toString('hex').slice(0, size)
@@ -2628,26 +2549,6 @@ case prefix+'artinama':
 				if (!isGroup) return reply(ind.groupo())
 					await costum(virtex2(pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered), text, tescuk, cr)
 					break
-				case prefix+'mutual':  
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                if (isGroup) return  reply( 'TIDAK BISA DI GRUP KAK')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Mencari Pasangan >_<')
-                await reply(`wa.me/${anug}`)
-                await reply( `Pasangan Ditemukan: 🐊\n*${prefix}next* — Temukan Pasangan Baru`)
-                
-            break
-            case prefix+'next':  
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                if (isGroup) return  reply( 'TIDAK BISA DI GRUP KAK')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Mencari Pasangan >_<')
-                await reply(`wa.me/${anug}`)
-                await reply( `Pasangan Ditemukan: 🐊\n*${prefix}next* — Temukan Pasangan Baru`)
-                
-                break
 /*
 ]=====> MAKER MENU <=====[
 */
@@ -5330,26 +5231,6 @@ function ytv(url) {
                     await reply(`minimal 10 user untuk bisa mengakses database`)
                 }
 				break
-				case prefix+'mutual':
-                
-                    if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                if (isGroup) return  reply( 'Command ini tidak bisa digunakan di dalam grup!')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Looking for a partner...')
-                await reply(`wa.me/${anug}`)
-                await reply( `Partner found: \n*${prefix}next* � find a new partner`)
-            break
-            case prefix+'next':
-                
-                    if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
-                if (isGroup) return  reply( 'Command ini tidak bisa digunakan di dalam grup!')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Looking for a partner...')
-                await reply(`wa.me/${anug}`)
-                await reply( `Partner found: \n*${prefix}next* � find a new partner`)
-            break
             case`${prefix}google`:
             
                 const googleQuery = body.slice(8)
