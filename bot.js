@@ -1874,44 +1874,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
             + `END:VCARD` 
             			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek, sendEphemeral: true, thumbnail: ppneme})
 				break
-			case prefix+'level':
-                                
-                const userLevel = getLevelingLevel(sender)
-                const userXp = getLevelingXp(sender)
-                if (userLevel === undefined && userXp === undefined) return reply(ind.lvlnul())
-                const requiredXp = 5000 * (Math.pow(2, userLevel) - 1)
-                resul = `*♡ LEVEL ♡*\n➸ NAMA: ${namaneuser(sender)}\n➸ NAMA AKUN: ${pushname}\n➸ NOMOR: wa.me/${sender.split("@")[0]}\n➸ XP: ${userXp}/${requiredXp}\n➸ LEVEL: ${userLevel}`
-                reply(resul)
-                try {
-                	pepe = await client.getProfilePicture(`${sender.split('@')[0]}@c.us`)
-                } catch {
-					auuu = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-					pepe = fs.readFileSync(`./fauzan.rifki.m/ppkosong.png`)
-                }
-                const rank = new canvas.Rank()
-                    .setAvatar(pepe)
-                    .setLevel(userLevel)
-                    .setLevelColor('#000000', '#000000')
-                    .setRank(Number('0'))
-                    .setCurrentXP(userXp, '#000000')
-                    .setOverlay('#000000', 100, false)
-                    .setRequiredXP(requiredXp, '#000000')
-                    .setProgressBar('#000000', 'COLOR')
-                    .setBackground('COLOR', '#ffffff')
-                    .setUsername(namaneuser(sender), '#000000')
-                    .setDiscriminator(sender.substring(6, 10))
-                rank.build()
-                    .then(async (buffer) => {
-                        canvas.write(buffer, `${sender}_card.png`)
-                        levele = fs.readFileSync(`./${sender}_card.png`)
-                        client.sendMessage(from, levele, image, {caption: `Silahkan Follow instagramku dengan cara klik link ini\nhttps://instagram.com/frm_developer`, quoted:mek})
-                        fs.unlinkSync(`${sender}_card.png`)
-                    })
-                    .catch(async (err) => {
-                        console.error(err)
-                        reply('Error!')
-                    })
-            break
                  case prefix+'linkgrup':  
 				if (!isRegistered) return reply(ind.noregis())
 				                
