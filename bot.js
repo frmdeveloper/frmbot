@@ -817,7 +817,7 @@ client.on('group-participants-update', async (anu) => {
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
-			const isOwner = ownerNumber.includes(isGroup ? mek.participant : mek.key.remoteJid)
+			const isOwner = ownerNumber.includes(sender)
 			const isRoboGuru = nomereroboguru.includes(sender)
 			const isNggoRoboguru = nggoroboguru.includes(sender)
 			const isBanned = ban.includes(sender)
@@ -1018,7 +1018,7 @@ client.on('group-participants-update', async (anu) => {
 			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
 				reply(`WIDIH`)
 			}
-if (public && !mek.key.fromMe) return
+if (public && !isOwner && !isMe) return
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
