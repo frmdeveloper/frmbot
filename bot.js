@@ -422,7 +422,6 @@ ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}banlist
 ${gaya2} ${prefix}chatmu
-${gaya2} ${prefix}frmgrup
 ${gaya2} ${prefix}hapus (geser pesanku)
 ${gaya2} ${prefix}info
 ${gaya2} ${prefix}lb
