@@ -46,6 +46,7 @@ router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
 router.get('/refresh', (req, res) = {
+	res.json({result:'APE LU'})
 	setTimeout( () => {
 	axios.get('http://frmdev.repl.co/refresh')
 	}, 10000)
