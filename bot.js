@@ -46,8 +46,6 @@ const fs = require("fs")
 const crypto = require('crypto')
 const axios = require('axios')
 const WSF = require('wa-sticker-formatter')
-const client = require('./whatsapp/message.js')
-const conn = require('./whatsapp/connect')
 const { bgcolor } = require('./lib/color')
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -77,6 +75,10 @@ const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
 const imgbb = require('imgbb-uploader')
 const translate = require('@vitalets/google-translate-api')
+const frm = require('./whatsapp/message.js')
+const conn = require('./whatsapp/connect')
+const client = conn.client
+conn.connect()
 tanda = '*───❉ FRM BOT ❉──*'
 head1 = '*◪ ❀'
 head2 = '❀*'
@@ -864,30 +866,8 @@ refresh = async() => {
 	heleh = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
 	console.log(heleh.result)
 }
-/*
-]=====> SCAN QR <=====[
-*/
 
-const client = new WAConnection()
-client.logger.level = 'warn'
-console.log(banner.string)
-
-	client.on('qr', () => {
-	console.log(color('[','white'), color('!','red'), color(']','white'), color(' SCAN KODE QR DIATAS, PAKAI WHATSAPP'))
-	})
-	fs.existsSync('./FRMbotLOGIN.json') && client.loadAuthInfo('./FRMbotLOGIN.json')
-	client.on('connecting', () => {
-		console.log('Menghubungkan...')
-	})
-	client.on('open', () => {
-		console.log('Terhubung')
-		fs.writeFileSync('./FRMbotLOGIN.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
-		client.sendMessage(client.user.jid, JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'), MessageType.text)
-		client.sendMessage(`${ownerNumber}`, `BOT BERHASIL DIAKTIFKAN`, MessageType.text)
-	})
-	client.connect({timeoutMs: 30*1000})
-	
-	client.on('contacts-received', () => {
+client.on('contacts-received', () => {
 		client.sendMessage(client.user.jid, 'you have ' + Object.keys(client.contacts).length + ' contacts', MessageType.text)
         console.log('you have ' + Object.keys(client.contacts).length + ' contacts')
     })
