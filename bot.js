@@ -1600,7 +1600,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						fs.unlinkSync(rano)
 					})
                         break
-				case 'toimg': case 'tovideo':
+				case prefix+'toimg': case prefix+'tovideo':
 					if (!isQuotedSticker) return reply('Reply stiker nya')
 					if (mek.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
 					const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
