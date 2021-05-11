@@ -2552,6 +2552,20 @@ case prefix+'artinama':
 /*
 ]=====> MAKER MENU <=====[
 */
+				case 'ephemeral'://DhyZx:v
+					if (isMedia || isQuotedSticker) {
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					if (!q) return reply('textnya apa brohh')
+					client.sendMessage(from, `${q}`,
+					MessageType.text, {
+					sendEphemeral: true,
+					thumbnail: fs.readFileSync(media)
+					})
+					} else {
+						reply(`TAG STIKER / FOTO!`)
+					}
+				break
 				case prefix+'raindrop':
 if (!isRegistered) return reply(ind.noregis())
 if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
