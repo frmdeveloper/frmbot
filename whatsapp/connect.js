@@ -13,7 +13,7 @@ const client = new WAConnection()
 exports.client = client
 
 exports.connect = async() => {
-    let authofile = '../FRMbotLOGIN.json'
+    let authofile = './FRMbotLOGIN.json'
 	const client = new WAConnection()
 client.logger.level = 'warn'
 console.log(banner.string)
