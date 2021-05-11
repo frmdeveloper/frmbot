@@ -491,9 +491,6 @@ const grupmenu = `
 ${head1} GROUP MENU ${head2}
 ${gaya2} ${prefix}add ~62xxx~
 ${gaya2} ${prefix}demote ~@tag~
-${gaya2} ${prefix}edotense ~@tag~
-${gaya2} ${prefix}event on
-${gaya2} ${prefix}event off
 ${gaya2} ${prefix}fitnah ~@tag & pesannya & pesanbot~
 ${gaya2} ${prefix}grup buka
 ${gaya2} ${prefix}grup tutup
@@ -1679,58 +1676,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					} else {
 						reply(ind.satukos())
 					}
-					break
-                 case `${prefix}event`:
-                    if (!isGroup) return reply(ind.groupo())
-					if (args.length < 1) return reply('Boo :')
-					if (args[0] === 'on') {
-						if (isEventon) return reply('*SUDAH AKTIF* !!!')
-						event.push(from)
-						fs.writeFileSync('./database/bot/event.json', JSON.stringify(event))
-						reply('BERHASIL MENYALAKAN')
-					} else if (args[0] === 'off') {
-						event.splice(from, 1)
-						fs.writeFileSync('./database/bot/event.json', JSON.stringify(event))
-						reply('BERHASIL MEMATIKAN')
-					} else if (args[0] === 'enable') {
-						if (isEventon) return reply('*SUDAH AKTIF* !!!')
-						event.push(from)
-						fs.writeFileSync('./database/bot/event.json', JSON.stringify(event))
-						reply('BERHASIL MENYALAKAN')
-					} else if (args[0] === 'disable') {
-						event.splice(from, 1)
-						fs.writeFileSync('./database/bot/event.json', JSON.stringify(event))
-						reply('BERHASIL MEMATIKAN')
-					} else {
-						reply(ind.satukos())
-					}
-					break
-                case prefix+'leveling':
-                if (!isGroup) return reply(ind.groupo())
-                if (args.length < 1) return reply('Ekhemm >_<')
-                if (args[0] === 'enable') {
-                    if (isLevelingOn) return reply('*fitur level sudah aktif sebelum nya*')
-                    _leveling.push(from)
-                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
-                     reply(ind.lvlon())
-                } else if (args[0] === 'disable') {
-                	if (!isLevelingOn) return reply('*fitur level sudah mati sebelum nya*')
-                    _leveling.splice(from, 1)
-                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
-                     reply(ind.lvloff())
-                } else if (args[0] === 'on') {
-                    if (isLevelingOn) return reply('*fitur level sudah aktif sebelum nya*')
-                    _leveling.push(from)
-                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
-                     reply(ind.lvlon())
-                } else if (args[0] === 'off') {
-                	if (!isLevelingOn) return reply('*fitur level sudah mati sebelum nya*')
-                    _leveling.splice(from, 1)
-                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
-                     reply(ind.lvloff())
-				} else {
-                    reply(ind.satukos())
-                }
 					break
 				case `${prefix}simi`:
 				case `${prefix}simih`:
