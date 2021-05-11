@@ -1140,7 +1140,7 @@ ${monosp} sq        Albanian
                 }
             
             if (checkAfkUser(sender)) {
-                _afk.splice(getAfkPosition(sender.id, _afk), 1)
+                _afk.splice(getAfkPosition(sender, _afk), 1)
                 fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
                 	client.sendMessage(from, ind.afkDone(pushname), text)
             }
