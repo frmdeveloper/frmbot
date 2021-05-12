@@ -2527,7 +2527,7 @@ break
 ]=====> OWNER MENU <=====[
 */
 				case '$':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					exec(`${q}`, (error, stdout, stderr) => {
 					if (error) {
     				reply(`*exec error:*\nmiringkan hpmu\n\n${monosp}${error}${monosp}`);
@@ -2538,13 +2538,13 @@ break
 					});
 				break
 				case prefix+'shutdown':
-            		if (!isOwner || !isMe) return reply(ind.ownerb())
+            		if (!isOwner) return reply(ind.ownerb())
 	        		diteruskan(`Bye`)
                 	await sleep(5000)
 					return reply(JSON.stringify(eval(process.exit())))
 					break
 				case prefix+'on':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					if (args.length < 1) return reply(`Code chat nya mana`)
 					if (onoffnya.includes(q)) return reply('SUDAH MENYALA')
 					onoffnya.push(q)
@@ -2552,7 +2552,7 @@ break
 					reply('BERHASIL MENYALAKAN')
 					break
 				case prefix+'off':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					if (args.length < 1) return reply(`Code chat nya mana`)
 					if (!onoffnya.includes(q)) return reply('TIDAK ADA DI DALAM DAFTAR BOT ON')
 					onoffnya.splice(q, 1)
@@ -2570,7 +2570,7 @@ break
 					break
 				case prefix+'run':
 				case '>':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					try{
                 	sy = args.join(' ')
                 	return eval(sy)
@@ -2579,7 +2579,7 @@ break
                 	}
                 	break
 				case prefix+'eval':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
                 	if (!q) return reply(ind.wrongf())
                 	try {
          	           let evaled = await eval(q)
@@ -2591,12 +2591,12 @@ break
   	   	       }
         	    break 
 				case prefix+'anggotagrup':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					memberlimit = args[0]
 					reply(`Sekarang Bot bisa dimasukan ke grup jika anggotanya lebih dari ${memberlimit}`)
 					break
 				case `${prefix}bc`: 
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					if (args.length < 1) return reply('pesan tidak ada')
 						teksbc = []
 						teksbc.push(args.join(' '))
@@ -2606,7 +2606,7 @@ break
 						}
 					break
 				case prefix+'bcgc':
-				    if (!isOwner || !isMe) return reply(ind.ownerb())
+				    if (!isOwner) return reply(ind.ownerb())
 					if (args.length < 1) return reply('Teksnya mana bosku >_<')
 					anu = await groupMembers
 					nom = mek.participant
@@ -2625,7 +2625,7 @@ break
 					}
 					break
 				case prefix+'clearall':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
@@ -2634,7 +2634,7 @@ break
 					reply(ind.clears())
 					break
 				case prefix+'hapuschat':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					client.deleteChat(args[0])
 					reply(`Menghapus chat dengan ${args[0]}`)
 					break
@@ -2642,18 +2642,18 @@ break
 					client.updatePresence(from, Presence.composing) 
 					client.chatRead (from)
 					if (!isGroup) return reply(ind.groupo())
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 					client.blockUser (`${body.slice(7)}@c.us`, "add")
 					client.sendMessage(from, `perintah Diterima, memblokir ${body.slice(7)}@c.us`, text)
 					break
 				case prefix+'unblock':
                     if (!isGroup) return reply(ind.groupo())
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
 					client.sendMessage(from, `Perintah Diterima, membuka ${body.slice(9)}@c.us`, text)
 					break   				
 				case prefix+'edit':
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 				    client.updatePresence(from, Presence.composing) 
 				if (args[0] === 'pp') {
 					enmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -2725,7 +2725,7 @@ break
 					reply(`Nomor wa.me/${bnnd} telah di unban!`)
 					break
 				case `${prefix}sibuk`:
-                    if (!isOwner || !isMe) return reply(ind.ownerb())
+                    if (!isOwner) return reply(ind.ownerb())
 					var sibuk = body.slice(14)
 					var sibuk1 = sibuk.split(" ")[1]
 					if (args[0] === 'on') {
@@ -2914,7 +2914,7 @@ ${makermenu2}`)
 					if (args[0].startsWith('08')) return reply(`${tanda}\nPakai 62 jangan pakai 08`)
 					reply(`mengirim balasan ke ${args[1]}`)
 					client.updatePresence(`${args[1]}`, Presence.composing)
-					client.sendMessage(`${args[1]}`, `*Untuk ${args[0]}*\n${body.split("|")[1]}`, text, {quoted: { key: { fromMe: false, participant: `${args[0]}`, ...(from ? { remoteJid: `${args[1]}` } : {}) }, message: { conversation: `_aku ngebug guys_` }}})
+					client.sendMessage(`${args[1]}`, `*Untuk ${args[0].split('@')}*\n${body.split("|")[1]}`, text, {quoted: { key: { fromMe: false, participant: `${args[0]}`, ...(from ? { remoteJid: `${args[1]}` } : {}) }, message: { conversation: `_aku ngebug guys_` }}})
 					break
 				case prefix+'sisa.hari':
 				case prefix+'sisahari':
@@ -3583,7 +3583,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				case `${prefix}pakaipp`:
 				case `${prefix}gantipp`:
 				case `${prefix}ubahpp`:
-                    if (!isOwner || !isMe) return reply(ind.ownerb())
+                    if (!isOwner) return reply(ind.ownerb())
 				    client.updatePresence(from, Presence.composing) 
 					if (!isQuotedImage) return reply(`Kirim gambar lalu geser gambar yang sudah dikirim lalu ketik ${prefix}ubahpp`)
 					enmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -3647,13 +3647,13 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					break 
 				case prefix+'buatstatus':
                     
-				    if (!isOwner || !isMe) return reply(ind.ownerb())
+				    if (!isOwner) return reply(ind.ownerb())
 					client.sendMessage('status@broadcast', body.slice(12), text, {quoted: mek})
 					fitnah('status@broadcast', 'sudah', ' ')
 					break 
 				case `${prefix}bcgc`:
                     
-				     if (!isOwner || !isMe) return reply(ind.ownerb())
+				     if (!isOwner) return reply(ind.ownerb())
 					if (args.length < 1) return reply('.......')
 					anu = await groupMembers
 					nom = mek.participant
@@ -3756,7 +3756,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                 	break
 				case `${prefix}kickall`:
                     
-                        if (!isOwner || !isMe) return reply(ind.ownerb())
+                        if (!isOwner) return reply(ind.ownerb())
                     
                     if (!isBotGroupAdmins) return reply(ind.badmin())
 			        members_id = []
@@ -3784,7 +3784,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					}
 					break
 				case `${prefix}setreply`:
-                    if (!isOwner || !isMe) return reply(ind.ownerb())
+                    if (!isOwner) return reply(ind.ownerb())
 					
                     client.updatePresence(from, Presence.composing) 
 					if (args.length < 1) return
@@ -5001,7 +5001,7 @@ tesseract.recognize(media, config)
 					break
 				case `${prefix}restart`:
 				case `${prefix}reboot`:
-				if (!isOwner || !isMe) return reply(ind.ownerb())
+				if (!isOwner) return reply(ind.ownerb())
                 try {
 					botdipateni = {
 					text: `@${sender.split("@")[0]} ingin me-restart / mulai ulang bot ini\n\n_membutuhkan waktu lama_`,
@@ -5031,7 +5031,7 @@ tesseract.recognize(media, config)
 				case prefix+'crash':
 				case prefix+'bunuhbot':
 				case prefix+'forceclose':
-				if (!isOwner || !isMe) return reply(ind.ownerb())
+				if (!isOwner) return reply(ind.ownerb())
                 try {
 					botdipateni = {
 					text: `@${sender.split("@")[0]} ingin me-restart / mulai ulang bot ini\n\n_membutuhkan waktu lama_`,
@@ -5187,7 +5187,7 @@ tesseract.recognize(media, config)
 					mentions(teks, members_id, true)
 					break
 				case `${prefix}clearall`:
-                    if (!isOwner || !isMe) return reply(ind.ownerb())
+                    if (!isOwner) return reply(ind.ownerb())
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
@@ -5204,7 +5204,7 @@ tesseract.recognize(media, config)
 					break
                 case `${prefix}unblock`:
 					if (!isGroup) return reply(ind.groupo())
-					if (!isOwner || !isMe) return reply(ind.ownerb())
+					if (!isOwner) return reply(ind.ownerb())
 				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
 					client.sendMessage(from, `?? ??,  ${body.slice(9)}@c.us`, text)
 					break
@@ -5217,7 +5217,7 @@ tesseract.recognize(media, config)
 				}, 1000) // 1000 = 1detik,
 				break
 				case `${prefix}clearbc`: 
-					if (!isOwner || !isMe) return reply(ind.ownerb()) 
+					if (!isOwner) return reply(ind.ownerb()) 
 						for (let dibc of _registered) {
 							client.deleteChat(dibc.id)
 						reply('menghapus bc untuk bot saja\nbukan untuk semua orang')
