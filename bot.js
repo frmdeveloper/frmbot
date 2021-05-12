@@ -102,7 +102,7 @@ cr = '_bot wa_'
 pesansibuk = 'SEDANG SIBUK'
 nomersibuk = ''
 nomerwesdaftar = '626262@s.whatsapp.net'
-self = true
+public = false
 dibanned = '3'
 sisabaterai = `belum diketahui`
 hematdaya = `belum diketahui`
@@ -938,11 +938,11 @@ client.on('group-participants-update', async (anu) => {
             
             // TAMBAHAN SAAT BOT OFF / ON
 			if (command.includes(`${prefix}self`) && isOwner) {
-				self = false
+				public = false
 				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
 			if (command.includes(`${prefix}public`) && isOwner) {
-				self = true
+				public = true
 				frm.sendFakeStatus(from, `Sukses`, `Status: PUBLIC`)
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
@@ -955,7 +955,7 @@ client.on('group-participants-update', async (anu) => {
 			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
 				reply(`WIDIH`)
 			}
-if (!self && !isOwner) return
+if (!public && !isOwner) return
 			//pesan tambahan
 				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
 					client.updatePresence(from, Presence.composing)
