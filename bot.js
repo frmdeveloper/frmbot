@@ -2162,7 +2162,7 @@ case prefix+'artinama':
 				case prefix+'hidethum':
 				case prefix+'hidetumb':
 				case prefix+'hidetum':
-					if (isMedia || isQuotedSticker || isQuotedImage) {
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage)) {
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					if (!q) return reply('textnya apa brohh')
