@@ -568,67 +568,20 @@ const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-const addAfkUser = (userid, time, reason) => {
-    const obj = { id: userid, time: time, reason: reason }
+const addAfkUser = (userid) => {
+    const obj = { userid }
     	_afk.push(obj)
 	}
 
 const checkAfkUser = (sender) => {
     let status = false
     Object.keys(_afk).forEach((i) => {
-        if (_afk[i].id === sender) {
+        if (_afk[i] === sender) {
             status = i
         }
     })
     return status
 }
-
-const getAfkReason = (sender) => {
-    let position = null
-    Object.keys(_afk).forEach((i) => {
-        if (_afk[i].id === sender) {
-            position = i
-        }
-    })
-    if (position !== null) {
-        return _afk[position].reason
-    }
-}
-
-const getAfkTime = (sender) => {
-    let position = null
-    Object.keys(_afk).forEach((i) => {
-        if (_afk[i].id === sender) {
-            position = i
-        }
-    })
-    if (position !== null) {
-        return _afk[position].time
-    }
-}
-
-const getAfkId = (sender) => {
-    let position = null
-    Object.keys(_afk).forEach((i) => {
-        if (_afk[i].id === sender) {
-            position = i
-        }
-    })
-    if (position !== null) {
-        return _afk[position].id
-    }
-}
-
-const getAfkPosition = (sender) => {
-    let position = null
-    Object.keys(_afk).forEach((i) => {
-        if (_afk[i].id === sender) {
-            position = i
-        }
-    })
-    return position
-}
-
 
         const createSerial = (size) => {
             return crypto.randomBytes(size).toString('hex').slice(0, size)
