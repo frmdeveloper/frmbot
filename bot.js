@@ -3882,7 +3882,7 @@ _${hematdaya}_
 _${dicas}_`
 					
 //INFO TERMINAL
-client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: `*❀ Ping Internet:*
+teksinfonggocmd = `*❀ Ping Internet:*
 _${latensi.toFixed(4)} detik_
    _(lebih besar lebih lambat)_
 *❀ Sistem Operasi:*
@@ -3896,10 +3896,10 @@ Sisa: _${os.freemem()}_
 Total: _${os.totalmem()}_
 *❀ CPU:*
 Model: _${os.cpus()[0].model}_
-Speed: _${os.cpus()[0].speed}_` })
+Speed: _${os.cpus()[0].speed}_`
+					await client.sendMessage(from, infonggocmd, image, { quoted: mek, caption: teksinfonggocmd })
+					await client.sendMessage(from, infonggowa, image, { quoted: mek, caption: teksinfonggowa })
 					client.sendMessage(from, infobotnya, image, { quoted: mek, caption: teksinfobotnya })
-					client.sendMessage(from, infonggowa, image, { quoted: mek, caption: teksinfonggowa })
-					console.log(me)
 					break
 				case `${prefix}blocklist`: 
 				case `${prefix}listblock`:
