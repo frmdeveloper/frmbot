@@ -495,8 +495,6 @@ ${gaya2} ${prefix}kick ~@tag~
 ${gaya2} ${prefix}kickfast ~@tag~
 ${gaya2} ${prefix}kickme
 ${gaya2} ${prefix}leaderboard
-${gaya2} ${prefix}leveling on
-${gaya2} ${prefix}leveling off
 ${gaya2} ${prefix}linkgrup
 ${gaya2} ${prefix}listadmin
 ${gaya2} ${prefix}listonline
@@ -2059,20 +2057,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 /*
 ]=====> OTHER MENU <=====[
 */				
-            	case prefix+'mining':
-                            
-                      if (!isEventon) return reply(`maaf ${pushname} event mining tidak di aktifkan sama owner Rifki`)
-                      if (isOwner) {
-                      const one = 999999999
-                      addLevelingXp(sender, one)
-                      addLevelingLevel(sender, 99)
-                      reply(`karena Rifki baik Bot memberikan ${one}Xp >_<`)
-                      }else{
-                      const mining = Math.ceil(Math.random() * 10000)
-                      addLevelingXp(sender, mining)
-                      await reply(`*selamat* ${pushname} kamu mendapatkan *${mining}Xp*\n\nmining hanya digunakan untuk menambah XP`)
-                      }
-                    break
                 case prefix+'moddroid':  
 				
 				
@@ -2198,10 +2182,6 @@ case prefix+'artinama':
 					lagutapi = fs.readFileSync('./fauzan.rifki.m/tapiboong.m4a')
 					client.updatePresence(from, Presence.recording)
 					client.sendMessage(from, lagutapi, audio, {mimetype: 'audio/mp4', quoted: mek, ptt: true})
-					break
-                case prefix+'virtex2':  
-				if (!isGroup) return reply(ind.groupo())
-					await costum(virtex2(pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered), text, tescuk, cr)
 					break
 /*
 ]=====> MAKER MENU <=====[
@@ -2887,8 +2867,6 @@ client.sendMessage(from, buffqr, image, {quoted: mek, caption: `Scan sebelum kad
 					break
 				case prefix+'help':
 				case prefix+'menu':
-                    reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
-					uangku = checkATMuser(sender)
 					menuweton = ['Pahing', 'Pon','Wage','Kliwon','Legi']
 					menuneweton = menuweton[Math.floor(((d * 1) + gmt) / 84600000) % 5]
 					fitnah(`${nomerewa}`, `${tanda}`, `╭═─⊱ ❰ *INFO INFO INFO* ❱ ⊰─═
@@ -2911,8 +2889,6 @@ reply(`*◪ ❀ BENTUK MENU ❀*
 				case `${prefix}listhelp2`:
 				case `${prefix}semuamenu2`:
 				case `${prefix}semua.menu2`:
-                    reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
-					uangku = checkATMuser(sender)
 					menuweton = ['Pahing', 'Pon','Wage','Kliwon','Legi']
 					menuneweton = menuweton[Math.floor(((d * 1) + gmt) / 84600000) % 5]
 					fitnah(`${nomerewa}`, `${tanda}`, `╭═─⊱ ❰ *INFO INFO INFO* ❱ ⊰─═
@@ -2936,8 +2912,6 @@ reply(`PEMBUATAN 2\n͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏
 				case `${prefix}listhelp`:
 				case `${prefix}semuamenu`:
 				case `${prefix}semua.menu`:
-                    reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
-					uangku = checkATMuser(sender)
 					menuweton = ['Pahing', 'Pon','Wage','Kliwon','Legi']
 					menuneweton = menuweton[Math.floor(((d * 1) + gmt) / 84600000) % 5]
 					fitnah(`${nomerewa}`, `${tanda}`, `╭═─⊱ ❰ *INFO INFO INFO* ❱ ⊰─═
@@ -3109,44 +3083,6 @@ o==[]::::::>
 				} 
 				
 				break
-				case `${prefix}jualxp`:
-				case `${prefix}salexp`:
-                    if (args.length < 1) return reply(`SELAMAT DATANG\nSilahkan Jual XP disini\nKetik ${prefix}jualxp ~jumlah uang~\n\nBiaya Rp 1000 dapat 1 Limit.`)
-					totaluang = args[0]
-					const XpPerUang = 1000
-					const totaljualxp = XpPerUang * totaluang
-					if ( getLevelingXp(sender) <= totaljualxp) return reply(`maaf uang kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
-					if ( getLevelingXp(sender) >= totaljualxp ) {
-					addLevelingXp(sender, totaljualxp)
-					addKoinUser(sender, totaluang)
-					fitnah(`${nomerewa}`, `* PENJUALAN XP BERHASIL *`, `*PENJUALAN XP* \n\n\n*Penerima* : ${pushname}\n*nominal penjualan* : Rp ${totaluang} \n *harga xp* : Rp ${XpPerUang} per XP\n *Sisa uang mu* : Rp ${checkATMuser(sender)}\n\n\n_${createSerial(15)}_`)
-				}
-					
-					break
-				case `${prefix}kerja`:
-                      
-                	  
-				      if (isBanned) return reply(ind.diban())
-				if (args.length < 1) {
-                      bayaran = 1000
-                      addKoinUser(sender, bayaran)
-                      dompetisi = checkATMuser(sender)
-                      kerjane = {
-							text: `*HASIL BEKERJA*\n\n*Penerima:* @${sender.split("@")[0]}\n*Gaji:* Rp ${bayaran}\n*Saldo anda:* Rp ${dompetisi}\n*No. SN:* ${monosp}${createSerial(15)}${monosp}`,
-							contextInfo: { mentionedJid: [sender] }
-						}
-                      fitnah(`${nomerewa}`, `_berhasil_`, kerjane)
-				} if (args.length > 0) {
-					bayaran = 1000
-					addKoinUser(sender, bayaran)
-					dompetisi = checkATMuser(sender)
-					mergawe = {
-							text: `*HASIL BEKERJA*\n\n*Penerima:* @${sender.split("@")[0]}\n*Pekerjaan:* ${q}\n*Gaji:* Rp ${bayaran}\n*Saldo anda:* Rp ${dompetisi}\n*No. SN:* ${monosp}${createSerial(15)}${monosp}`,
-							contextInfo: { mentionedJid: [sender] }
-						}
-                      fitnah(`${nomerewa}`, `_berhasil_`, mergawe)
-				}
-					break
 				case `${prefix}10k`:
                       
                 	  
@@ -3896,35 +3832,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					}
 					teks += `\n\`\`\`Total grup : ${groupId.length}\`\`\``
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek})
-					break
-			case `${prefix}daftar`:
-                
-                if (!q.includes('|')) return  reply(`${prefix}daftar Rifki|16\n*itu contohnya*`)
-                const namaUser = q.substring(0, q.indexOf('|') - 0)
-                const umurUser = q.substring(q.lastIndexOf('|') + 1)
-                const serialUser = createSerial(20)
-                veri = sender 
-                if (args[0].startsWith('|')) {
-                	daftar = body.slice(8)
-                	namaUser1 = daftar.split("|")[1];
-               	 umurUser1 = daftar.split("|")[2];
-                	serialUser1 = createSerial(20)
-                    addRegisteredUser(sender, namaUser1, umurUser1, time, serialUser1)
-                    await reply(ind.registered(namaUser1, umurUser1, serialUser1, time, sender))
-                    addATM(sender)
-                    addLevelingId(sender)
-                    console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser1, 'cyan'), 'Age:', color(umurUser1, 'cyan'), 'Serial:', color(serialUser1, 'cyan'))
-                } else if (!args[0].startsWith('|')) {
-                	forme = body.slice(8)
-                	namaUser2 = forme.split("|")[0];
-               	 umurUser2 = forme.split("|")[1];
-                	serialUser2 = createSerial(20)
-                    addRegisteredUser(sender, namaUser2, umurUser2, time, serialUser2)
-                    await reply(ind.registered(namaUser2, umurUser2, serialUser2, time, sender))
-                    addATM(sender)
-                    addLevelingId(sender)
-                    console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser2, 'cyan'), 'Age:', color(umurUser2, 'cyan'), 'Serial:', color(serialUser2, 'cyan'))
-                }
 					break
 			case prefix+'hilih':
 			case prefix+'huluh':
