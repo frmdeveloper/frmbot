@@ -632,8 +632,8 @@ client.on('group-participants-update', async (anu) => {
 				}
 				teks = `*[ SELAMAT DATANG ]*\nKamu masuk di Grup *${mdata.subject}* \n___________________________\n@${num.split('@')[0]} \nMohon untuk follow instagramku *>* \ninstagram.com/frm_developer`
 				let buff = await getBuffer(ppimg)
-				client.sendMessage(mdata.id, teks, MessageType.text, {contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_Notifikasi grup_` }}})
-				client.sendMessage(mdata.id, ind.intro(), MessageType.text, {quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `salin ini!  Usahakan jangan ada teks yang dihapus` }}})
+				client.sendMessage(mdata.id, teks, MessageType.text, { sendEphemeral: true, thumbnail: buff, contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${num}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `Saya anggota baru` }}})
+				client.sendMessage(mdata.id, ind.intro(), MessageType.text, { sendEphemeral: true, thumbnail: buff, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `salin ini!  Usahakan jangan ada teks yang dihapus` }}})
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
 				try {
@@ -641,9 +641,9 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `SELAMAT TINGGAL... @${num.split('@')[0]}👋* \n_Haduh haduh, ngapain saya ngirim ini. Dia kan tidak akan tahu_\n\nYang lain, mohon untuk follow instagramku *>* \ninstagram.com/frm_developer`
+				teks = `SELAMAT TINGGAL... @${num.split('@')[0]}👋*`
 				let buff = await getBuffer(ppimg)
-				client.sendMessage(mdata.id, teks, MessageType.text, {contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_Notifikasi grup_` }}})
+				client.sendMessage(mdata.id, teks, MessageType.text, { sendEphemeral: true, thumbnail: buff, contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${num}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `Saya di kick 😭` }}})
 			} else if (anu.action == 'promote') {
 				num = anu.participants[0]
 				try {
@@ -651,9 +651,9 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `SELAMAT UNTUK ADMIN BARU... @${num.split('@')[0]}👋* \n\n*SAYA JADIKAN ADMIN DONG, PLIIIIS*\njika sudah, saya jadikan admin lagi. Biar kebal\n\nMohon untuk follow instagramku *>* \ninstagram.com/frm_developer`
+				teks = `SELAMAT UNTUK ADMIN BARU... @${num.split('@')[0]}👋* \n\n*SAYA JADIKAN ADMIN DONG*`
 				let buff = await getBuffer(ppimg)
-				client.sendMessage(mdata.id, teks, MessageType.text, {contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_Notifikasi grup_` }}})
+				client.sendMessage(mdata.id, teks, MessageType.text, { sendEphemeral: true, thumbnail: buff, contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${num}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `Saya Admin Baru` }}})
 			} else if (anu.action == 'demote') {
 				num = anu.participants[0]
 				try {
@@ -663,7 +663,7 @@ client.on('group-participants-update', async (anu) => {
 				}
 				teks = `SAYA TURUT BERDUKA UNTUK ADMIN YANG DIPECAT... @${num.split('@')[0]}👋*\n\nMohon untuk follow instagramku *>* \ninstagram.com/frm_developer`
 				let buff = await getBuffer(ppimg)
-				client.sendMessage(mdata.id, teks, MessageType.text, {contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `_Notifikasi grup_` }}})
+				client.sendMessage(mdata.id, teks, MessageType.text, { sendEphemeral: true, thumbnail: buff, contextInfo: {"mentionedJid": [num]}, quoted: { key: { fromMe: false, participant: `${num}`, ...(mdata.id ? { remoteJid: mdata.id } : {}) }, message: { conversation: `Saya bukan admin lagi 😭` }}})
 			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
