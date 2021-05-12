@@ -34,16 +34,16 @@ exports.sendKontak = (from, nomor, nama) => {
 	client.sendMessage(from, {displayname: nama, vcard: vcard}, MessageType.contact)
 }
 exports.sendFakeStatus = (from, teks, faketeks) => {
-	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} } } })
+	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/thumb.jpeg`)} } } })
 }
 exports.FakeStatusForwarded = (from, teks, faketeks) => {
-	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} }, contextInfo: {"forwardingScore": 999, "isForwarded": true} } })
+	client.sendMessage(from, teks, MessageType.text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/thumb.jpeg`)} }, contextInfo: {"forwardingScore": 999, "isForwarded": true} } })
 }
 exports.FakeStatusImgForwarded = (from, image, caption, faketeks) => {
-	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} } }, caption: caption, contextInfo: {"forwardingScore": 999, "isForwarded": true} })
+	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/thumb.jpeg`)} } }, caption: caption, contextInfo: {"forwardingScore": 999, "isForwarded": true} })
 }
 exports.sendFakeStatusWithImg = (from, image, caption, faketeks) => {
-	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)} } }, caption: caption })
+	client.sendMessage(from, image, MessageType.image, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": faketeks, "jpegThumbnail": fs.readFileSync(`./media/thumb.jpeg`)} } }, caption: caption })
 }
 exports.sendMention = (from, text, orangnya, mek) => {
 	client.sendMessage(from, text, MessageType.extendedText, {contextInfo: {mentionedJid: orangnya}, quoted: mek})
@@ -114,7 +114,7 @@ exports.FakeTokoForwarded = (from, teks, fake) => {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)
+						"jpegThumbnail": fs.readFileSync(`./media/thumb.jpeg`)
 					},
 					"title": fake,
 					"description": "Self Amekzz nih Boss",
@@ -140,7 +140,7 @@ exports.sendFakeToko = (from, teks, fake) => {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./media/amek.jpeg`)
+						"jpegThumbnail": fs.readFileSync(`./media/thumb.jpeg`)
 					},
 					"title": fake,
 					"description": "Self Amekzz nih Boss",
@@ -162,13 +162,13 @@ exports.sendFakeThumb = async function(from, url, title, desc, comnya, fotonya){
 	var mek = await client.generateLinkPreview(url)
 	mek.title = title
 	mek.description = desc
-	mek.jpegThumbnail = fotonya ? fotonya : fs.readFileSync(`./media/amek.jpeg`)
+	mek.jpegThumbnail = fotonya ? fotonya : fs.readFileSync(`./media/thumb.jpeg`)
 	mek.canonicaUrl = comnya
 	client.sendMessage(from, mek, MessageType.extendedText, anoim)
 }
 exports.sendFakeImg = function(from, imageasli, caption, thumbnail, mek){
 	let ai = {
-		thumbnail: thumbnail ? thumbnail : fs.readFileSync(`./media/amek.jpeg`),
+		thumbnail: thumbnail ? thumbnail : fs.readFileSync(`./media/thumb.jpeg`),
 		quoted: mek ? mek : ''
 	}
 	client.sendMessage(from, imageasli, MessageType.image, ai)
