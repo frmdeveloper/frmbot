@@ -695,21 +695,16 @@ client.on('group-participants-update', async (anu) => {
 		sisabaterai = `${json[2][0][1].value}%`
 	})
 
-	client.on('message-new', async (mek) => {
+	client.on('chat-update', async (mek) => {
 		try {
+			if (!mek.hasNewMessage) return
+			mek = JSON.parse(JSON.stringify(mek)).messages[0]
 			if (!mek.message) return
+			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-			let infoMSG = JSON.parse(fs.readFileSync(`./database/bot/msg.data.json`))
-			infoMSG.push(JSON.parse(JSON.stringify(mek)))
-			fs.writeFileSync(`./database/bot/msg.data.json`, JSON.stringify(infoMSG, null, 2))
-			const urutan_pesan = infoMSG.length
-			if (urutan_pesan === 5000) {
-				infoMSG.splice(0, 4300)
-				fs.writeFileSync(`./database/bot/msg.data.json`, JSON.stringify(infoMSG, null, 2))
-			}
-        	global.prefix
-        	mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+			global.prefix
 			global.blocked
+			refresh()
 			console.log('ADA PESAN BARU')
 			const me = client.user
 			const content = JSON.stringify(mek.message)
