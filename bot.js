@@ -1192,11 +1192,11 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
-						stiker('./undefined.jpeg')
+						stiker(`./${media}`)
 					} else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
-						stikergif('./undefined.jpeg')
+						stikergif(`./${media}`)
 						}
 						break
 				case prefix+'stikerwm': 
