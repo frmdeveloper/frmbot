@@ -3096,22 +3096,16 @@ o==[]::::::>
 					case prefix+'attp':
 					case prefix+'ttp':
                 if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
-				let yosh = body.slice(6)
-				stikergif(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(yosh)}`)
-            	
+				stikergif(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)	
            	 break
            case prefix+'ninjalogo':
-				 
-				 if (isBanned) return reply(ind.diban())
-				 
 				 var gh = body.slice(11)
 				 var nin = gh.split("&")[0];
 				 var ja = gh.split("&")[1];
 				 if (args.length < 1) return reply(`「❗」Contoh : ${prefix}ninjalogo Rifki & Gans`)
 				 reply(ind.wait())
 				 buffer = await getBuffer(`https://api.xteam.xyz/textpro/ninjalogo?text=${nin}&text2=${ja}&APIKEY=${XteamKey}`)
-				 client.sendMessage(from, buffer, image, {quoted: mek})
-				 
+				 client.sendMessage(from, buffer, image, {quoted: mek}) 
 				 break
            	case prefix+'cloudtext':
  
