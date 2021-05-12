@@ -2816,6 +2816,7 @@ ${gaya3}  ⸨ BOT nya FRM ⸩  ⊰─═╯\n͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏�
 reply(`${head1} HELP HELP ${head2}
 ${gaya2} p
 ${gaya2} tes
+${gaya2} ${prefix}bucin
 ${gaya2} ${prefix}dadu
 ${gaya2} ${prefix}donasi
 ${gaya2} ${prefix}hidetag ~teks~
