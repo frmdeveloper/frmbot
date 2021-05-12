@@ -1042,7 +1042,7 @@ ${monosp} sq        Albanian
       ${monosp}`
 
         
-            if (isGroup) {
+            if (isGroup && !isOwner) {
 					try {
 						const getmemex = groupMembers.length	
 					    if (getmemex < memberlimit) {
