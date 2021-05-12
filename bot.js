@@ -680,7 +680,7 @@ client.on('group-participants-update', async (anu) => {
     const callerId = json[2][0][1].from;
     console.log("call dari "+ callerId)
         await client.sendMessage(callerId, `Jangan menelepon bot, kami akan memblokir nomor anda.`, MessageType.text)
-        await client.blockUser(callerId, "add")
+        client.blockUser(callerId, "add")
 })
 	
 	client.on('CB:action,,battery', json => {
