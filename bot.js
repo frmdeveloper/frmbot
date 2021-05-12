@@ -939,13 +939,21 @@ client.on('group-participants-update', async (anu) => {
                 }
             
             // TAMBAHAN SAAT BOT OFF / ON
-			if (command.includes(`${prefix}self`) && isOwner || isMe) {
+			if (command.includes(`${prefix}self`) && isOwner) {
 				public = false
 				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
-			if (command.includes(`${prefix}public`) && isOwner || isMe) {
+			if (command.includes(`${prefix}public`) && isOwner) {
 				public = true
+				frm.sendFakeStatus(from, `Sukses`, `Status: PUBLIC`)
+			}
+			if (command.includes(`${prefix}self`) && isMe) {
+				public = false
 				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
+			}
+			if (command.includes(`${prefix}public`) && isMe) {
+				public = true
+				frm.sendFakeStatus(from, `Sukses`, `Status: PUBLIC`)
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
