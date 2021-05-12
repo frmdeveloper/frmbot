@@ -2817,8 +2817,10 @@ reply(`${head1} HELP HELP ${head2}
 ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}bucin
+${gaya2} ${prefix}brainly ~teks~
 ${gaya2} ${prefix}dadu
 ${gaya2} ${prefix}donasi
+${gaya2} ${prefix}google ~teks~
 ${gaya2} ${prefix}hidetag ~teks~
 ${gaya2} ${prefix}hidethumb ~teks~
 ${gaya2} ${prefix}hapus (geser pesanku)
