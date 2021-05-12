@@ -2171,7 +2171,7 @@ case prefix+'artinama':
 					thumbnail: encmedia.message.imageMessage.jpegThumbnail
 					})
 					} else {
-						reply(`TAG STIKER / FOTO!`)
+						reply(`TAG FOTO!`)
 					}
 				break
 				case prefix+'raindrop':
