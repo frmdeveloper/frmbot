@@ -767,7 +767,6 @@ client.on('group-participants-update', async (anu) => {
 			const isImage = type === 'imageMessage'
 			const isGanggu = sender.includes(sender)
 			const isAfkOn = checkAfkUser(sender)
-			const isOnOff = statuson
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
