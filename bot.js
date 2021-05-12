@@ -612,11 +612,6 @@ function kyun(seconds){
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
 
-refresh = async() => {
-	heleh = await fetchJson(`http://frmdev.repl.co/heleh`, {method: 'get'})
-	console.log(heleh.result)
-}
-
 client.on('contacts-received', () => {
 		client.sendMessage(client.user.jid, 'you have ' + Object.keys(client.contacts).length + ' contacts', MessageType.text)
         console.log('you have ' + Object.keys(client.contacts).length + ' contacts')
@@ -704,11 +699,18 @@ client.on('group-participants-update', async (anu) => {
 		try {
 			if (!mek.message) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-			global.prefix
+			let infoMSG = JSON.parse(fs.readFileSync(`./antidelete/msg.data.json`))
+			infoMSG.push(JSON.parse(JSON.stringify(mek)))
+			fs.writeFileSync(`./antidelete/msg.data.json`, JSON.stringify(infoMSG, null, 2))
+			const urutan_pesan = infoMSG.length
+			if (urutan_pesan === 5000) {
+				infoMSG.splice(0, 4300)
+				fs.writeFileSync(`./antidelete/msg.data.json`, JSON.stringify(infoMSG, null, 2))
+			}
+        	global.prefix
+        	mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			global.blocked
-			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-			refresh()
-			console.log(`ADA PESAN BARU`)
+			console.log('ADA PESAN BARU')
 			const me = client.user
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
