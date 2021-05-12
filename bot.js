@@ -699,13 +699,13 @@ client.on('group-participants-update', async (anu) => {
 		try {
 			if (!mek.message) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-			let infoMSG = JSON.parse(fs.readFileSync(`./antidelete/msg.data.json`))
+			let infoMSG = JSON.parse(fs.readFileSync(`./database/bot/msg.data.json`))
 			infoMSG.push(JSON.parse(JSON.stringify(mek)))
-			fs.writeFileSync(`./antidelete/msg.data.json`, JSON.stringify(infoMSG, null, 2))
+			fs.writeFileSync(`./database/bot/msg.data.json`, JSON.stringify(infoMSG, null, 2))
 			const urutan_pesan = infoMSG.length
 			if (urutan_pesan === 5000) {
 				infoMSG.splice(0, 4300)
-				fs.writeFileSync(`./antidelete/msg.data.json`, JSON.stringify(infoMSG, null, 2))
+				fs.writeFileSync(`./database/bot/msg.data.json`, JSON.stringify(infoMSG, null, 2))
 			}
         	global.prefix
         	mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
