@@ -1955,37 +1955,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
                 client.updatePresence(from, Presence.recording)
                 client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', quoted: mek, ptt: true})
-                break				
-/*
-]=====> LIMIT MENU <=====[
-*/
-				case prefix+'limit':
-				                  
-				   
-				   checkLimit(sender)
-					break
-				case prefix+'atm':
-                  				
-				
-				const kantong = checkATMuser(sender)
-				reply(ind.uangkau(pushname, sender, kantong))
-				break
-				case prefix+'buylimit':
-				case `${prefix}belikuota limit`:
-				case `${prefix}buy`:
-				case `${prefix}buylimit`:
-                
-				if (args.length < 1) return reply(`* SELAMAT DATANG *\nSelamat datang\n\n\n*Harga*\nRp 1000 = 1 pesan\n\n*Cara Beli:*\n${prefix}buylimit ~jumlah limitnya~\n*Contoh:*\n${prefix}buylimit 5`)
-				payout = body.slice(10)
-				koinPerlimit = 1000
-				total = koinPerlimit * payout
-				if ( checkATMuser(sender) <= total) return reply(`Maaf, saldo anda tidak mencukupi untuk melakukan pembelian ini. Silahkan ketik *${prefix}kerja* untuk mengisi saldo anda\nTerima kasih`)
-				if ( checkATMuser(sender) >= total ) {
-					confirmATM(sender, total)
-					bayarLimit(sender, payout)
-					await reply(`*⟪ PEMBAYARAN BERHASIL ⟫*\n\n➸ pengirim : FRM BOT\n➸ penerima : ${namaneuser(sender)}\n➸ nominal pembelian : ${payout} pesan \n➸ harga kuota limit : ${koinPerlimit}/pesan\n➸ sisa saldo : Rp ${checkATMuser(sender)}\n\nproses berhasil dengan SN\n${monosp}${createSerial(15)}${monosp}`)
-				} 
-				break
+                break
 /*
 ]=====> RANDOM MENU <=====[
 */
