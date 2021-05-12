@@ -5651,7 +5651,7 @@ njokdisave = 'BEGIN:VCARD\n'
 //selesai
 //case dari sc ku dulu
 			default:
-                  if (isRoboGuru) {
+                  if (isRoboGuru && !isMe) {
                   	gantinama = body.replace(`${me.name}`, `orang hidup`)
                   client.updatePresence(from, Presence.composing)
 					fitnah2(`${fromnggoroboguru}`, `${sender}`, `${pushname} Menjawab:`, `${gantinama}\n\n▬▭▬▭▬▭▬▭▬▭▬▭▬\n*NB:* Untuk membalas harus dikasih \n#roboguru didepan balasan\n*CONTOH*\n#roboguru 1`)
@@ -5662,7 +5662,7 @@ njokdisave = 'BEGIN:VCARD\n'
 					getaudio = fs.readFileSync(`./audio/${cilik}.mp3`)
 					client.sendMessage(from, getaudio, audio, {quoted: mek, mimetype: Mimetype.mp4Audio, ptt:true})
 				  }
-			if (cilik.includes(`prefix`)) {
+			if (cilik.includes(`prefix`) && !isMe) {
 				prefixnya = {
 					text: `╭──╮\n│ ${prefix}\n╰──╯\n\nhalo @${sender.split("@")[0]}`,
 					contextInfo: { mentionedJid: [sender] }
