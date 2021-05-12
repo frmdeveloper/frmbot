@@ -2804,11 +2804,10 @@ client.sendMessage(from, buffqr, image, {quoted: mek, caption: `Scan sebelum kad
 					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					break
-				case prefix+'help':
 				case prefix+'menu':
 					menuweton = ['Pahing', 'Pon','Wage','Kliwon','Legi']
 					menuneweton = menuweton[Math.floor(((d * 1) + gmt) / 84600000) % 5]
-					fitnah(`${nomerewa}`, `${tanda}`, `╭═─⊱ ❰ *INFO INFO INFO* ❱ ⊰─═
+					await fitnah(`${nomerewa}`, `${tanda}`, `╭═─⊱ ❰ *INFO INFO INFO* ❱ ⊰─═
 ${gaya2} *Hari:* ${hari} ${menuneweton}
 ${gaya2} *Tanggal:* ${tanggal}
 ${gaya2} *jam:* ${jam} WIB
