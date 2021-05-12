@@ -2827,7 +2827,7 @@ ${gaya2} ${prefix}save ~namamu~
 ${gaya1}
 ${gaya3}
 
-_Fitur banyak, semoga puas_`)
+_Hanya seperti itu, semoga puas_`)
 					break
 				case prefix+'menu':
 					menuweton = ['Pahing', 'Pon','Wage','Kliwon','Legi']
