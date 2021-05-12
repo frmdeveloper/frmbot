@@ -704,7 +704,6 @@ client.on('group-participants-update', async (anu) => {
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
 			global.prefix
 			global.blocked
-			refresh()
 			console.log('ADA PESAN BARU')
 			const me = client.user
 			const content = JSON.stringify(mek.message)
