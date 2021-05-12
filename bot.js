@@ -1095,8 +1095,7 @@ ${monosp} sq        Albanian
             
             if (checkAfkUser(sender)) {
                 _afk.splice(sender, 1)
-                fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
-                	client.sendMessage(from, ind.afkDone(pushname), text)
+                client.sendMessage(from, ind.afkDone(pushname), text)
             }
 
 			colors = ['red','white','black','blue','yellow','green']
