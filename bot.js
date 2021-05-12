@@ -2169,7 +2169,7 @@ case prefix+'artinama':
 					client.sendMessage(from, `${q}`,
 					MessageType.text, {
 					sendEphemeral: true,
-					thumbnail: fs.readFileSync(media)
+					thumbnail: encmedia.message.imageMessage.jpegThumbnail
 					})
 					} else {
 						reply(`TAG STIKER / FOTO!`)
