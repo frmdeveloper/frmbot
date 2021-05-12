@@ -5699,7 +5699,6 @@ njokdisave = 'BEGIN:VCARD\n'
 					}
 					client.sendMessage(from, prefixnya, text, {quoted: { key: { fromMe: false, participant: `${nomerewa}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `prefix bot ini` }}})
 					}
-					console.log(`Perintah tidak ditemukan`)
 					}
 		} catch (e) {
 			console.log('ERROR TENAN : %s', color(e, 'red'))
