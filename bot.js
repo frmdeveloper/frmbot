@@ -1046,32 +1046,10 @@ ${monosp} sq        Albanian
 					try {
 						const getmemex = groupMembers.length	
 					    if (getmemex < memberlimit) {
-						reply(`maaf member group belum memenuhi syarat. minimal member group adalah ${memberlimit}`)
-						setTimeout( () => {
- 	                           client.groupLeave(from) 
- 					   	}, 5000)
-								setTimeout( () => {
-								client.updatePresence(from, Presence.composing)
-								reply("1detik")
-							}, 4000)
-								setTimeout( () => {
-								client.updatePresence(from, Presence.composing)
-								reply("2detik")
-							}, 3000)
-								setTimeout( () => {
-								client.updatePresence(from, Presence.composing)
-								reply("3detik")
-							}, 2000)
-								setTimeout( () => {
-								client.updatePresence(from, Presence.composing)
-								reply("4detik")
-							}, 1000)
-								setTimeout( () => {
-								client.updatePresence(from, Presence.composing)
-								reply("5detik")
-							}, 0)
-					    }
-		       } catch (err) { console.error(err)  }
+							await reply(`maaf member group belum memenuhi syarat. minimal member group adalah ${memberlimit}`)
+ 	                       client.groupLeave(from)
+					    	}
+		       		} catch (err) { console.error(err)  }
  	       }
  
 			
