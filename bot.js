@@ -1463,67 +1463,40 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					cry = await fetchJson(`https://waifu.pics/api/sfw/cry`, {method: 'get'})
-					reply('SABAR NGAB')
+					nangis = await getBuffer(cry.url)
 					if (cry.error) return reply(cry.error)
-					exec(`wget ${cry.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
+					frm.sendGif(from, nangis)
 					break
-					case prefix+'cium':
-					
-				
+				case prefix+'cium':
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					cium = await fetchJson(`https://waifu.pics/api/sfw/kiss`, {method: 'get'})
-					reply('Mwahhh')
+					cyum = await getBuffer(cium.url)
 					if (cium.error) return reply(cium.error)
-					exec(`wget ${cium.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
+					frm.sendGif(from, cyum)
 					break
-					case prefix+'peluk':
-					
-				
+				case prefix+'peluk':
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					reply('Peyukkkk')
 					peluk = await fetchJson(`https://waifu.pics/api/sfw/hug`, {method: 'get'})
+					peyuk = await getBuffer(peluk.url)
 					if (peluk.error) return reply(peluk.error)
-					exec(`wget ${peluk.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						auu = fs.readFileSync(ranp)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
+					frm.sendGif(from, peyuk)
 					break
                 case prefix+'truth':
-                
-                
 				const trut =['Pernah suka sama siapa aja? berapa lama?','Kalau boleh atau kalau mau, di gc/luar gc siapa yang akan kamu jadikan sahabat?(boleh beda/sma jenis)','apa ketakutan terbesar kamu?','pernah suka sama orang dan merasa orang itu suka sama kamu juga?','Siapa nama mantan pacar teman mu yang pernah kamu sukai diam diam?','pernah gak nyuri uang nyokap atau bokap? Alesanya?','hal yang bikin seneng pas lu lagi sedih apa','pernah cinta bertepuk sebelah tangan? kalo pernah sama siapa? rasanya gimana brou?','pernah jadi selingkuhan orang?','hal yang paling ditakutin','siapa orang yang paling berpengaruh kepada kehidupanmu','hal membanggakan apa yang kamu dapatkan di tahun ini','siapa orang yang bisa membuatmu sange','siapa orang yang pernah buatmu sange','(bgi yg muslim) pernah ga solat seharian?','Siapa yang paling mendekati tipe pasangan idealmu di sini','suka mabar(main bareng)sama siapa?','pernah nolak orang? alasannya kenapa?','Sebutkan kejadian yang bikin kamu sakit hati yang masih di inget','pencapaian yang udah didapet apa aja ditahun ini?','kebiasaan terburuk lo pas di sekolah apa?']
 					const ttrth = trut[Math.floor(Math.random() * trut.length)]
 					truteh = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
 					client.sendMessage(from, truteh, image, { caption: '*Truth*\n\n'+ ttrth, quoted: mek })
 					break
-                case prefix+'dare':
-                	
-					                
+                case prefix+'dare':                
 					const dare =['Kirim pesan ke mantan kamu dan bilang "aku masih suka sama kamu','telfon crush/pacar sekarang dan ss ke pemain','pap ke salah satu anggota grup','Bilang "KAMU CANTIK BANGET NGGAK BOHONG" ke cowo','ss recent call whatsapp','drop emot 🤥 setiap ngetik di gc/pc selama 1 hari','kirim voice note bilang can i call u baby?','drop kutipan lagu/quote, terus tag member yang cocok buat kutipan itu','pake foto sule sampe 3 hari','ketik pake bahasa daerah 24 jam','ganti nama menjadi "gue anak lucinta luna" selama 5 jam','chat ke kontak wa urutan sesuai %batre kamu, terus bilang ke dia "i lucky to hv you','prank chat mantan dan bilang " i love u, pgn balikan','record voice baca surah al-kautsar','bilang "i hv crush on you, mau jadi pacarku gak?" ke lawan jenis yang terakhir bgt kamu chat (serah di wa/tele), tunggu dia bales, kalo udah ss drop ke sini','sebutkan tipe pacar mu!','snap/post foto pacar/crush','teriak gajelas lalu kirim pake vn kesini','pap mukamu lalu kirim ke salah satu temanmu','kirim fotomu dengan caption, aku anak pungut','teriak pake kata kasar sambil vn trus kirim kesini','teriak " anjimm gabutt anjimmm " di depan rumah mu','ganti nama jadi " BOWO " selama 24 jam','Pura pura kerasukan, contoh : kerasukan maung, kerasukan belalang, kerasukan kulkas, dll']
 					const der = dare[Math.floor(Math.random() * dare.length)]
 					tod = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
 					client.sendMessage(from, tod, image, { quoted: mek, caption: '*Dare*\n\n'+ der })
 					break
 				case prefix+'dare2':
-                	
 					dare2 = await fetchJson(`https://xptnbotapinew.herokuapp.com/?dare&apikey=xptn`, {method: 'get'})
 					reply(anu.desc)
 					break
@@ -1955,14 +1928,9 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					blowjob = await fetchJson('https://waifu.pics/api/nsfw/blowjob', {method: 'get'})
+					blowjobnya = await getBuffer(blowjob.url)
 					if (blowjob.error) return reply(blowjob.error)
-					exec(`wget ${blowjob.url} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
+					frm.sendGif(from, blowjobnya)
 					break
 			case prefix+'nekonime':
 			case prefix+'neko':
@@ -3359,14 +3327,7 @@ if (isBanned) return reply(`Maaf, nomor kamu tidak dapat menggunakan bot ini\nSi
 					rano = getRandom('.webp')
 					tampar = await fetchJson(`https://waifu.pics/api/sfw/slap`, {method: 'get'})
 					tampare = await getBuffer(tampar.url)
-					client.sendMessage(from, tampar, sticker, {quoted: mek})
-					exec(`ffmpeg -i ${tampare} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(tampare)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
+					frm.sendGif(from, tampare)
 					break
 				case prefix+'trap':
 					hmtrap = await fetchJson(`https://waifu.pics/api/nsfw/trap`, {method: 'get'})
