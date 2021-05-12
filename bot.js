@@ -1131,16 +1131,17 @@ ${monosp} sq        Albanian
             mentioneddd = mek.message[Object.keys(mek.message)[0]].contextInfo ? mek.message[Object.keys(mek.message)[0]].contextInfo.mentionedJid : []
             for (let ment of mentioneddd) {
                 if (checkAfkUser(ment)) {
-                    const getId = getAfkId(ment)
-                    const getReason = getAfkReason(getId)
-                    const getTime = getAfkTime(getId)
-                    reply(ind.afkMentioned(getReason, getTime))
+                    warnafk = {
+					text: `SSSST, jangan ngetag @${ment.split("@")[0]} orangnya sedang AFK`,
+					contextInfo: { mentionedJid: [ment] }
+					}
+					reply(warnafk)
                 }
             }
                 }
             
             if (checkAfkUser(sender)) {
-                _afk.splice(getAfkPosition(sender, _afk), 1)
+                _afk.splice(sender, 1)
                 fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
                 	client.sendMessage(from, ind.afkDone(pushname), text)
             }
