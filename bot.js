@@ -708,6 +708,7 @@ client.on('group-participants-update', async (anu) => {
 			global.blocked
 			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			refresh()
+			console.log(`ADA PESAN BARU`)
 			const me = client.user
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
