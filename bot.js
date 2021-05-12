@@ -938,11 +938,11 @@ client.on('group-participants-update', async (anu) => {
             
             // TAMBAHAN SAAT BOT OFF / ON
 			if (command.includes(`${prefix}self`) && isOwner) {
-				self = true
+				self = false
 				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
 			}
 			if (command.includes(`${prefix}public`) && isOwner) {
-				self = false
+				self = true
 				frm.sendFakeStatus(from, `Sukses`, `Status: PUBLIC`)
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
