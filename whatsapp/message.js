@@ -21,7 +21,7 @@ exports.sendVideo = (from, video, caption, mek) => {
 	client.sendMessage(from, video, MessageType.video, {quoted: mek, caption: caption})
 }
 exports.sendGif = (from, gif) => {
-	client.sendMessage(from, gif, MessageType.video, {mimetype: "video/mp4"})
+	client.sendMessage(from, gif, MessageType.video, {mimetype: "video/mp4", "gifPlayback": true})
 }
 exports.reply = (from, text, mek) => {
     client.sendMessage(from, text, MessageType.text, {quoted: mek})
