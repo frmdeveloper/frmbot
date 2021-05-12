@@ -1078,8 +1078,9 @@ ${monosp} sq        Albanian
             //AFK NGULI
 
              if (isGroup) {
-            mentioneddd = mek.message[Object.keys(mek.message)[0]].contextInfo ? mek.message[Object.keys(mek.message)[0]].contextInfo.mentionedJid : []
-            for (let ment of mentioneddd) {
+            	try {
+            	mentioneddd = mek.message[Object.keys(mek.message)[0]].contextInfo ? mek.message[Object.keys(mek.message)[0]].contextInfo.mentionedJid : []
+            	for (let ment of mentioneddd) {
                 if (checkAfkUser(ment)) {
                     warnafk = {
 					text: `SSSST, jangan ngetag @${ment.split("@")[0]} orangnya sedang AFK`,
@@ -1088,6 +1089,7 @@ ${monosp} sq        Albanian
 					reply(warnafk)
                 }
             }
+            	} catch { console.log('mentioneddd error') }
                 }
             
             if (checkAfkUser(sender)) {
