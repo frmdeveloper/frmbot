@@ -753,10 +753,7 @@ client.on('group-participants-update', async (anu) => {
 */
 			const isMe = sender === client.user.jid ? true : false
             const isEventon = isGroup ? event.includes(from) : false
-            const isRegistered = checkRegisteredUser(sender)
-            const isUser = cekWesDaftar(nomerwesdaftar)
             const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-            const isLevelingOn = isGroup ? _leveling.includes(from) : false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
@@ -769,7 +766,6 @@ client.on('group-participants-update', async (anu) => {
 			const isPln = nomerepln.includes(sender)
 			const isImage = type === 'imageMessage'
 			const isGanggu = sender.includes(sender)
-			const isPromo = promo.includes(sender)
 			const isAfkOn = checkAfkUser(sender)
 			const isOnOff = statuson
 			const isUrl = (url) => {
