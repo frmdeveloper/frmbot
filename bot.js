@@ -957,22 +957,22 @@ client.on('group-participants-update', async (anu) => {
 			}
 if (!public && !isOwner) return
 			//pesan tambahan
-				if (cilik === `tes` || cilik === `woy` || cilik === `bot`) {
+				if ((cilik === `tes` || cilik === `woy` || cilik === `bot`) && !isMe)  {
 					client.updatePresence(from, Presence.composing)
 					client.sendMessage(from, `Maaf, ada perlu apa`, text, {quoted: statuswa})
 				  }
-				if (cilik === `p` || cilik === `${prefix}p` || cilik === `🅿️`)  {
+				if ((cilik === `p` || cilik === `${prefix}p` || cilik === `🅿️`) && !isMe)  {
 				  client.updatePresence(from, Presence.composing)
 				  reply(`السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`)
 				  reply(`hai`)
 				  }
-                if (budy.includes(`@${me.jid.split('@')[0]}`)) {
+                if (budy.includes(`@${me.jid.split('@')[0]}`) && !isMe) {
                   	client.updatePresence(from, Presence.composing)
                   	client.updatePresence(from, Presence.available)
                   	ditagwong = fs.readFileSync(`./fauzan.rifki.m/ditagwong.webp`)
             		client.sendMessage(from, ditagwong, sticker, {quoted: mek})
                   }
-				if (cilik.includes(`ripki`) || cilik.includes(`rifki`) || cilik.includes(`fauzan`)) {
+				if ((cilik.includes(`ripki`) || cilik.includes(`rifki`) || cilik.includes(`fauzan`)) && !isMe) {
 					client.updatePresence(from, Presence.available)
                     const ip =['Ada yang aneh','Ya ada apa','Ada perlu apa','kenapa?','Kamu lagi ngapain?','Disana enak','Apa bisa saya bantu','Halo','Apa kabar','Assalamualaikum','Waalaikumsalam','Kamu siapa','Halo','Hey','Aku siapa','Saya siapa hayoo?','sekarang jam berapa','Kamu siapa','Rumahmu dimana','Mau ngapain','selamat pagi','Selamat siang','Selamat sore','Selamat malam','Selamat tidur','Selamat Whatsapp an','Kamu sekarang lagi apa','Ini siapa ya?','1+1=2','Namaku siapa?']
 					const ki = ip[Math.floor(Math.random() * ip.length)]
