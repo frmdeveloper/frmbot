@@ -945,14 +945,14 @@ client.on('group-participants-update', async (anu) => {
 				public = true
 				frm.sendFakeStatus(from, `Sukses`, `Status: PUBLIC`)
 			}
-			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`)) {
+			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`) && !isMe) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
 				intro1 = `${intro0.split(`🍃🍃🍃🍃🍃`)[0]}`
 				kosong = ''
 				introne = `*🤝 PERKENALAN DITERIMA 🤝*\n${intro1}\n*🤝 TERIMAKASIH ??*\n\n_🌱 bot ini ramah lingkungan 🌱_\n_🌱 tidak mengandung zat nuklir 🌱_`
 				reply(`${introne}`)
 			}
-			if (budy.includes(`🌿🌿🌿🌿🌿`)) {
+			if (budy.includes(`🌿🌿🌿🌿🌿`) && !isMe) {
 				reply(`WIDIH`)
 			}
 if (!public && !isOwner) return
