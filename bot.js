@@ -3898,7 +3898,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek})
 					break
 			case `${prefix}daftar`:
-                if (isRegistered) return  reply(ind.rediregis())
+                
                 if (!q.includes('|')) return  reply(`${prefix}daftar Rifki|16\n*itu contohnya*`)
                 const namaUser = q.substring(0, q.indexOf('|') - 0)
                 const umurUser = q.substring(q.lastIndexOf('|') + 1)
@@ -5777,7 +5777,7 @@ njokdisave = 'BEGIN:VCARD\n'
                   client.updatePresence(from, Presence.composing)
 					fitnah2(`${fromnggoroboguru}`, `${sender}`, `${pushname} Menjawab:`, `${gantinama}\n\n▬▭▬▭▬▭▬▭▬▭▬▭▬\n*NB:* Untuk membalas harus dikasih \n#roboguru didepan balasan\n*CONTOH*\n#roboguru 1`)
 					}
-				  if (isRegistered && listaudio.includes(cilik)) {
+				  if (listaudio.includes(cilik)) {
 					client.updatePresence(from, Presence.recording)
 					console.log(`memproses audio`)
 					getaudio = fs.readFileSync(`./audio/${cilik}.mp3`)
