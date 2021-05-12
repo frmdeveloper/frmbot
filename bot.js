@@ -3711,8 +3711,8 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					reply(emoji.images[4].url)
    				 })
 					break
-				case prefix+'emoji':
-                        stiker(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${encodeURIComponent(args[0])}`)
+				case prefix+'emoji2':
+                    stiker(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${encodeURIComponent(args[0])}`)
 					break
 				case prefix+'memeindo':
                     memein = await kagApi.memeindo()
