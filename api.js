@@ -32,7 +32,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson, uploadImages } = require('./lib/fetcher')
 const { bgcolor, color } = require('./lib/color')
 
-linkapp = 'http://frmdev.repl.co/refresh'
+linkapp = '/refresh'
 axios.get(linkapp)
 
 function kyun(seconds){
