@@ -62,12 +62,15 @@ router.get('/japriwa', (req, res) => {
 	nomor = req.query.nomor
 	if (!nomor) return res.json({result:`silahkan tambahkan parameter nomor`})
 	if (nomor.length == 0) return res.json({result:`UNTUK SIAPA ?`})
-	if (!nomor.startsWith('+')) return res.json({result:`Gunakan kode negara diawali +`})
+	if (nomor.startsWith('+')) {
 	if (!nomor.match(/^[0-9]+$/)) return res.json({result:`Nomor tujuan harus angka`})
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
 	res.json({result:`Mengirim pesan ke ${nomor.split('@')[0]}`})
 	client.sendMessage(`${nomor.split('+')[1]}@s.whatsapp.net`, `*[ FRM BOT ]*\n\n${q}`, MessageType.text)
+	} else if {
+		res.json({result:`Gunakan kode negara diawali +`})
+	}
 	.catch(e => {
 		res.json({result:'ERROR'})
 		})
