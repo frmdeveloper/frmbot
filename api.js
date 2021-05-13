@@ -34,9 +34,6 @@ const { bgcolor, color } = require('./lib/color')
 
 linkapp = 'http://frmdev.repl.co/refresh'
 axios.get(linkapp)
-	.then((a) => {
-		console.log(a.data.result)
-	})
 
 function kyun(seconds){
   function pad(s){
@@ -57,9 +54,6 @@ router.get('/refresh', (req, res) => {
 	res.json({result:`Ada yang membuka ${linkapp}`})
 	setTimeout( () => {
 	axios.get(linkapp)
-	.then((a) => {
-		console.log(a.data.result)
-	})
 	}, 10000)
 })
 router.get('/japriwa', (req, res) => {
