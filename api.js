@@ -67,7 +67,7 @@ router.get('/japriwa', (req, res) => {
 	untuk = req.query.untuk
 	if (!untuk) return res.json({result:`silahkan tambahkan parameter untuk`})
 	if (untuk.length == 0) return res.json({result:`UNTUK SIAPA ?`})
-	if (!untuk.startsWith('0')) return res.json({result:`Gunakan kode negara tanpa diawali +`})
+	if (untuk.startsWith('0')) return res.json({result:`Gunakan kode negara tanpa diawali +`})
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
 	res.json({result:`mengirim ke ${untuk.split('@')[0]}\n*isi pesan:* ${q}`})
