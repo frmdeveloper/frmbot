@@ -71,9 +71,6 @@ router.get('/japriwa', (req, res) => {
 	} else {
 		res.json({result:`Gunakan kode negara diawali +`})
 	}
-	.catch(e => {
-		res.json({result:'ERROR'})
-		})
 	})
 router.get('/login', (req, res) => {
     res.sendFile(__path + '/login.html')
