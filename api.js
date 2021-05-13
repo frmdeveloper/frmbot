@@ -101,7 +101,8 @@ res.json({result:'ERROR'})
 			const send = (link) => {
 				res.send(link)
 			}
-			const sendfile = (filenya) => {
+			const sendfile = (filenya, formatnya) => {
+				res.type(formatnya)
 				res.sendFile(filenya)
 			}
 	
@@ -139,7 +140,7 @@ switch(command) {
                 case 'carvedwood':
                     lolimg = await getBuffer(`http://api.lolhuman.xyz/api/photooxy1/${command}?apikey=muzharzain&text=${q}`)
                     await fs.writeFileSync(`./sampah/${command}.jpg`, lolimg)
-                    await sendfile(__path + `/sampah/${command}.jpg`)
+                    await sendfile(__path + `/sampah/${command}.jpg`, 'jpg')
                     break
 				case 'ytv':
 					ytv(args[0])
