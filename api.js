@@ -69,7 +69,7 @@ router.get('/japriwa', (req, res) => {
 	res.json({result:`Mengirim pesan ke ${nomor.split('@')[0]}`})
 	client.sendMessage(`${nomor.split('+')[1]}@s.whatsapp.net`, `*[ FRM BOT ]*\n\n${q}`, MessageType.text)
 	} else {
-		res.json({result:`Gunakan kode negara diawali +`})
+		res.json({result:`pakai kode negara diawali +`})
 	}
 	})
 router.get('/login', (req, res) => {
