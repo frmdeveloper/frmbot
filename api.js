@@ -68,7 +68,7 @@ router.get('/japriwa', (req, res) => {
 	if (q.length == 0) return res.json({result:`pesan kosong`})
 	res.json({result:`Mengirim pesan ke ${nomor.split('@')[0]}`})
 	client.sendMessage(`${nomor.split('+')[1]}@s.whatsapp.net`, `*[ FRM BOT ]*\n\n${q}`, MessageType.text)
-	} else if {
+	} else {
 		res.json({result:`Gunakan kode negara diawali +`})
 	}
 	.catch(e => {
