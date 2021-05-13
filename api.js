@@ -65,7 +65,7 @@ router.get('/japriwa', (req, res) => {
 	if (!nomor.match(/^[0-9]+$/)) return res.json({result:`Nomor tujuan harus angka`})
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
-	res.json({result:`mengirim ke ${nomor.split('@')[0]}\n*isi pesan:* ${q}`})
+	res.json({result:`Mengirim pesan ke ${nomor.split('@')[0]}`})
 	client.sendMessage(`${nomor}@s.whatsapp.net`, `*[ FRM BOT ]*\n\n${q}`, MessageType.text)
 	.catch(e => {
 		res.json({result:'ERROR'})
