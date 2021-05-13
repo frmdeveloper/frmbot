@@ -62,7 +62,7 @@ router.get('/japriwa', (req, res) => {
 	nomor = req.query.nomor
 	if (!nomor) return res.json({result:`silahkan tambahkan parameter nomor`})
 	if (nomor.length == 0) return res.json({result:`UNTUK SIAPA ?`})
-	if (nomor.startsWith("0")) return res.json({result:`pakai kode negara diawali +`})
+	if (nomor.startsWith("0")) return res.json({result:`pakai kode negara. contoh: 628xxx`})
 	if (!nomor.match(/^[0-9]+$/)) return res.json({result:`Nomor tujuan harus angka`})
 	if (!q) return res.json({result:`silahkan tambahkan parameter q`})
 	if (q.length == 0) return res.json({result:`pesan kosong`})
