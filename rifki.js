@@ -4814,7 +4814,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					memein = await kagApi.memeindo()
 					bufferll = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)
-					client.sendMessage(from, bufferll, image, {quoted: mek, caption: '!sticker'})
+					client.sendMessage(from, bufferll, image, {quoted: mek, caption: 'nih'})
 					await limitAdd(sender)
 					break
 				case prefix+'memeindo':
@@ -4822,7 +4822,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					if (isLimit(sender)) return reply(ind.limitend(tanda, namaneuser(sender), limitawal))
 					memein = await fetchJson(`https://api.zeks.xyz/api/memeindo?apikey=benbenz`, {method: 'get'})
 					buffermemein = await getBuffer(memein.result)
-					client.sendMessage(from, buffermemein, image, {quoted: mek, caption: '!sticker'})
+					client.sendMessage(from, buffermemein, image, {quoted: mek, caption: 'nih'})
 					await limitAdd(sender)
 					break
 				case `${prefix}infogrup`:
