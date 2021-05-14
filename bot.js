@@ -2896,12 +2896,12 @@ ${makermenu2}`)
 				case prefix+'report':
 				case prefix+'bugreport':
 					if (args.length < 1) return reply(`Pesan mu mana ?`)
-					reply(`Mengirim laporan bug ke wa.me/${nomowner}\n*Dengan pesan*\n${q}`)
+					reply(`Mengirim laporan bug ke wa.me/${nomowner}`)
 					await client.sendMessage(`${ownerNumber}`, `${q}`, text, {quoted: mek})
 					await faketag(`${ownerNumber}`, `${sender}`, `cara membalas`, `${prefix}balas ${from} ${sender}| ~pesanmu~`, text, {quoted: mek})
 					break
 				case prefix+'balas':
-					if (!isMe) return
+					if (isMe) return
 					if (args.length < 1) return reply(`${prefix}balas 62xxx@s.whatsapp.net pesanmu`)
 					reply(`mengirim balasan ke ${args[0]}`)
 					client.updatePresence(`${args[0]}`, Presence.composing)
