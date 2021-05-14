@@ -1688,7 +1688,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 	kontakme = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
             + `FN:${pushname}\n` 
-            + `ORG: by ${botName};\n` 
+            + `ORG: client.getStatus(sender).status;\n` 
             + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
             + `END:VCARD` 
             			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek })
