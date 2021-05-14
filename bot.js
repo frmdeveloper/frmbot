@@ -2897,7 +2897,7 @@ ${makermenu2}`)
 				case prefix+'bugreport':
 					if (args.length < 1) return reply(`Pesan mu mana ?`)
 					reply(`Mengirim laporan bug ke wa.me/${nomowner}`)
-					await client.sendMessage(`${ownerNumber}`, `*[ LAPORAN ]\nDari : wa.me/${sender.split('@')[0]}*\nPesan : ${q}`, text, {quoted: mek})
+					await client.sendMessage(`${ownerNumber}`, `*[ LAPORAN ]*\nDari : wa.me/${sender.split('@')[0]}\nPesan : ${q}`, text, {quoted: mek})
 					await faketag(`${ownerNumber}`, `${sender}`, `cara membalas`, `${prefix}balas ${from} ${sender}| ~pesanmu~`, text, {quoted: mek})
 					break
 				case prefix+'balas':
