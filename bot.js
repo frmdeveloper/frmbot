@@ -1689,7 +1689,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 	kontakme = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
             + `FN:${pushname}\n` 
-            + `ORG: ${bio};\n` 
+            + `ORG:${bio};\n` 
             + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
             + `END:VCARD` 
             			client.sendMessage(from, {displayname: "Jeff", vcard: kontakme}, MessageType.contact, { quoted: mek })
@@ -5606,7 +5606,7 @@ vcard = 'BEGIN:VCARD\n'
 njokdisave = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
             + `FN:${args.join(' ')}\n` 
-            + `ORG: minta di save;\n` 
+            + `ORG:minta di save;\n` 
             + `TEL;type=CELL;type=VOICE;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` 
             + `END:VCARD` 
             			client.sendMessage(from, {displayname: "Jeff", vcard: njokdisave}, MessageType.contact, { quoted: mek})
