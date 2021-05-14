@@ -1685,7 +1685,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
                 } catch {
 					ppneme = fs.readFileSync(`./fauzan.rifki.m/ppkosong.png`)
                 }
-                bio = await client.getStatus(sender).status
+                bio = (await client.getStatus(sender)).status
 	kontakme = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
             + `FN:${pushname}\n` 
