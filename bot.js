@@ -2909,7 +2909,7 @@ ${makermenu2}`)
 					text: `*[ BALASAN DARI OWNER ]*\nDari : @${sender.split("@")[0]}\nUntuk : @${args[1].split('|')[0].split('@')[0]}\nPesan : ${q.split('|')[1]}`,
 					contextInfo: { mentionedJid: [`${sender}`,`${args[1].split('|')[0]}`] }
 					}
-					client.sendMessage(`${args[0]}`, balasanowner, text)
+					client.sendMessage(`${args[0]}`, balasanowner, text, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...('status@broadcast' ? { remoteJid: 'status@broadcast' } : {}) }, message: { conversation: `balasan dari owner` }}})
 					break
 				case prefix+'sisa.hari':
 				case prefix+'sisahari':
