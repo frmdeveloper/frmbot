@@ -2905,7 +2905,11 @@ ${makermenu2}`)
 					if (args.length < 1) return reply(`${prefix}balas 62xxx@s.whatsapp.net pesanmu`)
 					reply(`mengirim balasan ke ${args[0]}`)
 					client.updatePresence(`${args[0]}`, Presence.composing)
-					client.sendMessage(`${args[0]}`, `*Untuk ${args[1].split('@')[0]}*\n${body.split("|")[1]}`, text, {quoted: { key: { fromMe: false, participant: `${args[1]}`, ...(`${args[0]}` ? { remoteJid: `${args[0]}` } : {}) }, message: { conversation: `balasan dari owner` }}})
+					balasanowner = {
+					text: `*[ BALASAN DARI OWNER ]* Dari : @${sender.split("@")[0]}\nUntuk : @${args[1].split('|')[0].split('@')[0]}\n Pesan : ${q}`,
+					contextInfo: { mentionedJid: [`${sender}`,`${args[1].split('|')[0]}`] }
+					}
+					client.sendMessage(`${args[0]}`, `${balasanowner}`, text)
 					break
 				case prefix+'sisa.hari':
 				case prefix+'sisahari':
