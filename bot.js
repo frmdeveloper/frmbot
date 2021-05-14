@@ -2909,7 +2909,7 @@ ${makermenu2}`)
 					text: `*[ BALASAN DARI OWNER ]* Dari : @${sender.split("@")[0]}\nUntuk : @${args[1].split('|')[0].split('@')[0]}\n Pesan : ${q}`,
 					contextInfo: { mentionedJid: [`${sender}`,`${args[1].split('|')[0]}`] }
 					}
-					client.sendMessage(`${args[0]}`, `${balasanowner}`, text)
+					client.sendMessage(`${args[0]}`, balasanowner, text)
 					break
 				case prefix+'sisa.hari':
 				case prefix+'sisahari':
