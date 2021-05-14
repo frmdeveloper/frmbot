@@ -2538,11 +2538,10 @@ break
 				case prefix+'run':
 				case '>':
 					if (!isOwner) return reply(ind.ownerb())
-					try{
-                	sy = args.join(' ')
-                	return eval(sy)
+					try {
+                	reply(require('util').format(await eval(`;(async () => { ${args.join(' ')} })()`)))
                 	} catch (e) {
-                	reply(`${monosp}${e}${monosp}`)
+                	reply(`${e}`)
                 	}
                 	break
 				case prefix+'eval':
