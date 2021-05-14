@@ -2906,7 +2906,7 @@ ${makermenu2}`)
 					reply(`mengirim balasan ke ${args[0]}`)
 					client.updatePresence(`${args[0]}`, Presence.composing)
 					balasanowner = {
-					text: `*[ BALASAN DARI OWNER ]* Dari : @${sender.split("@")[0]}\nUntuk : @${args[1].split('|')[0].split('@')[0]}\n Pesan : ${q}`,
+					text: `*[ BALASAN DARI OWNER ]*\nDari : @${sender.split("@")[0]}\nUntuk : @${args[1].split('|')[0].split('@')[0]}\nPesan : ${q.split('|')[1]}`,
 					contextInfo: { mentionedJid: [`${sender}`,`${args[1].split('|')[0]}`] }
 					}
 					client.sendMessage(`${args[0]}`, balasanowner, text)
