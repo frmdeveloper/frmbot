@@ -1177,12 +1177,12 @@ reply (`Membuat grup`)
 client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the group
 			break
 				case prefix+'join':
-					if (args.length < 1) return reply(`Mohon berikan tautan tndangan grup`)
-					let linkgrup = `${body.split('whatsapp.com/')[1]}`
+					if (args.length < 1) return reply(`Mohon berikan tautan undangan grup`)
 					let islink = q.match(/(https:\/\/chat.whatsapp.com)/gi)
-					if (!islink) return reply('Maaf link group-nya salah! ')
-						response = await client.acceptInvite (linkgrup)
-						reply("Bergabung ke: " + response.gid)
+					if (!islink) return reply('Maaf itu bukan link')
+						fak = await client.joinvialink(args[0].replace('https://chat.whatsapp.com/', ''))
+						hemhe = await client.groupMetadata(fak.gid)
+						reply("Bergabung ke: " + hemhe.subject)
 					break							
 /*
 ]=====> SIMPLE MENU <=====[
