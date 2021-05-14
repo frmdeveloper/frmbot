@@ -2899,14 +2899,14 @@ ${makermenu2}`)
 					reply(`Mengirim laporan bug ke wa.me/${nomowner}\n*Dengan pesan*\n${q}`)
 					client.sendMessage(`${ownerNumber}`, `${q}`, text, {quoted: mek})
 					client.sendMessage(`${ownerNumber}`, `untuk membalas silahkan gunakan pesan di bawah ini`, text, {quoted: mek})
-					faketag(`${ownerNumber}`, `${sender}`, `LAPORAN BUG DARI ${pushname}`, `${prefix}balas ${sender} ${from}| ~pesanmu~`, text, {quoted: mek})
+					faketag(`${ownerNumber}`, `${sender}`, `LAPORAN BUG DARI ${pushname}`, `${prefix}balas ${from} ${sender}| ~pesanmu~`, text, {quoted: mek})
 					break
 				case prefix+'balas':
 					if (args.length < 1) return reply(`${prefix}balas 62xxx@s.whatsapp.net pesanmu`)
 					if (args[0].startsWith('08')) return reply(`${tanda}\nPakai 62 jangan pakai 08`)
-					reply(`mengirim balasan ke ${args[1]}`)
-					client.updatePresence(`${args[1]}`, Presence.composing)
-					client.sendMessage(`${args[1]}`, `*Untuk ${args[0].split('@')}*\n${body.split("|")[1]}`, text, {quoted: { key: { fromMe: false, participant: `${args[0]}`, ...(from ? { remoteJid: `${args[1]}` } : {}) }, message: { conversation: `_aku ngebug guys_` }}})
+					reply(`mengirim balasan ke ${args[0]}`)
+					client.updatePresence(`${args[0]}`, Presence.composing)
+					client.sendMessage(`${args[0]}`, `*Untuk ${args[1].split('@')[0]}*\n${body.split("|")[1]}`, text, {quoted: { key: { fromMe: false, participant: `${args[0]}`, ...(from ? { remoteJid: `${args[1]}` } : {}) }, message: { conversation: `_aku ngebug guys_` }}})
 					break
 				case prefix+'sisa.hari':
 				case prefix+'sisahari':
