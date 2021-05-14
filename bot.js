@@ -2541,7 +2541,7 @@ break
 					try {
                 	reply(require('util').format(await eval(`;(async () => { ${args.join(' ')} })()`)))
                 	} catch (e) {
-                	reply(`${e}`)
+                	reply(`${monosp}${e}${monosp}`)
                 	}
                 	break
 				case prefix+'eval':
