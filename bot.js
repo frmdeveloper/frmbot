@@ -5317,7 +5317,7 @@ tesseract.recognize(media, config)
 vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
             + `FN:${devName}\n`
-            + `ORG: ${ownerName};\n`
+            + `ORG:${ownerName};\n`
             + `TEL;type=CELL;type=VOICE;waid=${nomowner}:${nomowner}\n`
             + 'END:VCARD' 
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
