@@ -2833,6 +2833,7 @@ help = await reply(`${head1} HELP HELP ${head2}
 ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}bucin
+${gaya2} ${prefix}bug ~pesanmu~
 ${gaya2} ${prefix}brainly ~teks~
 ${gaya2} ${prefix}dadu
 ${gaya2} ${prefix}donasi
