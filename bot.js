@@ -3775,9 +3775,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				
                     break
           case `${prefix}speed`:
-          case `${prefix}ping`:
-          	
-                       
+          case `${prefix}ping`:           
 			timestamp = speed()
             latensi = speed() - timestamp
             reply(`*Kecepatan internet:* ${latensi.toFixed(4)} detik\n\nINFO: lebih kecil lebih cepat`)
