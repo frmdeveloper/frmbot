@@ -1566,6 +1566,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if (!isGroup) return reply(ind.groupo())
 					await client.sendMessage(sender, `Kamu harus bertanggung jawab di grup itu`, text, {quoted: mek})
 					await client.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL)
+					await client.toggleDisappearingMessages(from, 100)
 					await client.toggleDisappearingMessages(from, 10)
 					client.toggleDisappearingMessages(from, 0)
 					break
