@@ -2836,11 +2836,14 @@ ${gaya2} ${prefix}bucin
 ${gaya2} ${prefix}brainly ~teks~
 ${gaya2} ${prefix}dadu
 ${gaya2} ${prefix}donasi
+${gaya2} ${prefix}emoji ~emojinya~
 ${gaya2} ${prefix}google ~teks~
 ${gaya2} ${prefix}hidetag ~teks~
 ${gaya2} ${prefix}hidethumb ~teks~
-${gaya2} ${prefix}hapus (geser pesanku)
+${gaya2} ${prefix}hapus (tag pesanku)
 ${gaya2} ${prefix}info
+${gaya2} ${prefix}toimg (tag gambar)
+${gaya2} ${prefix}tourl (tag gambar)
 ${gaya2} ${prefix}save ~namamu~
 ${gaya1}
 ${gaya3}`)
