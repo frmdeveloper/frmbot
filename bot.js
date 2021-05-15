@@ -29,6 +29,7 @@ const {
    Presence,
    MessageOptions,
    Mimetype,
+   MimetypeMap,
    WALocationMessage,
    WA_MESSAGE_STUB_TYPES,
    ReconnectMode,
