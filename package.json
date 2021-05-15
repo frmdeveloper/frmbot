@@ -10,6 +10,7 @@
     "@adiwajshing/baileys": "3.4.1",
     "@kagchi/kag-api": "latest",
     "async": "latest",
+    "awesome-phonenumber": "latest",
     "axios": "latest",
     "brainly-scraper": "latest",
     "canvacord": "latest",
