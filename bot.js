@@ -3746,7 +3746,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				hlh = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
 				ter = command[2].toLowerCase()
 				reply(`${hlh.replace(/[aiueo]/g, ter).replace(/[AIUEO]/g, ter.toUpperCase())}`)
-				
 				break
 			case prefix+'totalhuruf':
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
