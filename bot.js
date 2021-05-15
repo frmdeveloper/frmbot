@@ -5541,11 +5541,13 @@ vcard = 'BEGIN:VCARD\n'
 					break
 				case prefix+'afk':
                 	if (!isGroup) return reply(ind.groupo())
-               	 if (isAfkOn) return reply(ind.afkOnAlready())
-                	const reason = q ? q : 'Nothing.'
-                	addAfkUser(sender, time, reason, _afk)
-                	client.sendMessage(from, ind.afkOn(pushname, reason), text)
-            		break
+               case 'afk':
+					if (!isGroup) return reply(mess.only.group)
+					if (isAfkOn) return reply(`Anda sudah afk sejak ${getAfkTime(sender, _afk)} WIB\n*Alasan:* ${getAfkReason(sender, _afk)}`)
+					reson = body.slice(5) || 'Tidak ada alasan'
+					addAfkUser(sender, reson)
+					reply(`*${pushname}* kini sedang afk!!\n\n*Alasan:* ${reson}\n*Sejak:* ${time} WIB`)
+					break
 			case `${prefix}toimg`:
 			case `${prefix}stikimg`:
                 if (!isQuotedSticker) return reply('tidak ada sticker')
