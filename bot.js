@@ -572,7 +572,7 @@ const sleep = async (ms) => {
 			const addAfkUser = (userId, reason) => {
 				const obj = { id: userId, time: time, reason: reason }
 					_afk.push(obj)
-					fs.writeFileSync('./database/json/afk.json', JSON.stringify(_afk))
+					fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
 				}
 			const getAfkPosition = (userId, _dir) => {
 				let position = null
