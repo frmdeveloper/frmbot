@@ -141,7 +141,7 @@ imgbbkey = "f4fde56c72298d6d92ce5133024cbba8"
 */
 const liststiker = JSON.parse(fs.readFileSync('./sticker/liststiker.json'))
 const listaudio = JSON.parse(fs.readFileSync('./audio/listaudio.json'))
-const _jadibot = JSON.parse(fs.readFileSync('./database/user/datajadibot.json'))
+const _afk = JSON.parse(fs.readFileSync('./database/user/afk.json'))
 const promo = JSON.parse(fs.readFileSync('./database/bot/promo.json'))
 const omongelek = JSON.parse(fs.readFileSync('./database/bot/omongelek.json'))
 const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
