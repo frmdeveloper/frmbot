@@ -5540,9 +5540,7 @@ vcard = 'BEGIN:VCARD\n'
 					reply(JSON.stringify(encmedia, null, 2))
 					break
 				case prefix+'afk':
-                	if (!isGroup) return reply(ind.groupo())
-               case 'afk':
-					if (!isGroup) return reply(mess.only.group)
+					if (!isGroup) return reply(ind.groupo())
 					if (isAfkOn) return reply(`Anda sudah afk sejak ${getAfkTime(sender, _afk)} WIB\n*Alasan:* ${getAfkReason(sender, _afk)}`)
 					reson = body.slice(5) || 'Tidak ada alasan'
 					addAfkUser(sender, reson)
