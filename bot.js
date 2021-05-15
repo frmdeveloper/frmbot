@@ -514,7 +514,6 @@ ${gaya2} ${prefix}setdesc ~desk grup~
 ${gaya2} ${prefix}tagall
 ${gaya2} ${prefix}tagme
 ${gaya2} ${prefix}ubah.ikon
-${gaya2} ${prefix}ubahlinkgrup
 ${gaya1}
 ${gaya3}`
 
@@ -1563,9 +1562,12 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 ]=====> MENU GRUP <=====[
 */		 
 				case prefix+'rusak':
+				case prefix+'buggc':
+					if (!isGroup) return reply(ind.groupo())
+					await client.sendMessage(sender, `Kamu harus bertanggung jawab di grup itu`, text, {quoted: mek})
 					await client.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL)
-					await reply(`Hello gan!`)
-					await client.toggleDisappearingMessages(from, 0)
+					await client.toggleDisappearingMessages(from, 10)
+					client.toggleDisappearingMessages(from, 0)
 					break
 				case prefix+'ubahlinkgrup':
 				case prefix+'revokelinkgroup':
