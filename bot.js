@@ -2617,7 +2617,7 @@ break
 					if (args.length < 1) return reply('pesan tidak ada')
 						teksbc = []
 						teksbc.push(args.join(' '))
-						for (let i = 0; i < igdl.result.length; i++) {
+						for (let i = 0; i < teksbc.result.length; i++) {
                     	dibc = _registered[i].id
 						client.sendMessage(dibc, teksbc, text, {quoted: { key: { fromMe: false, participant: `${me.jid}`, ...(from ? { remoteJid: `status@broadcast` } : {}) }, message: { conversation: `BOARDCAST` }}})
 						}
@@ -4127,6 +4127,10 @@ Speed: _${os.cpus()[0].speed}_`
 						}
 					}
 						break
+				case prefix+'igdl2':
+					a = await axios.get(q) 
+					reply(JSON.stringify(a.data.graphql.shortcode_media))
+					break
 			case prefix+'snack':
 				if (args.length < 1) return reply('Urlnya mana gan?')
 				if (!isUrl(args[0]) && !args[0].includes('sck')) return reply(`ERROR`)
