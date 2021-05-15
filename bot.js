@@ -569,20 +569,63 @@ const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-const addAfkUser = (userid) => {
-    const obj = { userid }
-    	_afk.push(obj)
-	}
-
-const checkAfkUser = (sender) => {
-    let status = false
-    Object.keys(_afk).forEach((i) => {
-        if (_afk[i] === sender) {
-            status = i
-        }
-    })
-    return status
-}
+			const addAfkUser = (userId, reason) => {
+				const obj = { id: userId, time: time, reason: reason }
+					_afk.push(obj)
+					fs.writeFileSync('./database/json/afk.json', JSON.stringify(_afk))
+				}
+			const getAfkPosition = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+					}
+						})
+					return position
+					}
+			const checkAfkUser = (userId, _dir) => {
+				let status = false
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					status = true
+					}
+				})
+				return status
+			}
+			const getAfkReason = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+						}
+					})
+					if (position !== null) {
+				return _dir[position].reason
+				}
+			}
+			const getAfkTime = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+						}
+					})
+					if (position !== null) {
+					return _dir[position].time
+						}
+					}
+			const getAfkId = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+						}
+					})
+					if (position !== null) {
+					return _dir[position].id
+						}
+					}
+			const isAfkOn = checkAfkUser(sender, _afk)
 
         const createSerial = (size) => {
             return crypto.randomBytes(size).toString('hex').slice(0, size)
@@ -767,7 +810,6 @@ client.on('group-participants-update', async (anu) => {
 			const isPln = nomerepln.includes(sender)
 			const isImage = type === 'imageMessage'
 			const isGanggu = sender.includes(sender)
-			const isAfkOn = checkAfkUser(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -1051,24 +1093,25 @@ ${monosp} sq        Albanian
             //AFK NGULI
 
              if (isGroup) {
-            	try {
-            	mentioneddd = mek.message[Object.keys(mek.message)[0]].contextInfo ? mek.message[Object.keys(mek.message)[0]].contextInfo.mentionedJid : []
-            	for (let ment of mentioneddd) {
-                if (checkAfkUser(ment)) {
-                    warnafk = {
-					text: `SSSST, jangan ngetag @${ment.split("@")[0]} orangnya sedang AFK`,
-					contextInfo: { mentionedJid: [ment] }
+				if (checkAfkUser(sender, _afk)) {
+				_afk.splice(getAfkPosition(sender, _afk), 1)
+				fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
+				await reply(`*${pushname}* Sudah tidak afk, selamat datang kembali~`)
 					}
-					reply(warnafk)
-                }
-            }
-            	} catch { console.log('mentioneddd error') }
-                }
-            
-            if (checkAfkUser(sender)) {
-                _afk.splice(sender, 1)
-                client.sendMessage(from, ind.afkDone(pushname), text)
-            }
+				}
+				try {
+				mend = msg.message.extendedTextMessage.contextInfo.mentionedJid || false
+				for (let ment of mend) {
+				if (checkAfkUser(ment, _afk)) {
+					const getId = getAfkId(ment, _afk)
+					const getReason = getAfkReason(getId, _afk)
+					const getTime = getAfkTime(getId, _afk)
+					await reply(`*${getName(getId)}* Sedang Afk Sejak ${getTime} WIB\n\n*Alasan:* ${getReason}`)
+				}
+			}
+				} catch(e) {
+				
+			}
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
