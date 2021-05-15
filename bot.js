@@ -2821,32 +2821,6 @@ break
 
 
 //dari saya sebelumnya
-				case prefix+'jadiboterror':
-let client1 = new WAConnection()
-client1.on('qr', qr => {
-   qrcode.generate(qr, { small: true })
-   exec(`qrencode -o ./sampah/jadibot_${qr}.png ${body.slice(8)}`)
-   reply('membuat kode qr')
-   setTimeout( () => {
-					qrcodene = fs.readFileSync(`./sampah/jadibot_${qr}.png`)
-					}, 1000) // 1000 = 1detik,
-					setTimeout( () => {
-					client.sendMessage(from, qrcodene, image, {quoted: mek, caption: 'ni'})
-					}, 1500) // 1000 = 1detik,
-   console.log(color('[','white'),color('','red'),color(']','white'),color('      ^\nSCAN QR CODE','white'),color('BOT','red'),color('By','white'),color('Fauzan Rifki Maulana','yellow'))
-})
-
-client1.on('credentials-updated', () => {
-	const authInfo = client.base64EncodedAuthInfo()
-   console.log(`tersambung`)
-   reply(`tersambung`)
-   fs.writeFileSync(`./database/user/jadibot@${sender}.json`, JSON.stringify(authInfo, null, '\t'))
-})
-fs.existsSync('./database/user/jadibot@${sender}.json') && client1.loadAuthInfo('./database/user/jadibot@${sender}.json')
-client1.connect();
-const buffqr = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${qr}`)
-client.sendMessage(from, buffqr, image, {quoted: mek, caption: `Scan sebelum kadaluarsa\n${monosp}${qr}${monosp}`})
-    				break
     			case prefix+'qrcode':
                     const tex = encodeURIComponent(body.slice(8))
 					if (!tex) return reply(`${prefix}qrcode teksnya`)
