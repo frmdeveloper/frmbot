@@ -2226,12 +2226,9 @@ break
                                                  reply('Gunakan foto!')
                                           }
                                              break
-				case prefix+'imgtourl':
+				case prefix+'imgbb':
 				case prefix+'tourl':
-				case prefix+'tolink':
-					
-
-if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
   ted = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: mek
   owgi = await client.downloadAndSaveMediaMessage(ted)
   tels = body.slice(7)
@@ -2242,6 +2239,13 @@ if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0)
   reply('tag gambar/foto')
 }
 break
+			case prefix+'tolink':
+				const encmediiia = isQuotedImage ? JSON.parse(JSON.stringify(qul).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : qul
+				const mediaq = await client.downloadAndSaveMediaMessage(encmediiia)
+				const upli = await uptotele(mediaq)
+				reply(`${upli}`)
+				fs.unlinkSync(mediaq)
+				break
 				case prefix+'lovemake':
 					if (args.length < 1) return reply('Teksnya mana um')
 					love = body.slice(10)
