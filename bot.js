@@ -3042,76 +3042,10 @@ o==[]::::::>
 ☞ wa.me
 ☞ waifu.pics`)
 			break
-				case `${prefix}dompet`:
-				case `${prefix}wallet`:
-				case `${prefix}uang`:
-				case `${prefix}money`:
-                    
-				cekdompet = checkATMuser(sender)
-				fitnah(`${nomerewa}`, `ISI DOMPET MU`, `* dompet *\n*Nama* : ${pushname}\n*Nomer* : ${sender.split("@")[0]}\n*Uang* : Rp ${cekdompet}\n`)
-				
-				break
-			case `${prefix}gift.kuota `:
-				
-                
-				if (args.length < 1) return reply(`* SELAMAT DATANG *\nSelamat datang\n\nSilahkan ketik\n${prefix}gift.kuota limit ~nomor~  ~jumlah kuota limit~\n*CONTOH*\n${prefix}gift.kuota limit 62895803265350 7`)
-				if (!isUser) return reply(`nomor tidak terdaftar`)
-				payout = (`-${args[1]}`)
-				const totale = args[1]
-				nomerwesdaftar = `${args[0]}@s.whatsapp.net`
-				if ( checkLimit(sender) >= totale) return reply(`maaf kuota limit kamu belum mencukupi. silahkan kumpulkan dan transfer nanti`)
-				if ( checkLimit(sender) <= totale ) {
-					limit(sender, totale)
-					bayarLimit(args[0], payout)
-					fitnah(`${nomerewa}`, `* TRANSFER kuota limit BERHASIL *`, `*TRANSFER kuota limit*\n\n\n*Penerima* : ${args[0]}\n*nominal transfer* : ${payout} pesan\n *Sisa kuota limit mu* : Rp ${checkLimit(sender)}\n\n\n${createSerial(15)}`)
-				} 
-				
-				break
-				case `${prefix}10k`:
-                      
-                	  
-				      if (isBanned) return reply(ind.diban())
-					tipelist = [`${katasandi}`]
-					if (!tipelist.includes(args[0])) return reply(`${tanda}\nKatasandi salah, silahkan beli. Hubungi wa.me/62895803265350`)
-                      bayaran = 10000
-                      addKoinUser(sender, bayaran)
-                      dompetisi = checkATMuser(sender)
-                      fitnah(`${nomerewa}`, `UHUI`, `*WOOW*\n\n\nRp ${bayaran} telah ditambahkan\nsaldomu sekarang Rp ${dompetisi}\n\n\n_${createSerial(15)}_`)
-					break
-				case `${prefix}addtaksopan`:
-                    if (args.length < 1) return reply(`ketik\n${prefix}addtaksopan ~kata jeleknya~\nCONTOH\n${prefix}addtaksopan cok`)
-					var gaksopan = args[0]
-               	 var katane = body.slice(13+gaksopan.length)
-					omongelek.push(katane)
-						fs.writeFileSync('./database/bot/omongelek.json', JSON.stringify(omongelek))
-						fitnah(nomerewa, `berhasil`, `Kata ${katane} telah ditambahkan`)
-					break
-				case prefix+'tf.saldo':
-					reply(`Untuk mentransfer saldo, silahkan ketik\n${prefix}tf _nomornya_ _nominal_\n\nContoh\n${prefix}tf ${me.jid.split("@")[0]} 5000`)
-					break
-				case prefix+'tf':
-                    if (isBanned) return reply(`Maaf, nomor kamu tidak dapat menggunakan bot ini\nSilahkan mohon kepada bosku / ownerku`)
-					if (args.length < 1) return reply(`Untuk mentransfer saldo, silahkan ketik\n${prefix}tf _nomornya_ _nominal_\n\nContoh\n${prefix}tf ${me.jid.split("@")[0]} 5000`)
-					if (args[0].startsWith('08')) return reply(`${tanda}\nPakai 62 jangan pakai 08`)
-                var tujuan = args[0]
-                var jumblah = body.slice(4+tujuan.length)
-                if (checkATMuser(sender) < jumblah) return reply(`saldo mu tidak mencukupi untuk melakukan transfer`)
-                tujuantf = `${tujuan.replace("@", '')}@s.whatsapp.net`
-                nomerwesdaftar = `${tujuan}@s.whatsapp.net`
-                if (!isUser) return reply(`Nomor ${args[0]} tidak terdaftar`)
-                fee = 0.005 *  jumblah
-                hasiltf = jumblah - fee
-			if (isUser) {
-                addKoinUser(`${args[0]}@s.whatsapp.net`, hasiltf)
-                confirmATM(sender, jumblah)
-                fitnah(`${nomerewa}`, `berhasil`, `Transfer saldo Rp ${jumblah} ke : +${nomerwesdaftar} berhasil\nDengan pajak : ${fee}`)
-                fitnah2(`${nomerwesdaftar}`, `Dari ${sender.split("@")[0]}\nDari ${namaneuser(sender)}`, `*Nomor WhatsApp* mu telah di isi saldo senilai Rp ${jumblah} dengan SN ${createSerial(15)}`)
-			}
-					break
 					case prefix+'attp':
 					case prefix+'ttp':
                 if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
-				stikergif(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)	
+				stikergif(`https://api.xteam.xyz/attp?file&text=${q}`)	
            	 break
            case prefix+'ninjalogo':
 				 var gh = body.slice(11)
