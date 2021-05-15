@@ -2844,6 +2844,7 @@ ${gaya2} ${prefix}hapus (tag pesanku)
 ${gaya2} ${prefix}info
 ${gaya2} ${prefix}toimg (tag gambar)
 ${gaya2} ${prefix}tourl (tag gambar)
+${gaya2} ${prefix}ping
 ${gaya2} ${prefix}save ~namamu~
 ${gaya1}
 ${gaya3}`)
