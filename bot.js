@@ -424,6 +424,7 @@ ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}banlist
 ${gaya2} ${prefix}chatmu
+${gaya2} ${prefix}fetch
 ${gaya2} ${prefix}hapus (geser pesanku)
 ${gaya2} ${prefix}info
 ${gaya2} ${prefix}makasih
@@ -2756,6 +2757,20 @@ break
 						nomersibuk = `${nomerewa}`
 						pesansibuk = `${sibuk1}`
 						reply(`off`)
+					}
+					break
+				case prefix+'fetch':
+    				util = require('util')
+    				teks = args.join(' ')
+    				res = await fetch(teks)
+					if (!/text|json/.test(res.headers.get('content-type'))) return caliph.sendFile(from, teks, 'file', '', msg)
+					txt = await res.buffer()
+					try {
+						txt = util.format(JSON.parse(txt+''))
+					} catch (e) {
+						txt = txt + ''
+					} finally {
+						reply(txt.slice(0, 65536) + '')
 					}
 					break
 case prefix+'iri':
