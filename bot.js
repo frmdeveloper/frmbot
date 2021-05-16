@@ -3663,7 +3663,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				case prefix+'emoji':
                     emoji.get(args[0]).then(emoji => {
     				stiker(emoji.images[4].url)
-					reply(emoji.images[4].url)
    				 })
 					break
 				case prefix+'emoji2':
