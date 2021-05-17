@@ -680,12 +680,10 @@ client.on('group-participants-update', async (anu) => {
 		sisabaterai = `${json[2][0][1].value}%`
 	})
 
-	client.on('chat-update', async (mek) => {
+	client.on('message-new', async (mek) => {
 		try {
-			if (!mek.hasNewMessage) return
-			mek = JSON.parse(JSON.stringify(mek)).messages[0]
-			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			if (!mek.message) return
+            mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
 			m = simple.smsg(client, mek)
 			global.prefix
