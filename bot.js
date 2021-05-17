@@ -3899,7 +3899,7 @@ _${hematdaya}_
 *❀ Dicas: ❀*
 _${dicas}_
 *❀ Kecepatan pesan: ❀*
-_${processTime(chat.t, moment())}_`
+_${processTime(chat.t, moment())}_ detik`
 					
 //INFO TERMINAL
 teksinfonggocmd = `*❀ Ping Internet:*
