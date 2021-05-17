@@ -42,8 +42,6 @@ const {
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
 penting = JSON.parse(fs.readFileSync('./assets/penting.json'))
-const simple = require('./lib/simple.js')
-const WAConnection = simple.WAConnection(_WAConnection)
 const moment = require("moment-timezone") 
 const fs = require("fs") 
 const crypto = require('crypto')
