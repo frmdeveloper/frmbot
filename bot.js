@@ -3248,7 +3248,7 @@ o==[]::::::>
 							*${v.title}*\n (${v.url})
 							Durasi: ${v.timestamp}
 							Diupload: ${v.ago}
-							${v.views} Dilihat
+							${v.views} melihat
 							`.trim()
 						case 'channel': return `
 							*${v.name}*\n (${v.url})
