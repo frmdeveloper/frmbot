@@ -119,9 +119,6 @@ _afk = []
 /*
 ]=====> INFO-INFO <=====[
 */
-nomorkartu = ''
-pulsakartu = ''
-kuotakartu = ''
 nomowner = '62895803265350' //pakai kode negara, contoh: 62895803265350
 ownerNumber = [`${nomowner}@s.whatsapp.net`]
 botName = 'FRM BOT'
