@@ -2,7 +2,7 @@
   "name": "FRMBOT",
   "version": "1.0.0",
   "description": "git clone https://github.com/frmdeveloper/frmbot",
-  "main": "rifki.js",
+  "main": "bot.js",
   "directories": {
     "lib": "lib"
   },
@@ -46,7 +46,7 @@
     "zrapi": "latest"
   },
   "scripts": {
-    "start": "node rifki"
+    "start": "node bot"
   },
   "repository": {
     "type": "git",
