@@ -567,64 +567,6 @@ const sleep = async (ms) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-			const addAfkUser = (userId, reason) => {
-				const obj = { id: userId, time: time, reason: reason }
-					_afk.push(obj)
-					fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
-				}
-			const getAfkPosition = (userId, _dir) => {
-				let position = null
-					Object.keys(_dir).forEach((i) => {
-					if (_dir[i].id === userId) {
-					position = i
-					}
-						})
-					return position
-					}
-			const checkAfkUser = (userId, _dir) => {
-				let status = false
-					Object.keys(_dir).forEach((i) => {
-					if (_dir[i].id === userId) {
-					status = true
-					}
-				})
-				return status
-			}
-			const getAfkReason = (userId, _dir) => {
-				let position = null
-					Object.keys(_dir).forEach((i) => {
-					if (_dir[i].id === userId) {
-					position = i
-						}
-					})
-					if (position !== null) {
-				return _dir[position].reason
-				}
-			}
-			const getAfkTime = (userId, _dir) => {
-				let position = null
-					Object.keys(_dir).forEach((i) => {
-					if (_dir[i].id === userId) {
-					position = i
-						}
-					})
-					if (position !== null) {
-					return _dir[position].time
-						}
-					}
-			const getAfkId = (userId, _dir) => {
-				let position = null
-					Object.keys(_dir).forEach((i) => {
-					if (_dir[i].id === userId) {
-					position = i
-						}
-					})
-					if (position !== null) {
-					return _dir[position].id
-						}
-					}
-			const isAfkOn = checkAfkUser(sender, _afk)
-
         const createSerial = (size) => {
             return crypto.randomBytes(size).toString('hex').slice(0, size)
         }
@@ -1100,6 +1042,63 @@ ${monosp} sq        Albanian
  
 			
             //AFK NGULI
+            const addAfkUser = (userId, reason) => {
+				const obj = { id: userId, time: time, reason: reason }
+					_afk.push(obj)
+					fs.writeFileSync('./database/user/afk.json', JSON.stringify(_afk))
+				}
+			const getAfkPosition = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+					}
+						})
+					return position
+					}
+			const checkAfkUser = (userId, _dir) => {
+				let status = false
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					status = true
+					}
+				})
+				return status
+			}
+			const getAfkReason = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+						}
+					})
+					if (position !== null) {
+				return _dir[position].reason
+				}
+			}
+			const getAfkTime = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+						}
+					})
+					if (position !== null) {
+					return _dir[position].time
+						}
+					}
+			const getAfkId = (userId, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === userId) {
+					position = i
+						}
+					})
+					if (position !== null) {
+					return _dir[position].id
+						}
+					}
+			const isAfkOn = checkAfkUser(sender, _afk)
 
              if (isGroup) {
 				if (checkAfkUser(sender, _afk)) {
