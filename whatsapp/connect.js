@@ -8,7 +8,7 @@ const { WAConnection: _WAConnection, MessageType } = require("@adiwajshing/baile
 const fs = require('fs')
 const { color } = require('../lib/color')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('../lib/functions')
-const simple = require('./lib/simple.js')
+const simple = require('../lib/simple.js')
 const WAConnection = simple.WAConnection(_WAConnection)
 
 const client = new WAConnection()
