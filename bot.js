@@ -3657,8 +3657,8 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					server = (args[1] || 'id4').toLowerCase()
 					var { dl_link, thumb, title, filesize, filesizeF} = await yta(url5, servers.includes(server) ? server : 'id4')
 					console.log(await yta(url5, servers.includes(server) ? server : 'id4'))
-					thumbnail = await client.sendMessage(from, await getBuffer(thumb), image, { caption:`*Title:* ${title}\n*Filesize:* ${filesizeF}\n*Link* : ${await shortlink(dl_link)}`, quoted:mek})
-					// if (filesize > 10000) return sendImgFromUrl(thumb, `*「 YOUTUBE PLAY 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesizeF}\n\n__Maaf, Durasi video melebihi 10 MB. Silahkan download video melalui link dibawah_.\n${await shortlink(dl_link)}`)
+					thumbnail = await client.sendMessage(from, await getBuffer(thumb), image, { caption:`*Title:* ${title}\n*Filesize:* ${filesizeF}\n*Link* : ${dl_link}`, quoted:mek})
+					// if (filesize > 10000) return sendImgFromUrl(thumb, `*「 YOUTUBE PLAY 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesizeF}\n\n__Maaf, Durasi video melebihi 10 MB. Silahkan download video melalui link dibawah_.\n${dl_link}`)
 					client.sendMessage(from, await getBuffer(dl_link), audio, { quoted: mek, mimetype: 'audio/mp4'})
 					} catch (e) {
 					reply(`${e}`)}  
@@ -4007,7 +4007,7 @@ Speed: _${os.cpus()[0].speed}_`
 				try {
 				ytv(args[0])
 				.then((res) => {
-				const { dl_link, thumb, title, filesizeF, filesize } = res
+				var { dl_link, thumb, title, filesizeF, filesize } = res
 				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
 				.then((a) => {
 				if (Number(filesize) >= 40000) return sendMediaURL(from, thumb, `*YTMP 4!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
@@ -4202,7 +4202,7 @@ function ytv(url) {
         } else reject('URL INVALID')
     })
 }
-					let { dl_link, thumb, title, filesize, filesizeF} = await ytv(args[0])
+					var { dl_link, thumb, title, filesize, filesizeF} = await ytv(args[0])
 					client.sendMessage(from, dl_link, audio, {mimetype: 'audio/mp4', quoted: mek, ptt: true})
 					break
                 case `${prefix}text3d`:
