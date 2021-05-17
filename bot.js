@@ -3827,8 +3827,9 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					reply(`Umur bot sekarang adalah\n*${kyun(uptime)}*`)
 					
 				break
-				case `${prefix}info`:
-                    
+				case prefix+'info':
+                    personal = client.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net') && !v.read_only && v.message).map(v => v.jid)
+                    groups = caliph.chats.array.filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message).map(v => v.jid)
          	       timestamp = speed()
                     latensi = speed() - timestamp
 					uptime = process.uptime()
@@ -3858,8 +3859,12 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 *❀ Kontak terblokir:*
 ╰> ${blocked.length}
 kontak terblokir kadang error
-*❀ Total Chat:*
+*❀ Jumlah Chat:*
 ╰> ${totalchat.length}
+*❀ Jumlah japri:*
+╰> ${personal.length}
+*❀ Jumlah Grup:*
+╰> ${groups.length}
 *❀ Lama bot aktif:*
 ╰> ${kyun(uptime)}
 *❀ PP Bot:*
