@@ -745,6 +745,7 @@ client.on('group-participants-update', async (anu) => {
 			if (!mek.message) return
 			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+			m = simple.smsg(client, mek)
 			global.prefix
 			global.blocked
 			const me = client.user
