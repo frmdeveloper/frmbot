@@ -3859,11 +3859,11 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 *❀ Kontak terblokir:*
 ╰> ${blocked.length}
 kontak terblokir kadang error
-*❀ Jumlah Chat:*
+*❀ Total Chat:*
 ╰> ${totalchat.length}
-*❀ Jumlah japri:*
+*❀ Total japri:*
 ╰> ${personal.length}
-*❀ Jumlah Grup:*
+*❀ Total Grup:*
 ╰> ${groups.length}
 *❀ Lama bot aktif:*
 ╰> ${kyun(uptime)}
