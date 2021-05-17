@@ -3257,7 +3257,6 @@ o==[]::::::>
 						}
 					}).filter(v => v).join('\n------------------------\n')
 						reply(teks)
-					}
 					break
 				case `${prefix}infonomor`:
                     
