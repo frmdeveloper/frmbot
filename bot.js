@@ -4452,11 +4452,10 @@ function ytv(url) {
 					})
 					break
 				case prefix+'translate':
-                    if (args.length < 1) return reply(`${prefix}translate kode bahasa  teks\n*CONTOH*\n${prefix}translate id i love you\n\n*TIDAK TAHU KODE BAHASA ?*\nketik${prefix}kodebhs\n*or* type ${prefix}codelang`)
-                	const texto = q.substring(0, q.indexOf('|') - 1)
-                	const languaget = q.substring(q.lastIndexOf('|') + 2)
-                	translate(texto, {to: languaget}).then(res => {reply(res.text)})
-           	 break
+					translate(args.slice(1).join(' '), {tld: 'cn', to: args[0]}).then(res => {
+					reply(`${res.text}`)
+        			}).catch(err => {});
+					break
                 case prefix+'husbu':
                         try {
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/husbu?apikey=${TobzKey}`)
