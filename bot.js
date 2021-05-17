@@ -1235,9 +1235,8 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if (args.length < 1) return reply(`Mohon berikan tautan undangan grup`)
 					let islink = q.match(/(https:\/\/chat.whatsapp.com)/gi)
 					if (!islink) return reply('Maaf itu bukan link')
-						fak = await client.joinvialink(args[0].replace('https://chat.whatsapp.com/', ''))
-						hemhe = await client.groupMetadata(fak.gid)
-						reply("Bergabung ke: " + hemhe.subject)
+						fak = await client.joinvialink(args[0])
+						reply(JSON.stringify(fak))
 					break							
 /*
 ]=====> SIMPLE MENU <=====[
