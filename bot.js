@@ -901,6 +901,15 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
+        	const sendImgFromUrl = (teks, teks2) => {
+				imageToBase64(teks)
+					.then(
+					(ress) => {
+					var buf = Buffer.from(ress, 'base64')
+					client.updatePresence(from, Presence.composing)
+					client.sendMessage(from, buf, image, { quoted: mek, caption: teks2 })
+					})
+			}
 			const sendMediaURL = async(to, url, text="", mids=[]) =>{
                 if(mids.length > 0){
                     text = normalizeMention(to, text, mids)
@@ -3229,15 +3238,17 @@ o==[]::::::>
 					break
 				case `${prefix}ytcari`:
 				case `${prefix}ytsearch`:
-                    ytcari = await fetchJson(`https://api.vhtear.com/youtube?query=${q}&apikey=${VhtearKey}`, {method: 'get'})
-					if (ytcari.error) return reply(ytcari.error)
-					teks = '=================\n'
-					for (let i of ytcari.result) {
-						teks += `*Title* : ${i.title}\n*URL* : https://www.youtube.com/watch?v=${i.id}\n*Published* : ${i.publishTime}\n*Duration* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
+                case prefix+'yts':
+					results = await yts(query)
+					hemm = results.channels
+					teks = '--------------------------\n'
+					thumb = results.channels[0].thumbnail
+					for (let i of hemm) {
+					teks += `Channel : ${i.name}\nSubs : ${h2k(i.subCount)}\nVideo : ${i.videoCount}\nLink : ${i.url}\n--------------------------\n`
 					}
-					reply(teks.trim())
+					sendImgFromUrl(thumb, teks.trim())
 					break
-					case `${prefix}infonomor`:
+				case `${prefix}infonomor`:
                     
 if (isBanned) return reply(`Maaf, nomor kamu tidak dapat menggunakan bot ini\nSilahkan mohon kepada bosku / ownerku`)
 					
