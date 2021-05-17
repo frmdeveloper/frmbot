@@ -749,6 +749,7 @@ client.on('group-participants-update', async (anu) => {
 			global.prefix
 			global.blocked
 			const me = client.user
+			const chat = {t: mek.messageTimestamp.low}
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
