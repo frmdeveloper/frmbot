@@ -41,6 +41,7 @@
     "ssl-express-www": "latest",
     "tiktok-scraper": "latest",
     "wa-sticker-formatter": "latest",
+    "yt-search": "latest",
     "zrapi": "latest"
   },
   "scripts": {
