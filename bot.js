@@ -159,7 +159,6 @@ ban = JSON.parse(fs.readFileSync('./database/user/banned.json'))
 ]=====> FILE MENU DILUAR <=====[
 */
 const { help } = require('./lib/help')
-const { simple } = require('./database/menu/simple')
 const { gabut } = require('./database/menu/gabut')
 const { groupm } = require('./database/menu/group')
 const { download } = require('./database/menu/download')
