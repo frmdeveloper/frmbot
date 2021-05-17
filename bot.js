@@ -3252,7 +3252,7 @@ o==[]::::::>
 							`.trim()
 						case 'channel': return `
 							*${v.name}*\n (${v.url})
-							_${v.subCountLabel} (${v.subCount}) Inscritos_
+							_${v.subCountLabel} (${v.subCount}) subscribe_
 							${v.videoCount} video
 							`.trim()
 						}
