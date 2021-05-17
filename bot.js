@@ -114,7 +114,6 @@ hematdaya = `belum diketahui`
 dicas = `belum diketahui`
 sampah = ''
 blocked = []  
-_afk = []
 /*
 ]=====> INFO-INFO <=====[
 */
