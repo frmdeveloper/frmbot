@@ -24,7 +24,7 @@ const dropbox = dropboxV2Api.authenticate({
 });
 
 const {
-   WAConnection: _WAConnection,
+   WAConnection,
    MessageType,
    Presence,
    MessageOptions,
