@@ -742,8 +742,8 @@ client.on('group-participants-update', async (anu) => {
 		try {
 			if (!mek.hasNewMessage) return
 			mek = JSON.parse(JSON.stringify(mek)).messages[0]
-			if (!mek.message) return
 			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+			if (!mek.message) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
 			m = simple.smsg(client, mek)
 			global.prefix
