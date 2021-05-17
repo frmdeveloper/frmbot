@@ -1101,7 +1101,7 @@ ${monosp} sq        Albanian
 					}
 				}
 				try {
-				mend = msg.message.extendedTextMessage.contextInfo.mentionedJid || false
+				mend = mek.message.extendedTextMessage.contextInfo.mentionedJid || false
 				for (let ment of mend) {
 				if (checkAfkUser(ment, _afk)) {
 					const getId = getAfkId(ment, _afk)
@@ -2762,7 +2762,7 @@ break
     				util = require('util')
     				teks = args.join(' ')
     				res = await fetch(teks)
-					if (!/text|json/.test(res.headers.get('content-type'))) return client.sendFile(from, teks, 'file', '', msg)
+					if (!/text|json/.test(res.headers.get('content-type'))) return client.sendFile(from, teks, 'file', '', mek)
 					txt = await res.buffer()
 					try {
 						txt = util.format(JSON.parse(txt+''))
@@ -3631,7 +3631,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                    hasil = `*title* \n ${anu.title} *item_name* \n ${anu.item_name} *ingredient* \n${anu.ingredient} *step* \n${anu.step}`
                    client.sendMessage(from, buff, image, {quoted: mek, caption: hasil})
                    break 
-				case `${prefix}play`:
+				case prefix+'play':
                     if (args.length === 0) return reply('Masukkan Judulnya Kak')
 					try {
                 	results = await yts(query)
@@ -3641,9 +3641,9 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					server = (args[1] || 'id4').toLowerCase()
 					var { dl_link, thumb, title, filesize, filesizeF} = await yta(url5, servers.includes(server) ? server : 'id4')
 					console.log(await yta(url5, servers.includes(server) ? server : 'id4'))
-					thumbnail = await client.sendMessage(from, await getBuffer(thumb), image, { caption:`*Title:* ${title}\n*Filesize:* ${filesizeF}\n*Link* : ${await shortlink(dl_link)}`, quoted:msg})
+					thumbnail = await client.sendMessage(from, await getBuffer(thumb), image, { caption:`*Title:* ${title}\n*Filesize:* ${filesizeF}\n*Link* : ${await shortlink(dl_link)}`, quoted:mek})
 					// if (filesize > 10000) return sendImgFromUrl(thumb, `*「 YOUTUBE PLAY 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesizeF}\n\n__Maaf, Durasi video melebihi 10 MB. Silahkan download video melalui link dibawah_.\n${await shortlink(dl_link)}`)
-					client.sendMessage(from, await getBuffer(dl_link), audio, { quoted: msg, mimetype: 'audio/mp4'})
+					client.sendMessage(from, await getBuffer(dl_link), audio, { quoted: mek, mimetype: 'audio/mp4'})
 					} catch (e) {
 					reply(`${e}`)}  
 					break
