@@ -41,7 +41,6 @@ const {
    processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
-penting = JSON.parse(fs.readFileSync('./assets/penting.json'))
 const moment = require("moment-timezone") 
 const fs = require("fs") 
 const crypto = require('crypto')
@@ -79,6 +78,7 @@ const fetch = require('node-fetch')
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
 const imgbb = require('imgbb-uploader')
+penting = JSON.parse(fs.readFileSync('./assets/penting.json'))
 const frm = require('./whatsapp/message.js')
 const conn = require('./whatsapp/connect')
 const client = conn.client
