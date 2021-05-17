@@ -1197,8 +1197,7 @@ switch(command) {
                 case prefix+'birthdayday':
                 case prefix+'goldplaybutton':
                 case prefix+'silverplaybutton':
-                case prefix+'freefire':
-                    
+                case prefix+'freefire':  
                     if (args.length == 0) return reply('Teksnya mana um')
                     txt = args.join(" ")
                     lolimg = await getBuffer(`http://api.lolhuman.xyz/api/ephoto1/${body.slice(1).split(' ')[0]}?apikey=${LolKey}&text=${txt}`)
