@@ -3245,13 +3245,13 @@ o==[]::::::>
 					teks = results.all.map(v => {
 					switch (v.type) {
 						case 'video': return `
-							*${v.title}* (${v.url})
+							*${v.title}*\n (${v.url})
 							Durasi: ${v.timestamp}
 							Diupload: ${v.ago}
 							${v.views} Dilihat
 							`.trim()
 						case 'channel': return `
-							*${v.name}* (${v.url})
+							*${v.name}*\n (${v.url})
 							_${v.subCountLabel} (${v.subCount}) Inscritos_
 							${v.videoCount} video
 							`.trim()
