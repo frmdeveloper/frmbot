@@ -3822,7 +3822,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					client.sendMessage(from, fs.readFileSync(`./fauzan.rifki.m/qrdanafrm.webp`), sticker, {quoted:mek})
 					break
 				case prefix+'runtime':
-					    client.updatePresence(from, Presence.composing) 
+					client.updatePresence(from, Presence.composing) 
 					uptime = process.uptime()
 					reply(`Umur bot sekarang adalah\n*${kyun(uptime)}*`)
 					
