@@ -3240,14 +3240,24 @@ o==[]::::::>
 				case `${prefix}ytcari`:
 				case `${prefix}ytsearch`:
                 case prefix+'yts':
-					results = await yts(query)
-					hemm = results.channels
-					teks = '--------------------------\n'
-					thumb = results.channels[0].thumbnail
-					for (let i of hemm) {
-					teks += `Channel : ${i.name}\nSubs : ${h2k(i.subCount)}\nVideo : ${i.videoCount}\nLink : ${i.url}\n--------------------------\n`
+					results = await yts(text)
+					teks = results.all.map(v => {
+					switch (v.type) {
+						case 'video': return `
+							*${v.title}* (${v.url})
+							Durasi: ${v.timestamp}
+							Diupload: ${v.ago}
+							${v.views} Dilihat
+							`.trim()
+						case 'channel': return `
+							*${v.name}* (${v.url})
+							_${v.subCountLabel} (${v.subCount}) Inscritos_
+							${v.videoCount} video
+							`.trim()
+						}
+					}).filter(v => v).join('\n------------------------\n')
+						reply(teks)
 					}
-					sendImgFromUrl(thumb, teks.trim())
 					break
 				case `${prefix}infonomor`:
                     
