@@ -2762,7 +2762,7 @@ break
     				util = require('util')
     				teks = args.join(' ')
     				res = await fetch(teks)
-					if (!/text|json/.test(res.headers.get('content-type'))) return caliph.sendFile(from, teks, 'file', '', msg)
+					if (!/text|json/.test(res.headers.get('content-type'))) return client.sendFile(from, teks, 'file', '', msg)
 					txt = await res.buffer()
 					try {
 						txt = util.format(JSON.parse(txt+''))
@@ -3632,19 +3632,20 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                    client.sendMessage(from, buff, image, {quoted: mek, caption: hasil})
                    break 
 				case `${prefix}play`:
-                    client.updatePresence(from, Presence.composing)
+                    if (args.length === 0) return reply('Masukkan Judulnya Kak')
 					try {
-					play1 = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${body.slice(6)}&apikey=${ZeksKey}`, {method: 'get'})
-					play2 = `*Judul:* ${play1.result.title}\n*Source:* ${play1.result.source}\n*size:* ${play1.result.size}\n\n_tunggu, ini akan memakan waktu lama_`
-					playthumb = await getBuffer(play1.result.thumbnail)
-					client.sendMessage(from, playthumb, image, {quoted: mek, caption: play2})
-					playmp3 = await getBuffer(play1.result.url_audio)
-					client.updatePresence(from, Presence.recording)
-					client.sendMessage(from, playmp3, audio, {mimetype: 'audio/mpeg', filename: `${play1.result.title}.mp3`, quoted: mek})
+                	results = await yts(query)
+					var vid = results.all.find(video => video.seconds < 3600)
+					//console.log(vid)
+					url5 = vid.url
+					server = (args[1] || 'id4').toLowerCase()
+					var { dl_link, thumb, title, filesize, filesizeF} = await yta(url5, servers.includes(server) ? server : 'id4')
+					console.log(await yta(url5, servers.includes(server) ? server : 'id4'))
+					thumbnail = await client.sendMessage(from, await getBuffer(thumb), image, { caption:`*Title:* ${title}\n*Filesize:* ${filesizeF}\n*Link* : ${await shortlink(dl_link)}`, quoted:msg})
+					// if (filesize > 10000) return sendImgFromUrl(thumb, `*「 YOUTUBE PLAY 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesizeF}\n\n__Maaf, Durasi video melebihi 10 MB. Silahkan download video melalui link dibawah_.\n${await shortlink(dl_link)}`)
+					client.sendMessage(from, await getBuffer(dl_link), audio, { quoted: msg, mimetype: 'audio/mp4'})
 					} catch (e) {
-                        console.error('ERROR\nSilahkan ganti judul nya')
-                        reply(`ERROR\nSilahkan ganti judul nya\n\n${e}`)
-                    }
+					reply(`${e}`)}  
 					break
 				case `${prefix}playvideo`:
                     if (args.length > 0) {
