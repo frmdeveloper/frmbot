@@ -65,6 +65,7 @@ const cd = 4.32e+7
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const { ind } = require('./language')
 const { yta, ytv } = require('./lib/ytdl')
+const yts = require('yt-search')
 const os = require('os')
 const cheerio = require('cheerio')
 const request = require('request')
