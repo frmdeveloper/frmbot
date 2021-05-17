@@ -41,6 +41,8 @@ const {
    processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
+const simple = require('../lib/simple.js')
+const WAConnection = simple.WAConnection(_WAConnection)
 const moment = require("moment-timezone") 
 const fs = require("fs") 
 const crypto = require('crypto')
