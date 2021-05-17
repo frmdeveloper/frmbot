@@ -3240,7 +3240,8 @@ o==[]::::::>
 				case `${prefix}ytcari`:
 				case `${prefix}ytsearch`:
                 case prefix+'yts':
-					results = await yts(text)
+                	if (q.length < 1) return reply(`teks kosong`)
+					results = await yts(q)
 					teks = results.all.map(v => {
 					switch (v.type) {
 						case 'video': return `
@@ -3259,10 +3260,7 @@ o==[]::::::>
 						reply(teks)
 					break
 				case `${prefix}infonomor`:
-                    
-if (isBanned) return reply(`Maaf, nomor kamu tidak dapat menggunakan bot ini\nSilahkan mohon kepada bosku / ownerku`)
-					
-                    if (args.length < 1) return reply(`Masukan Nomor\nContoh : ${prefix}infonomor 0812345678`)
+                if (args.length < 1) return reply(`Masukan Nomor\nContoh : ${prefix}infonomor 0812345678`)
                 data = await fetchJson(`https://docs-jojo.herokuapp.com/api/infonomor?no=${body.slice(11)}`)
                 if (data.error) return reply(data.error)
                 if (data.result) return reply(data.result)
