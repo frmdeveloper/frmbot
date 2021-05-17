@@ -3897,7 +3897,9 @@ _${sisabaterai}_
 *❀ Penghemat Baterai: ❀*
 _${hematdaya}_
 *❀ Dicas: ❀*
-_${dicas}_`
+_${dicas}_
+*❀ Kecepatan pesan: ❀*
+_${processTime(chat.t, moment())}_`
 					
 //INFO TERMINAL
 teksinfonggocmd = `*❀ Ping Internet:*
