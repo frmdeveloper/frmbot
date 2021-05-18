@@ -3822,7 +3822,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
           case prefix+'ping':           
 			timestamp = speed()
             latensi = speed() - timestamp
-            reply(`*Ping internet:* ${latensi.toFixed(4)} detik\n*Ping whatsapp:* ${processTime(chat.t, moment())} detik\n\n_INFO: lebih kecil lebih cepat_`)
+            reply(`*Ping internet:*\nDi app command: ${latensi.toFixed(4)} detik\nDi app WhatsApp: ${processTime(chat.t, moment())} detik\n\n_INFO: lebih kecil lebih cepat_`)
             break
 			case `${prefix}donasi`:
 			case `${prefix}donate`:
