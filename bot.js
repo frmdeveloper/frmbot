@@ -2850,7 +2850,7 @@ break
 					client.sendMessage(from, buff, image, {quoted: mek})
 					break
 				case prefix+'help':
-help = await reply(`${head1} HELP HELP ${head2}
+helpnya = await reply(`${head1} HELP HELP ${head2}
 ${gaya2} p
 ${gaya2} tes
 ${gaya2} ${prefix}bucin
@@ -2870,7 +2870,7 @@ ${gaya2} ${prefix}ping
 ${gaya2} ${prefix}save ~namamu~
 ${gaya1}
 ${gaya3}`)
-client.sendMessage(from, 'bot dengan fitur terbanyak', text, {quoted: help})
+client.sendMessage(from, 'bot dengan fitur terbanyak', text, {quoted: helpnya})
 					break
 				case prefix+'menu':
 					menuweton = ['Pahing', 'Pon','Wage','Kliwon','Legi']
