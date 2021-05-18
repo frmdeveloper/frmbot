@@ -2312,7 +2312,6 @@ break
 case prefix+'hartatahta':
 case prefix+'tahta':
 if (args.length < 1) return reply('「❗」Contoh : ${prefix}hartatahta bagi duit')
-har = body.slice(12)
 reply('「❗」Hirti Tihti Tai Anjg :v')
 tahta = await getBuffer(`https://api.vhtear.com/hartatahta?text=${q}&apikey=${VhtearKey}`)
 client.sendMessage(from, tahta, image, {quoted: mek})
