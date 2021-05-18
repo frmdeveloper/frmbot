@@ -3078,8 +3078,7 @@ o==[]::::::>
 					case prefix+'attp':
 					case prefix+'ttp':
                 if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
-				ppp = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
-				client.sendMessage(from, ppp, sticker)	
+				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`), sticker)	
            	 break
            case prefix+'ninjalogo':
 				 var gh = body.slice(11)
