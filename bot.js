@@ -3079,7 +3079,7 @@ o==[]::::::>
                 if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
 				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`), sticker, {quoted: mek})	
            	 break
-           case 'ttp':
+           case prefix+'ttp':
 				if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
         		client.sendMessage(from, await getBuffer('https://recoders-area.caliph.repl.co/api/ttp?q='+args.join(' ')), sticker, { quoted: mek })
 				break
