@@ -1641,7 +1641,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					}
 					break
 				case `${prefix}nsfw`:
-                    if (!isGroup) return reply(ind.groupo())
 					if (args.length < 1) return reply('Boo :')
 					if (args[0] === 'on') {
 						if (isNsfw) return reply(' *sudah aktif*  !!')
