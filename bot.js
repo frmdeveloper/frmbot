@@ -3785,6 +3785,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 			case prefix+'halah':
 			case prefix+'heleh':
 			case prefix+'holoh':
+				if (!await mek.getQuotedObj()) return reply('Tag pesan')
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				hlh = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
 				ter = command[2].toLowerCase()
