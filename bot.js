@@ -3785,22 +3785,27 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 			case prefix+'halah':
 			case prefix+'heleh':
 			case prefix+'holoh':
-				if (!await mek.getQuotedObj()) return reply('Tag pesan')
+				try {
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				hlh = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
 				ter = command[2].toLowerCase()
 				reply(`${hlh.replace(/[aiueo]/g, ter).replace(/[AIUEO]/g, ter.toUpperCase())}`)
+				} catch {
+					reply(`Tidak ada pesan yang di tag`)
+				}
 				break
 			case prefix+'totalhuruf':
-				if (!await mek.getQuotedObj()) return reply('Tag pesan')
+				try {
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				ttlhrf = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
 				totalhrf = await fetchJson(`https://videfikri.com/api/jumlahhuruf/?query=${encodeURIComponent(ttlhrf)}`, {method: 'get'})
 				reply(`_Jumlah karakter pada pesan tersebut aaaadalaaaaah_\n*${totalhrf.result.jumlah}* karakter`)
+				} catch {
+					reply(`Tidak ada pesan yang di tag`)
+				}
 				break
 			case prefix+'getstickererr':
-			case prefix+'getstikererr':
-                        
+			case prefix+'getstikererr':                
                     getstik1 = await fetchJson(`https://api.zeks.xyz/api/searchsticker?apikey=${ZeksKey}&q=${q}`, {method: 'get'})
                     for (let i = 0; i < getstik1.sticker.length; i++) {
                     ambilstikere = await getBuffer(getstik1.sticker[i])
