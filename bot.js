@@ -2301,7 +2301,7 @@ break
 					tipelist = ['console','block','simpleBlock','simple','3d','simple3d','chrome','huge','shade','slick','grid','pallet','tiny']
 					if (args.length < 1) return reply(`${prefix}banner font teks`)
 					if (!tipelist.includes(args[0])) return reply(`${tanda}\nFont salah\n*Fontnya:*\nconsole, block, simpleBlock, simple, 3d, simple3d, chrome, huge, shade, slick, grid, pallet, tiny`)
-					gh = q.join(' ')
+					gh = q
 					gl1 = gh.split(" ")[1];
 					anu = cfonts.render((`${gl1}`), {
 					font: `${args[0]}`,
