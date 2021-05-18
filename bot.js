@@ -2348,7 +2348,7 @@ case prefix+'cml':
 					cml = `${body.slice(5)}`
 					cml1 = cml.split("&")[0];
 					cml2 = cml.split("&")[1];
-					buffer = await getBuffer(`https://api.vhtear.com/logoml?hero=${cml1}&text=${cml2}&apikey=${VthearKey}`, {method: 'get'})
+					buffer = await getBuffer(`https://api.vhtear.com/logoml?hero=${cml1}&text=${cml2}&apikey=${VhtearKey}`, {method: 'get'})
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					 
 					break
