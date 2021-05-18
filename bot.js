@@ -5634,6 +5634,11 @@ njokdisave = 'BEGIN:VCARD\n'
 //selesai
 //case dari sc ku dulu
 			default:
+					if (isSimi && !isMe && !isRoboGuru) {
+						simijawab = await fetchJson(`http://lolhuman.herokuapp.com/api/simi?apikey=${LolKey}&text=${body}`, {method: 'get'})
+						//if (simijawab.error) return reply('Simi error kak')
+						reply(`${simijawab.result}`)
+					}
                   if (isRoboGuru && !isMe) {
                   	gantinama = body.replace(`${me.name}`, `orang hidup`)
                   client.updatePresence(from, Presence.composing)
