@@ -3795,7 +3795,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				ttlhrf = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
 				totalhrf = await fetchJson(`https://videfikri.com/api/jumlahhuruf/?query=${encodeURIComponent(ttlhrf)}`, {method: 'get'})
 				reply(`_Jumlah karakter pada pesan tersebut aaaadalaaaaah_\n*${totalhrf.result.jumlah}* karakter`)
-				
 				break
 			case prefix+'getstickererr':
 			case prefix+'getstikererr':
