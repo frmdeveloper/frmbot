@@ -1127,12 +1127,12 @@ ${monosp} sq        Albanian
 			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
 			const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
 			//private chat message
-			if (!isGroup && isCmd) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname2})`), (`\n${body}\n               ${jammenit}\n`))
-			if (!isGroup && !isCmd) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname2})`), (`\n${body}\n               ${jammenit}\n`))
+			if (!isGroup && isCmd) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), (`\n${body}\n               ${jammenit}\n`))
+			if (!isGroup && !isCmd) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), (`\n${body}\n               ${jammenit}\n`))
 			
 			//group message
-			if (isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname2})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
-			if (!isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname2})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
+			if (isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
+			if (!isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
 
 if (isBanned) return
 switch(command) {
