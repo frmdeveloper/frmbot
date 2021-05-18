@@ -1584,7 +1584,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				case prefix+'ubahlinkgrup':
 				case prefix+'revokelinkgroup':
 					if (!isGroup) return reply(ind.groupo())
-					editlinkgrup = await client.revokeInvite(from)
+					editlinkgrup = await client.resetInvite(from)
 					reply(`Link grup diubah menjadi https://chat.whatsapp.com/${editlinkgrup.code}`)
 					break
 				case `${prefix}welcome`:
