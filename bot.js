@@ -933,6 +933,11 @@ client.on('group-participants-update', async (anu) => {
                     }
                 }
             
+            function pesanku() {
+				mymsg = await mek.getQuotedObj()
+				return mymsg.key.fromMe
+			}
+            
             // TAMBAHAN SAAT BOT OFF / ON
 			if (command.includes(`${prefix}self`) && isOwner) {
 				public = false
