@@ -1713,7 +1713,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					hapusmin = hapusspasi.replace('-', '')
 					hapustambah = hapusmin.replace('+', '')
 					hasiladd = hapustambah.replace('add', 'add ')
-					reply(hasiladd)
 					try {
 						num = `${hapustambah.split('add')[1]}@s.whatsapp.net`
 						client.groupAdd(from, [num])
