@@ -3754,17 +3754,15 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				case `${prefix}del`:
 				case `hapus`:
 				case `delete`:
-                       
-                   try {
+                    
+					try {
 					client.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
-					
 					} catch {
 						reply(`Geser / tag pesan ku untuk menghapus nya`)
 					}
 					break
 				case `${prefix}setreply`:
                     if (!isOwner) return reply(ind.ownerb())
-					
                     client.updatePresence(from, Presence.composing) 
 					if (args.length < 1) return
 					cr = body.slice(10)
