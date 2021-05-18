@@ -2300,6 +2300,7 @@ break
 					tipelist = ['console','block','simpleBlock','simple','3d','simple3d','chrome','huge','shade','slick','grid','pallet','tiny']
 					if (args.length < 1) return reply(`${tanda}\n*${prefix}banner ~font&teks~*`)
 					if (!tipelist.includes(args[0])) return reply(`${tanda}\nFont salah\n*Fontnya:*\nconsole, block, simpleBlock, simple, 3d, simple3d, chrome, huge, shade, slick, grid, pallet, tiny`)
+					cfonts = require('cfonts')
 					gh = body.slice(8)
 					gl1 = gh.split(" ")[1];
 					anu = cfonts.render((`${gl1}`), {
