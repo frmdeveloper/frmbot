@@ -3826,7 +3826,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				break
 				case prefix+'info':
                     personal = client.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net') && !v.read_only && v.message).map(v => v.jid)
-                    groups = caliph.chats.array.filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message).map(v => v.jid)
+                    groups = client.chats.array.filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message).map(v => v.jid)
          	       timestamp = speed()
                     latensi = speed() - timestamp
 					uptime = process.uptime()
