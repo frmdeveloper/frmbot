@@ -38,7 +38,6 @@ const {
    ChatModification,
    waChatKey,
    mentionedJid,
-   processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
 const simple = require('./lib/simple.js')
