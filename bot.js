@@ -3647,7 +3647,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				case prefix+'play':
                     if (args.length === 0) return reply('Masukkan Judulnya Kak')
 					try {
-                	results = await yts(query)
+                	results = await yts(q)
 					var vid = results.all.find(video => video.seconds < 3600)
 					//console.log(vid)
 					url5 = vid.url
