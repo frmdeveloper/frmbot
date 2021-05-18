@@ -2247,7 +2247,7 @@ break
 }
 break
 			case prefix+'tolink':
-				const encmediiia = isQuotedImage ? JSON.parse(JSON.stringify(qul).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : qul
+				const encmediiia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
 				const mediaq = await client.downloadAndSaveMediaMessage(encmediiia)
 				const upli = await uptotele(mediaq)
 				reply(`${upli}`)
