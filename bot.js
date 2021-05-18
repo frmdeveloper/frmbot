@@ -4009,7 +4009,6 @@ Speed: _${os.cpus()[0].speed}_`
 					client.updatePresence(from, Presence.recording)
 					client.sendMessage(from, suaraquran, audio, {mimetype: 'audio/mpeg', filename: `${acakqurane.result.asma}.mp3`, quoted: mek})
 					break
-				case prefix+'ytmp4':
                    case prefix+'ytv':
 			if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 ~linknya~*`)
 			let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
