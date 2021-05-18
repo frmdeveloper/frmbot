@@ -1598,6 +1598,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						fs.writeFileSync('./database/bot/welkom.json', JSON.stringify(welkom))
 						reply('BERHASIL MENYALAKAN')
 					} else if (args[0] === 'off') {
+						if (!isWelkom) return reply('*SUDAH MATI* !!!')
 						welkom.splice(from, 1)
 						fs.writeFileSync('./database/bot/welkom.json', JSON.stringify(welkom))
 						reply('BERHASIL MEMATIKAN')
@@ -1607,6 +1608,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						fs.writeFileSync('./database/bot/welkom.json', JSON.stringify(welkom))
 						reply('BERHASIL MENYALAKAN')
 					} else if (args[0] === 'disable') {
+						if (!isWelkom) return reply('*SUDAH MATI* !!!')
 						welkom.splice(from, 1)
 						fs.writeFileSync('./database/bot/welkom.json', JSON.stringify(welkom))
 						reply('BERHASIL MEMATIKAN')
