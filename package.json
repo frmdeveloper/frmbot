@@ -20,6 +20,7 @@
     "cors": "latest",
     "dropbox-v2-api": "latest",
     "emoji-api": "latest",
+    "emoji-regex": "latest",
     "express": "latest",
     "fluent-ffmpeg": "latest",
     "google-it": "latest",
