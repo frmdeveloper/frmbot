@@ -21,6 +21,7 @@
     "dropbox-v2-api": "latest",
     "emoji-api": "latest",
     "express": "latest",
+    "file-type": "latest",
     "fluent-ffmpeg": "latest",
     "google-it": "latest",
     "image-to-base64": "^2.1.1",
