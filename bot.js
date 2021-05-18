@@ -1231,9 +1231,14 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					if (args.length < 1) return reply(`Mohon berikan tautan undangan grup`)
 					let islink = q.match(/(chat.whatsapp.com)/gi)
 					if (!islink) return reply('Maaf itu bukan link')
+						try {
 						fak = await client.joinvialink(args[0])
 						reply(JSON.stringify(fak))
+						if (isOwner) return console.log(`owner memasukan bot ke grup`)
 						client.sendMessage(fak.gid, `Hai wa.me/${sender}\nkamu telah menambahkan bot ke grup ini lewat link. Jangan lupa izin dulu`, text, {quoted: mek})
+						} catch (e) {
+							reply(e)
+						}
 					break							
 /*
 ]=====> SIMPLE MENU <=====[
