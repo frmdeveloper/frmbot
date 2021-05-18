@@ -3077,11 +3077,15 @@ o==[]::::::>
 			break
 			case prefix+'attp':
                 if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
-				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`), sticker, {quoted: mek})	
+				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`), sticker, {quoted: mek})
            	 break
            case prefix+'ttp':
 				if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
+				try {
         		client.sendMessage(from, await getBuffer('https://recoders-area.caliph.repl.co/api/ttp?q='+args.join(' ')), sticker, { quoted: mek })
+        		} catch {
+        		stiker(`https://api.xteam.xyz/ttp?file&text=${q}`)
+        		}
 				break
            case prefix+'ninjalogo':
 				 var gh = body.slice(11)
