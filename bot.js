@@ -3075,11 +3075,14 @@ o==[]::::::>
 ☞ wa.me
 ☞ waifu.pics`)
 			break
-					case prefix+'attp':
-					case prefix+'ttp':
-                if (args.length < 1) return reply('${prefix}ttp orang itu aneh\n\ncontohnya itu')
+			case prefix+'attp':
+                if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
 				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`), sticker, {quoted: mek})	
            	 break
+           case 'ttp':
+				if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
+        		client.sendMessage(from, await getBuffer('https://recoders-area.caliph.repl.co/api/ttp?q='+args.join(' ')), sticker, { quoted: mek })
+				break
            case prefix+'ninjalogo':
 				 var gh = body.slice(11)
 				 var nin = gh.split("&")[0];
