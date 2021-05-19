@@ -3764,7 +3764,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				case `hapus`:
 				case `delete`:
 					try {
-					if (!pesanku) return reply(`Tidak dapat menghapus pesan orang lain`)
+					if (!pesanku()) return reply(`Tidak dapat menghapus pesan orang lain`)
 					client.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					} catch {
 						reply(`Geser / tag pesan ku untuk menghapus nya`)
