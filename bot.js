@@ -3803,7 +3803,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				try {
 				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				ttlhrf = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
-				reply(`${JSON.stringify(ttlhrf.length)} karakter`)
+				reply(`${JSON.stringify(ttlhrf.length)} karakter\n\n_info: untuk emoji bisa terbaca lebih dari 1_`)
 				} catch {
 					reply(`Tidak ada pesan yang di tag`)
 				}
