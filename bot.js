@@ -766,7 +766,7 @@ client.on('group-participants-update', async (anu) => {
 				client.sendMessage(from, teks, text, {quoted:mek})
 			}
 			const hapus = (dihapus) => {
-			client.deleteMessage(from, dihapus.key)
+			client.deleteMessage(dihapus.key)
 			}
 			const sendMess = (hehe, teks) => {
 				client.updatePresence(from, Presence.composing)
