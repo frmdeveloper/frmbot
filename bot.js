@@ -926,7 +926,6 @@ client.on('group-participants-update', async (anu) => {
   "key": {
     "remoteJid": "994402482908-1620811747@g.us",
     "fromMe": true,
-    "id": "3EB0AE0837E3"
   },
   "message": {
     "extendedTextMessage": {
@@ -936,10 +935,7 @@ client.on('group-participants-update', async (anu) => {
         "expiration": 604800
       }
     }
-  },
-  "messageTimestamp": "1621412206",
-  "status": "SERVER_ACK",
-  "participant": "994402482908@s.whatsapp.net"
+  }
 }
 
         	const statuswa = {
