@@ -756,7 +756,7 @@ client.on('group-participants-update', async (anu) => {
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
-			const cekwa = (nomor) => {
+			const cekwa = async(nomor) => {
 				ceknmr = await client.isOnWhatsApp (nomor)
 				if (ceknmr) return reply(`Nomor ${ceknmr.jid.split('@')[0]} terdaftar di WhatsApp`)
 				reply(`Nomor ${nomor} terdaftar di WhatsApp`)
