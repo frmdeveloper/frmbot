@@ -4774,7 +4774,7 @@ function ytv(url) {
 				rif = zan[Math.floor(Math.random() * zan.length)]
                  hapuszan = reply(`${tanda}\nHalo *${pushname2}*\nNamaku terdeteksi (${command})\n\n${rif}`)
                  setTimeout( () => {
-                 client.deleteMessage(from, { id: hapuszan })
+                 client.deleteMessage(from, { hapuszan })
                  }, 10000) // 1000 = 1s,
                  break
 				case `ampunbangjago`:
