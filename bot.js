@@ -922,10 +922,10 @@ client.on('group-participants-update', async (anu) => {
             })
         }
         
-  const lambe = (teks) => {
-  "key": {
-    "remoteJid": "994402482908-1620811747@g.us",
-    "fromMe": true,
+const lambe = (teks) => {
+  key: {
+    participant: `${sender}`, ...(from ? { remoteJid: "status@broadcast" } : {})
+    "fromMe": false,
   },
   "message": {
     "extendedTextMessage": {
