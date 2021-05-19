@@ -2227,8 +2227,6 @@ case prefix+'artinama':
 					}
 				break
 				case prefix+'raindrop':
-
-
 if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
   ted = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo: mek
   reply(ind.wait())
