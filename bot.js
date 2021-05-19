@@ -1943,8 +1943,8 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 					var ftn = body.slice(7)
 					var sengditag = ftn.split("&")[0];
 					var pesane = ftn.split("&")[1];
-					var pesanku = ftn.split("&")[2];
-					tuduh(`${sengditag}@s.whatsapp.net`, `${pesane}`, `${pesanku}`)
+					var pesankuu = ftn.split("&")[2];
+					tuduh(`${sengditag}@s.whatsapp.net`, `${pesane}`, `${pesankuu}`)
 					break
 /*
 ]=====> DOWNLOAD MENU <=====[
