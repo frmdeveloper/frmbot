@@ -4767,12 +4767,6 @@ function ytv(url) {
                 	client.sendMessage(from, tulisanbuku, image, { quoted: mek, caption: `Sukses. Ditulis oleh bot`})
                 })
             break // BY MFARELS
-            case `kamu`:
-            	if (args[0] === 'lumayan','ganteng','jelek','pinter','pintar','cantik','cowok','cewek') {
-            		dahtahu = fs.readFileSync(`./fauzan.rifki.m/dahtahu.webp`)
-            		client.sendMessage(from, dahtahu, sticker, {quoted: mek})
-            	}
-            	break
             case `zan`:
             case `rip`:
             case `rif`:
