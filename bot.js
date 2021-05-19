@@ -301,7 +301,6 @@ ${gaya2} ${prefix}jamindo
 ${gaya2} ${prefix}jadwalsholat ~kode daerah~
 ${gaya2} ${prefix}jadwaltv ~channel~
 ${gaya2} ${prefix}kapankah ~pertanyaan~
-${gaya2} ${prefix}katailham
 ${gaya2} ${prefix}lirik ~judul~
 ${gaya2} ${prefix}nulis ~teks~
 ${gaya2} ${prefix}nulis2 ~teks~
