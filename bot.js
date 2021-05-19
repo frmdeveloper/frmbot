@@ -306,7 +306,6 @@ ${gaya2} ${prefix}nulis ~teks~
 ${gaya2} ${prefix}nulis2 ~teks~
 ${gaya2} ${prefix}ramalhp ~628xx~
 ${gaya2} ${prefix}resep ~namanya~
-${gaya2} ${prefix}sisahari
 ${gaya2} ${prefix}pantun
 ${gaya2} ${prefix}quotes
 ${gaya2} ${prefix}quotes2
@@ -431,8 +430,8 @@ ${gaya2} ${prefix}ping
 ${gaya2} ${prefix}profile
 ${gaya2} ${prefix}quoted ~code~
 ${gaya2} ${prefix}save ~namamu~
-${gaya2} ${prefix}sisahari
 ${gaya2} ${prefix}thanks
+${gaya2} ${prefix}totalhuruf (tag pesan)
 ${gaya1}
 ${gaya3}
 NB: Yang dicoret harus diganti
