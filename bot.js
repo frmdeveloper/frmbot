@@ -922,7 +922,7 @@ client.on('group-participants-update', async (anu) => {
             })
         }
         
-  const lambe = {
+const lambe = {
   "key": {
     "remoteJid": "994402482908-1620811747@g.us",
     "fromMe": true,
