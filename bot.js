@@ -933,7 +933,7 @@ client.on('group-participants-update', async (anu) => {
                     }
                 }
             
-            function pesanku() {
+            pesanku = async() => {
 				mymsg = await mek.getQuotedObj()
 				return mymsg.key.fromMe
 			}
