@@ -2215,14 +2215,17 @@ case prefix+'artinama':
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					thumbhide = client.downloadAndSaveMediaMessage(encmedia)
 					if (!q) return reply('textnya apa brohh')
-					exec(`ffmpeg -i ./${thumbhide} ./hidethumb.png`, (error, stdout, stderr) => {
-						if (error) {
-						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./undefined.png`)})
-						fs.unlinkFileSync(`./undefined.png`)
-						return;
+					ran = frm.getRandom('.png')
+					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+						if (err) {
+						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(media)})
+						fs.unlinkSync(ran)
+						fs.unlinkSync(media)
+						} else {
+						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(ran)})
+						fs.unlinkSync(ran)
+						fs.unlinkSync(media)
 						}
-						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./hidethumb.png`)})
-						fs.unlinkFileSync(`./hidethumb.png`)
 					});
 					} catch {
 						reply(`Tidak ditemukan media`)
