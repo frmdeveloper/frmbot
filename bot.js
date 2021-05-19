@@ -2869,10 +2869,9 @@ break
 
 //dari saya sebelumnya
     			case prefix+'qrcode':
-                    const tex = encodeURIComponent(body.slice(8))
 					if (!tex) return reply(`${prefix}qrcode teksnya`)
-					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
-					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${body.slice(4)}`)
+					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
+					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					break
 				case prefix+'help':
