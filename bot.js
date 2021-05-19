@@ -2212,8 +2212,8 @@ case prefix+'artinama':
 				case prefix+'hidetumb':
 				case prefix+'hidetum':
 					try {
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					thumbhide = client.downloadAndSaveMediaMessage(encmedia)
+					const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					const media = await client.downloadAndSaveMediaMessage(encmedia)
 					if (!q) return reply('textnya apa brohh')
 					ran = frm.getRandom('.png')
 					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
