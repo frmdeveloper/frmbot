@@ -953,11 +953,11 @@ client.on('group-participants-update', async (anu) => {
             // TAMBAHAN SAAT BOT OFF / ON
 			if (command.includes(`${prefix}self`) && isOwner) {
 				public = false
-				frm.sendFakeStatus(from, `Sukses`, `Status: SELF`)
+				frm.sendFakeStatus(from, `Sekarang bot hanya bisa digunakan oleh wa.me/${nomowner} dan wa.me/${me.jid}`, `Status: SELF`)
 			}
 			if (command.includes(`${prefix}public`) && isOwner) {
 				public = true
-				frm.sendFakeStatus(from, `Sukses`, `Status: PUBLIC`)
+				frm.sendFakeStatus(from, `Sekarang bot bisa digunakan oleh semua orang`, `Status: PUBLIC`)
 			}
 			if (budy.includes(`🌿🌿🌿🌿🌿`) && budy.endsWith(`🍃🍃🍃🍃🍃`) && !isMe) {
 				intro0 = `${body.split(`🌿🌿🌿🌿🌿`)[1]}`
