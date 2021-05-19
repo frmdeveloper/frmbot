@@ -1270,7 +1270,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						break
 				case prefix+'stikerwm': 
 				case prefix+'stickerwm':
-				    
 				    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
