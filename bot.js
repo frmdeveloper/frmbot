@@ -3813,6 +3813,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
                     getstik1 = await fetchJson(`https://api.zeks.xyz/api/searchsticker?apikey=${ZeksKey}&q=${q}`, {method: 'get'})
                     for (let i = 0; i < getstik1.sticker.length; i++) {
                     stiker(getstik1.sticker[0])
+                    }
                     break
           case prefix+'spam':
           	    
