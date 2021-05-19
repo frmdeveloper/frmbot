@@ -3796,7 +3796,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				ter = command[2].toLowerCase()
 				reply(`${hlh.replace(/[aiueo]/g, ter).replace(/[AIUEO]/g, ter.toUpperCase())}`)
 				} catch {
-					reply(`Tidak ada pesan yang di tag`)
+					reply(`Tidak ada pesan yang di tag tidak mengandung teks`)
 				}
 				break
 			case prefix+'totalhuruf':
@@ -3805,7 +3805,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				ttlhrf = encmedia.message.conversation || encmedia.message.imageMessage.caption || encmedia.message.videoMessage.caption || encmedia.message.extendedTextMessage.text
 				reply(`${JSON.stringify(ttlhrf.length)} karakter\n\n_info: untuk emoji bisa terbaca lebih dari 1_`)
 				} catch {
-					reply(`Tidak ada pesan yang di tag`)
+					reply(`Tidak ada pesan yang di tag tidak mengandung teks`)
 				}
 				break
 			case prefix+'getstickererr':
