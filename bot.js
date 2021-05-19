@@ -3808,17 +3808,11 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					reply(`Tidak ada pesan yang di tag`)
 				}
 				break
-			case prefix+'getstickererr':
+			case prefix+'sti':
 			case prefix+'getstikererr':                
                     getstik1 = await fetchJson(`https://api.zeks.xyz/api/searchsticker?apikey=${ZeksKey}&q=${q}`, {method: 'get'})
                     for (let i = 0; i < getstik1.sticker.length; i++) {
-                    ambilstikere = await getBuffer(getstik1.sticker[i])
-                    exec(`cwebp -q 75 ambilstikere -o ./sampah/getstiker_${sender}.webp`)
-					.then(() => {ambilstiker = fs.readFileSync(`./sampah/getstiker_${sender}.webp`)
-                    client.sendMessage(from, ambilstiker, sticker, {quoted: mek})
-                    })
-                    }
-					
+                    stiker(getstik1.sticker[0])
                     break
           case prefix+'spam':
           	    
