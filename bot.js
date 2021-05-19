@@ -765,7 +765,7 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
 				client.sendMessage(from, teks, text, {quoted:mek})
 			}
-			const tempreply = (balasan, waktu) => {
+			const tempreply = async(balasan, waktu) => {
 				client.updatePresence(from, Presence.composing)
 				tempreplyy = await client.sendMessage(from, balasan, text, {quoted:mek})
 				setTimeout( () => {
