@@ -1252,7 +1252,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 ]=====> SIMPLE MENU <=====[
 */			  case prefix+'stiker': 
 				case prefix+'sticker':
-					if (!args.length < 1) {
+					if ((!isMedia && !mek.message.videoMessage || !isQuotedImage) && !args.length == 0) {
 						getstik1 = await fetchJson(`https://api.zeks.xyz/api/searchsticker?apikey=${ZeksKey}&q=${q}`, {method: 'get'})
                     	for (let i = 0; i < getstik1.sticker.length; i++) {
                     	await stiker(getstik1.sticker[i])
