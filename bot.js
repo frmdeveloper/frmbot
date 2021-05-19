@@ -767,7 +767,7 @@ client.on('group-participants-update', async (anu) => {
 			}
 			const tempreply = (balasan, waktu) => {
 				client.updatePresence(from, Presence.composing)
-				tempreplyy = client.sendMessage(from, balasan, text, {quoted:mek})
+				tempreplyy = await client.sendMessage(from, balasan, text, {quoted:mek})
 				setTimeout( () => {
 					client.deleteMessage(tempreplyy.key)
 				}, waktu) // 1000 = 1detik
