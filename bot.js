@@ -3259,8 +3259,8 @@ o==[]::::::>
 					    
                     	if (isBanned) return reply(ind.diban())
 					    	res = await fetchJson(`https://st4rz.herokuapp.com/api/1cak`, {method: 'get'})
-						buffer = await getBuffer(res.result)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'ni anjim'})
+						buffer = await getBuffer(res.data.image)
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: `${res.data.judul}`})
 					} catch (e) {
 						console.log(`Error :`, color(e,'red'))
 						reply(ind.wrongf())
