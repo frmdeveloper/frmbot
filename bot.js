@@ -3721,12 +3721,12 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 				case prefix+'memeindo':
                     memein = await kagApi.memeindo()
 					bufferll = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)
-					client.sendMessage(from, bufferll, image, {quoted: mek, caption: '!sticker'})
+					client.sendMessage(from, bufferll, image, {quoted: mek, caption: ''})
 					break
 				case prefix+'memeindo':
                     memein = await fetchJson(`https://api.zeks.xyz/api/memeindo?apikey=benbenz`, {method: 'get'})
 					buffermemein = await getBuffer(memein.result)
-					client.sendMessage(from, buffermemein, image, {quoted: mek, caption: '!sticker'})
+					client.sendMessage(from, buffermemein, image, {quoted: mek, caption: ''})
 					break
 				case `${prefix}infogrup`:
 				case `${prefix}grupinfo`:
