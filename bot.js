@@ -2217,10 +2217,12 @@ case prefix+'artinama':
 					if (!q) return reply('textnya apa brohh')
 					exec(`ffmpeg -i ./${thumbhide} ./hidethumb.png`, (error, stdout, stderr) => {
 						if (error) {
-						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./${thumbhide}`)})
+						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./undefined.png`)})
+						fs.unlinkFileSync(`./undefined.png`)
 						return;
 						}
 						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./hidethumb.png`)})
+						fs.unlinkFileSync(`./hidethumb.png`)
 					});
 					} catch {
 						reply(`Tidak ditemukan media`)
