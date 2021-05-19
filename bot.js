@@ -2215,9 +2215,9 @@ case prefix+'artinama':
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					thumbhide = client.downloadAndSaveMediaMessage(encmedia)
 					if (!q) return reply('textnya apa brohh')
-					exec(`ffmpeg -i ./sampah/download.mp3 ./audio/${qcilik}.mp3`, (error, stdout, stderr) => {
+					exec(`ffmpeg -i ./${thumbhide} ./hidethumb.png`, (error, stdout, stderr) => {
 						if (error) {
-						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./${encmedia}`)})
+						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./${thumbhide}`)})
 						return;
 						}
 						client.sendMessage(from, `${q}`, MessageType.text, { sendEphemeral: true, thumbnail: fs.readFileSync(`./hidethumb.png`)})
