@@ -1252,7 +1252,12 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 ]=====> SIMPLE MENU <=====[
 */			  case prefix+'stiker': 
 				case prefix+'sticker':
-				    
+					if (!args.length < 1) {
+						getstik1 = await fetchJson(`https://api.zeks.xyz/api/searchsticker?apikey=${ZeksKey}&q=${q}`, {method: 'get'})
+                    	for (let i = 0; i < getstik1.sticker.length; i++) {
+                    	await stiker(getstik1.sticker[i])
+                    	}
+                    	}
 				    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -1261,7 +1266,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
 						stikergif(`./${media}`)
-						}
+					}
 						break
 				case prefix+'stikerwm': 
 				case prefix+'stickerwm':
@@ -3808,13 +3813,6 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					reply(`Tidak ada pesan yang di tag`)
 				}
 				break
-			case prefix+'sti':
-			case prefix+'getstikererr':                
-                    getstik1 = await fetchJson(`https://api.zeks.xyz/api/searchsticker?apikey=${ZeksKey}&q=${q}`, {method: 'get'})
-                    for (let i = 0; i < getstik1.sticker.length; i++) {
-                    stiker(getstik1.sticker[0])
-                    }
-                    break
           case prefix+'spam':
           	    
                     for (let i = 0; i < body.slice(6); i++) {
