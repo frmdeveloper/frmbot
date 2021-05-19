@@ -1278,6 +1278,20 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						stikergif(`./${media}`)
 					}
 						break
+				case prefix+'snobg':
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						const media = await client.downloadAndSaveMediaMessage(encmedia)
+						ranw = getRandom('.webp')
+						ranp = getRandom('.png')
+						keyrmbg = 'Ggq1Rn9iDohBGBGkcv5EZMAf'
+						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp}).then(async res => {
+						console.log(res)
+							fs.unlinkSync(media)
+							stiker(res.base64img)
+})
+						}
+					break
 				case prefix+'stikerwm': 
 				case prefix+'stickerwm':
 				    if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
