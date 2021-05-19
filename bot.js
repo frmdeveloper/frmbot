@@ -949,7 +949,6 @@ client.on('group-participants-update', async (anu) => {
 				mymsg = await mek.getQuotedObj()
 				return mymsg.key.fromMe
 			}
-            const isPesanku = pesanku()
             
             // TAMBAHAN SAAT BOT OFF / ON
 			if (command.includes(`${prefix}self`) && isOwner) {
