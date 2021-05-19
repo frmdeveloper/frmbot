@@ -959,7 +959,7 @@ client.on('group-participants-update', async (anu) => {
 				introne = `*🤝 PERKENALAN DITERIMA 🤝*\n${intro1}\n*🤝 TERIMAKASIH ??*\n\n_🌱 bot ini ramah lingkungan 🌱_\n_🌱 tidak mengandung zat nuklir 🌱_`
 				reply(`${introne}`)
 			}
-			if (budy.includes(`🌿🌿🌿🌿🌿`) && !isMe) {
+			if (budy.includes(`🌿🌿🌿🌿🌿`) && !budy.endsWith(`🍃🍃🍃🍃🍃`) && !isMe) {
 				reply(`WIDIH`)
 			}
 if (!public && !isOwner) return
