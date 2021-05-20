@@ -969,7 +969,7 @@ const lambe = {
             // TAMBAHAN SAAT BOT OFF / ON
 			if (command.includes(`${prefix}self`) && isOwner) {
 				public = false
-				frm.sendFakeStatus(from, `Sekarang bot hanya bisa digunakan oleh wa.me/${nomowner} dan wa.me/${me.jid}`, `Status: SELF`)
+				frm.sendFakeStatus(from, `Sekarang bot hanya bisa digunakan oleh wa.me/${nomowner} dan wa.me/${me.jid.split('@')[0]}`, `Status: SELF`)
 			}
 			if (command.includes(`${prefix}public`) && isOwner) {
 				public = true
@@ -4933,7 +4933,7 @@ tesseract.recognize(media, config)
             	
                     
             	tagme = {
-					text: `Halo @${sender.split("@")[0]}\n\nItu kamu sudah di tag`,
+					text: `Minta di TAG ?\n@${sender.split("@")[0]}`,
 					contextInfo: { mentionedJid: [sender] }
 					}
 					reply(tagme)
