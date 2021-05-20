@@ -115,7 +115,8 @@ sisabaterai = `belum diketahui`
 hematdaya = `belum diketahui`
 dicas = `belum diketahui`
 sampah = ''
-blocked = []  
+blocked = [] 
+antilink = [] 
 /*
 ]=====> INFO-INFO <=====[
 */
@@ -733,6 +734,7 @@ client.on('group-participants-update', async (anu) => {
 /*
 ]=====> Rifki ID <=====[
 */
+			const isAntilink = isGroup ? antilink.includes(from) : false
 			const isMe = sender === client.user.jid ? true : false
             const isEventon = isGroup ? event.includes(from) : false
             const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
@@ -1166,7 +1168,7 @@ ${monosp} sq        Albanian
 			//group message
 			if (isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
 			if (!isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
-if (antilink && isGroup) {
+if (isAntilink && isGroup) {
 	ceklinkgrup = body.split('chat.whatsapp.com/')[1].split(' ')[0]
     hasillinkgc = await this.query({ json: ['query', 'invite', ceklinkgrup] })
     if (hasillinkgc.status === 200 && isBotGroupAdmins && !isGroupAdmins && !body.includes('izin') || !body.includes('ijin')) {
