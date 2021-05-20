@@ -1170,7 +1170,7 @@ if (antilink && isGroup) {
 	ceklinkgrup = body.split('chat.whatsapp.com/')[1].split(' ')[0]
     hasillinkgc = await this.query({ json: ['query', 'invite', ceklinkgrup] })
     if (hasillinkgc.status === 200 && isBotGroupAdmins && !isGroupAdmins) {
-    	await reply('anda akan di kick')
+    	await reply('Link grup masih hidup.\nAnda akan di kick')
 		client.groupRemove(from, [sender])
     } else {
 		reply(`anda tidak saya kick`)
