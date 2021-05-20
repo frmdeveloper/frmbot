@@ -279,7 +279,6 @@ ${gaya2} ${prefix}acakquran
 ${gaya2} ${prefix}apakah ~pertanyaan~
 ${gaya2} ${prefix}asupan
 ${gaya2} ${prefix}berita
-${gaya2} ${prefix}bikinquote ~teks~ & ~namamu~
 ${gaya2} ${prefix}bisakah ~pertanyaan~
 ${gaya2} ${prefix}brainly ~soal~
 ${gaya2} ${prefix}bucin
