@@ -1655,7 +1655,7 @@ client.sendMessage(nomor, `
     itemCount: -969769349,
     status: 1,
     surface: 1,
-    message: 'HWAHWAHWA️',
+    message: 'HWAHWAHWAA️',
     orderTitle: 'FRM',
     sellerJid: '0@s.whatsapp.net'
    }
