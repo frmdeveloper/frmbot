@@ -1624,7 +1624,7 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 /*
 ]=====> MENU GRUP <=====[
 */
-		case prefix'ngentod':
+		case prefix+'ngentod':
 function troli(nomor){
 client.sendMessage(nomor, `
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
