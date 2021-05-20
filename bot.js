@@ -1169,7 +1169,7 @@ ${monosp} sq        Albanian
 if (antilink && isGroup) {
 	ceklinkgrup = body.split('chat.whatsapp.com/')[1].split(' ')[0]
     hasillinkgc = await this.query({ json: ['query', 'invite', ceklinkgrup] })
-    if (hasillinkgc.status === 200 && isBotGroupAdmins && !isGroupAdmins) {
+    if (hasillinkgc.status === 200 && isBotGroupAdmins && !isGroupAdmins && !body.includes('izin') || !body.includes('ijin')) {
     	await reply('Link grup masih hidup.\nAnda akan di kick')
 		client.groupRemove(from, [sender])
     } else {
