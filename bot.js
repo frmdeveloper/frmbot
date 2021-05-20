@@ -3340,23 +3340,20 @@ o==[]::::::>
 					}
 					reply(teks.trim())
 					break
-				case prefix+'spam':
-					reply(`*SILAHKAN PILIH SPAM NYA*\n\n${prefix}spamcall\n${prefix}spamemail\n${prefix}spamsms`)
-					break
-				case prefix+'spamcall':
-				case prefix+'callspam':
+				case prefix+'spamcalle':
+				case prefix+'callspame':
 					if (args.length < 1) return reply(`Format salah, silahkan ketik \n${prefix}spamcall ~nomornya~\n*CONTOH*\n${prefix}spamcall ${me.jid.split("@")[0]}`)
 						spamcall = await fetchJson(`https://videfikri.com/api/call/?nohp=${args[1]}`, {method: 'get'})
 						reply(`${spamcall.result.nohp}\n${spamcall.result.logs}`)
 						
-				case prefix+'spamemail':
-				case prefix+'emailspam':
+				case prefix+'spamemaile':
+				case prefix+'emailspame':
 					if (args.length < 1) return reply(`Format salah, silahkan ketik \n${prefix}spamcall ~nomornya~\n*CONTOH*\n${prefix}spamcall ${me.jid.split("@")[0]}`)
 						spamemail = await fetchJson(`https://videfikri.com/api/spamemail/?email=${args[1]}&subjek=Hallo&pesan=Silahkan bayar tagihan listrik Anda`, {method: 'get'})
 						reply(spamemail.result.log_lengkap)
 						
-				case prefix+'spamsms':
-				case prefix+'smsspam':
+				case prefix+'spamsmse':
+				case prefix+'smsspame':
 					if (args.length < 1) return reply(`Format salah, silahkan ketik \n${prefix}spamsms ~nomornya~\n*CONTOH*\n${prefix}spamsms ${me.jid.split("@")[0]}`)
 						spamsms = await fetchJson(`https://core.ktbs.io/v2/user/registration/otp/${args[1]}`, {method: 'get'})
                         spamsms1 = await fetchJson(`https://api.danacita.co.id/users/send_otp/?mobile_phone=${args[1]}`, {method: 'get'})
