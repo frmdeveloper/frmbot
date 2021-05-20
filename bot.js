@@ -1720,10 +1720,8 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 				case prefix+'admin':  
 					if (!isGroup) return reply(ind.groupo())
 					teks = `*DAFTAR ATASAN GROUP* _${groupMetadata.subject}_\n*TOTAL* : ${groupAdmins.length}\n\n`
-					no = 0
 					for (let admon of groupAdmins) {
-						no += 1
-						teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
+						teks += `@${admon.split('@')[0]}\n`
 					}
 					mentions(teks, groupAdmins, true)
 					break
