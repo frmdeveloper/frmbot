@@ -5640,7 +5640,9 @@ vcard = 'BEGIN:VCARD\n'
 					}, 0) // 1000 = 1s,
 					break
 				case 'save':
+				case 'sv':
 				case prefix+'save':
+				case prefix+'sv':
                     if (args.length < 1) return reply(`Maaf, anda belum memasukan nama, silahkan ketik ${prefix}save namamu\n*CONTOH* ${prefix}save Rifki`)
 njokdisave = 'BEGIN:VCARD\n' 
             + `VERSION:3.0\n` 
