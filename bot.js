@@ -5243,7 +5243,7 @@ tesseract.recognize(media, config)
         		if (!isGroup) return reply(ind.groupo())
         		let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
 			    let online = [...Object.keys(client.chats.get(ido).presences), client.user.jid]
-			    client.sendMessage(from, 'Yang online & centang biru:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, text, { quoted: mek,
+			    client.sendMessage(from, 'Yang online & centang biru:\n' + online.map(v => '@' + v.replace(/@.+/, '')).join`\n`, text, { quoted: mek,
   			  contextInfo: { mentionedJid: online }
 			    })
 				break
