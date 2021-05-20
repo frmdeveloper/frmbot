@@ -1166,7 +1166,16 @@ ${monosp} sq        Albanian
 			//group message
 			if (isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
 			if (!isCmd && isGroup) console.log(color(`\n━━━━━━━━━━━━━━━━━━━━━━━━\n${sender.split('@')[0]} (${pushname})`), color(`•> ${groupName}`), (`\n${body}\n               ${jammenit}\n`))
-
+if (antilink && isGroup) {
+	ceklinkgrup = body.split('chat.whatsapp.com/')[1].split(' ')[0]
+    hasillinkgc = await this.query({ json: ['query', 'invite', ceklinkgrup] })
+    if (hasillinkgc.status === 200 && isBotGroupAdmins && !isGroupAdmins) {
+    	await reply('anda akan di kick')
+		client.groupRemove(from, [sender])
+    } else {
+		reply(`anda tidak saya kick`)
+	}
+}
 if (isBanned) return
 switch(command) {
 				case prefix+'shadow':
