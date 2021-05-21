@@ -75,7 +75,6 @@ const kagApi = require('@kagchi/kag-api')
 const lolis = require('lolis.life')
 const loli = new lolis()
 const google = require('google-it')
-const canvas = require('canvacord')
 const fetch = require('node-fetch')
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
