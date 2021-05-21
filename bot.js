@@ -2967,9 +2967,10 @@ break
 
 
 
-//dari saya sebelumnya
+				case prefix+'qrlogo':
+					await qrlogo.generate({text: q, path: './Logo_FRM-picsay.png'})
     			case prefix+'qrcode':
-					if (!tex) return reply(`${prefix}qrcode teksnya`)
+					if (!q) return reply(`${prefix}qrcode teksnya`)
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
 					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
