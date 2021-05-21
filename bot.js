@@ -79,6 +79,7 @@ const fetch = require('node-fetch')
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI()
 const imgbb = require('imgbb-uploader')
+const qrlogo = require('branded-qr-code')
 penting = JSON.parse(fs.readFileSync('./assets/penting.json'))
 const frm = require('./whatsapp/message.js')
 const conn = require('./whatsapp/connect')
