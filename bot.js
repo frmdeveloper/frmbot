@@ -4429,7 +4429,7 @@ function ytv(url) {
 			reply(`Waktu Indonesia Barat: *${moment().utcOffset('+0700').format('HH:mm')}* WIB \nWaktu Indonesia Tengah: *${moment().utcOffset('+0800').format('HH:mm')}* WITA \nWaktu Indonesia Timur: *${moment().utcOffset('+0900').format('HH:mm')}* WIT`)
 			break
 	case prefix+'tinyurl':
-		axios.get(`https://tinyurl.com/api-create.php?url=http://google.com`)
+		axios.get(`https://tinyurl.com/api-create.php?url=${q}`)
 		.then((a) => {
 		reply(a.data)
 		})
