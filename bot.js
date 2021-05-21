@@ -922,7 +922,7 @@ client.on('group-participants-update', async (anu) => {
 const fakelambe = (teks) => {    
 fakelambee = {
     "key": {
-    "remoteJid": "994402482908-1620811747@g.us",
+    "remoteJid": from,
     "fromMe": true,
     "id": "3EB0AE0837E3"
   },
@@ -930,6 +930,7 @@ fakelambee = {
                         "imageMessage": {
                             "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
                             "mimetype": "image/jpeg",
+                            "caption": "ingat penyimpanan internal!",
                             "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
                             "fileLength": "687770000",
                             "height": 1080,
@@ -951,7 +952,7 @@ client.copyNForward(from, statuswa)
 const hidelambe = (teks) => {    
 lambee = {
   "key": {
-    "remoteJid": "994402482908-1620811747@g.us",
+    "remoteJid": from,
     "fromMe": true,
     "id": "3EB0AE0837E3"
   },
@@ -977,7 +978,7 @@ return lambee
                         "imageMessage": {
                             "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
                             "mimetype": "image/jpeg",
-                            "caption": `${body}`,
+                            "caption": q,
                             "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
                             "fileLength": "28777",
                             "height": 1080,
