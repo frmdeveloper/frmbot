@@ -5596,6 +5596,10 @@ vcard = 'BEGIN:VCARD\n'
 					console.log(encmedia)
 					reply(JSON.stringify(encmedia, null, 2))
 					break
+				case prefix+'infopesan2':
+				case prefix+'infomessage2':
+					reply(JSON.stringify(await mek.getQuotedObj(), null, 2))
+					break
 				case prefix+'afk':
 					if (!isGroup) return reply(ind.groupo())
 					if (isAfkOn) return reply(`Anda sudah afk sejak ${getAfkTime(sender, _afk)} WIB\n*Alasan:* ${getAfkReason(sender, _afk)}`)
