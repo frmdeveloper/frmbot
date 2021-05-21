@@ -919,7 +919,7 @@ client.on('group-participants-update', async (anu) => {
             })
         }
 
-const lambe = (teks) => {    
+const hidelambe = (teks) => {    
 lambee = {
   "key": {
     "remoteJid": "994402482908-1620811747@g.us",
