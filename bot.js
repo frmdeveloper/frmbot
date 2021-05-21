@@ -2969,6 +2969,7 @@ break
 
 				case prefix+'qrlogo':
 					await qrlogo.generate({text: q, path: './Logo_FRM-picsay.png'})
+					break
     			case prefix+'qrcode':
 					if (!q) return reply(`${prefix}qrcode teksnya`)
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
