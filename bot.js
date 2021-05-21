@@ -2996,8 +2996,8 @@ break
 					break
     			case prefix+'qrcode':
 					if (!q) return reply(`${prefix}qrcode teksnya`)
-					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
-					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(q)}`)
+					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${q}`)
+					stiker(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${q}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					break
 				case prefix+'help':
@@ -3218,7 +3218,7 @@ o==[]::::::>
 			break
 			case prefix+'attp':
                 if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
-				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`), sticker, {quoted: mek})
+				client.sendMessage(from, await getBuffer(`https://api.xteam.xyz/attp?file&text=${q}`), sticker, {quoted: mek})
            	 break
            case prefix+'ttp':
 				if (args.length < 1) return reply('tidak ada teks yang dijadikan ttp')
@@ -3834,7 +3834,7 @@ rifkiberkata = ["Takdir mati bisa di ubah dengan cara bunuh diri",
 					}
 					break
 				case prefix+'emoji2':
-                    stiker(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${encodeURIComponent(args[0])}`)
+                    stiker(`https://api.zeks.xyz/api/emoji-image?apikey=${ZeksKey}&emoji=${args[0]}`)
 					break
 				case prefix+'memeindo':
                     memein = await kagApi.memeindo()
