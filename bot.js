@@ -4429,11 +4429,10 @@ function ytv(url) {
 			reply(`Waktu Indonesia Barat: *${moment().utcOffset('+0700').format('HH:mm')}* WIB \nWaktu Indonesia Tengah: *${moment().utcOffset('+0800').format('HH:mm')}* WITA \nWaktu Indonesia Timur: *${moment().utcOffset('+0900').format('HH:mm')}* WIT`)
 			break
 	case prefix+'tinyurl':
-			
-			if (isBanned) return reply(ind.diban())
-            
-            tinyurl = await fetchJson(`https://tinyurl.com/api-create.php?url=${q}`, {method: 'get'})
-            reply(JSON.stringify(tinyurl))
+		axios.get(`https://tinyurl.com/api-create.php?url=http://google.com`)
+		.then((a) => {
+		reply(a.data)
+		})
             break
 	case prefix+'jadwalsholat':
 			
