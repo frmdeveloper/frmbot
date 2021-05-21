@@ -2270,13 +2270,13 @@ case prefix+'artinama':
                 break
 					case prefix+'pinterest':  
 				
-				client.updatePresence(from, Presence.composing) 
+					client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://fdciabdul.tech/api/pinterest?keyword=${q}`, {method: 'get'})
-					var pinterest = JSON.parse(JSON.stringify(data.result));
+					var pinterest = JSON.parse(JSON.stringify(data));
 					var hasilpinterest =  pinterest[Math.floor(Math.random() * pinterest.length)];
 					gmbrhasilpinterest = await getBuffer(hasilpinterest)
 					client.sendMessage(from, gmbrhasilpinterest, image, { quoted: mek, caption: `*⟪ PINTEREST ⟫*`})
-					var pinterest2 = JSON.parse(JSON.stringify(data.result));
+					var pinterest2 = JSON.parse(JSON.stringify(data));
 					var hasilpinterest2 =  pinterest2[Math.floor(Math.random() * pinterest2.length)];
 					gmbrhasilpinterest2 = await getBuffer(hasilpinterest2)
 					client.sendMessage(from, gmbrhasilpinterest2, image, { quoted: mek, caption: `*⟪ PINTEREST ⟫*`})
