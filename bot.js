@@ -2271,8 +2271,7 @@ case prefix+'artinama':
 					case prefix+'pinterest':  
 				
 				client.updatePresence(from, Presence.composing) 
-					data = await fetchJson(`https://api.vhtear.com/pinterest?query=${q}&apikey=${VhtearKey}`, {method: 'get'})
-					reply(ind.wait())
+					data = await fetchJson(`https://fdciabdul.tech/api/pinterest?keyword=${q}`, {method: 'get'})
 					var pinterest = JSON.parse(JSON.stringify(data.result));
 					var hasilpinterest =  pinterest[Math.floor(Math.random() * pinterest.length)];
 					gmbrhasilpinterest = await getBuffer(hasilpinterest)
