@@ -946,8 +946,6 @@ fakelambee = {
                 }
                 return fakelambee
                 }
-                
-client.copyNForward(from, statuswa)
 
 const hidelambe = (teks) => {    
 lambee = {
