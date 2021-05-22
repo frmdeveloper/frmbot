@@ -133,6 +133,7 @@ TobzKey = 'Z4sxB1r91MFrgnK3sObn' //tobz.herokuapp.com
 XteamKey = '9ccd5c3c92359b79' //api.xteam.xyz
 shizukakey = 'istmeiky633' 
 imgbbkey = "f4fde56c72298d6d92ce5133024cbba8"
+keyrmbg = '6yWvBTgxbkW7LL8fA8ahiQXE'
 /*
 ]=====> Hmmm <=====[
 */
@@ -1339,7 +1340,6 @@ client.sendMessage(grouup.gid, "halo", text) // say hello to everyone on the gro
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						keyrmbg = 'Ggq1Rn9iDohBGBGkcv5EZMAf'
 						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp}).then(async res => {
 						console.log(res)
 							fs.unlinkSync(media)
