@@ -154,6 +154,7 @@ switch(command) {
     		redirect('http://wa.me/62895803265350')
     		break
     	case 'eval':
+    		if (!q) return res.send(`parameter q kosong`)
     		try {
     		res.send(require('util').format(await eval(`;(async () => { ${q} })()`)))
     		} catch (e) {
