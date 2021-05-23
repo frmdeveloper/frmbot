@@ -62,6 +62,21 @@ penting = JSON.parse(fs.readFileSync('./assets/penting.json'))
 const frm = require('./whatsapp/message.js')
 const conn = require('./whatsapp/connect')
 
+nomowner = '62895803265350' //pakai kode negara, contoh: 62895803265350
+ownerNumber = [`${nomowner}@s.whatsapp.net`]
+botName = 'FRM BOT'
+devName = 'FRM Developer'
+ownerName = 'Fauzan Rifki Maulana'
+LolKey = 'juanlol291002' //lolhuman.herokuapp.com atau juanlol291002 atau erdwpehub28
+ZeksKey = 'caliph_71' //zeks.xyz
+BarBarKey = 'IDxO1TFYnKADlX4pxcHa' //mhankbarbars.tech
+VhtearKey = 'ZidanGanzz' //api.vhtear.com
+TobzKey = 'Z4sxB1r91MFrgnK3sObn' //tobz.herokuapp.com
+XteamKey = '9ccd5c3c92359b79' //api.xteam.xyz
+shizukakey = 'istmeiky633' 
+imgbbkey = "f4fde56c72298d6d92ce5133024cbba8"
+keyrmbg = '6yWvBTgxbkW7LL8fA8ahiQXE'
+
 linkapp = '/refresh'
 axios.get(linkapp)
 
