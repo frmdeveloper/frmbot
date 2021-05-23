@@ -22,7 +22,18 @@ const dropboxV2Api = require('dropbox-v2-api')
 const dropbox = dropboxV2Api.authenticate({
     token: '9ewnN6HaE5EAAAAAAAAAARRF-AjmOCUg7bC10gxrFJDoGlgTz1R8zspH0-yOoh73'
 });
-
+CFonts.say('FRM BOT|by|RIFKI'), {
+    font: 'simple',
+    color: 'candy',
+    align: 'center',
+    gradient: ["red","blue"],
+    lineHeight: 1
+  })
+CFonts.say('Fauzan Rifki Maulana', {
+  font: 'console',
+  align: 'center',
+  gradient: ['red', 'magenta']
+})
 const {
    WAConnection: _WAConnection,
    MessageType,
