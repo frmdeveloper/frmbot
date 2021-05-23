@@ -126,7 +126,7 @@ router.get('/', (req, res) => {
 router.get('/eval', (req, res) => {
 	q = req.query.q
 	try {
-    res.send(require('util').format(await eval(`;(async () => { `${q}` })()`)))
+    res.send(require('util').format(await eval(`;(async () => { ${q} })()`)))
     } catch (e) {
     res.send(e)
     }
