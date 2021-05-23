@@ -17,8 +17,6 @@ exports.client = client
 exports.connect = async() => {
     let authofile = './FRMbotLOGIN.json'
 	client.logger.level = 'warn'
-	console.log(banner.string)
-	console.log(banner2.string)
 	client.on('qr', () => {
 	console.log(color('[','white'), color('!','red'), color(']','white'), color(' SCAN KODE QR DIATAS, PAKAI WHATSAPP'))
 	})
