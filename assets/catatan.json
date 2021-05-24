@@ -2,3 +2,14 @@ lolhuman = oniichan
 xteam = ameysbot
 
 https://api.lolhuman.xyz/api/checkapikey?apikey=BeliNgentod
+
+x let m = hexa.chats.all()
+jid = []
+pr = '[   ```LIST GC```  ]\n\n'
+for ( var i of m) {
+if (i.jid.includes('g.us')){
+pr += `*ID* : ${i.jid}\n*Nama Gc* : ${i.name}\n*Owner Gc* : @${i.jid.split('-')[0]}\n\n`
+}
+jid.push(`${i.jid.split('-')[0]+ '@s.whatsapp.net'}`)
+}
+mentions(pr,jid,true)
