@@ -15,6 +15,7 @@ jid.push(`${i.jid.split('-')[0]+ '@s.whatsapp.net'}`)
 mentions(pr,jid,true)
 
 			var value = body.slice(9)
+			teksnya = value.split("|")[0]
 			if (!value.includes("|") return reply(`maaf salah\nCONTOH: ${prefix}hidetag halo|20`)
                 var group = await mans.groupMetadata(from)
                 var member = group['participants']
