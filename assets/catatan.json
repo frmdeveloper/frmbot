@@ -16,6 +16,7 @@ mentions(pr,jid,true)
 			
 			case 'spamtag':
 			var value = body.slice(9)
+			if (!value) return reply(`Format salah\n${prefix}spamtag halo|200`)
 			teksnya = value.split("|")[0]
 			if (!value.includes("|") return reply(`maaf salah\nCONTOH: ${prefix}hidetag halo|20`)
                 var group = await mans.groupMetadata(from)
