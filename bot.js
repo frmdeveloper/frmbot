@@ -864,6 +864,10 @@ client.on('group-participants-update', async (anu) => {
 				client.updatePresence(from, Presence.composing)
             	client.sendMessage(from, teksnya, image, {thumbnail:gmbrnya,quoted:mek,caption:captionnya})
         	}
+        	const getname = (idnya) => {
+				getnamee = mek.key.fromMe ? me.name : client.contacts[idnya] != undefined ? client.contacts[idnya].vname || client.contacts[idnya].notify : undefined
+				return getnamee
+			}
         	const sendImgFromUrl = (teks, teks2) => {
 				imageToBase64(teks)
 					.then(
