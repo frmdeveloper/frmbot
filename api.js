@@ -153,6 +153,9 @@ switch(command) {
 		case 'wa':
     		redirect('http://wa.me/62895803265350')
     		break
+    	case 'getip':
+    		reply(req.ip)
+    		break
     	case 'eval':
     		if (!q) return res.send(`parameter q kosong`)
     		try {
