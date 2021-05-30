@@ -92,10 +92,6 @@ function kyun(seconds){
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
 
-router.get('/:encoded_id', function(req, res){
-	shortnya = req.params.encoded_id
-	res.send(`Param ${shortnya} tidak ditemukan`)
-	})
 router.get('/heleh', (req, res) => {
 	res.json({result:'heleh terdeteksi'})
 	})
@@ -211,5 +207,10 @@ switch(command) {
 		res.json({result:`terjadi kesalahan \n${e}`})
 	}
 })
+
+router.get('/:encoded_id', function(req, res){
+	shortnya = req.params.encoded_id
+	res.send(`Param ${shortnya} tidak ditemukan`)
+	})
 
 module.exports = router
