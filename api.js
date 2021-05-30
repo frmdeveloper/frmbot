@@ -148,6 +148,21 @@ res.json({result:'ERROR'})
 				res.type(formatnya)
 				res.sendFile(filenya)
 			}
+			
+			const shortlink = (idnya, linknya) => {
+				const obj = { id: idnya, url: linknya }
+					_urlshort.push(obj)
+					fs.writeFileSync('./database/user/urlshort.json', JSON.stringify(_urlshort))
+				}
+			const ceklink = (idnya, linknya) => {
+				let status = false
+					Object.keys(linknya).forEach((i) => {
+					if (linknya[i].id === idnya) {
+					status = true
+					}
+				})
+				return status
+			}
 	
 switch(command) {
 		case 'wa':
@@ -155,6 +170,10 @@ switch(command) {
     		break
     	case 'getip':
     		reply(req.ip)
+    		break
+    	case 'short':
+    		pendek = await shortlink(await getRandomString(7), q)
+    		reply(pendek)
     		break
     	case 'eval':
     		if (!q) return res.send(`parameter q kosong`)
