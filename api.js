@@ -34,7 +34,7 @@ const { virtex } = require('./src/virtex')
 const { virtex2 } = require('./src/virtex2')
 const { cara } = require('./src/cara')
 const { spawn, exec } = require("child_process")
-const { uploadimg, wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close, emojiStrip, banner2, processTime, bitly, shortlink } = require('./lib/functions')
+const { cdpt, urlpendek, shortlink, bitly, uploadimg, wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, getRandomString, start, info, success, banner, close, emojiStrip, banner2, processTime } = require('./lib/functions')
 const { uptotele, uptonaufal } = require('./lib/uploadimage')
 const { servers, yta, ytv } = require('./lib/y2mate')
 const tiktod = require('tiktok-scraper')
@@ -154,15 +154,6 @@ res.json({result:'ERROR'})
 					_urlshort.push(obj)
 					fs.writeFileSync('./database/user/urlshort.json', JSON.stringify(_urlshort))
 				}
-			const ceklink = (idnya, linknya) => {
-				let status = false
-					Object.keys(linknya).forEach((i) => {
-					if (linknya[i].id === idnya) {
-					status = true
-					}
-				})
-				return status
-			}
 	
 switch(command) {
 		case 'wa':
@@ -229,7 +220,21 @@ switch(command) {
 
 router.get('/:encoded_id', function(req, res){
 	shortnya = req.params.encoded_id
-	res.send(`Param ${shortnya} tidak ditemukan`)
+	linklong = JSON.parse(fs.readFileSync('./database/user/urlshort.json'))
+	const getlong = (pendek, _dir) => {
+				let position = null
+					Object.keys(_dir).forEach((i) => {
+					if (_dir[i].id === shortnya) {
+					position = i
+						}
+					})
+					if (position !== null) {
+				return _dir[position].url
+				}
+			}
+	shortlink = await getlong(shortnya, linklong)
+	if (!shortlink) return res.json({result:`tidak ditemukan`})
+	res.redirect(shortlink)
 	})
 
 module.exports = router
