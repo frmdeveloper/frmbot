@@ -73,7 +73,6 @@ const { servers, yta, ytv } = require('./lib/y2mate')
 const tiktod = require('tiktok-scraper')
 const brainly = require('brainly-scraper')
 const translate = require('translation-google')
-const ffmpeg = require('fluent-ffmpeg')
 const cd = 4.32e+7
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const { ind } = require('./language')
