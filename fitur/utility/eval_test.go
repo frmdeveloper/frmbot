@@ -33,7 +33,7 @@ func (c *connPalsu) GetGroupInviteInfo(link string) (*lib.GrupInfo, error) { ret
 func (c *connPalsu) SetGroupName(jid string, nama string) error            { return nil }
 func (c *connPalsu) SetGroupAnnounce(jid string, a bool) error             { return nil }
 func (c *connPalsu) IsOnWhatsApp(nomor string) (bool, string, error)       { return false, "", nil }
-func (c *connPalsu) KirimStikerBersuara(jid string, s, a []byte, d int, q *lib.Pesan) error {
+func (c *connPalsu) KirimStikerBersuara(jid string, s, a []byte, d int, q *lib.Pesan, mention string) error {
 	return nil
 }
 func (c *connPalsu) SendPresence(state string) error { return nil }

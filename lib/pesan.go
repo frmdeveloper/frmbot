@@ -69,7 +69,7 @@ type Conn interface {
 	SetGroupName(jid string, nama string) error
 	SetGroupAnnounce(jid string, announce bool) error
 	IsOnWhatsApp(nomor string) (bool, string, error)
-	KirimStikerBersuara(jid string, stiker, audio []byte, detik int, quoted *Pesan) error
+	KirimStikerBersuara(jid string, stiker, audio []byte, detik int, quoted *Pesan, mention string) error
 	SendPresence(state string) error
 	SendChatPresence(jid string, state string) error
 	RevokeMessage(jid string, m *Pesan) error

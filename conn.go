@@ -24,6 +24,7 @@ import (
 
 	fitchat "gow1/fitur/chat"
 	fiturgrup "gow1/fitur/group"
+	fiturmaker "gow1/fitur/maker"
 	fitursystem "gow1/fitur/system"
 	"gow1/lib"
 )
@@ -228,6 +229,12 @@ func konversiPesan(e *events.Message) *lib.Pesan {
 	case msg.StickerMessage != nil:
 		tipe, media, mime = "stickerMessage", "sticker", msg.StickerMessage.GetMimetype()
 		ctxInfo = msg.StickerMessage.GetContextInfo()
+	case msg.AudioStickerMessage != nil:
+		tipe, media = "audioStickerMessage", "sticker"
+		if dalam := msg.AudioStickerMessage.GetMessage().GetStickerMessage(); dalam != nil {
+			mime = dalam.GetMimetype()
+			ctxInfo = dalam.GetContextInfo()
+		}
 	default:
 		tipe = "other"
 	}
@@ -270,6 +277,11 @@ func konversiPesan(e *events.Message) *lib.Pesan {
 					q.Type, q.Media, q.Mime = "audioMessage", "audio", qm.AudioMessage.GetMimetype()
 				case qm.StickerMessage != nil:
 					q.Type, q.Media, q.Mime = "stickerMessage", "sticker", qm.StickerMessage.GetMimetype()
+				case qm.AudioStickerMessage != nil:
+					q.Type, q.Media = "audioStickerMessage", "sticker"
+					if dalam := qm.AudioStickerMessage.GetMessage().GetStickerMessage(); dalam != nil {
+						q.Mime = dalam.GetMimetype()
+					}
 				case qm.DocumentMessage != nil:
 					q.Text, q.Type, q.Media, q.Mime = qm.DocumentMessage.GetCaption(), "documentMessage", "document", qm.DocumentMessage.GetMimetype()
 				}
@@ -348,6 +360,10 @@ func grupMentionsDariPesan(qm *waE2E.Message) []lib.GrupMention {
 		ci = qm.AudioMessage.GetContextInfo()
 	case qm.StickerMessage != nil:
 		ci = qm.StickerMessage.GetContextInfo()
+	case qm.AudioStickerMessage != nil:
+		if dalam := qm.AudioStickerMessage.GetMessage().GetStickerMessage(); dalam != nil {
+			ci = dalam.GetContextInfo()
+		}
 	}
 	return grupMentionsDariCI(ci)
 }
@@ -496,7 +512,7 @@ func infoWebp(data []byte) (uint32, uint32, bool) {
 	return 512, 512, false
 }
 
-func (b *Bot) KirimStikerBersuara(jid string, stiker, audio []byte, detik int, quoted *lib.Pesan) error {
+func (b *Bot) KirimStikerBersuara(jid string, stiker, audio []byte, detik int, quoted *lib.Pesan, mention string) error {
 	if b.client == nil {
 		return fmt.Errorf("client belum tersambung")
 	}
@@ -529,8 +545,12 @@ func (b *Bot) KirimStikerBersuara(jid string, stiker, audio []byte, detik int, q
 			Seconds: proto.Uint32(uint32(detik)), MediaKeyTimestamp: proto.Int64(sekarang),
 		}},
 	}
-	if quoted != nil {
-		stik.ContextInfo = b.konteksInfo(lib.IsiPesan{}, quoted)
+	var mentions []string
+	if mention != "" {
+		mentions = []string{mention}
+	}
+	if ci := b.konteksInfo(lib.IsiPesan{Mentions: mentions}, quoted); ci != nil {
+		stik.ContextInfo = ci
 	}
 	pesan := &waE2E.Message{AudioStickerMessage: &waE2E.FutureProofMessage{
 		Message: &waE2E.Message{StickerMessage: stik},
@@ -828,6 +848,7 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	fmt.Printf("[pesan] %s dari %s (alt %s): %q\n", m.From, m.Sender, m.SenderAlt, m.Text)
 	k := &lib.Konteks{Conn: b, M: m, User: b.user, Group: b.group}
 	fitursystem.CatatPesan(m)
+	fiturmaker.CatatStikerBersuara(m)
 	fitursystem.ProsesAwal(k)
 	if len(b.user.Banned) > 0 {
 		nomor := lib.NomorSaja(m.Sender)

@@ -4,15 +4,20 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"math"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"gow1/lib"
+
+	waE2E "go.mau.fi/whatsmeow/proto/waE2E"
 )
 
 func namaAcakSb() string {
@@ -55,41 +60,175 @@ func keOggSb(buf []byte) ([]byte, int, error) {
 	return data, detik, err
 }
 
+func durasiSb(buf []byte) float64 {
+	ran := namaAcakSb()
+	berkas := "sampah/" + ran + lib.EkstensiMime(lib.DeteksiMime(buf))
+	_ = os.MkdirAll("sampah", 0o755)
+	if err := os.WriteFile(berkas, buf, 0o644); err != nil {
+		return 0
+	}
+	defer os.Remove(berkas)
+	keluar, err := exec.Command("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", berkas).Output()
+	if err != nil {
+		return 0
+	}
+	f, _ := strconv.ParseFloat(strings.TrimSpace(string(keluar)), 64)
+	return f
+}
+
 func video2webpKotakSb(buf []byte) ([]byte, error) {
+	tAwal := time.Now()
 	ran := namaAcakSb()
 	awal := "sampah/" + ran + lib.EkstensiMime(lib.DeteksiMime(buf))
-	akhir := "sampah/" + ran + ".webp"
 	_ = os.MkdirAll("sampah", 0o755)
 	if err := os.WriteFile(awal, buf, 0o644); err != nil {
 		return nil, err
 	}
 	defer os.Remove(awal)
-	defer os.Remove(akhir)
 	type langkah struct{ fps, q, s int }
 	tangga := []langkah{{30, 60, 200}, {30, 45, 200}, {30, 30, 200}, {24, 30, 200}, {20, 25, 200}, {20, 25, 176}, {15, 25, 160}, {15, 20, 128}, {12, 20, 128}}
-	var hasil []byte
-	for _, l := range tangga {
-		filter := fmt.Sprintf("crop='min(iw,ih)':'min(iw,ih)',scale=%d:%d:flags=lanczos,fps=%d,split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse", l.s, l.s, l.fps)
+	berkasLangkah := func(i int) string { return fmt.Sprintf("sampah/%s-%d.webp", ran, i) }
+	berkasContoh := "sampah/" + ran + "-contoh.webp"
+	per := map[int][]byte{}
+	var mu sync.Mutex
+	encode := func(i int, potong float64) ([]byte, error) {
+		l := tangga[i]
+		tujuan := berkasLangkah(i)
+		tArg := "30"
+		if potong > 0 {
+			tujuan = berkasContoh
+			tArg = strconv.FormatFloat(potong, 'f', -1, 64)
+		}
+		filter := fmt.Sprintf("crop='min(iw,ih)':'min(iw,ih)',scale=%d:%d:flags=lanczos,fps=%d", l.s, l.s, l.fps)
 		if err := exec.Command("ffmpeg", "-y", "-i", awal, "-vcodec", "libwebp", "-vf", filter,
-			"-loop", "0", "-ss", "00:00:00", "-t", "30", "-preset", "default", "-an", "-vsync", "0",
-			"-quality", strconv.Itoa(l.q), akhir).Run(); err != nil {
-			continue
+			"-loop", "0", "-ss", "00:00:00", "-t", tArg, "-preset", "default", "-an", "-vsync", "0",
+			"-quality", strconv.Itoa(l.q), tujuan).Run(); err != nil {
+			return nil, err
 		}
-		b, err := os.ReadFile(akhir)
+		b, err := os.ReadFile(tujuan)
+		os.Remove(tujuan)
 		if err != nil {
-			continue
+			return nil, err
 		}
-		if hasil == nil || len(b) < len(hasil) {
-			hasil = b
+		if potong == 0 {
+			mu.Lock()
+			per[i] = b
+			mu.Unlock()
 		}
-		if len(b) <= 900*1024 {
+		return b, nil
+	}
+	cocok := func(b []byte) bool { return b != nil && len(b) <= 900*1024 }
+	ambil := func(i int) []byte {
+		mu.Lock()
+		defer mu.Unlock()
+		return per[i]
+	}
+	encodeParalel := func(daftar []int) {
+		var wg sync.WaitGroup
+		for _, i := range daftar {
+			wg.Add(1)
+			go func(i int) {
+				defer wg.Done()
+				_, _ = encode(i, 0)
+			}(i)
+		}
+		wg.Wait()
+	}
+	fasePasangan := func(dari int) bool {
+		for p := dari; p < len(tangga); p += 2 {
+			grup := []int{p}
+			if p+1 < len(tangga) {
+				grup = append(grup, p+1)
+			}
+			encodeParalel(grup)
+			for _, i := range grup {
+				if cocok(ambil(i)) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+	dur := durasiSb(buf)
+	if dur > 8 && len(buf) > 4*1024*1024 {
+		target := 0
+		if contoh, err := encode(0, 0.5); err == nil {
+			perDetik := float64(len(contoh)) / math.Min(0.5, dur)
+			target = -1
+			for i, l := range tangga {
+				pred := perDetik * dur * (float64(l.fps) / 30) * math.Pow(float64(l.s)/200, 2) * math.Pow(float64(l.q)/60, 0.6)
+				if pred <= 850*1024 {
+					target = i
+					break
+				}
+			}
+			if target < 0 {
+				target = len(tangga) - 1
+			}
+		}
+		if target == 0 {
+			_, _ = encode(0, 0)
+			if !cocok(ambil(0)) {
+				fasePasangan(1)
+			}
+		} else {
+			pasangan := []int{target}
+			if target < len(tangga)-1 {
+				pasangan = append(pasangan, target+1)
+			}
+			encodeParalel(pasangan)
+			adaCocok := false
+			for _, i := range pasangan {
+				if cocok(ambil(i)) {
+					adaCocok = true
+				}
+			}
+			if !adaCocok {
+				for i := target + 2; i < len(tangga); i++ {
+					_, _ = encode(i, 0)
+					if cocok(ambil(i)) {
+						break
+					}
+				}
+			} else {
+				for _, i := range pasangan {
+					if b := ambil(i); cocok(b) && len(b) < 400*1024 {
+						_, _ = encode(target-1, 0)
+						break
+					}
+				}
+			}
+		}
+	} else {
+		_, _ = encode(0, 0)
+		if !cocok(ambil(0)) {
+			fasePasangan(1)
+		}
+	}
+	urut := make([]int, 0, len(per))
+	for i := range per {
+		urut = append(urut, i)
+	}
+	sort.Ints(urut)
+	var keluaran []byte
+	for _, i := range urut {
+		if cocok(per[i]) {
+			keluaran = per[i]
 			break
 		}
 	}
-	if hasil == nil {
+	if keluaran == nil {
+		for _, i := range urut {
+			if keluaran == nil || len(per[i]) < len(keluaran) {
+				keluaran = per[i]
+			}
+		}
+	}
+	if keluaran == nil {
 		return nil, fmt.Errorf("konversi video gagal")
 	}
-	return hasil, nil
+	fmt.Printf("[s2time] webp %.1fs dur=%.0f sumber=%db hasil=%db\n", time.Since(tAwal).Seconds(), dur, len(buf), len(keluaran))
+	return keluaran, nil
 }
 
 func buatStikerSb(buf []byte, mime string) ([]byte, error) {
@@ -122,11 +261,28 @@ func rakitKirimSb(k *lib.Konteks, bufStiker, ogg []byte, detik int) error {
 	if err != nil {
 		stiker = bufStiker
 	}
-	target := m.Quoted
-	if target == nil {
+	var target *lib.Pesan
+	if m.Quoted != nil {
+		target = m.Quoted
+	} else if len(strings.Fields(m.Q)) > 0 {
 		target = m
 	}
-	return k.Conn.KirimStikerBersuara(m.From, stiker, ogg, detik, target)
+	percobaan := 0
+	for {
+		err := k.Conn.KirimStikerBersuara(m.From, stiker, ogg, detik, target, m.Sender)
+		if err == nil {
+			return nil
+		}
+		percobaan++
+		kenaLimit := strings.Contains(err.Error(), "429")
+		if !kenaLimit || percobaan > 3 {
+			if kenaLimit {
+				return k.Conn.OK(m, "upload stikernya ditolak WA mulu jir (rate limit), coba lagi bentar ya")
+			}
+			return err
+		}
+		time.Sleep(time.Duration(5*percobaan) * time.Second)
+	}
 }
 
 func cocokGambarSb(tipe string) bool {
@@ -136,6 +292,34 @@ func cocokGambarSb(tipe string) bool {
 func TanganiStikerBersuara(k *lib.Konteks) error {
 	m := k.M
 	args := strings.Fields(m.Q)
+
+	var stikMentah *waE2E.StickerMessage
+	if s := StikerAudioDari(mentahDariPesan(m)); s != nil {
+		stikMentah = s
+	}
+	if stikMentah == nil && m.Quoted != nil {
+		stikMentah = StikerAudioDari(mentahDariFull(m.Quoted.Full))
+	}
+	if stikMentah == nil && m.Quoted != nil {
+		if st, _, ok := AmbilCacheStikerBersuara(m.Quoted.ID); ok {
+			stikMentah = st
+		}
+	}
+	if stikMentah != nil && AudioDariStiker(stikMentah) != nil {
+		aud := AudioDariStiker(stikMentah)
+		pesanStik := &lib.Pesan{Full: &waE2E.Message{StickerMessage: stikerDariFld(fldDariStiker(stikMentah))}}
+		pesanAud := &lib.Pesan{Full: &waE2E.Message{AudioMessage: audioDariFld(fldDariAudio(aud))}}
+		bufStik, _ := unduhSb(k, pesanStik)
+		bufAud, _ := unduhSb(k, pesanAud)
+		if bufStik == nil || bufAud == nil {
+			return k.Conn.OK(m, "stiker bersuaranya gak bisa gue ambil jir")
+		}
+		ogg, detik, err := keOggSb(bufAud)
+		if err != nil {
+			return k.Conn.OK(m, "suaranya gak bisa gue ambil jir")
+		}
+		return rakitKirimSb(k, bufStik, ogg, detik)
+	}
 
 	if len(args) >= 2 && args[0] == "suara" {
 		path := args[1]

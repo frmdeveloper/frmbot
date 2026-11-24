@@ -46,7 +46,7 @@ func (c *connSb) OK(m *lib.Pesan, teks string) error {
 	return nil
 }
 
-func (c *connSb) KirimStikerBersuara(jid string, stiker, audio []byte, detik int, quoted *lib.Pesan) error {
+func (c *connSb) KirimStikerBersuara(jid string, stiker, audio []byte, detik int, quoted *lib.Pesan, mention string) error {
 	c.sbCalls++
 	c.sbJid, c.sbStik, c.sbAudio, c.sbDetik = jid, stiker, audio, detik
 	return nil

@@ -334,7 +334,16 @@ var reSPersis = regexp.MustCompile(`^[#!\/\.]s$`)
 
 func TanganiStiker(k *lib.Konteks) error {
 	m := k.M
-	if reSPersis.MatchString(m.Command) && (m.Type == "videoMessage" || (m.Quoted != nil && m.Quoted.Type == "videoMessage")) {
+	adaSuara := StikerAudioDari(mentahDariPesan(m)) != nil
+	if m.Quoted != nil {
+		if StikerAudioDari(mentahDariFull(m.Quoted.Full)) != nil {
+			adaSuara = true
+		}
+		if _, _, ok := AmbilCacheStikerBersuara(m.Quoted.ID); ok {
+			adaSuara = true
+		}
+	}
+	if reSPersis.MatchString(m.Command) && (m.Type == "videoMessage" || (m.Quoted != nil && m.Quoted.Type == "videoMessage") || m.Type == "audioStickerMessage" || (m.Quoted != nil && m.Quoted.Type == "audioStickerMessage") || adaSuara) {
 		return TanganiStikerBersuara(k)
 	}
 	down := unduhMedia(k)
