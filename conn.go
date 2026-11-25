@@ -717,11 +717,72 @@ func (b *Bot) SendPresence(state string) error {
 }
 
 func (b *Bot) SendChatPresence(jid string, state string) error {
+	if b.client == nil {
+		return nil
+	}
 	target, err := types.ParseJID(jid)
 	if err != nil {
 		return err
 	}
-	return b.client.SendChatPresence(context.Background(), target, types.ChatPresence(state), types.ChatPresenceMedia(""))
+	media := types.ChatPresenceMediaText
+	if state == "recording" {
+		media = types.ChatPresenceMediaAudio
+	}
+	return b.client.SendChatPresence(context.Background(), target, types.ChatPresence(state), media)
+}
+
+func (b *Bot) React(m *lib.Pesan, emoji string) error {
+	if b.client == nil || m == nil || m.ID == "" {
+		return nil
+	}
+	target, err := types.ParseJID(m.From)
+	if err != nil {
+		return err
+	}
+	var sender types.JID
+	if m.IsGroup && m.Sender != "" {
+		sender, _ = types.ParseJID(m.Sender)
+	}
+	msg := b.client.BuildReaction(target, sender, types.MessageID(m.ID), emoji)
+	_, err = b.client.SendMessage(context.Background(), target, msg)
+	return err
+}
+
+func (b *Bot) SendButtons(jid string, teks string, footer string, buttons []lib.Tombol, quoted *lib.Pesan) error {
+	var sb strings.Builder
+	sb.WriteString(teks)
+	if footer != "" {
+		sb.WriteString("\n\n" + footer)
+	}
+	if len(buttons) > 0 {
+		sb.WriteString("\n")
+		for _, btn := range buttons {
+			sb.WriteString("\n• " + btn.Teks)
+		}
+	}
+	return b.SendMessage(jid, lib.IsiPesan{Text: sb.String()}, quoted)
+}
+
+func (b *Bot) SendList(jid string, judul, teks, footer, teksTombol string, bagian []lib.BagianList, quoted *lib.Pesan) error {
+	var sb strings.Builder
+	if judul != "" {
+		sb.WriteString("*" + judul + "*\n\n")
+	}
+	sb.WriteString(teks)
+	for _, sec := range bagian {
+		sb.WriteString("\n\n╭─「 *" + sec.Judul + "* 」")
+		for _, row := range sec.Baris {
+			sb.WriteString("\n│    " + row.Judul)
+			if row.Deskripsi != "" {
+				sb.WriteString(" - " + row.Deskripsi)
+			}
+		}
+		sb.WriteString("\n╰──⊷")
+	}
+	if footer != "" {
+		sb.WriteString("\n\n" + footer)
+	}
+	return b.SendMessage(jid, lib.IsiPesan{Text: sb.String()}, quoted)
 }
 
 func (b *Bot) RevokeMessage(jid string, m *lib.Pesan) error {
@@ -878,11 +939,35 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	if m.IsGroup && f.File != "bot.js" && !gerbangBotGrup(m.From) {
 		return
 	}
-	HitungPesan.Perintah.Add(1)
-	fitursystem.Promo(k)
-	if err := f.Jalankan(k); err != nil {
-		fmt.Printf("[fitur] %s error: %v\n", f.File, err)
-		fitursystem.Lapor(k, err, f.File)
+
+	if !lib.AntiBan.BolehJalan(m.Sender) {
+		return
 	}
+
+	HitungPesan.Perintah.Add(1)
+	_ = b.SendChatPresence(m.From, "composing")
+	_ = b.React(m, "⏳")
+
+	lib.JedaAman(100, 300)
+
+	var err error
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				err = fmt.Errorf("panic: %v", r)
+			}
+		}()
+		err = f.Jalankan(k)
+	}()
+
+	if err != nil {
+		fmt.Printf("[fitur] %s error: %v\n", f.File, err)
+		_ = b.React(m, "❌")
+		fitursystem.Lapor(k, err, f.File)
+	} else {
+		_ = b.React(m, "✅")
+	}
+
+	_ = b.SendChatPresence(m.From, "paused")
 	HitungPesan.Diproses.Add(1)
 }

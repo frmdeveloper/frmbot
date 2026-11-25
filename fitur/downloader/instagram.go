@@ -261,6 +261,27 @@ func apiLangsungIG(u, sc, story string) hasilIG {
 	return hasil
 }
 
+func apiFallbackIG(u string) hasilIG {
+	hasil := kosongIG()
+	var vkr struct {
+		Status string `json:"status"`
+		Data   []struct {
+			URL  string `json:"url"`
+			Type string `json:"type"`
+		} `json:"data"`
+	}
+	if lib.AmbilJSON("https://api.vkrdown.com/api/v1/dl?url="+url.QueryEscape(u), nil, &vkr) == nil {
+		for _, d := range vkr.Data {
+			if strings.Contains(d.Type, "video") || strings.Contains(d.URL, ".mp4") {
+				hasil.Videos = append(hasil.Videos, mediaIG{URL: d.URL})
+			} else if d.URL != "" {
+				hasil.Photos = append(hasil.Photos, mediaIG{URL: d.URL})
+			}
+		}
+	}
+	return hasil
+}
+
 type galatIG struct {
 	Pesan string
 }
@@ -298,6 +319,7 @@ func Igdl(u string) (hasilIG, error) {
 		func(a, b, c string) hasilIG { return snapinstaIG(a) },
 		func(a, b, c string) hasilIG { return snapsaveIG(a) },
 		func(a, b, c string) hasilIG { return downloadgramIG(a) },
+		func(a, b, c string) hasilIG { return apiFallbackIG(a) },
 		apiLangsungIG,
 	} {
 		hasil := jalur(u, sc, story)
@@ -310,7 +332,7 @@ func Igdl(u string) (hasilIG, error) {
 
 func TanganiInstagram(k *lib.Konteks) error {
 	if !polaCekIG.MatchString(k.M.Q) {
-		return k.Conn.OK(k.M, "Mau download ig dikasih apaan 😂")
+		return k.Conn.OK(k.M, "Format link Instagram tidak sesuai")
 	}
 	idl, err := Igdl(k.M.Q)
 	if err != nil {

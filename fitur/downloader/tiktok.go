@@ -479,6 +479,34 @@ func AmbilDataTT(u string) dataTT {
 	if terpilih != nil {
 		hasil.Play = terpilih.u
 	}
+	if hasil.Play == "" && len(hasil.Images) == 0 {
+		var tikly struct {
+			Title  string `json:"title"`
+			Author struct {
+				Name string `json:"name"`
+			} `json:"author"`
+			Video struct {
+				NoWatermark string `json:"noWatermark"`
+			} `json:"video"`
+			Images []struct {
+				URL string `json:"url"`
+			} `json:"images"`
+		}
+		if lib.AmbilJSON("https://api.tiklydown.eu.org/api/download?url="+url.QueryEscape(u), nil, &tikly) == nil {
+			if hasil.Nickname == "" {
+				hasil.Nickname = tikly.Author.Name
+			}
+			if hasil.Title == "" {
+				hasil.Title = tikly.Title
+			}
+			hasil.Play = tikly.Video.NoWatermark
+			for _, img := range tikly.Images {
+				if img.URL != "" {
+					hasil.Images = append(hasil.Images, img.URL)
+				}
+			}
+		}
+	}
 	return hasil
 }
 
@@ -506,11 +534,11 @@ func TanganiTiktok(k *lib.Konteks) error {
 	}
 	caption := ""
 	if tii.Region != "" {
-		caption += fmt.Sprintf("Di upload dari %s %s\n\n", tii.Region, emojiFlag(tii.Region))
+		caption += fmt.Sprintf("Di upload dari %s\n\n", tii.Region)
 	}
 	caption += tii.Nickname + "\n" + tii.Title
 	if tii.Music != "" {
-		caption += "\n----------\n🎵 " + tii.Music
+		caption += "\n----------\n" + tii.Music
 	}
 	if len(tii.Images) > 0 {
 		if err := k.Conn.SendMessage(k.M.From, lib.IsiPesan{Text: caption}, k.M); err != nil {

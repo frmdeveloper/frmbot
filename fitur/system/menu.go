@@ -3,7 +3,6 @@ package system
 import (
 	"fmt"
 	"regexp"
-	"runtime"
 	"sort"
 	"strings"
 
@@ -12,110 +11,95 @@ import (
 
 func TanganiMenu(k *lib.Konteks) error {
 	m := k.M
-	if strings.Contains(m.Command, "mani") {
-		_ = k.Conn.OK(m, "Mani loh ya")
+	prefix := m.Prefix
+	if prefix == "" {
+		prefix = "."
 	}
 	q := strings.ToLower(strings.TrimSpace(m.Q))
-	if q == "hehe" {
-		return k.Conn.OK(m, "hehe")
-	}
 
 	semuaFitur := lib.Semua()
-	perFile := []string{}
+	perFile := make([]string, 0, len(semuaFitur))
 	for file := range semuaFitur {
 		perFile = append(perFile, file)
 	}
 	sort.Strings(perFile)
 
-	byJenis := map[string][][]string{}
+	byJenis := map[string][]string{}
 	for _, file := range perFile {
 		f := semuaFitur[file]
 		if len(f.Nama) == 0 || f.Jenis == "" {
 			continue
 		}
-		byJenis[f.Jenis] = append(byJenis[f.Jenis], f.Nama)
+		j := strings.ToLower(f.Jenis)
+		for _, nm := range f.Nama {
+			cleanName := nm
+			if strings.HasPrefix(cleanName, "#") || strings.HasPrefix(cleanName, ".") || strings.HasPrefix(cleanName, "!") || strings.HasPrefix(cleanName, "/") {
+				cleanName = cleanName[1:]
+			}
+			byJenis[j] = append(byJenis[j], prefix+cleanName)
+		}
 	}
-	jenisList := []string{}
+
+	jenisList := make([]string, 0, len(byJenis))
 	for j := range byJenis {
 		jenisList = append(jenisList, j)
 	}
 	sort.Strings(jenisList)
 
-	if q != "" {
-		filter := []string{}
+	if q == "" {
+		var sb strings.Builder
+		sb.WriteString("╭─「 *daftar kategori* 」\n")
 		for _, j := range jenisList {
-			if strings.EqualFold(j, q) {
-				filter = append(filter, j)
-			}
+			sb.WriteString(fmt.Sprintf("│    %smenu %s\n", prefix, j))
 		}
-		if len(filter) == 0 {
-			return k.Conn.OK(m, m.Q)
-		}
-		jenisList = filter
+		sb.WriteString(fmt.Sprintf("│    %smenu all\n", prefix))
+		sb.WriteString("╰──⊷\n\n")
+		sb.WriteString(fmt.Sprintf("Ketik %smenu nama kategori untuk melihat daftar perintah\nContoh %smenu audio", prefix, prefix))
+		return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: sb.String()}, m)
 	}
 
-	emojiKategori := map[string]string{
-		"ai": "🤖", "audio": "🎧", "chat": "💬", "converter": "🔄",
-		"downloader": "📥", "game": "🎮", "group": "👥", "info": "🔍",
-		"maker": "🎨", "system": "⚙️", "utility": "🧰",
-	}
-	blok := []string{}
-	for _, j := range jenisList {
-		emoji := emojiKategori[strings.ToLower(j)]
-		if emoji == "" {
-			emoji = "✨"
+	targetJenis := []string{}
+	if q == "all" {
+		targetJenis = jenisList
+	} else {
+		for _, j := range jenisList {
+			if strings.EqualFold(j, q) {
+				targetJenis = append(targetJenis, j)
+			}
 		}
+		if len(targetJenis) == 0 {
+			pesan := fmt.Sprintf("Kategori %s tidak ditemukan\nKetik %smenu untuk melihat daftar kategori yang tersedia", q, prefix)
+			return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: pesan}, m)
+		}
+	}
+
+	blok := []string{}
+	for _, j := range targetJenis {
 		var sb strings.Builder
-		sb.WriteString(emoji + " *" + strings.ToUpper(j) + "*")
+		sb.WriteString("╭─「 *" + j + "* 」")
 		if strings.EqualFold(j, "group") && !m.IsGroup {
-			sb.WriteString("\n🔒 disembunyikan, khusus grup")
+			sb.WriteString("\n│    Khusus grup")
+			sb.WriteString("\n╰──⊷")
 			blok = append(blok, sb.String())
 			continue
 		}
-		perintah := []string{}
-		for _, nm := range byJenis[j] {
-			perintah = append(perintah, nm...)
+		for _, cmd := range byJenis[j] {
+			sb.WriteString("\n│    " + cmd)
 		}
-		for _, n := range perintah {
-			sb.WriteString("\n• " + n)
-		}
+		sb.WriteString("\n╰──⊷")
 		blok = append(blok, sb.String())
 	}
-	isi := strings.Join(blok, "\n\n")
 
-	var ms runtime.MemStats
-	runtime.ReadMemStats(&ms)
-	ramMB := float64(ms.Sys) / 1024 / 1024
-	ram := fmt.Sprintf("%.1f MB", ramMB)
-	if ramMB >= 1024 {
-		ram = fmt.Sprintf("%.2f GB", ramMB/1024)
-	}
-
-	kepala := "✦ *FRM Bot* ✦\n" +
-		"github.com/frmdeveloper/frmbot\n" +
-		"_whatsmeow • golang_\n\n" +
-		"💾 *RAM:* " + ram + "\n" +
-		"⚡ *" + fmt.Sprint(lib.Jumlah()) + " fitur* siap dipakai\n" +
-		"🎵 *follow:* tiktok.com/@rifki_mekanik\n\n" +
-		"🪡 *daftar perintah* 🪡\n\n"
-	kaki := "\n\n💡 ketik *#menu <kategori>* buat fokus ke satu kategori\n" +
-		"contoh: #menu maker"
-
-	teks := kepala + isi + kaki
-	prefix := m.Prefix
-	if prefix == "" {
-		prefix = "#"
-	}
-	teks = strings.ReplaceAll(teks, "#", prefix)
-	return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: teks}, m)
+	hasil := strings.Join(blok, "\n\n")
+	return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: hasil}, m)
 }
 
 func init() {
 	lib.Daftarkan(&lib.Fitur{
 		File:     "menu.js",
 		Jenis:    "system",
-		Nama:     nil,
-		Itunya:   regexp.MustCompile("(?i)^(#|\\!|\\/|\\.)(help|(all)?m[e\\w]n[u\\w](all)?)$"),
+		Nama:     []string{".menu"},
+		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(help|(all)?m[e\w]n[u\w](all)?)$`),
 		Jalankan: TanganiMenu,
 	})
 }

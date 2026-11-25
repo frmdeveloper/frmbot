@@ -72,7 +72,7 @@ func cariYT(judul string) *videoYT {
 
 func TanganiYtplay(k *lib.Konteks) error {
 	if k.M.Q == "" {
-		return k.Conn.OK(k.M, "Judulnya apa njir😂")
+		return k.Conn.OK(k.M, "Masukkan judul lagu yang ingin dicari")
 	}
 	u := k.M.Q
 	if !strings.Contains(u, "youtu") {
@@ -85,7 +85,7 @@ func TanganiYtplay(k *lib.Konteks) error {
 			return err
 		}
 	}
-	if err := k.Conn.OK(k.M, "sabar lagi donlod audio ny"); err != nil {
+	if err := k.Conn.OK(k.M, "Sedang mengunduh audio"); err != nil {
 		return err
 	}
 	_ = os.MkdirAll("sampah", 0o755)
@@ -106,8 +106,8 @@ func init() {
 	lib.Daftarkan(&lib.Fitur{
 		File:     "ytplay.js",
 		Jenis:    "downloader",
-		Nama:     []string{"#play"},
-		Itunya:   regexp.MustCompile("(?i)^(#|!|\\/|\\.)(play|lagu)$"),
+		Nama:     []string{".play"},
+		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(play|lagu)$`),
 		Jalankan: TanganiYtplay,
 	})
 }

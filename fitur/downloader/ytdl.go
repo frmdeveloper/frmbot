@@ -25,15 +25,20 @@ func bersihSampah(pola string) {
 func unduhYtdlp(k *lib.Konteks, urlBerkas, output, resolusi string) error {
 	warp := "--proxy \"socks5://127.0.0.1:40000\""
 	android := "--extractor-args \"youtube:player_client=android\""
+	ios := "--extractor-args \"youtube:player_client=ios\""
+	mweb := "--extractor-args \"youtube:player_client=mweb\""
 	percobaan := []string{
 		android + " " + warp,
 		warp,
 		android,
+		ios,
+		mweb + " --no-check-certificates",
+		"--no-check-certificates",
 		"",
 	}
 	galat := ""
 	for _, c := range percobaan {
-		perintah := fmt.Sprintf("yt-dlp \"%s\" --cookies \"./bantuan/cookie-yt.txt\" --js-runtimes node --output \"%s\" -S \"res:%s\" %s", urlBerkas, output, resolusi, c)
+		perintah := fmt.Sprintf("yt-dlp \"%s\" --cookies \"./bantuan/cookie-yt.txt\" --js-runtimes node --no-playlist --output \"%s\" -S \"res:%s,ext:mp4:m4a\" %s", urlBerkas, output, resolusi, c)
 		_, stderr := lib.SpawnSync(perintah)
 		if len(berkasSampah(output+"*")) > 0 && !strings.Contains(stderr, "ERROR:") {
 			return nil
@@ -49,9 +54,9 @@ func unduhYtdlp(k *lib.Konteks, urlBerkas, output, resolusi string) error {
 
 func TanganiYtdl(k *lib.Konteks) error {
 	if !strings.Contains(k.M.Q, "youtu") {
-		return k.Conn.OK(k.M, "Apa sih")
+		return k.Conn.OK(k.M, "Link YouTube tidak valid")
 	}
-	if err := k.Conn.OK(k.M, "sabar lagi donlod video ny"); err != nil {
+	if err := k.Conn.OK(k.M, "Sedang mengunduh video"); err != nil {
 		return err
 	}
 	args := strings.Fields(k.M.Q)
@@ -88,10 +93,15 @@ func TanganiYtdl(k *lib.Konteks) error {
 	if err != nil {
 		return err
 	}
+	if strings.HasSuffix(berkas[0], ".mp4") {
+		return k.Conn.SendMessage(k.M.From, lib.IsiPesan{
+			Video: b,
+		}, k.M)
+	}
 	return k.Conn.SendMessage(k.M.From, lib.IsiPesan{
 		Document: b,
-		FileName: fmt.Sprintf("%d.webm", time.Now().UnixMilli()),
-		Mimetype: "video/webm",
+		FileName: fmt.Sprintf("%d.mp4", time.Now().UnixMilli()),
+		Mimetype: "video/mp4",
 	}, k.M)
 }
 
@@ -99,8 +109,8 @@ func init() {
 	lib.Daftarkan(&lib.Fitur{
 		File:     "ytdl.js",
 		Jenis:    "downloader",
-		Nama:     []string{"#ytmp4", "#ytmp3"},
-		Itunya:   regexp.MustCompile("(?i)^(#|\\!|\\/|\\.)(yt|youtube)(a|v|mp3|mp4)?$"),
+		Nama:     []string{".ytmp4", ".ytmp3"},
+		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(yt|youtube|ytmp3|ytmp4)(a|v|mp3|mp4)?$`),
 		Jalankan: TanganiYtdl,
 	})
 }

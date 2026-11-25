@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+	"time"
 
 	"gow1/lib"
 
@@ -84,6 +85,7 @@ func main() {
 		nomor = "6283169480682"
 	}
 	bot := BotBaru(user, group, nomor)
+	lib.MulaiPembersihSampah(10*time.Minute, 20*time.Minute)
 	if err := bot.Start(); err != nil {
 		fmt.Println("[conn] gagal start:", err)
 		os.Exit(1)

@@ -56,6 +56,27 @@ type GrupInfo struct {
 	Peserta    []Peserta
 }
 
+type Tombol struct {
+	ID   string
+	Teks string
+}
+
+type TombolURL struct {
+	Teks string
+	URL  string
+}
+
+type BarisList struct {
+	ID        string
+	Judul     string
+	Deskripsi string
+}
+
+type BagianList struct {
+	Judul string
+	Baris []BarisList
+}
+
 type Conn interface {
 	SendMessage(jid string, isi IsiPesan, quoted *Pesan) error
 	OK(m *Pesan, teks string) error
@@ -74,6 +95,9 @@ type Conn interface {
 	SendChatPresence(jid string, state string) error
 	RevokeMessage(jid string, m *Pesan) error
 	RelayMentah(jid string, mentah any) error
+	React(m *Pesan, emoji string) error
+	SendButtons(jid string, teks string, footer string, buttons []Tombol, quoted *Pesan) error
+	SendList(jid string, judul, teks, footer, teksTombol string, bagian []BagianList, quoted *Pesan) error
 	BotJID() string
 	BotLID() string
 	BotNomor() string

@@ -277,7 +277,7 @@ func rakitKirimSb(k *lib.Konteks, bufStiker, ogg []byte, detik int) error {
 		kenaLimit := strings.Contains(err.Error(), "429")
 		if !kenaLimit || percobaan > 3 {
 			if kenaLimit {
-				return k.Conn.OK(m, "upload stikernya ditolak WA mulu jir (rate limit), coba lagi bentar ya")
+				return k.Conn.OK(m, "upload stikernya ditolak WA karena limit, coba lagi bentar ya")
 			}
 			return err
 		}
@@ -423,8 +423,8 @@ func init() {
 	lib.Daftarkan(&lib.Fitur{
 		File:     "stikerbersuara.js",
 		Jenis:    "maker",
-		Nama:     []string{"#stikerbersuara"},
-		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(s(tic?ker)?(bersuara|suara)|stiker2|s2)$`),
+		Nama:     []string{".stikeraudio", ".stikerbersuara"},
+		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(s(tic?ker)?(bersuara|suara|audio)|stikeraudio|saudio|stiker2|s2)$`),
 		Jalankan: TanganiStikerBersuara,
 	})
 }

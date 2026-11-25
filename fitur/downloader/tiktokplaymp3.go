@@ -244,7 +244,7 @@ func prosesPlay(k *lib.Konteks, link, sisi string, dorong func(pesanWS) bool, se
 		if judul == "" {
 			judul = tii.Title
 		}
-		if err := k.Conn.OK(k.M, fmt.Sprintf("🎵 %s\nsabar, lagi disiapin...", judul)); err != nil {
+		if err := k.Conn.OK(k.M, fmt.Sprintf("%s\nSedang disiapkan", judul)); err != nil {
 			return err
 		}
 	}
@@ -329,7 +329,7 @@ func TanganiTiktokplaymp3(k *lib.Konteks) error {
 	}
 	link := polaTiktok.FindString(jwb.d.URL)
 	if link == "" {
-		return k.Conn.OK(k.M, "Itu bukan link tiktok 😂")
+		return k.Conn.OK(k.M, "Format link TikTok tidak sesuai")
 	}
 	return prosesPlay(k, link, sisi, func(data pesanWS) bool {
 		return dorongForm(sisi, data)
