@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"crypto/rand"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -389,6 +391,14 @@ func (b *Bot) konteksInfo(isi lib.IsiPesan, quoted *lib.Pesan) *waE2E.ContextInf
 	return ci
 }
 
+func (b *Bot) GenerateMessageID() types.MessageID {
+	id := make([]byte, 13)
+	if _, err := rand.Read(id); err != nil {
+		panic(err)
+	}
+	return types.MessageID(strings.ToUpper(hex.EncodeToString(id)) + "46524D")
+}
+
 func (b *Bot) SendMessage(jid string, isi lib.IsiPesan, quoted *lib.Pesan) error {
 	if b.client == nil {
 		return fmt.Errorf("client belum tersambung")
@@ -485,7 +495,7 @@ func (b *Bot) SendMessage(jid string, isi lib.IsiPesan, quoted *lib.Pesan) error
 	default:
 		pesan = &waE2E.Message{Conversation: proto.String(isi.Text)}
 	}
-	_, err = b.client.SendMessage(ctx, target, pesan)
+	_, err = b.client.SendMessage(ctx, target, pesan, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
 	return err
 }
 
@@ -556,7 +566,7 @@ func (b *Bot) KirimStikerBersuara(jid string, stiker, audio []byte, detik int, q
 	pesan := &waE2E.Message{AudioStickerMessage: &waE2E.FutureProofMessage{
 		Message: &waE2E.Message{StickerMessage: stik},
 	}}
-	_, err = b.client.SendMessage(ctx, target, pesan)
+	_, err = b.client.SendMessage(ctx, target, pesan, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
 	return err
 }
 
@@ -745,7 +755,7 @@ func (b *Bot) React(m *lib.Pesan, emoji string) error {
 		sender, _ = types.ParseJID(m.Sender)
 	}
 	msg := b.client.BuildReaction(target, sender, types.MessageID(m.ID), emoji)
-	_, err = b.client.SendMessage(context.Background(), target, msg)
+	_, err = b.client.SendMessage(context.Background(), target, msg, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
 	return err
 }
 
@@ -767,7 +777,7 @@ func (b *Bot) RelayMentah(jid string, mentah any) error {
 	if !ok {
 		return fmt.Errorf("relay butuh *waE2E.Message")
 	}
-	_, err = b.client.SendMessage(context.Background(), target, msg)
+	_, err = b.client.SendMessage(context.Background(), target, msg, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
 	return err
 }
 
