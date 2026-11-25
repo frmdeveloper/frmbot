@@ -423,7 +423,7 @@ func init() {
 	lib.Daftarkan(&lib.Fitur{
 		File:     "stikerbersuara.js",
 		Jenis:    "maker",
-		Nama:     []string{"#stikerbersuara"},
+		Nama:     nil,
 		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(s(tic?ker)?(bersuara|suara)|stiker2|s2)$`),
 		Jalankan: TanganiStikerBersuara,
 	})
