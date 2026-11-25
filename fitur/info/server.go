@@ -13,7 +13,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"syscall"
 	"time"
 	"unicode"
 
@@ -136,15 +135,7 @@ func sistemServer() string {
 	return fmt.Sprintf("%s %s (%s)", tipe, rilisan, arsitekturJS())
 }
 
-func diskServer() (total, kepake, sisa int64) {
-	var st syscall.Statfs_t
-	if err := syscall.Statfs(".", &st); err != nil {
-		return 0, 0, 0
-	}
-	total = int64(st.Blocks) * int64(st.Bsize)
-	sisa = int64(st.Bavail) * int64(st.Bsize)
-	return total, total - sisa, sisa
-}
+
 
 func ramServer() (total, sisa int64) {
 	b, err := os.ReadFile("/proc/meminfo")
