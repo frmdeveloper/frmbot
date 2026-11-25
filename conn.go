@@ -718,11 +718,35 @@ func (b *Bot) SendPresence(state string) error {
 }
 
 func (b *Bot) SendChatPresence(jid string, state string) error {
+	if b.client == nil {
+		return nil
+	}
 	target, err := types.ParseJID(jid)
 	if err != nil {
 		return err
 	}
-	return b.client.SendChatPresence(context.Background(), target, types.ChatPresence(state), types.ChatPresenceMedia(""))
+	media := types.ChatPresenceMediaText
+	if state == "recording" {
+		media = types.ChatPresenceMediaAudio
+	}
+	return b.client.SendChatPresence(context.Background(), target, types.ChatPresence(state), media)
+}
+
+func (b *Bot) React(m *lib.Pesan, emoji string) error {
+	if b.client == nil || m == nil || m.ID == "" {
+		return nil
+	}
+	target, err := types.ParseJID(m.From)
+	if err != nil {
+		return err
+	}
+	var sender types.JID
+	if m.IsGroup && m.Sender != "" {
+		sender, _ = types.ParseJID(m.Sender)
+	}
+	msg := b.client.BuildReaction(target, sender, types.MessageID(m.ID), emoji)
+	_, err = b.client.SendMessage(context.Background(), target, msg)
+	return err
 }
 
 func (b *Bot) RevokeMessage(jid string, m *lib.Pesan) error {
@@ -930,8 +954,15 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	}
 	HitungPesan.Perintah.Add(1)
 	fitursystem.Promo(k)
-	if err := f.Jalankan(k); err != nil {
-		fmt.Printf("[fitur] %s error: %v\n", f.File, err)
-	}
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("[fitur] %s panic: %v\n", f.File, r)
+			}
+		}()
+		if err := f.Jalankan(k); err != nil {
+			fmt.Printf("[fitur] %s error: %v\n", f.File, err)
+		}
+	}()
 	HitungPesan.Diproses.Add(1)
 }
