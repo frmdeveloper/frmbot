@@ -920,7 +920,6 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 			HitungPesan.Perintah.Add(1)
 			if err := fiturai.Ngobrol(k, m.Text); err != nil {
 				fmt.Printf("[fitur] mcp.js error: %v\n", err)
-				fitursystem.Lapor(k, err, "mcp.js")
 			}
 			HitungPesan.Diproses.Add(1)
 		}
@@ -933,7 +932,6 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	fitursystem.Promo(k)
 	if err := f.Jalankan(k); err != nil {
 		fmt.Printf("[fitur] %s error: %v\n", f.File, err)
-		fitursystem.Lapor(k, err, f.File)
 	}
 	HitungPesan.Diproses.Add(1)
 }
