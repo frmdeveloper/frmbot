@@ -41,7 +41,7 @@ var skemaTools = []map[string]any{
 	toolFungsi("ok", "Kirim pesan teks ke chat ini sekarang (misal laporan progres sebelum lanjut kerja).", map[string]any{
 		"text": propTeks("isi pesan"),
 	}, "text"),
-	toolFungsi("sendMessage", "Kirim pesan teks ke chat ini atau ke DM owner (6285188261898). JID lain ditolak.", map[string]any{
+	toolFungsi("sendMessage", "Kirim pesan teks ke chat ini atau ke DM owner ("+lib.NomorOwner()+"). JID lain ditolak.", map[string]any{
 		"jid":  propTeks("JID tujuan, kosongkan buat chat ini"),
 		"text": propTeks("isi pesan"),
 	}, "text"),
@@ -103,7 +103,7 @@ func jalankanTool(k *lib.Konteks, nama, argJSON string) string {
 		if tujuan == "" {
 			tujuan = m.From
 		}
-		if tujuan != m.From && lib.NomorSaja(tujuan) != "6285188261898" {
+		if tujuan != m.From && lib.NomorSaja(tujuan) != lib.NomorOwner() {
 			return "Error: tujuan ditolak, cuma boleh chat ini atau DM owner"
 		}
 		if err := k.Conn.SendMessage(tujuan, lib.IsiPesan{Text: a.Text}, nil); err != nil {

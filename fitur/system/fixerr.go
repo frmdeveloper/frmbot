@@ -13,8 +13,6 @@ import (
 	"gow1/lib"
 )
 
-const nomorOwnerFixerr = "6285188261898"
-
 type EntriError struct {
 	Waktu time.Time `json:"waktu"`
 	File  string    `json:"file"`
@@ -70,14 +68,14 @@ func Lapor(k *lib.Konteks, err error, file string) {
 
 	if bolehDM && k.Conn != nil {
 		teks := fmt.Sprintf("fitur error\n\nfile: %s\nerror: %s", file, potongFixerr(pesan, 1500))
-		_ = k.Conn.SendMessage(nomorOwnerFixerr+"@s.whatsapp.net", lib.IsiPesan{Text: teks}, nil)
+		_ = k.Conn.SendMessage(lib.NomorOwner()+"@s.whatsapp.net", lib.IsiPesan{Text: teks}, nil)
 	}
 }
 
 func TanganiFixerr(k *lib.Konteks) error {
 	m := k.M
 	nomor := lib.NomorSaja(m.Sender)
-	if nomor != nomorOwnerFixerr && nomor != k.Conn.BotNomor() {
+	if nomor != lib.NomorOwner() && nomor != k.Conn.BotNomor() {
 		return nil
 	}
 	return k.Conn.OK(m, "konteks error-nya udah ilang, panggil ulang fiturnya biar error-nya kebaca lagi.")

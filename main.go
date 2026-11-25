@@ -23,10 +23,7 @@ import (
 	_ "gow1/fitur/utility"
 )
 
-var Owner = []string{
-	"6285188261898@s.whatsapp.net",
-	"6283837747136@s.whatsapp.net",
-}
+var Owner []string
 
 func muatEnv() {
 	f, err := os.Open(".env")
@@ -71,6 +68,10 @@ func main() {
 	}
 
 	muatEnv()
+	Owner = []string{
+		lib.NomorOwner() + "@s.whatsapp.net",
+		"6283837747136@s.whatsapp.net",
+	}
 
 	user := lib.MuatUser("data/user.json")
 	group := lib.MuatGroup("data/group.json")

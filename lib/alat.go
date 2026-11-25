@@ -22,6 +22,10 @@ func NomorSaja(jid string) string {
 	return jid
 }
 
+func NomorOwner() string {
+	return NomorSaja(os.Getenv("NOMOR_OWNER"))
+}
+
 func SpawnSync(perintah string) (string, string) {
 	cmd := exec.Command("sh", "-c", perintah)
 	var out, errb bytes.Buffer

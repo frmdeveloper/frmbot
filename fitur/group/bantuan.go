@@ -10,8 +10,6 @@ import (
 	"gow1/lib"
 )
 
-const nomorPapa = "6285188261898"
-
 var nonDigit = regexp.MustCompile(`[^0-9]`)
 
 func adalahOwner(k *lib.Konteks, jid string) bool {
@@ -19,7 +17,7 @@ func adalahOwner(k *lib.Konteks, jid string) bool {
 	if n == "" {
 		return false
 	}
-	if n == nomorPapa {
+	if n == lib.NomorOwner() {
 		return true
 	}
 	return k != nil && k.Conn != nil && n == k.Conn.BotNomor()
@@ -30,7 +28,7 @@ func pengirimOwner(k *lib.Konteks) bool {
 }
 
 func ituPapa(jid string) bool {
-	return lib.NomorSaja(jid) == nomorPapa
+	return lib.NomorSaja(jid) == lib.NomorOwner()
 }
 
 func cariPeserta(gc *lib.GrupInfo, kandidat ...string) *lib.Peserta {

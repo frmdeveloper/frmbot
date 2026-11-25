@@ -164,7 +164,7 @@ func TanganiAgrup(k *lib.Konteks) error {
 		}
 		gc, _ := k.Conn.GetGroupInfo(m.From)
 		kenal := identitasDari(k, gc, target)
-		kenalPapa := identitasDari(k, gc, nomorPapa+"@s.whatsapp.net")
+		kenalPapa := identitasDari(k, gc, lib.NomorOwner()+"@s.whatsapp.net")
 		for _, n := range kenal {
 			for _, p := range kenalPapa {
 				if n == p {

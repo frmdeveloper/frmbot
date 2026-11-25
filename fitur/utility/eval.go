@@ -24,7 +24,7 @@ func bersihinWarna(s string) string {
 func adalahOwnerEval(k *lib.Konteks) bool {
 	for _, jid := range []string{k.M.Sender, k.M.SenderAlt} {
 		n := lib.NomorSaja(jid)
-		if n == "6285188261898" || n == k.Conn.BotNomor() {
+		if n == lib.NomorOwner() || n == k.Conn.BotNomor() {
 			return true
 		}
 	}
