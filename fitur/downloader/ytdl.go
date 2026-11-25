@@ -52,6 +52,20 @@ func unduhYtdlp(k *lib.Konteks, urlBerkas, output, resolusi string) error {
 	return fmt.Errorf("%s", galat)
 }
 
+var reRegionYT = regexp.MustCompile(`(?i)not made this video available in your country`)
+var reNegaraYT = regexp.MustCompile(`This video is available in ([^\n]+)`)
+
+func teksRegionYT(galat string) (string, bool) {
+	if !reRegionYT.MatchString(galat) {
+		return "", false
+	}
+	negara := "negara tertentu"
+	if m := reNegaraYT.FindStringSubmatch(galat); m != nil && strings.TrimSpace(m[1]) != "" {
+		negara = strings.TrimSpace(m[1])
+	}
+	return "videonya dikunci region njir — cuma bisa ditonton di " + negara + ", server bot gak di sana jadi gak bisa donlod. coba cari upload lain atau link lain aja", true
+}
+
 func TanganiYtdl(k *lib.Konteks) error {
 	if !strings.Contains(k.M.Q, "youtu") {
 		return k.Conn.OK(k.M, "Link YouTube tidak valid")
@@ -67,6 +81,9 @@ func TanganiYtdl(k *lib.Konteks) error {
 	output := "./sampah/" + k.M.ID + k.M.Sender
 	if strings.ContainsAny(k.M.Command, "a3") {
 		if err := unduhYtdlp(k, args[0], output, "480"); err != nil {
+			if teks, ya := teksRegionYT(err.Error()); ya {
+				return k.Conn.OK(k.M, teks)
+			}
 			return err
 		}
 		defer bersihSampah(output + "*")
@@ -82,6 +99,9 @@ func TanganiYtdl(k *lib.Konteks) error {
 		resolusi = args[1]
 	}
 	if err := unduhYtdlp(k, args[0], output, resolusi); err != nil {
+		if teks, ya := teksRegionYT(err.Error()); ya {
+			return k.Conn.OK(k.M, teks)
+		}
 		return err
 	}
 	defer bersihSampah(output + "*")

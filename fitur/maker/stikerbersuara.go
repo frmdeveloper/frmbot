@@ -252,7 +252,7 @@ func promptSb(k *lib.Konteks, teks, cmd string) error {
 
 func rakitKirimSb(k *lib.Konteks, bufStiker, ogg []byte, detik int) error {
 	m := k.M
-	pack, author := "Elfa Chan", strconv.Itoa(time.Now().Year())
+	pack, author := "FRM Chan", strconv.Itoa(time.Now().Year())
 	if bagian := strings.Split(m.Q, "|"); len(bagian) == 2 && !strings.HasPrefix(strings.TrimSpace(bagian[0]), "suara") {
 		pack = strings.TrimSpace(bagian[0])
 		author = strings.TrimSpace(bagian[1])

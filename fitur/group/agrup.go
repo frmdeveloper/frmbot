@@ -109,9 +109,9 @@ func TanganiAgrup(k *lib.Konteks) error {
 		lib.PruneBanMember(k.Group, m.From)
 		saya := []string{lib.NomorSaja(m.Sender), lib.NomorSaja(m.SenderAlt)}
 		if lib.LepasBan(k.Group, m.From, saya...) {
-			return k.Conn.OK(m, "hoki lu nemu fitur rahasia ini jir — ban lu gw lepas. jangan ngespam lagi")
+			return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: "hoki lu nemu fitur rahasia ini jir — ban lu gw lepas. jangan ngespam lagi"}, nil)
 		}
-		return k.Conn.OK(m, "lu gak lagi ke-ban jir, ngapain unban")
+		return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: "lu gak lagi ke-ban jir, ngapain unban"}, nil)
 	}
 
 	if strings.Contains(cmd, "unbanmember") {
