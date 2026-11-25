@@ -25,15 +25,19 @@ func bersihSampah(pola string) {
 func unduhYtdlp(k *lib.Konteks, urlBerkas, output, resolusi string) error {
 	warp := "--proxy \"socks5://127.0.0.1:40000\""
 	android := "--extractor-args \"youtube:player_client=android\""
+	ios := "--extractor-args \"youtube:player_client=ios\""
+	mweb := "--extractor-args \"youtube:player_client=mweb\""
 	percobaan := []string{
 		android + " " + warp,
 		warp,
 		android,
+		ios,
+		mweb,
 		"",
 	}
 	galat := ""
 	for _, c := range percobaan {
-		perintah := fmt.Sprintf("yt-dlp \"%s\" --cookies \"./bantuan/cookie-yt.txt\" --js-runtimes node --output \"%s\" -S \"res:%s\" %s", urlBerkas, output, resolusi, c)
+		perintah := fmt.Sprintf("yt-dlp \"%s\" --cookies \"./bantuan/cookie-yt.txt\" --js-runtimes node --no-playlist --output \"%s\" -S \"res:%s,ext:mp4:m4a\" %s", urlBerkas, output, resolusi, c)
 		_, stderr := lib.SpawnSync(perintah)
 		if len(berkasSampah(output+"*")) > 0 && !strings.Contains(stderr, "ERROR:") {
 			return nil
