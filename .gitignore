@@ -2,6 +2,7 @@ gow1
 gow1bin
 *.log
 *.tgz
+*.exe
 .env
 .env.local
 

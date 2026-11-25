@@ -20,7 +20,7 @@ import (
 	waLog "go.mau.fi/whatsmeow/util/log"
 	"google.golang.org/protobuf/proto"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 
 	fitchat "gow1/fitur/chat"
 	fiturgrup "gow1/fitur/group"
@@ -55,7 +55,7 @@ func BotBaru(user *lib.DataUser, group *lib.DataGroup, nomor string) *Bot {
 func (b *Bot) Nomor() string { return b.nomor }
 
 func bukaStore() (*sqlstore.Container, error) {
-	return sqlstore.New(context.Background(), "sqlite3",
+	return sqlstore.New(context.Background(), "sqlite",
 		"file:data/auth.db?_foreign_keys=on&_pragma=journal_mode(WAL)&_pragma=busy_timeout(10000)", nil)
 }
 
