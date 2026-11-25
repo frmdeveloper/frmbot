@@ -806,7 +806,7 @@ func gerbangBanMember(b *Bot, k *lib.Konteks, m *lib.Pesan) bool {
 	if reUnbanaku.MatchString(strings.TrimSpace(m.Text)) {
 		if lib.LepasBan(b.group, m.From, nomor, lid) {
 			fmt.Printf("[unbanaku] %s lepas ban sendiri di %s\n", m.Sender, m.From)
-			_ = b.SendMessage(m.From, lib.IsiPesan{Text: "hoki lu nemu fitur rahasia ini jir — ban lu gw lepas. jangan ngespam lagi"}, m)
+			_ = b.SendMessage(m.From, lib.IsiPesan{Text: "hoki lu nemu fitur rahasia ini jir — ban lu gw lepas. jangan ngespam lagi"}, nil)
 		}
 		return true
 	}

@@ -7,8 +7,8 @@ import (
 )
 
 func TestRegistryDanRouting(t *testing.T) {
-	if got := lib.Jumlah(); got != 59 {
-		t.Fatalf("jumlah fitur = %d, mau 59", got)
+	if got := lib.Jumlah(); got != 60 {
+		t.Fatalf("jumlah fitur = %d, mau 60", got)
 	}
 	kasus := map[string]string{
 		"#menu":         "menu.js",

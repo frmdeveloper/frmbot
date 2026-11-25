@@ -11,15 +11,18 @@ import (
 
 type connGrupPalsu struct {
 	lib.Conn
-	terkirim []lib.IsiPesan
+	terkirim       []lib.IsiPesan
+	quotedTerkirim []*lib.Pesan
 }
 
 func (c *connGrupPalsu) SendMessage(jid string, isi lib.IsiPesan, quoted *lib.Pesan) error {
 	c.terkirim = append(c.terkirim, isi)
+	c.quotedTerkirim = append(c.quotedTerkirim, quoted)
 	return nil
 }
 func (c *connGrupPalsu) OK(m *lib.Pesan, teks string) error {
 	c.terkirim = append(c.terkirim, lib.IsiPesan{Text: teks})
+	c.quotedTerkirim = append(c.quotedTerkirim, m)
 	return nil
 }
 func (c *connGrupPalsu) BotNomor() string { return "6283169480682" }
@@ -87,6 +90,7 @@ func TestBanmemberDurasiDanListbanDanUnbanaku(t *testing.T) {
 	}
 
 	c.terkirim = nil
+	c.quotedTerkirim = nil
 	k.M.Command = "#unbanaku"
 	k.M.Sender = "6281111111111@s.whatsapp.net"
 	if err := TanganiAgrup(k); err != nil {
@@ -95,13 +99,20 @@ func TestBanmemberDurasiDanListbanDanUnbanaku(t *testing.T) {
 	if len(c.terkirim) != 1 || !strings.Contains(c.terkirim[0].Text, "hoki lu nemu fitur rahasia ini jir") {
 		t.Fatalf("unbanaku salah: %+v", c.terkirim)
 	}
+	if len(c.quotedTerkirim) != 1 || c.quotedTerkirim[0] != nil {
+		t.Fatalf("unbanaku gak boleh nge-quote: %+v", c.quotedTerkirim)
+	}
 	if len(lib.DaftarBan(k.Group, k.M.From)) != 0 {
 		t.Fatal("ban harusnya sudah lepas")
 	}
 
 	c.terkirim = nil
+	c.quotedTerkirim = nil
 	if err := TanganiAgrup(k); err != nil {
 		t.Fatal(err)
+	}
+	if len(c.quotedTerkirim) != 1 || c.quotedTerkirim[0] != nil {
+		t.Fatalf("unbanaku kedua gak boleh nge-quote: %+v", c.quotedTerkirim)
 	}
 	if len(c.terkirim) != 1 || !strings.Contains(c.terkirim[0].Text, "lu gak lagi ke-ban jir") {
 		t.Fatalf("unbanaku kedua salah: %+v", c.terkirim)
