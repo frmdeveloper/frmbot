@@ -1,6 +1,7 @@
 package utility
 
 import (
+	"os/exec"
 	"strings"
 	"testing"
 
@@ -40,6 +41,13 @@ func (c *connPalsu) SendPresence(state string) error { return nil }
 func (c *connPalsu) SendChatPresence(jid string, state string) error       { return nil }
 func (c *connPalsu) RevokeMessage(jid string, m *lib.Pesan) error          { return nil }
 func (c *connPalsu) RelayMentah(jid string, mentah any) error              { return nil }
+func (c *connPalsu) React(m *lib.Pesan, emoji string) error                { return nil }
+func (c *connPalsu) SendButtons(jid string, teks string, footer string, buttons []lib.Tombol, quoted *lib.Pesan) error {
+	return nil
+}
+func (c *connPalsu) SendList(jid string, judul, teks, footer, teksTombol string, bagian []lib.BagianList, quoted *lib.Pesan) error {
+	return nil
+}
 func (c *connPalsu) BotJID() string                                        { return "6283169480682@s.whatsapp.net" }
 func (c *connPalsu) BotLID() string                                        { return "" }
 func (c *connPalsu) BotNomor() string                                      { return "6283169480682" }
@@ -59,6 +67,9 @@ func konteksUji(perintah, q string) (*lib.Konteks, *connPalsu) {
 }
 
 func TestExShell(t *testing.T) {
+	if _, err := exec.LookPath("sh"); err != nil {
+		t.Skip("sh gak ada di sistem Windows")
+	}
 	k, c := konteksUji(".ex", "echo halo-$from")
 	if err := TanganiEval(k); err != nil {
 		t.Fatal(err)

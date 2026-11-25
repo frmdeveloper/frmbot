@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -23,7 +24,16 @@ func NomorSaja(jid string) string {
 }
 
 func SpawnSync(perintah string) (string, string) {
-	cmd := exec.Command("sh", "-c", perintah)
+	var cmd *exec.Cmd
+	if runtime.GOOS == "windows" {
+		if _, err := exec.LookPath("sh"); err == nil {
+			cmd = exec.Command("sh", "-c", perintah)
+		} else {
+			cmd = exec.Command("cmd", "/c", perintah)
+		}
+	} else {
+		cmd = exec.Command("sh", "-c", perintah)
+	}
 	var out, errb bytes.Buffer
 	cmd.Stdout = &out
 	cmd.Stderr = &errb

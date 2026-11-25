@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"runtime"
 	"strings"
 	"time"
 
@@ -151,7 +152,16 @@ func jalankanShell(k *lib.Konteks) error {
 	m := k.M
 	ctx, batal := context.WithTimeout(context.Background(), 120*time.Second)
 	defer batal()
-	cmd := exec.CommandContext(ctx, "sh", "-c", m.Q)
+	var cmd *exec.Cmd
+	if runtime.GOOS == "windows" {
+		if _, err := exec.LookPath("sh"); err == nil {
+			cmd = exec.CommandContext(ctx, "sh", "-c", m.Q)
+		} else {
+			cmd = exec.CommandContext(ctx, "cmd", "/c", m.Q)
+		}
+	} else {
+		cmd = exec.CommandContext(ctx, "sh", "-c", m.Q)
+	}
 	cmd.Env = append(os.Environ(), "from="+m.From)
 	var outBuf, errBuf strings.Builder
 	cmd.Stdout = &outBuf

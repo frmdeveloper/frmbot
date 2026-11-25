@@ -101,7 +101,7 @@ func video2webpKotakSb(buf []byte) ([]byte, error) {
 		}
 		filter := fmt.Sprintf("crop='min(iw,ih)':'min(iw,ih)',scale=%d:%d:flags=lanczos,fps=%d", l.s, l.s, l.fps)
 		if err := exec.Command("ffmpeg", "-y", "-i", awal, "-vcodec", "libwebp", "-vf", filter,
-			"-loop", "0", "-ss", "00:00:00", "-t", tArg, "-preset", "default", "-an", "-vsync", "0",
+			"-loop", "0", "-ss", "00:00:00", "-t", tArg, "-preset", "default", "-an",
 			"-quality", strconv.Itoa(l.q), tujuan).Run(); err != nil {
 			return nil, err
 		}
