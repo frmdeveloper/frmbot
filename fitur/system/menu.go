@@ -92,8 +92,8 @@ func TanganiMenu(k *lib.Konteks) error {
 	isi := strings.Join(blok, "\n╰──⊷\n\n")
 
 	teks := "✦ *frm chan* ✦\n" +
-		"lib: whatsmeow • golang\n" +
-		"github.com/frmdeveloper/frmbot\n\n" +
+		"*lib:* whatsmeow • golang\n" +
+		"*sc:* github.com/frmdeveloper/frmbot\n\n" +
 		"📌 Jangan lupa follow\n" +
 		"    tiktok.com/@rifki_mekanik\n\n" +
 		"⚙️ RAM: " + fmt.Sprint(ramTerpakaiMB()) + " MB terpakai\n\n" +
