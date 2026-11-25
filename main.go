@@ -10,6 +10,7 @@ import (
 
 	"gow1/lib"
 
+	_ "gow1/fitur/ai"
 	_ "gow1/fitur/audio"
 	_ "gow1/fitur/chat"
 	_ "gow1/fitur/converter"

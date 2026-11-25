@@ -122,7 +122,10 @@ func toggleGrupAktif(kunci, grup string) bool {
 	defer muGrupMentah.Unlock()
 	raw := bacaGrupMentah()
 	sub, _ := raw[kunci].(map[string]any)
-	v, _ := sub[grup].(bool)
+	v, ada := sub[grup].(bool)
+	if !ada && kunci == "bot" {
+		return true
+	}
 	return v
 }
 
@@ -134,11 +137,7 @@ func setToggleGrup(kunci, grup string, nyala bool) {
 	if sub == nil {
 		sub = map[string]any{}
 	}
-	if nyala {
-		sub[grup] = true
-	} else {
-		delete(sub, grup)
-	}
+	sub[grup] = nyala
 	raw[kunci] = sub
 	b, err := json.Marshal(raw)
 	if err == nil {

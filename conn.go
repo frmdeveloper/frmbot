@@ -24,6 +24,7 @@ import (
 
 	fitchat "gow1/fitur/chat"
 	fiturgrup "gow1/fitur/group"
+	fiturai "gow1/fitur/ai"
 	fiturmaker "gow1/fitur/maker"
 	fitursystem "gow1/fitur/system"
 	"gow1/lib"
@@ -774,14 +775,17 @@ func (b *Bot) Terhubung() bool {
 func gerbangBotGrup(grup string) bool {
 	bt, err := os.ReadFile("data/group.json")
 	if err != nil {
-		return false
+		return true
 	}
 	var mentah map[string]any
 	if json.Unmarshal(bt, &mentah) != nil {
-		return false
+		return true
 	}
 	sub, _ := mentah["bot"].(map[string]any)
-	v, _ := sub[grup].(bool)
+	v, ada := sub[grup].(bool)
+	if !ada {
+		return true
+	}
 	return v
 }
 
@@ -843,6 +847,45 @@ func tulisUlangPerintah(m *lib.Pesan) {
 	}
 }
 
+func (b *Bot) jidBot(jid string) bool {
+	if jid == "" {
+		return false
+	}
+	return jid == b.BotJID() || jid == b.BotLID() || lib.NomorSaja(jid) == b.BotNomor()
+}
+
+func (b *Bot) layakNgobrolAI(m *lib.Pesan) bool {
+	if m.FromMe || m.Type == "reactionMessage" {
+		return false
+	}
+	teks := strings.TrimSpace(m.Text)
+	if teks == "" {
+		return false
+	}
+	if !m.IsGroup {
+		return !fitchat.SesiAnonAktif(m.From)
+	}
+	if !gerbangBotGrup(m.From) {
+		return false
+	}
+	if m.Quoted != nil {
+		for _, gm := range m.Quoted.GroupMentions {
+			if strings.HasPrefix(gm.Subjek, "ask|") {
+				return true
+			}
+		}
+		if b.jidBot(m.Quoted.Sender) {
+			return true
+		}
+	}
+	for _, jid := range m.Mentions {
+		if b.jidBot(jid) {
+			return true
+		}
+	}
+	return strings.HasSuffix(teks, "?")
+}
+
 func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	HitungPesan.Masuk.Add(1)
 	fmt.Printf("[pesan] %s dari %s (alt %s): %q\n", m.From, m.Sender, m.SenderAlt, m.Text)
@@ -873,6 +916,14 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	}
 	f := lib.CariFitur(m.Command)
 	if f == nil {
+		if b.layakNgobrolAI(m) {
+			HitungPesan.Perintah.Add(1)
+			if err := fiturai.Ngobrol(k, m.Text); err != nil {
+				fmt.Printf("[fitur] mcp.js error: %v\n", err)
+				fitursystem.Lapor(k, err, "mcp.js")
+			}
+			HitungPesan.Diproses.Add(1)
+		}
 		return
 	}
 	if m.IsGroup && f.File != "bot.js" && !gerbangBotGrup(m.From) {

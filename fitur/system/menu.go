@@ -2,22 +2,33 @@ package system
 
 import (
 	"fmt"
+	"os"
 	"regexp"
-	"runtime"
 	"sort"
 	"strings"
 
 	"gow1/lib"
 )
 
+func ramTerpakaiMB() int {
+	b, err := os.ReadFile("/proc/self/status")
+	if err != nil {
+		return 0
+	}
+	for _, baris := range strings.Split(string(b), "\n") {
+		if strings.HasPrefix(baris, "VmRSS:") {
+			var kb int
+			_, _ = fmt.Sscanf(baris, "VmRSS: %d kB", &kb)
+			return kb / 1024
+		}
+	}
+	return 0
+}
+
 func TanganiMenu(k *lib.Konteks) error {
 	m := k.M
 	if strings.Contains(m.Command, "mani") {
 		_ = k.Conn.OK(m, "Mani loh ya")
-	}
-	q := strings.ToLower(strings.TrimSpace(m.Q))
-	if q == "hehe" {
-		return k.Conn.OK(m, "hehe")
 	}
 
 	semuaFitur := lib.Semua()
@@ -27,86 +38,68 @@ func TanganiMenu(k *lib.Konteks) error {
 	}
 	sort.Strings(perFile)
 
-	byJenis := map[string][][]string{}
+	byJenis := map[string][]string{}
+	jenisList := []string{}
 	for _, file := range perFile {
 		f := semuaFitur[file]
 		if len(f.Nama) == 0 || f.Jenis == "" {
 			continue
 		}
-		byJenis[f.Jenis] = append(byJenis[f.Jenis], f.Nama)
-	}
-	jenisList := []string{}
-	for j := range byJenis {
-		jenisList = append(jenisList, j)
+		if _, ada := byJenis[f.Jenis]; !ada {
+			jenisList = append(jenisList, f.Jenis)
+		}
+		byJenis[f.Jenis] = append(byJenis[f.Jenis], f.Nama...)
 	}
 	sort.Strings(jenisList)
 
-	if q != "" {
-		filter := []string{}
+	mau := strings.ToLower(strings.TrimSpace(m.Q))
+	if mau == "grup" {
+		mau = "group"
+	}
+	ketemu := ""
+	for _, j := range jenisList {
+		if strings.ToLower(j) == mau {
+			ketemu = j
+		}
+	}
+	if mau != "" && ketemu == "" {
+		return k.Conn.OK(m, m.Q)
+	}
+	jenisPakai := []string{}
+	if ketemu != "" {
+		jenisPakai = []string{ketemu}
+	} else {
 		for _, j := range jenisList {
-			if strings.EqualFold(j, q) {
-				filter = append(filter, j)
+			if strings.ToLower(j) != "group" {
+				jenisPakai = append(jenisPakai, j)
 			}
 		}
-		if len(filter) == 0 {
-			return k.Conn.OK(m, m.Q)
-		}
-		jenisList = filter
 	}
 
-	emojiKategori := map[string]string{
-		"ai": "🤖", "audio": "🎧", "chat": "💬", "converter": "🔄",
-		"downloader": "📥", "game": "🎮", "group": "👥", "info": "🔍",
-		"maker": "🎨", "system": "⚙️", "utility": "🧰",
-	}
-	blok := []string{}
-	for _, j := range jenisList {
-		emoji := emojiKategori[strings.ToLower(j)]
-		if emoji == "" {
-			emoji = "✨"
-		}
-		var sb strings.Builder
-		sb.WriteString(emoji + " *" + strings.ToUpper(j) + "*")
-		if strings.EqualFold(j, "group") && !m.IsGroup {
-			sb.WriteString("\n🔒 disembunyikan, khusus grup")
-			blok = append(blok, sb.String())
-			continue
-		}
-		perintah := []string{}
-		for _, nm := range byJenis[j] {
-			perintah = append(perintah, nm...)
-		}
-		for _, n := range perintah {
-			sb.WriteString("\n• " + n)
-		}
-		blok = append(blok, sb.String())
-	}
-	isi := strings.Join(blok, "\n\n")
-
-	var ms runtime.MemStats
-	runtime.ReadMemStats(&ms)
-	ramMB := float64(ms.Sys) / 1024 / 1024
-	ram := fmt.Sprintf("%.1f MB", ramMB)
-	if ramMB >= 1024 {
-		ram = fmt.Sprintf("%.2f GB", ramMB/1024)
-	}
-
-	kepala := "✦ *FRM Bot* ✦\n" +
-		"github.com/frmdeveloper/frmbot\n" +
-		"_whatsmeow • golang_\n\n" +
-		"💾 *RAM:* " + ram + "\n" +
-		"⚡ *" + fmt.Sprint(lib.Jumlah()) + " fitur* siap dipakai\n" +
-		"🎵 *follow:* tiktok.com/@rifki_mekanik\n\n" +
-		"🪡 *daftar perintah* 🪡\n\n"
-	kaki := "\n\n💡 ketik *#menu <kategori>* buat fokus ke satu kategori\n" +
-		"contoh: #menu maker"
-
-	teks := kepala + isi + kaki
 	prefix := m.Prefix
 	if prefix == "" {
 		prefix = "#"
 	}
-	teks = strings.ReplaceAll(teks, "#", prefix)
+	blok := []string{}
+	for _, j := range jenisPakai {
+		var sb strings.Builder
+		sb.WriteString("╭─「 *" + j + "* 」")
+		for _, n := range byJenis[j] {
+			sb.WriteString("\n│  ︎  " + strings.ReplaceAll(n, "#", prefix))
+		}
+		blok = append(blok, sb.String())
+	}
+	isi := strings.Join(blok, "\n╰──⊷\n\n")
+
+	teks := "✦ *frm chan* ✦\n" +
+		"lib: whatsmeow • golang\n" +
+		"github.com/frmdeveloper/frmbot\n\n" +
+		"📌 Jangan lupa follow\n" +
+		"    tiktok.com/@rifki_mekanik\n\n" +
+		"⚙️ RAM: " + fmt.Sprint(ramTerpakaiMB()) + " MB terpakai\n\n" +
+		"🪡 daftar perintah 🪡\n" +
+		strings.Repeat("\u200e", 8000) + "\n" +
+		isi + "\n╰──⊷"
 	return k.Conn.SendMessage(m.From, lib.IsiPesan{Text: teks}, m)
 }
 

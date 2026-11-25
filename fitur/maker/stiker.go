@@ -357,7 +357,7 @@ func TanganiStiker(k *lib.Konteks) error {
 		return k.Conn.OK(m, "mana gambarnya?")
 	}
 	mime := lib.DeteksiMime(down)
-	kiri := "Elfa Chan"
+	kiri := "FRM Chan"
 	kanan := strconv.Itoa(time.Now().Year())
 	if m.Q != "" {
 		h := strings.Split(m.Q, "|")
