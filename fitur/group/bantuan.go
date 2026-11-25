@@ -11,6 +11,7 @@ import (
 )
 
 const nomorPapa = "6285188261898"
+const nomorOwnerUtama = "6289680237010"
 
 var nonDigit = regexp.MustCompile(`[^0-9]`)
 
@@ -19,7 +20,7 @@ func adalahOwner(k *lib.Konteks, jid string) bool {
 	if n == "" {
 		return false
 	}
-	if n == nomorPapa {
+	if n == nomorOwnerUtama || n == nomorPapa {
 		return true
 	}
 	return k != nil && k.Conn != nil && n == k.Conn.BotNomor()
@@ -30,7 +31,8 @@ func pengirimOwner(k *lib.Konteks) bool {
 }
 
 func ituPapa(jid string) bool {
-	return lib.NomorSaja(jid) == nomorPapa
+	n := lib.NomorSaja(jid)
+	return n == nomorOwnerUtama || n == nomorPapa
 }
 
 func cariPeserta(gc *lib.GrupInfo, kandidat ...string) *lib.Peserta {

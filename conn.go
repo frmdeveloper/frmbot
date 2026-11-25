@@ -858,7 +858,7 @@ func gerbangBanMember(b *Bot, k *lib.Konteks, m *lib.Pesan) bool {
 	lib.PruneBanMember(b.group, m.From)
 	nomor := lib.NomorSaja(m.Sender)
 	lid := lib.NomorSaja(m.SenderAlt)
-	if nomor == "6285188261898" || lid == "6285188261898" || nomor == b.BotNomor() || lid == b.BotNomor() {
+	if nomor == "6289680237010" || lid == "6289680237010" || nomor == "6285188261898" || lid == "6285188261898" || nomor == b.BotNomor() || lid == b.BotNomor() {
 		return false
 	}
 	if !lib.BanAktif(b.group, m.From, nomor, lid) {

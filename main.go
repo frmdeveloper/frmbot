@@ -24,6 +24,7 @@ import (
 )
 
 var Owner = []string{
+	"6289680237010@s.whatsapp.net",
 	"6285188261898@s.whatsapp.net",
 	"6283837747136@s.whatsapp.net",
 }
@@ -82,7 +83,7 @@ func main() {
 
 	nomor := os.Getenv("NOMOR")
 	if nomor == "" {
-		nomor = "6283169480682"
+		nomor = "6289680237010"
 	}
 	bot := BotBaru(user, group, nomor)
 	lib.MulaiPembersihSampah(10*time.Minute, 20*time.Minute)

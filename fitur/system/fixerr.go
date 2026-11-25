@@ -13,7 +13,7 @@ import (
 	"gow1/lib"
 )
 
-const nomorOwnerFixerr = "6285188261898"
+const nomorOwnerFixerr = "6289680237010"
 
 type EntriError struct {
 	Waktu time.Time `json:"waktu"`

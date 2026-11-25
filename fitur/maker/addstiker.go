@@ -24,6 +24,7 @@ import (
 const dirKoleksiStiker = "bantuan/stiker"
 const penandaJIDMaker = "120363186235853203@g.us"
 const nomorPapaMaker = "6285188261898"
+const nomorOwnerMaker = "6289680237010"
 
 const saringPrompt = `Lo penyaring stiker. Jawab HANYA satu kata: AMAN atau TOLAK.
 TOLAK kalau ada: ketelanjangan, konten seksual/sugestif, alat kelamin, adegan intim,
@@ -91,7 +92,7 @@ func ringkasanKoleksiStiker() string {
 func adalahOwnerMaker(k *lib.Konteks) bool {
 	for _, jid := range []string{k.M.Sender, k.M.SenderAlt} {
 		n := lib.NomorSaja(jid)
-		if n != "" && (n == nomorPapaMaker || n == k.Conn.BotNomor()) {
+		if n != "" && (n == nomorOwnerMaker || n == nomorPapaMaker || n == k.Conn.BotNomor()) {
 			return true
 		}
 	}
