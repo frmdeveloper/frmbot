@@ -105,7 +105,8 @@ func Img2webp(buffer []byte) ([]byte, error) {
 	akhir := strings.TrimSuffix(awal, ext) + ".webp"
 	defer os.Remove(awal)
 	defer os.Remove(akhir)
-	lib.SpawnSync(fmt.Sprintf("ffmpeg -y -i %s -vf 'scale=512:512:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1' %s", awal, akhir))
+	filter := "scale=512:512:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1"
+	_ = exec.Command("ffmpeg", "-y", "-i", awal, "-vf", filter, akhir).Run()
 	return os.ReadFile(akhir)
 }
 
@@ -118,7 +119,8 @@ func Mp42webp(buffer []byte) ([]byte, error) {
 	akhir := strings.TrimSuffix(awal, ext) + ".webp"
 	defer os.Remove(awal)
 	defer os.Remove(akhir)
-	lib.SpawnSync(fmt.Sprintf(`ffmpeg -i %s -vcodec libwebp -vf "scale='min(320,512)':min'(320,512)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse" -loop 0 -ss 00:00:00 -t 00:00:05 -preset default -an -vsync 0 %s`, awal, akhir))
+	filter := "scale='min(320,512)':min'(320,512)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse"
+	_ = exec.Command("ffmpeg", "-y", "-i", awal, "-vcodec", "libwebp", "-vf", filter, "-loop", "0", "-ss", "00:00:00", "-t", "00:00:05", "-preset", "default", "-an", "-vsync", "0", akhir).Run()
 	return os.ReadFile(akhir)
 }
 
