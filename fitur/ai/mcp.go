@@ -32,12 +32,15 @@ type pesanObrolan struct {
 	ToolCallID string          `json:"tool_call_id,omitempty"`
 }
 
-func muatSifat() string {
+func muatSifat(nama string) string {
+	if nama == "" {
+		nama = "FRM Chan"
+	}
 	b, err := os.ReadFile(PathSifat)
 	if err == nil && strings.TrimSpace(string(b)) != "" {
-		return strings.TrimSpace(string(b))
+		return strings.ReplaceAll(strings.TrimSpace(string(b)), "{nama}", nama)
 	}
-	return "Nama lo FRM Chan. Lo nyebelin, gaul, singkat padat. Kosakata lo: njir, jir, anjir — dilarang bilang anj dan cok."
+	return "Nama lo " + nama + ". Lo nyebelin, gaul, balasan lo sesingkat mungkin, kalo bisa 1 kata doang. Kosakata lo: njir, jir, anjir — dilarang bilang anj dan cok."
 }
 
 func nomorPengirim(m *lib.Pesan) string {
@@ -176,7 +179,7 @@ func Ngobrol(k *lib.Konteks, prompt string) error {
 	}
 	_ = k.Conn.SendChatPresence(m.From, "composing")
 	defer func() { _ = k.Conn.SendChatPresence(m.From, "paused") }()
-	msgs := []pesanObrolan{{Role: "system", Content: muatSifat() + konteksPengirim(k)}}
+	msgs := []pesanObrolan{{Role: "system", Content: muatSifat(k.Conn.BotNama()) + konteksPengirim(k)}}
 	if sebelum, jawaban, ok := konteksDariQuote(m); ok {
 		msgs = append(msgs, sebelum, jawaban)
 	} else if m.Quoted != nil && strings.TrimSpace(m.Quoted.Text) != "" {

@@ -795,6 +795,13 @@ func (b *Bot) BotLID() string {
 	return b.client.Store.LID.String()
 }
 
+func (b *Bot) BotNama() string {
+	if b.client == nil || b.client.Store == nil || b.client.Store.PushName == "" {
+		return "FRM Chan"
+	}
+	return b.client.Store.PushName
+}
+
 func (b *Bot) BotNomor() string {
 	if b.client == nil || b.client.Store.ID == nil {
 		return b.nomor

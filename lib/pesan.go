@@ -78,6 +78,7 @@ type Conn interface {
 	BotJID() string
 	BotLID() string
 	BotNomor() string
+	BotNama() string
 	Terhubung() bool
 }
 
