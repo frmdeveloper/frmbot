@@ -1,0 +1,14 @@
+syntax = "proto3";
+package WAWebProtobufsReporting;
+option go_package = "go.mau.fi/whatsmeow/proto/waReporting";
+
+message Config {
+	map<uint32, Field> field = 1;
+}
+
+message Field {
+	uint32 minVersion = 1;
+	uint32 maxVersion = 2;
+	bool isMessage = 4;
+	map<uint32, Field> subfield = 5;
+}

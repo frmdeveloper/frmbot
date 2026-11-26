@@ -781,6 +781,34 @@ func (b *Bot) RelayMentah(jid string, mentah any) error {
 	return err
 }
 
+func (b *Bot) SetGroupWallpaper(jid string, gambar []byte) error {
+	target, err := types.ParseJID(jid)
+	if err != nil {
+		return err
+	}
+	up, err := b.client.Upload(context.Background(), gambar, whatsmeow.MediaChatWallpaper)
+	if err != nil {
+		return err
+	}
+
+	pesan := &waE2E.Message{ProtocolMessage: &waE2E.ProtocolMessage{
+		Type: waE2E.ProtocolMessage_CHAT_THEME_SETTING.Enum(),
+		ChatThemeSetting: &waE2E.ChatThemeSetting{
+			SettingTimestampMS: proto.Int64(time.Now().UnixMilli()),
+			Wallpaper: &waE2E.ChatThemeSetting_CustomImage{
+				CustomImage: &waE2E.ChatCustomImageWallpaper{
+					DirectPath:    &up.DirectPath,
+					MediaKey:      up.MediaKey,
+					FileEncSHA256: up.FileEncSHA256,
+					FileSHA256:    up.FileSHA256,
+				},
+			},
+		},
+	}}
+	_, err = b.client.SendMessage(context.Background(), target, pesan, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
+	return err
+}
+
 func (b *Bot) BotJID() string {
 	if b.client == nil || b.client.Store.ID == nil {
 		return ""

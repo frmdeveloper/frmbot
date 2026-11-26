@@ -74,6 +74,7 @@ type Conn interface {
 	SendChatPresence(jid string, state string) error
 	RevokeMessage(jid string, m *Pesan) error
 	RelayMentah(jid string, mentah any) error
+	SetGroupWallpaper(jid string, gambar []byte) error
 	React(m *Pesan, emoji string) error
 	BotJID() string
 	BotLID() string
