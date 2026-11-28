@@ -142,3 +142,63 @@ func setToggleGrup(kunci, grup string, nyala bool) {
 		_ = os.WriteFile("data/group.json", b, 0o644)
 	}
 }
+
+func modeGrup(kunci, grup string) string {
+	muGrupMentah.Lock()
+	defer muGrupMentah.Unlock()
+	raw := bacaGrupMentah()
+	sub, _ := raw[kunci].(map[string]any)
+	switch v := sub[grup].(type) {
+	case string:
+		return v
+	case bool:
+		if v {
+			return "on"
+		}
+	}
+	return ""
+}
+
+func setModeGrup(kunci, grup, nilai string) {
+	muGrupMentah.Lock()
+	defer muGrupMentah.Unlock()
+	raw := bacaGrupMentah()
+	sub, _ := raw[kunci].(map[string]any)
+	if sub == nil {
+		sub = map[string]any{}
+	}
+	if nilai == "" {
+		delete(sub, grup)
+	} else {
+		sub[grup] = nilai
+	}
+	raw[kunci] = sub
+	b, err := json.Marshal(raw)
+	if err == nil {
+		_ = os.WriteFile("data/group.json", b, 0o644)
+	}
+}
+
+func kataBadwordGrup(grup string) []string {
+	muGrupMentah.Lock()
+	defer muGrupMentah.Unlock()
+	raw := bacaGrupMentah()
+	sub, _ := raw["badwordKata"].(map[string]any)
+	return daftarString(sub[grup])
+}
+
+func simpanKataBadwordGrup(grup string, daftar []string) {
+	muGrupMentah.Lock()
+	defer muGrupMentah.Unlock()
+	raw := bacaGrupMentah()
+	sub, _ := raw["badwordKata"].(map[string]any)
+	if sub == nil {
+		sub = map[string]any{}
+	}
+	sub[grup] = daftar
+	raw["badwordKata"] = sub
+	b, err := json.Marshal(raw)
+	if err == nil {
+		_ = os.WriteFile("data/group.json", b, 0o644)
+	}
+}
