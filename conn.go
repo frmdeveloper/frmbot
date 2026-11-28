@@ -33,6 +33,10 @@ import (
 )
 
 var rePerintahAntilink = regexp.MustCompile(`(?i)^(#|!|/|\.)antilink$`)
+var rePerintahAntispam = regexp.MustCompile(`(?i)^(#|!|/|\.)antispam$`)
+var rePerintahAntibokep = regexp.MustCompile(`(?i)^(#|!|/|\.)antibokep$`)
+var rePerintahAntistatus = regexp.MustCompile(`(?i)^(#|!|/|\.)antistatus$`)
+var rePerintahBadword = regexp.MustCompile(`(?i)^(#|!|/|\.)(badword|antibadword|listbadword|addbadword)$`)
 
 var HitungPesan = struct {
 	Masuk    atomic.Int64
@@ -254,6 +258,7 @@ func konversiPesan(e *events.Message) *lib.Pesan {
 		Media:     media,
 		Mime:      mime,
 		Full:      e,
+		Timestamp: e.Info.Timestamp,
 	}
 	if ctxInfo != nil {
 		m.Mentions = ctxInfo.GetMentionedJID()
@@ -768,6 +773,20 @@ func (b *Bot) RevokeMessage(jid string, m *lib.Pesan) error {
 	return err
 }
 
+func (b *Bot) RevokeDari(jid string, m *lib.Pesan) error {
+	target, err := types.ParseJID(jid)
+	if err != nil {
+		return err
+	}
+	pengirim, err := types.ParseJID(m.Sender)
+	if err != nil {
+		return err
+	}
+	isi := b.client.BuildRevoke(target, pengirim, types.MessageID(m.ID))
+	_, err = b.client.SendMessage(context.Background(), target, isi, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
+	return err
+}
+
 func (b *Bot) RelayMentah(jid string, mentah any) error {
 	target, err := types.ParseJID(jid)
 	if err != nil {
@@ -803,6 +822,22 @@ func (b *Bot) SetGroupWallpaper(jid string, gambar []byte) error {
 					FileSHA256:    up.FileSHA256,
 				},
 			},
+		},
+	}}
+	_, err = b.client.SendMessage(context.Background(), target, pesan, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
+	return err
+}
+
+func (b *Bot) ResetGroupWallpaper(jid string) error {
+	target, err := types.ParseJID(jid)
+	if err != nil {
+		return err
+	}
+	pesan := &waE2E.Message{ProtocolMessage: &waE2E.ProtocolMessage{
+		Type: waE2E.ProtocolMessage_CHAT_THEME_SETTING.Enum(),
+		ChatThemeSetting: &waE2E.ChatThemeSetting{
+			SettingTimestampMS: proto.Int64(time.Now().UnixMilli()),
+			ClearTheme:         proto.Bool(true),
 		},
 	}}
 	_, err = b.client.SendMessage(context.Background(), target, pesan, whatsmeow.SendRequestExtra{ID: b.GenerateMessageID()})
@@ -980,6 +1015,26 @@ func (b *Bot) TanganiPesan(m *lib.Pesan) {
 	}
 	if m.IsGroup && !rePerintahAntilink.MatchString(m.Command) {
 		if berhenti, err := fiturgrup.CekAntilink(k); err == nil && berhenti {
+			return
+		}
+	}
+	if m.IsGroup && !rePerintahAntispam.MatchString(m.Command) {
+		if berhenti, err := fiturgrup.CekAntispam(k); err == nil && berhenti {
+			return
+		}
+	}
+	if m.IsGroup && !rePerintahAntibokep.MatchString(m.Command) {
+		if berhenti, err := fiturgrup.CekAntibokep(k); err == nil && berhenti {
+			return
+		}
+	}
+	if m.IsGroup && !rePerintahAntistatus.MatchString(m.Command) {
+		if berhenti, err := fiturgrup.CekAntistatus(k); err == nil && berhenti {
+			return
+		}
+	}
+	if m.IsGroup && !rePerintahBadword.MatchString(m.Command) {
+		if berhenti, err := fiturgrup.CekBadword(k); err == nil && berhenti {
 			return
 		}
 	}

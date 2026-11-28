@@ -2,8 +2,10 @@ package group
 
 import (
 	"fmt"
+	"os"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 
 	"go.mau.fi/whatsmeow/types"
@@ -277,7 +279,52 @@ func AksiGrup(k *lib.Konteks, evt *events.GroupInfo) error {
 			_ = k.Conn.SendMessage(jidGrup, lib.IsiPesan{Text: isi, Mentions: mentions}, nil)
 		}
 	}
+	if len(evt.Join) > 0 {
+		if bufWp, err := os.ReadFile(berkasWallpaperGrup(jidGrup)); err == nil && len(bufWp) > 0 {
+			botNum := k.Conn.BotNomor()
+			botLid := lib.NomorSaja(k.Conn.BotLID())
+			baruSelainBot := false
+			for _, j := range evt.Join {
+				n := lib.NomorSaja(j.String())
+				if n != "" && n != botNum && n != botLid {
+					baruSelainBot = true
+					break
+				}
+			}
+			if baruSelainBot && jedaKirimUlangWallpaper(jidGrup) {
+				fmt.Printf("[wp-ulang] ada join baru di %s - kirim ulang wallpaper dijadwalkan\n", jidGrup)
+				go func() {
+					kirim := func(coba int) {
+						if err := k.Conn.SetGroupWallpaper(jidGrup, bufWp); err != nil {
+							fmt.Printf("[wp-ulang] GAGAL coba %d ke %s - %v\n", coba, jidGrup, err)
+						} else {
+							fmt.Printf("[wp-ulang] terkirim coba %d ke %s\n", coba, jidGrup)
+						}
+					}
+					time.Sleep(5 * time.Second)
+					kirim(1)
+					time.Sleep(40 * time.Second)
+					kirim(2)
+				}()
+			}
+		}
+	}
 	return nil
+}
+
+var wpKirimUlang = struct {
+	sync.Mutex
+	data map[string]time.Time
+}{data: map[string]time.Time{}}
+
+func jedaKirimUlangWallpaper(grup string) bool {
+	wpKirimUlang.Lock()
+	defer wpKirimUlang.Unlock()
+	if time.Since(wpKirimUlang.data[grup]) <= 60*time.Second {
+		return false
+	}
+	wpKirimUlang.data[grup] = time.Now()
+	return true
 }
 
 func init() {

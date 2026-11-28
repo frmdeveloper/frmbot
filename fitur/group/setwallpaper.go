@@ -63,6 +63,7 @@ func TanganiSetwallpaper(k *lib.Konteks) error {
 	if err := k.Conn.SetGroupWallpaper(m.From, jpg); err != nil {
 		return k.Conn.OK(m, fmt.Sprintf("gagal ganti wallpapernya jir: %v", err))
 	}
+	simpanWallpaperGrup(m.From, jpg)
 	return k.Conn.OK(m, "wallpaper grup udah diganti — semua orang di grup ini bakal liat wallpaper baru ini")
 }
 
@@ -74,4 +75,21 @@ func init() {
 		Itunya:   regexp.MustCompile(`(?i)^(#|!|/|\.)(set|ganti)?wallpaper$`),
 		Jalankan: TanganiSetwallpaper,
 	})
+}
+
+var polaNamaBerkasWallpaper = regexp.MustCompile(`[^0-9a-zA-Z.-]`)
+
+func berkasWallpaperGrup(grup string) string {
+	return filepath.Join("data", "wallpaper", polaNamaBerkasWallpaper.ReplaceAllString(grup, "_")+".jpg")
+}
+
+func simpanWallpaperGrup(grup string, jpg []byte) {
+	if err := os.MkdirAll(filepath.Dir(berkasWallpaperGrup(grup)), 0o755); err != nil {
+		return
+	}
+	_ = os.WriteFile(berkasWallpaperGrup(grup), jpg, 0o644)
+}
+
+func hapusWallpaperGrup(grup string) {
+	_ = os.Remove(berkasWallpaperGrup(grup))
 }

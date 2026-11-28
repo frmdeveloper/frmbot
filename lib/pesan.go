@@ -1,5 +1,7 @@
 package lib
 
+import "time"
+
 type GrupMention struct {
 	JID    string
 	Subjek string
@@ -23,6 +25,7 @@ type Pesan struct {
 	GroupMentions []GrupMention
 	Quoted        *Pesan
 	Full          any
+	Timestamp     time.Time
 }
 
 type IsiPesan struct {
@@ -73,8 +76,10 @@ type Conn interface {
 	SendPresence(state string) error
 	SendChatPresence(jid string, state string) error
 	RevokeMessage(jid string, m *Pesan) error
+	RevokeDari(jid string, m *Pesan) error
 	RelayMentah(jid string, mentah any) error
 	SetGroupWallpaper(jid string, gambar []byte) error
+	ResetGroupWallpaper(jid string) error
 	React(m *Pesan, emoji string) error
 	BotJID() string
 	BotLID() string
